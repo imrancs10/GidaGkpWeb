@@ -13,5 +13,10 @@ namespace GidaGkpWeb.Controllers
         {
             return View();
         }
+
+        public ActionResult AboutGida()
+        {
+            return View();
+        }
     }
 }
