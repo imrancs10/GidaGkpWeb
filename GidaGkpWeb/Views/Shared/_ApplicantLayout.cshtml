@@ -1,0 +1,401 @@
+﻿@using GidaGkpWeb.Global
+<!DOCTYPE html>
+<html class="no-js">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Welcome to GIDA | Gorakhpur Industrial Development Authority</title>
+    <meta name="theme-color" content="#ffffff">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,700,600,300" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/styles/bootstrap.css">
+    <link rel="stylesheet" href="~/styles/dependencies.css">
+    <link rel="stylesheet" href="~/styles/components.css">
+    <link rel="stylesheet" href="~/styles/wrapkit.css">
+    <link rel="stylesheet" href="~/styles/demo.css">
+    <link rel="stylesheet" href="~/styles/deamon.css">
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/App/Global/App.js"></script>
+    <script src="~/Scripts/App/Global/Utility.js"></script>
+    @RenderSection("scripts", required: false)
+    @*gidagkp impots*@
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="files/favicon.ico" type="image/vnd.microsoft.icon" />
+    <meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+
+    <!--<link rel="shortcut icon" href="http://www.greaternoidaauthority.com/favicon.ico" />-->
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.base.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.menus.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.messages.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.theme.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/modules/date/date_api/date9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/modules/date/date_popup/themes/datepicker.1.79e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/field/theme/field.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/node/node.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/user/user.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/modules/views/css/views9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/Content/sites/all/modules/ctools/css/ctools9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/modules/views_ticker/views.ticker.scroller9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+
+    <link type="text/css" rel="stylesheet" href="~/Content/cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" media="all" />
+
+    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/bootstrap9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/base9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/default9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/compatibility9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/Content/sites/all/themes/new/css/styles9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/themes/new/css/menu9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="~/Content/maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/flick/jquery-ui.css" />
+
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.base.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.menus.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.messages.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.theme.css?qisrxa")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/Content/sites/all/modules/date/date_api/date9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/modules/date/date_popup/themes/datepicker.1.79e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/field/theme/field.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/node/node.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/user/user.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/modules/views/css/views9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/Content/sites/all/modules/ctools/css/ctools9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/modules/views_ticker/views.ticker.scroller9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+
+    <link type="text/css" rel="stylesheet" href="~/Content/cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" media="all" />
+
+    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/bootstrap9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/base9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/default9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/compatibility9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/Content/sites/all/themes/new/css/styles9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sites/all/themes/new/css/menu9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
+
+    <!-- HTML5 element support for IE6-8 -->
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="~/Content/sites/all/modules/jquery_update/replace/jquery/1.10/jquery.min468f.js?v=1.10.2"></script>
+    <script type="text/javascript" src="https://www.greaternoidaauthority.in/misc/jquery-extend-3.4.0.js?v=1.10.2"></script>
+    <script type="text/javascript" src="https://www.greaternoidaauthority.in/misc/jquery-html-prefilter-3.5.0-backport.js?v=1.10.2"></script>
+    <script type="text/javascript" src="https://www.greaternoidaauthority.in/misc/jquery.once.js?v=1.2"></script>
+    <script type="text/javascript" src="https://www.greaternoidaauthority.in/misc/drupal.js?qisrxa"></script>
+    <script type="text/javascript" src="~/Content/sites/all/modules/views_ticker/js/jquery.vticker-min9e56.js?qisrxa"></script>
+    <script type="text/javascript">
+<!--    //--><![CDATA[//><!--
+        (function ($) { Drupal.behaviors.views_ticker_vTicker = { attach: function (context) { $("#views-ticker-vTicker-ticker").vTicker({ mousePause: true, speed: 700, pause: 2000, showItems: 7, direction: "up" }); } }; })(jQuery);
+        //--><!]]>
+    </script>
+    <script type="text/javascript" src="~/Content/sites/all/modules/tb_megamenu/js/tb-megamenu-frontend9e56.js?qisrxa"></script>
+    <script type="text/javascript" src="~/Content/sites/all/modules/tb_megamenu/js/tb-megamenu-touch9e56.js?qisrxa"></script>
+    <script type="text/javascript">
+<!--    //--><![CDATA[//><!--
+        jQuery.extend(Drupal.settings, { "basePath": "\/", "pathPrefix": "", "ajaxPageState": { "theme": "new", "theme_token": "IweBzF8oP0esZP7DQg7O4cLtPaMnDjuoJLuUS_iS9nY", "js": { "": 1, "sites\/all\/modules\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js": 1, "misc\/jquery-extend-3.4.0.js": 1, "misc\/jquery-html-prefilter-3.5.0-backport.js": 1, "misc\/jquery.once.js": 1, "misc\/drupal.js": 1, "sites\/all\/modules\/views_ticker\/js\/jquery.vticker-min.js": 1, "0": 1, "sites\/all\/modules\/tb_megamenu\/js\/tb-megamenu-frontend.js": 1, "sites\/all\/modules\/tb_megamenu\/js\/tb-megamenu-touch.js": 1 }, "css": { "modules\/system\/system.base.css": 1, "modules\/system\/system.menus.css": 1, "modules\/system\/system.messages.css": 1, "modules\/system\/system.theme.css": 1, "sites\/all\/modules\/date\/date_api\/date.css": 1, "sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css": 1, "modules\/field\/theme\/field.css": 1, "modules\/node\/node.css": 1, "modules\/user\/user.css": 1, "sites\/all\/modules\/views\/css\/views.css": 1, "sites\/all\/modules\/ctools\/css\/ctools.css": 1, "sites\/all\/modules\/views_ticker\/views.ticker.scroller.css": 1, "https:/cdnjs.cloudflare.com\/ajax\/libs\/font-awesome\/4.4.0\/css\/font-awesome.min.css": 1, "sites\/all\/modules\/tb_megamenu\/css\/bootstrap.css": 1, "sites\/all\/modules\/tb_megamenu\/css\/base.css": 1, "sites\/all\/modules\/tb_megamenu\/css\/default.css": 1, "sites\/all\/modules\/tb_megamenu\/css\/compatibility.css": 1, "sites\/all\/themes\/new\/css\/styles.css": 1, "sites\/all\/themes\/new\/css\/menu.css": 1 } } });
+        //--><!]]>
+    </script>
+</head>
+<body class="html front not-logged-in no-sidebars page-node">
+    <div class="container-fluid" style="background:#E6FEFA">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="pull-left">
+                    <div style="margin-left:1em;" class="time">
+                        <noscript>
+                            Javascript Required
+                        </noscript>
+                        <script type="text/javascript">
+                            var d = new Date()
+                            var weekday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+                            var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+                            document.write(weekday[d.getDay()] + ", ")
+                            document.write(d.getDate() + " ")
+                            document.write(monthname[d.getMonth()] + ", ")
+                            document.write(d.getFullYear())
+                        </script>
+                        <span id="clockDisplay">
+                            <script type="text/javascript" language="javascript">
+                                function renderTime() {
+                                    var currentTime = new Date();
+                                    var diem = "AM";
+                                    var h = currentTime.getHours();
+                                    var m = currentTime.getMinutes();
+                                    var s = currentTime.getSeconds();
+                                    setTimeout('renderTime()', 1000);
+                                    if (h == 0) {
+                                        h = 12;
+                                    } else if (h > 12) {
+                                        h = h - 12;
+                                        diem = "PM";
+                                    }
+                                    if (h < 10) {
+                                        h = "0" + h;
+                                    }
+                                    if (m < 10) {
+                                        m = "0" + m;
+                                    }
+                                    if (s < 10) {
+                                        s = "0" + s;
+                                    }
+                                    var myClock = document.getElementById('clockDisplay');
+                                    myClock.textContent = h + ":" + m + ":" + s + " " + diem;
+                                    myClock.innerText = h + ":" + m + ":" + s + " " + diem;
+                                }
+                                renderTime();
+                            </script>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <h5 class="pull-right top-link text-info">
+                </h5>
+            </div>
+        </div>
+    </div><!-- EOF:#topbar -->
+    <!--<div class="container-fluid" style="background-image: url(files/pngtree258177.jpg);">	-->
+    <div class="container-fluid" style="background:#EBF9F7">
+        <div class="row">
+            <div class="col-xs-2">
+                <div style="margin-top:0.5em;margin-bottom:0.5em;margin-left:2em;">
+                    <a href="index.html" title="Home" rel="home">
+                        <img src="~/Content/files/Gida-mainlogo.png" width="160px" height="100px" alt="Home" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <div class="logotitle">
+                    Gorakhpur Industrial Development Authority (GIDA)<br />
+                    <div class="logohtitle">गोरखपुर औद्योगिक विकास प्राधिकरण  (गीडा) </div> <!--<br/><hr>  , गोरखपुर</hr>स्वदेशी उद्योग अंतरराष्ट्रीय मानक से अग्रसारित-->
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div style="margin-top:0.5em;margin-bottom:0.5em;margin-right:2em;" class="pull-right">
+                    <!--<a href="industrial.html">
+                        <img width="80px" src="files/ecotech.gif" width="">
+                    </a>&nbsp;&nbsp; -->
+                    <a href="javascript:void(0);">
+                        <img height="100px" src="~/Content/files/Uttar_Pradesh.svg.png" width="120px">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div><!-- EOF:#navbar -->
+
+    <div class="container-fluid" style="background:#EEF6F5">
+        <div class="row" style="background:#EEF6F5;margin-bottom:0px;height:28px;">
+            <div class="col-md-10 col-sm-10 col-xs-10" style="background:#EEF6F5">
+                <div class="region region-top-menu">
+                    <div id="block-tb-megamenu-main-menu" class="block block-tb-megamenu">
+
+
+                        <div class="content" style="background:#EEF6F5">
+                            <div class="tb-megamenu tb-megamenu-main-menu">
+                                <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar tb-megamenu-button" type="button">
+                                    <i class="fa fa-reorder"></i>
+                                </button>
+                                <div class="nav-collapse  always-show" style="background:#EEF6F5">
+                                    <ul class="tb-megamenu-nav nav level-0 items-8">
+                                        <li data-id="465" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" class="tb-megamenu-item level-2 mega">
+                                            <a href="/Home/Dashboard" title="Home">
+                                                <span class="glyphicon glyphicon-home"></span>
+                                                Home
+                                            </a>
+                                        </li>
+                                        <li data-id="465" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" class="tb-megamenu-item level-2 mega">
+                                            <a href="/Home/Dashboard" title="Home">
+                                                <span class="glyphicon glyphicon-envelope"></span>
+                                                Apply for Plot
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-2" style="background:#EEF6F5">
+                <div class="pull-right" style="margin-right:1em;">
+                    <div class="region region-social">
+                        <div id="block-block-97" class="block block-block">
+                            <a href="/Masters/Logout">logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================
+    MAIN CONTENT SECTION
+    =============================================== -->
+    @RenderBody()
+    <!-- ============================================
+    FOOTER SECTION
+    =============================================== -->
+    <div id="ft" class="container" style="background:#eee !important;">
+        <div class="row">
+            <br />
+        </div>
+    </div>
+
+    <div class="container-fluid" style="background:#D3D3D3 !important; padding-top:15px;">
+        <div class="row">
+            <div class="container">
+                <div class="col-xs-5">
+                    <address style="font-size:0.85em;">
+                        <div class="LinkFooter"><a href='javascript:void(0);'>Accessibility Statement</a> || <a href="javascript:void(0);">Privacy Policy</a> || <a href='javascript:void(0);'>Hyper Linking Policy</a> || <a href='javascript:void(0);'>Copyright Policy</a></div>
+                        <div class="footerText hidden-xs">
+                            Content on this website is published and managed by Gorakhpur Industrial Development Authority, (GIDA)<br />
+                            For any query regarding this website, please contact the “Web Information Manager”.
+                        </div>
+                        <div class="copyright">© Gorakhpur Industrial Development Authority, (GIDA), U.P., India || All rights reserved.</div>
+                        <!--<strong>Greater Noida Industrial Development Authority</strong><br />
+                        Plot No. 01, Knowledge Park-04<br />
+                        Greater Noida, Gautam Budh Nagar, Uttar Pradesh 201308<br />
+                        <abbr title="Phone">P:</abbr> 0120 233-6030, <abbr title="Phone">P:</abbr> 0120 233-6031 <abbr title="Phone">P:</abbr> 0120 233-6032 <abbr title="Phone">P:</abbr> 0120 233-6034 <br />
+                        <abbr title="Phone">F:</abbr> 0120 233-6002, 233-6006<br />-->
+                    </address>
+                    <!--<address>
+                        authority@gnida.in (email)
+                    </address>-->
+                </div>
+                <div class="col-xs-3">&nbsp;</div>
+                <div class="col-xs-4">
+                    <address style="font-size:0.85em;">
+                        <a href='javascript:void(0);'>Terms and Conditions</a> || <a href='javascript:void(0);'>Disclaimer</a> || <a href='javascript:void(0);'>Archives</a> || <a href='javascript:void(0);'>Help</a>
+
+
+                        <br /><br /><br /><br />
+
+                        Last updated: Friday, 8-Jan-2021 5:42:31 +05:30
+                    </address>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="socialIconBox hidden-xs">
+        <div class="iconsocial"><a href="https://www.facebook.com/" target="_blank"><img src="~/Content/files/fb.png" width="28" height="28" /></a></div>
+        <div class="iconsocial"><a href="https://twitter.com/gidagorakhpur" target="_blank"><img src="~/Content/files/tw.png" width="28" height="28" /></a></div>
+        <div class="iconsocial"><a href="https://www.youtube.com/" target="_blank"><img src="~/Content/files/yo.png" width="28" height="28" /></a></div>
+    </div>
+    <script src="~/Content/ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="~/Content/maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="~/Content/ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="~/Content/js/carousel.html"></script>
+    <script>
+        // Comment ... //
+        $(document).ready(function () {
+            $('#myCarousel-2').carousel({
+                interval: 4000
+            });
+        });
+    </script>
+    <script type='text/javascript' src='~/Content/cdn.jsdelivr.net/jquery.marquee/1.4.0/jquery.marquee.min.js'></script>
+    <script>
+        /**
+     * Example of starting a plugin with options.
+     * I am just passing some of the options in the following example.
+     * you can also start the plugin using $('.marquee').marquee(); with defaults
+*/
+        $('.marquee').marquee({
+            //speed in milliseconds of the marquee
+            duration: 15000,
+            //gap in pixels between the tickers
+            gap: 50,
+            //time in milliseconds before the marquee will start animating
+            delayBeforeStart: 0,
+            //'left' or 'right'
+            direction: 'left',
+            //true or false - should the marquee be duplicated to show an effect of continues flow
+            duplicated: false,
+            pauseOnHover: true,
+            allowCss3Support: true
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $("#ticker a").each(function (i) {
+                len = $(this).text().length;
+                if (len > 40) {
+                    $(this).text($(this).text().substr(0, 40) + '...');
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript" src="#"></script>
+
+    <script src="~/scripts/vendor.js"></script>
+    <script src="~/scripts/dependencies.js"></script>
+    <script src="~/scripts/wrapkit.js"></script>
+    <script src="~/scripts/wrapkit-setup.js"></script>
+    <script src="~/scripts/plugin-setups.js"></script>
+    @*<script src="~/scripts/morris.bundle.js"></script>*@
+    <script src="~/scripts/jquery.sparkline.js"></script>
+    <script src="~/scripts/jquery.easypiechart.js"></script>
+    @*<script src="~/scripts/demo/dashboard1-demo.js"></script>*@
+    @if (TempData["Alert_Title"] != null)
+    {
+        <div id="dialog" title="@TempData["Alert_Title"].ToString()">
+            @if (TempData["Alert_Message"] != null)
+            {
+                <p>@TempData["Alert_Message"].ToString()</p>
+            }
+            else
+            {
+                <p>Success..!</p>
+            }
+        </div>
+    }
+    @*Alert*@
+    <div id="alertModel" style="display:none;" title="">
+        <p></p>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.nav-item a.active').removeClass('active');
+            $('.nav-item a[href]').each(function (ind, ele) {
+                if ($(ele).attr('href').toLowerCase().indexOf(location.pathname.toLowerCase()) > -1) {
+                    $(ele).parent().addClass('active');
+                    $(ele).parent().parent().show();
+                }
+            });
+
+            $("#dialog").dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                    "OK": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    </script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <link href="~/styles/jquery-ui.css" rel="stylesheet" />
+</body>
+</html>

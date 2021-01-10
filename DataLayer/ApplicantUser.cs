@@ -12,15 +12,14 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class VendorLineHaulDetail
+    public partial class ApplicantUser
     {
         public int Id { get; set; }
-        public Nullable<int> FromStateId { get; set; }
-        public Nullable<int> ToStateId { get; set; }
-        public Nullable<int> VendorId { get; set; }
-    
-        public virtual State State { get; set; }
-        public virtual State State1 { get; set; }
-        public virtual VendorDetail VendorDetail { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public Nullable<System.DateTime> CreationDate { get; set; }
+        public string Email { get; set; }
+        public string ContactNo { get; set; }
+        public string FullName { get; set; }
     }
 }

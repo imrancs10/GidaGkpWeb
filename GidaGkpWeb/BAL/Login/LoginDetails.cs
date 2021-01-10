@@ -10,7 +10,7 @@ namespace GidaGkpWeb.BAL.Login
 {
     public class LoginDetails
     {
-        TransportManagementEntities _db = null;
+        GidaGKPEntities _db = null;
 
         /// <summary>
         /// Get Authenticate User credentials
@@ -21,16 +21,16 @@ namespace GidaGkpWeb.BAL.Login
         public Enums.LoginMessage GetLogin(string UserName, string Password)
         {
             //string _passwordHash = Utility.GetHashString(Password);
-            _db = new TransportManagementEntities();
+            _db = new GidaGKPEntities();
 
-            var _userRow = _db.UserDetails.Where(x => x.UserName.Equals(UserName) && x.Password.Equals(Password)).FirstOrDefault();
+            var _userRow = _db.ApplicantUsers.Where(x => x.UserName.Equals(UserName) && x.Password.Equals(Password)).FirstOrDefault();
 
             if (_userRow != null)
             {
-                UserData.UserId = _userRow.UserId;
+                UserData.UserId = _userRow.Id;
                 UserData.Username = _userRow.UserName;
-                UserData.FirstName = _userRow.Name;
-                UserData.MiddleName = _userRow.EmailId;
+                UserData.FirstName = _userRow.FullName;
+                UserData.MiddleName = _userRow.Email;
                 return Enums.LoginMessage.Authenticated;
             }
             else

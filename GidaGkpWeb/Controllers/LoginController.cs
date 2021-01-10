@@ -13,7 +13,7 @@ namespace GidaGkpWeb.Controllers
     public class LoginController : CommonController
     {
         // GET: Login
-        public ActionResult Index()
+        public ActionResult ApplicantLogin()
         {
             ViewData["LoginPage"] = true;
             return View();
@@ -28,12 +28,12 @@ namespace GidaGkpWeb.Controllers
             if (message == Enums.LoginMessage.Authenticated)
             {
                 setUserClaim();
-                return RedirectToAction("Dashboard", "Masters");
+                return RedirectToAction("ApplicantDashboard", "Masters");
             }
             else
             {
                 SetAlertMessage(_response, "Login Response");
-                return View("index");
+                return View("ApplicantLogin");
             }
         }
 

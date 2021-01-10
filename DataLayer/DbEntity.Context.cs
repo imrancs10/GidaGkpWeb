@@ -13,10 +13,10 @@ namespace DataLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TransportManagementEntities : DbContext
+    public partial class GidaGKPEntities : DbContext
     {
-        public TransportManagementEntities()
-            : base("name=TransportManagementEntities")
+        public GidaGKPEntities()
+            : base("name=GidaGKPEntities")
         {
         }
     
@@ -25,32 +25,6 @@ namespace DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<City> Cities { get; set; }
-        public virtual DbSet<ClientBillDescription> ClientBillDescriptions { get; set; }
-        public virtual DbSet<ClientBillDetail> ClientBillDetails { get; set; }
-        public virtual DbSet<ClientConcernPerson> ClientConcernPersons { get; set; }
-        public virtual DbSet<ClientDetail> ClientDetails { get; set; }
-        public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
-        public virtual DbSet<ConsigneeDetail> ConsigneeDetails { get; set; }
-        public virtual DbSet<ConsignorDetail> ConsignorDetails { get; set; }
-        public virtual DbSet<Country> Countries { get; set; }
-        public virtual DbSet<LedgerEntry> LedgerEntries { get; set; }
-        public virtual DbSet<LRDetail> LRDetails { get; set; }
-        public virtual DbSet<ProductDetail> ProductDetails { get; set; }
-        public virtual DbSet<ServiceOrderDetail> ServiceOrderDetails { get; set; }
-        public virtual DbSet<ServiceOrderPaymentDetail> ServiceOrderPaymentDetails { get; set; }
-        public virtual DbSet<State> States { get; set; }
-        public virtual DbSet<TranshipmentDetail> TranshipmentDetails { get; set; }
-        public virtual DbSet<UnitDetail> UnitDetails { get; set; }
-        public virtual DbSet<UserDetail> UserDetails { get; set; }
-        public virtual DbSet<VehicleDetail> VehicleDetails { get; set; }
-        public virtual DbSet<VehicleDriverDetail> VehicleDriverDetails { get; set; }
-        public virtual DbSet<VehicleOwnerDetail> VehicleOwnerDetails { get; set; }
-        public virtual DbSet<VehicleType> VehicleTypes { get; set; }
-        public virtual DbSet<VendorBankDetail> VendorBankDetails { get; set; }
-        public virtual DbSet<VendorConcernPerson> VendorConcernPersons { get; set; }
-        public virtual DbSet<VendorDetail> VendorDetails { get; set; }
-        public virtual DbSet<VendorLineHaulDetail> VendorLineHaulDetails { get; set; }
-        public virtual DbSet<WeightLookup> WeightLookups { get; set; }
+        public virtual DbSet<ApplicantUser> ApplicantUsers { get; set; }
     }
 }

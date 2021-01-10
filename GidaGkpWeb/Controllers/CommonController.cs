@@ -4,15 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GidaGkpWeb.Global;
-using GidaGkpWeb.BAL.Masters;
-using GidaGkpWeb.BAL.Commom;
 
 namespace GidaGkpWeb.Controllers
 {
     public class CommonController : Controller
     {
-        CommonDetails _details = null;
-
         public string LoginResponse(Enums.LoginMessage inputMessage)
         {
             if (inputMessage == Enums.LoginMessage.InvalidCreadential)
