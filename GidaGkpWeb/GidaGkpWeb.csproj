@@ -596,6 +596,11 @@
     <Content Include="Views\Masters\LedgerEntry.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
     <Content Include="Views\Home\AboutGida.cshtml" />
+    <Content Include="Views\Home\CitizenCharter.cshtml" />
+    <Content Include="Views\Home\EmployeeList.cshtml" />
+    <Content Include="Views\Home\GidaMember.cshtml" />
+    <Content Include="Views\Home\OrganizationChart.cshtml" />
+    <Content Include="Views\Home\PDirectory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

@@ -18,5 +18,30 @@ namespace GidaGkpWeb.Controllers
         {
             return View();
         }
+
+        public ActionResult CitizenCharter()
+        {
+            return View();
+        }
+
+        public ActionResult EmployeeList()
+        {
+            return View();
+        }
+
+        public ActionResult GidaMember()
+        {
+            return View();
+        }
+        public ActionResult OrganizationChart()
+        {
+            return View();
+        }
+        public ActionResult PDirectory()
+        {
+            return View();
+        }
+
+        
     }
 }
