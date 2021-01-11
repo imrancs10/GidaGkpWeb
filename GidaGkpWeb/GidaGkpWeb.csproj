@@ -371,7 +371,9 @@
     <Content Include="Content\files\yo.png" />
     <Content Include="Content\js\carousel.html" />
     <Content Include="Content\maxcdn.bootstrapcdn.com\bootstrap\3.2.0\css\bootstrap.min.css" />
+    <Content Include="Content\maxcdn.bootstrapcdn.com\bootstrap\3.2.0\css\fourstep.css" />
     <Content Include="Content\maxcdn.bootstrapcdn.com\bootstrap\3.2.0\js\bootstrap.min.js" />
+    <Content Include="Content\maxcdn.bootstrapcdn.com\bootstrap\3.2.0\js\fourstep.js" />
     <Content Include="Content\maxcdn.bootstrapcdn.com\font-awesome\4.1.0\css\font-awesome.min.css" />
     <Content Include="Content\sites\all\modules\ctools\css\ctools9e56.css" />
     <Content Include="Content\sites\all\modules\ctools\images\status-active.gif" />
@@ -599,6 +601,7 @@
     <Content Include="Views\Home\PDirectory.cshtml" />
     <Content Include="Views\Shared\_ApplicantLayout.cshtml" />
     <Content Include="Views\Masters\ApplicantDashboard.cshtml" />
+    <Content Include="Views\Login\ApplicantRegistration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
