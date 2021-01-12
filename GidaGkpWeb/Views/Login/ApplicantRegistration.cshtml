@@ -17,13 +17,13 @@
 <body style="background-image:url(../images/bg.jpg);">
     <h1 style="text-align:center;color:#ffd800;margin-top:35px;">Online Single Window System & Public Communication Platform</h1>
     <h2 style="text-align:center;color:#ffd800;">Gorakhpur Industrial Development Authority (GIDA)</h2>
-    <main class="signin-wrapper">
+    <main class="signin-wrapper" style="margin-left: 45%;">
         <div class="tab-content">
             <p class="text-center p-4x">
                 <img src="~/Content/files/Gida-mainlogo.png" alt="logo" style="width: 160px;" />
             </p>
             <div class="tab-pane fade" id="signup">
-                <form id="signupForm" action="" role="form">
+                <form id="signupForm" role="form" action="/login/RegisterApplicant" method="POST">
                     <p class="lead">Applicant Registration</p>
                     <p class="text-muted"><strong>Enter your personal data</strong></p>
                     <div class="form-group has-feedback">
@@ -62,15 +62,8 @@
                         </div><!-- /input-group-in -->
                     </div><!-- /.form-group -->
                     <div class="form-group">
-                        <label class="control-label" style="margin-right:15px">Gender</label>
-                        <div class="nice-radio nice-radio-inline">
-                            <input type="radio" name="gender" id="genderMale" value="male" checked="checked">
-                            <label for="genderMale">Male</label>
-                        </div><!-- /.radio -->
-                        <div class="nice-radio nice-radio-inline">
-                            <input type="radio" name="gender" id="genderFemale" value="female">
-                            <label for="genderFemale">Female</label>
-                        </div><!-- /.radio -->
+                        <label class="control-label" style="margin-right:15px">DOB</label>
+                        <input name="dob" type="date" id="dob" class="form-control" placeholder="DOB">
                     </div><!-- /.form-group -->
 
                     <hr>
@@ -102,7 +95,7 @@
                             <button type="submit" class="btn btn-primary">Create account</button>
                         </div>
                         <div class="pull-left">
-                            <a href="#signin" class="btn btn-default" data-toggle="tab">Signin</a>
+                            <a href="/Login/ApplicantLogin" class="btn btn-default" data-toggle="tab">Signin</a>
                         </div>
                     </div><!-- /.form-group -->
                 </form><!-- /#signupForm -->

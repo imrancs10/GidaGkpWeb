@@ -36,5 +36,32 @@ namespace GidaGkpWeb.BAL.Login
             else
                 return Enums.LoginMessage.InvalidCreadential;
         }
+
+        public Enums.CrudStatus RegisterApplicant(string fullName, string email, string contactno, string FName, string Adhaar, string dob, string usrName, string password)
+        {
+            _db = new GidaGKPEntities();
+            var _userRow = _db.ApplicantUsers.Where(x => x.UserName.Equals(usrName)).FirstOrDefault();
+
+            int _effectRow = 0;
+            if (_userRow == null)
+            {
+                ApplicantUser _newRecord = new ApplicantUser()
+                {
+                    FullName = fullName,
+                    Email = email,
+                    ContactNo = contactno,
+                    FatherName = FName,
+                    AadharNumber = Adhaar,
+                    DOB = Convert.ToDateTime(dob),
+                    UserName = usrName,
+                    Password = password
+                };
+                _db.Entry(_newRecord).State = EntityState.Added;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+            }
+            else
+                return Enums.CrudStatus.DataAlreadyExist;
+        }
     }
 }

@@ -15,7 +15,8 @@ namespace GidaGkpWeb.Global
             UserDeleted,
             UserInactive,
             UserBlocked,
-            NoResponse
+            NoResponse,
+            AlreadyRegistered
         }
 
         public enum CrudStatus

@@ -21,5 +21,8 @@ namespace DataLayer
         public string Email { get; set; }
         public string ContactNo { get; set; }
         public string FullName { get; set; }
+        public Nullable<System.DateTime> DOB { get; set; }
+        public string FatherName { get; set; }
+        public string AadharNumber { get; set; }
     }
 }

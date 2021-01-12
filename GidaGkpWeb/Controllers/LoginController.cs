@@ -19,6 +19,28 @@ namespace GidaGkpWeb.Controllers
             return View();
         }
 
+        public ActionResult ApplicantRegistration()
+        {
+            return View();
+        }
+
+        public ActionResult RegisterApplicant(string fullName, string email, string contactno, string FName, string Adhaar, string dob, string usrName, string password, string cpassword)
+        {
+            if (password.Trim() != cpassword.Trim())
+            {
+                SetAlertMessage("Password and Confirm Password not matched", "Register Response");
+                return View("ApplicantRegistration");
+            }
+            else
+            {
+                LoginDetails _details = new LoginDetails();
+                Enums.CrudStatus message = _details.RegisterApplicant(fullName, email, contactno, FName, Adhaar, dob, usrName, password);
+                SetAlertMessage("Registration successful", "Register Response");
+                return RedirectToAction("ApplicantLogin");
+            }
+            return View();
+        }
+
         public ActionResult GetLogin(string username, string password)
         {
             LoginDetails _details = new LoginDetails();
