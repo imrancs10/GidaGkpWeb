@@ -9,12 +9,12 @@ namespace GidaGkpWeb.Infrastructure.Utility
 {
     public class EmailHelper
     {
-        public static string GetDeviceVerificationEmail(string firstname, string middlename, string lastname, string verificationCode)
+        public static string GetDeviceVerificationEmail(string fullname, string verificationCode)
         {
-            string body = string.Format("Hi {0} {1} {2}<br/><br/>", firstname, middlename, lastname);
-            body += "As you requested, here is a OTP is : <b>" + verificationCode + "</b> you can use to verify your mobile number.<br/><br/>";
+            string body = string.Format("Hi {0}<br/><br/>", fullname);
+            body += "As you requested, here is a OTP is : <b>" + verificationCode + "</b> you can use to verify your email.<br/><br/>";
             body += "Thank You,<br/>";
-            body += "Patient Portal Information System Customer Support";
+            body += "GIDA";
             return body;
         }
 
@@ -28,14 +28,14 @@ namespace GidaGkpWeb.Infrastructure.Utility
             return body;
         }
 
-        public static string GetAppointmentSuccessEmail(string firstname, string middlename, string lastname,string doctorname,DateTime apptime,string deptname)
+        public static string GetAppointmentSuccessEmail(string firstname, string middlename, string lastname, string doctorname, DateTime apptime, string deptname)
         {
             string body = string.Format("Hi {0} {1} {2}<br/><br/>", firstname, middlename, lastname);
             body += "As you requested, here Appointment is booked, Please find the below Appointment details<br/>";
             body += "<br/>" + string.Format("Department Name : {0} <br/>", deptname);
             body += "<br/>" + string.Format("Doctor Name : {0} <br/>", doctorname);
             body += "<br/>" + string.Format("Appointment Time : {0} <br/>", apptime.ToString());
-            if(WebSession.IsActiveAppointmentMessage && !string.IsNullOrEmpty(WebSession.AppointmentMessage))
+            if (WebSession.IsActiveAppointmentMessage && !string.IsNullOrEmpty(WebSession.AppointmentMessage))
             {
                 body += "<br/>" + string.Format("Note : {0} <br/>", WebSession.AppointmentMessage) + "<br/><br/>";
             }
@@ -46,7 +46,7 @@ namespace GidaGkpWeb.Infrastructure.Utility
         public static string GetDoctorAbsentEmail(string firstname, string middlename, string lastname, string doctorname, DateTime leaveDate, string deptname)
         {
             string body = string.Format("Hi {0} {1} {2}<br/><br/>", firstname, middlename, lastname);
-            body += string.Format("This just to inform you. Doctor {0} is not available on {1}. so your below appointment is cancelled.\n We request you to please book another appointment as per doctor availability<br/>",doctorname,leaveDate);
+            body += string.Format("This just to inform you. Doctor {0} is not available on {1}. so your below appointment is cancelled.\n We request you to please book another appointment as per doctor availability<br/>", doctorname, leaveDate);
             body += "<br/>" + string.Format("Department Name : {0} <br/>", deptname);
             body += "<br/>" + string.Format("Doctor Name : {0} <br/>", doctorname);
             body += "<br/>" + string.Format("Appointment Time : {0} <br/>", leaveDate.ToString()) + "<br/><br/>";
@@ -60,7 +60,7 @@ namespace GidaGkpWeb.Infrastructure.Utility
         {
             string body = string.Format("Hi {0} {1} {2}<br/><br/>", firstname, middlename, lastname);
             body += "As you requested, you can use to create your Password by clicking on below URL.<br/>";
-            body += "<br/><b></b>" +  link + "<br/><br/>";
+            body += "<br/><b></b>" + link + "<br/><br/>";
             body += "Thank You,<br/>";
             body += "Patient Portal Information System Customer Support";
             return body;

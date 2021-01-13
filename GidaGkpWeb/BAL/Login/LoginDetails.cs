@@ -37,7 +37,7 @@ namespace GidaGkpWeb.BAL.Login
                 return Enums.LoginMessage.InvalidCreadential;
         }
 
-        public Enums.CrudStatus RegisterApplicant(string fullName, string email, string contactno, string FName, string Adhaar, string dob, string usrName, string password)
+        public Enums.CrudStatus RegisterApplicant(string fullName, string email, string contactno, string FName, string Adhaar, DateTime dob, string usrName, string password)
         {
             _db = new GidaGKPEntities();
             var _userRow = _db.ApplicantUsers.Where(x => x.UserName.Equals(usrName)).FirstOrDefault();
@@ -52,7 +52,7 @@ namespace GidaGkpWeb.BAL.Login
                     ContactNo = contactno,
                     FatherName = FName,
                     AadharNumber = Adhaar,
-                    DOB = Convert.ToDateTime(dob),
+                    DOB = dob,
                     UserName = usrName,
                     Password = password
                 };
