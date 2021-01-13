@@ -1,202 +1,402 @@
-﻿<!DOCTYPE html>
-@{
-    ViewBag.Title = "Login";
+﻿@{
+    ViewBag.Title = "ApplicantLogin";
     Layout = null;
 }
-<html class="no-js">
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <title>Applicant Login</title>
     <meta charset="utf-8">
-    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .login-block {
+            background: #DE6262; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #FFB88C, #DE6262); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            float: left;
+            width: 100%;
+            padding: 0;
+        }
 
-    <title>Applicant Login </title>
+        .banner-sec {
+            background: url('../../images/id.jpg');
+            background-size: cover;
+            height: 100%;
+            background-attachment: inherit;
+            background-position: -15px 0;
+            display: flex;
+            min-height: 753px;
+        }
+
+        .login-sec {
+            padding: 30px 50px;
+            position: absolute;
+            background: #f9f9f9;
+            width: 38%;
+            right: 0;
+            float: right;
+            height: 100%;
+        }
+
+        .text-uppercase {
+            text-transform: capitalize;
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .logo_class {
+            float: right;
+            width: 130px;
+            margin-bottom: -16%;
+        }
+
+        .login-sec .copy-text {
+            position: absolute;
+            width: 80%;
+            bottom: 20px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .login-sec h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 24px;
+            color: #082860;
+            font-family: poppins;
+        }
+
+        form.login-form {
+            float: left;
+            width: 100%;
+            padding: 10px 0px;
+        }
+
+        .login-sec h2:after {
+            content: " ";
+            width: 100px;
+            height: 5px;
+            background: #FEB58A;
+            display: block;
+            margin-top: 20px;
+            border-radius: 3px;
+            margin-left: 0;
+            margin-right: auto
+        }
+
+        .btn-login, .btn-login:hover {
+            background: #892a26;
+            width: 100%;
+            float: left;
+            padding: 10px;
+            margin-top: 20px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            height: 38px;
+            padding: 7px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
 
 
-    <!-- favicon.ico and apple-touch-icon.png -->
-    <link rel="apple-touch-icon" sizes="57x57" href="~/images/favicons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="~/images/favicons/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="~/images/favicons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="~/images/favicons/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="~/images/favicons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="~/images/favicons/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="~/images/favicons/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="~/images/favicons/apple-touch-icon-152x152.png">
-    <link rel="icon" type="image/png" href="~/images/favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="~/images/favicons/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="~/images/favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="~/images/favicons/manifest.json">
-    <meta name="msapplication-TileColor" content="#2d89ef">
-    <meta name="msapplication-TileImage" content="~/images/favicons/mstile-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+        p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            line-height: 30px;
+            color: var(--white);
+            -webkit-transition: all 300ms linear;
+            transition: all 300ms linear;
+        }
 
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,700,600,300" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="~/styles/bootstrap.css">
+        ::selection {
+            color: var(--white);
+            background-color: var(--black);
+        }
 
-    <link rel="stylesheet" href="~/styles/dependencies.css">
+        ::-moz-selection {
+            color: var(--white);
+            background-color: var(--black);
+        }
 
-    <link rel="stylesheet" href="~/styles/wrapkit.css">
+        mark {
+            color: var(--white);
+            background-color: var(--black);
+        }
 
-    <link rel="stylesheet" href="~/styles/pages.css">
+        .section {
+            position: relative;
+            width: 100%;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+        }
 
-    <link rel="stylesheet" href="~/styles/deamon.css">
+        .over-hide {
+            overflow: hidden;
+        }
+
+        .z-bigger {
+            z-index: 100 !important;
+        }
+
+
+        .background-color {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark-blue);
+            z-index: 1;
+            -webkit-transition: all 300ms linear;
+            transition: all 300ms linear;
+        }
+
+        .checkbox:checked ~ .background-color {
+            background-color: var(--white);
+        }
+
+        label {
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 5px;
+            font-weight: 100;
+        }
+
+        [type="checkbox"]:checked,
+        [type="checkbox"]:not(:checked),
+        [type="radio"]:checked,
+        [type="radio"]:not(:checked) {
+            position: absolute;
+            left: -9999px;
+            width: 0;
+            height: 0;
+            visibility: hidden;
+        }
+
+
+        .checkbox-tools:checked + label,
+        .checkbox-tools:not(:checked) + label {
+            position: relative;
+            display: inline-block;
+            padding: 20px 0px;
+            width: 100%;
+            font-size: 13px;
+            line-height: 20px;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            text-align: center;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            color: var(--white);
+            -webkit-transition: all 300ms linear;
+            transition: all 300ms linear;
+        }
+
+        .checkbox-tools:not(:checked) + label {
+            background-color: #fff;
+            border: 1px solid #d6d6d6;
+        }
+
+        .checkbox-tools:checked + label {
+            background-color: #282828;
+            color: #fff;
+        }
+
+        .checkbox-tools:not(:checked) + label:hover {
+            background-color: #bdbdbd;
+            color: #000;
+        }
+
+        .checkbox-tools:checked + label::before,
+        .checkbox-tools:not(:checked) + label::before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            background-image: linear-gradient(298deg, var(--red), var(--yellow));
+            z-index: -1;
+        }
+
+        .checkbox-tools:checked + label .uil,
+        .checkbox-tools:not(:checked) + label .uil {
+            font-size: 24px;
+            line-height: 24px;
+            display: block;
+            padding-bottom: 10px;
+        }
+
+        .checkbox:checked ~ .section .container .row .col-12 .checkbox-tools:not(:checked) + label {
+            background-color: var(--light);
+            color: var(--dark-blue);
+            box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .forgotpass {
+            padding: 30px 20px 0px 20px;
+            float: left;
+            margin-bottom: 0px;
+        }
+
+        #can {
+            display: flex;
+            justify-content: center;
+            float: left;
+            padding-top: 20px;
+            width: 99%;
+        }
+
+        canvas {
+            height: 34px;
+            width: 130px;
+            float: left;
+            font-size: 50px;
+            /* border: 1px solid black; */
+        }
+
+        #ant {
+            height: 33px;
+            width: 100%;
+            font-weight: normal;
+            font-size: 13px;
+            float: left;
+            color: #082860;
+            padding: 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .ok {
+            color: green;
+            font-weight: 900;
+            font-size: 25px;
+            margin-top: 0;
+        }
+
+        .fal {
+            color: red;
+            font-weight: 900;
+            font-size: 12px;
+            margin-top: 0;
+        }
+    </style>
 </head>
-<body style="background-image:url(../images/bg.jpg);">
-    <h1 style="text-align:center;color:#ffd800;margin-top:35px;">Online Single Window System & Public Communication Platform</h1>
-    <h2 style="text-align:center;color:#ffd800;">Gorakhpur Industrial Development Authority (GIDA)</h2>
-    <main class="signin-wrapper">
-        <div class="tab-content">
-            <p class="text-center p-4x">
-                <img src="~/Content/files/Gida-mainlogo.png" alt="logo" style="width: 160px;" />
-            </p>
-            <div class="tab-pane fade in active" id="signin">
-                <form id="signinForm" role="form" action="/login/getlogin" method="POST">
-                    <p class="lead" style="text-align:center">Login to Applicant Account</p>
-                    <div class="form-group">
-                        <div class="input-group input-group-in">
-                            <span class="input-group-addon"><i class="icon-user"></i></span>
-                            <input id="txtusername" class="form-control" placeholder="Username" name="username" type="text" />
-                        </div>
-                    </div><!-- /.form-group -->
-                    <div class="form-group">
-                        <div class="input-group input-group-in">
-                            <span class="input-group-addon"><i class="icon-lock"></i></span>
-                            <input id="txtpassword" class="form-control" placeholder="Password" name="password" type="password" />
+<body>
+
+    <section class="login-block banner-sec">
+
+        <div class="login-sec" style="padding:50px">
+
+            <div class="col-sm-12 col-xs-12" style="padding:0 15px 20px 15px;">
+                <h2 class="text-left">Login Now</h2>
+            </div>
+
+            <form class="login-form" action="/login/getlogin" method="POST">
+                <div class="form-group col-sm-12 col-xs-12">
+                    <label for="exampleInputEmail1" class="text-uppercase">Username</label>
+                    <input id="txtusername" class="form-control" placeholder="Username" name="username" type="text" />
+                </div>
+                <div class="form-group col-sm-12 col-xs-12">
+                    <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+                    <input id="txtpassword" class="form-control" placeholder="Password" name="password" type="password" />
+                </div>
+                <div class="form-group col-sm-12 col-xs-12">
+                    <div id="can">
+
+                        <div id="canvas"></div><input id="ant" name="ant" value="" placeholder="Enter Captcha Code"><div id="rein">
 
                         </div>
-                    </div><!-- /.form-group -->
-                    <div class="form-group clearfix">
-                        <div class="animated-hue pull-right">
-                            <input id="btnlogin" type="submit" name="submit" value="Login" class="btn btn-primary" />
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="animated-hue pull-left">
-                                <a href="/Login/ApplicantRegistration" title="New Account">
-                                    <strong>Create New Account</strong>
-                                </a>
-                            </div>
-                        </div>
+                    </div>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/21.0.0/min/jcanvas.min.js"></script>
+                </div>
 
-                    </div><!-- /.form-group -->
+                <div class="form-check col-sm-12 col-xs-12" style="padding-top: 20px;">
+                    <button type="submit" class="btn btn-login float-right" disabled="disabled">Submit</button>
+                </div>
+            </form>
+            <p class="col-sm-12 col-xs-12 forgotpass">Forgot Password?</p>
+            <p class="col-sm-12 col-xs-12" style="padding:0px 20px; float: left;">Don’t have an account? <a href="/Login/ApplicantRegistration">Sign Up </a></p>
+        </div>
 
-                </form><!-- /#signinForm -->
-            </div><!-- /.tab-pane -->
+    </section>
 
-            <div class="tab-pane fade" id="signup">
-                <form id="signupForm" action="http://bentkwek.com/items/preview/wrapkit/1.2/index.html" role="form">
-                    <p class="lead">Create a new account</p>
-                    <p class="text-muted"><strong>Enter your personal data</strong></p>
-                    <div class="form-group has-feedback">
-                        <div class="input-group input-group-in">
-                            <span class="input-group-addon"><i class="icon-tag"></i></span>
-                            <input name="fullName" id="fullName" class="form-control" placeholder="Full Name">
-                            <span class="form-control-feedback"></span>
-                        </div>
-                    </div><!-- /.form-group -->
-                    <div class="form-group has-feedback">
-                        <div class="input-group input-group-in">
-                            <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="Email">
-                            <span class="form-control-feedback"></span>
-                        </div>
-                    </div><!-- /.form-group -->
-                    <div class="form-group has-feedback">
-                        <div class="input-group input-group-in">
-                            <span class="input-group-addon"><i class="icon-direction"></i></span>
-                            <input name="address" id="address" class="form-control" placeholder="Address">
-                            <span class="form-control-feedback"></span>
-                        </div>
-                    </div><!-- /.form-group -->
-                    <div class="form-group has-feedback">
-                        <div class="input-group input-group-in">
-                            <span class="input-group-addon"><i class="icon-location-pin"></i></span>
-                            <input name="city" id="city" class="form-control" placeholder="City">
-                            <span class="form-control-feedback"></span>
-                        </div>
-                    </div><!-- /.form-group -->
-                    <div class="form-group has-feedback">
-                        <div class="input-group input-group-in">
-                            <span class="input-group-addon" title="unable to find any Country that match the current query!"><i class="icon-map"></i></span>
-                            <input name="country" id="country" class="form-control" placeholder="Countries">
-                            <span class="form-control-feedback"></span>
-                        </div><!-- /input-group-in -->
-                    </div><!-- /.form-group -->
-                    <div class="form-group">
-                        <label class="control-label" style="margin-right:15px">Gender</label>
-                        <div class="nice-radio nice-radio-inline">
-                            <input type="radio" name="gender" id="genderMale" value="male" checked="checked">
-                            <label for="genderMale">Male</label>
-                        </div><!-- /.radio -->
-                        <div class="nice-radio nice-radio-inline">
-                            <input type="radio" name="gender" id="genderFemale" value="female">
-                            <label for="genderFemale">Female</label>
-                        </div><!-- /.radio -->
-                    </div><!-- /.form-group -->
-
-                    <hr>
-
-                    <p class="text-muted"><strong>Enter your account data</strong></p>
-                    <div class="form-group has-feedback">
-                        <div class="input-group input-group-in">
-                            <span class="input-group-addon"><i class="icon-user"></i></span>
-                            <input name="usrName" id="usrName" class="form-control" placeholder="Username">
-                            <span class="form-control-feedback"></span>
-                        </div>
-                    </div><!-- /.form-group -->
-                    <div class="form-group has-feedback">
-                        <div class="input-group input-group-in">
-                            <span class="input-group-addon"><i class="icon-key"></i></span>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-                            <span class="form-control-feedback"></span>
-                        </div>
-                    </div><!-- /.form-group -->
-                    <div class="form-group has-feedback">
-                        <div class="input-group input-group-in">
-                            <span class="input-group-addon"><i class="icon-check"></i></span>
-                            <input type="password" name="cpassword" id="cpassword" class="form-control" placeholder="Enter Password Again">
-                            <span class="form-control-feedback"></span>
-                        </div>
-                    </div><!-- /.form-group -->
-                    <div class="form-group animated-hue clearfix">
-                        <div class="pull-right">
-                            <button type="submit" class="btn btn-primary">Create account</button>
-                        </div>
-                        <div class="pull-left">
-                            <a href="#signin" class="btn btn-default" data-toggle="tab">Signin</a>
-                        </div>
-                    </div><!-- /.form-group -->
-                </form><!-- /#signupForm -->
-
-                <hr>
-
-                <p>By creating an account you agree to the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></p>
-            </div><!-- /.tab-pane -->
-        </div><!-- /.tab-content -->
-    </main><!--/#wrapper-->
-    <p class="signin-cr text-light">Copyright © Gorakhpur Industrial Development Authority,(GIDA) || All rights reserved.</p>
-
-
-    <!-- VENDORS : jQuery & Bootstrap -->
-    <script src="~/scripts/vendor.js"></script>
-    <!-- END VENDORS -->
-    <!-- DEPENDENCIES : Required plugins -->
-    <script src="~/scripts/dependencies.js"></script>
-    <!-- END DEPENDENCIES -->
-    <!-- PLUGIN SETUPS: vendors & dependencies setups -->
-    <script src="~/scripts/plugin-setups.js"></script>
-    <!-- END PLUGIN SETUPS -->
-    <!-- Google Analytics: change UA-71722129-1 to be your site's ID. -->
     <script>
-        (function (b, o, i, l, e, r) {
-            b.GoogleAnalyticsObject = l; b[l] || (b[l] =
-                function () { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date;
-            e = o.createElement(i); r = o.getElementsByTagName(i)[0];
-            e.src = '../../../../../www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e, r)
-        }(window, document, 'script', 'ga'));
-        ga('create', 'UA-71722129-1'); ga('send', 'pageview');
-    </script>
-</body>
 
+        var zeichen = ['+', '-', '*'];
+        var maxnr = 10;
+        function makeRandomImages() {
+            var zahl1 = Math.floor(Math.random() * maxnr);
+            var zahl2 = Math.floor(Math.random() * maxnr);
+            var wat = Math.floor(Math.random() * 2);
+
+            switch (zeichen[wat]) {
+                case "+": ergebnis = zahl1 + zahl2;
+                    break;
+                case "-": ergebnis = zahl1 - zahl2;
+                    break;
+                case "*": ergebnis = zahl1 * zahl2;
+                    break;
+            }
+
+            if (zeichen[wat] == '-') {
+
+                if (zahl1 < zahl2) {
+                    makeRandomImages();
+                    return
+                }
+            }
+            var canvas = $("<canvas></canvas>");
+            canvas.attr({ width: "130", height: "30" });
+            $("#canvas").append(canvas);
+            canvas.drawText({
+                fillStyle: '#9cf',
+                strokeStyle: '#25a',
+                strokeWidth: 2,
+                x: 60, y: 15,
+                fontSize: 28,
+                fontFamily: 'Verdana, sans-serif',
+                text: zahl1 + ' ' + zeichen[wat] + ' ' + zahl2 + ' ='
+            });
+
+            console.log(zahl1 + ' ' + zeichen[wat] + ' ' + zahl2 + ' =')
+            mark = (function () {
+                inpu = $('#ant').val();
+                if (inpu == ergebnis) {
+                    //$('#rein').html('<p class="ok">right</p>');
+                    $('[type="submit"]').prop('disabled', false);
+                } else {
+                    $('#canvas').html('');
+                    $('#rein').html('<p class="fal">wrong</p>');
+                    $('[type="submit"]').prop('disabled', true);
+                    makeRandomImages();
+                }
+            });
+            $("input[name='ant']").on("input", mark);
+        }
+        makeRandomImages();
+
+    </script>
+
+
+</body>
 </html>

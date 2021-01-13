@@ -411,6 +411,7 @@
     <Content Include="images\banner.jpg" />
     <Content Include="images\bg.jpg" />
     <Content Include="images\dummy\unknown-profile.jpg" />
+    <Content Include="images\id.jpg" />
     <Content Include="images\jcrop\Jcrop.gif" />
     <Content Include="images\logo\brand-text-dark.png" />
     <Content Include="images\logo\logo.png" />
