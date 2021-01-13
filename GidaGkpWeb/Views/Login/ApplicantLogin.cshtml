@@ -384,7 +384,7 @@
             mark = (function () {
                 inpu = $('#ant').val();
                 if (inpu == ergebnis) {
-                    //$('#rein').html('<p class="ok">right</p>');
+                    $('#rein').html('<p class="ok"></p>');
                     $('[type="submit"]').prop('disabled', false);
                 } else {
                     $('#canvas').html('');
@@ -393,7 +393,7 @@
                     makeRandomImages();
                 }
             });
-            $("input[name='ant']").on("input", mark);
+            $("input[name='ant']").on("mouseleave", mark);
         }
         makeRandomImages();
 
