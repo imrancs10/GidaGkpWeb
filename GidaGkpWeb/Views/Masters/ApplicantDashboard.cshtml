@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
 }
 <link href="~/styles/style.css" rel="stylesheet" />
+<script src="~/Scripts/App/Masters/ApplicantRegistration.js"></script>
+<link href="~/styles/style.css" rel="stylesheet" />
 <!--<h2 style="text-align:center">Applicant Dashboard</h2>-->
 <section class="form">
     <!-- MultiStep Form -->
@@ -19,172 +21,144 @@
                                 <form id="msform">
                                     <!-- progressbar -->
                                     <ul id="progressbar">
-                                        <li class="active" id="account"><strong>Account</strong></li>
-                                        <li id="personal"><strong>Personal</strong></li>
-                                        <li id="payment"><strong>Payment</strong></li>
-                                        <li id="payment"><strong>Payment1</strong></li>
-                                        <li id="confirm"><strong>Finish</strong></li>
+                                        <li class="active" id="PlotDetail"><strong>Plot Detail</strong></li>
+                                        <li id="ApplicantDetail"><strong>Applicant Detail</strong></li>
+                                        <li id="ProjectDetail"><strong>Project Detail</strong></li>
+                                        <li id="BankDetail"><strong>Bank Detail</strong></li>
+                                        <li id="AttachDocument"><strong>Attach Document</strong></li>
+                                        @*<li id="MakePayment"><strong>Make Payment</strong></li>*@
                                     </ul> <!-- fieldsets -->
                                     <fieldset>
                                         <div class="form-card">
-                                            <h2 class="fs-title">Account Information</h2>
+                                            <h2 class="fs-title">Plot Detail</h2>
                                             <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
                                                 <div class="row">
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="exampleInputEmail1" class="text-uppercase">Username</label>
-                                                        <input type="text" class="form-control" placeholder="">
-
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="exampleInputEmail1" class="text-uppercase">Password</label>
-                                                        <input type="password" class="form-control" placeholder="">
-
-                                                    </div>
                                                     <div class="form-group col-sm-12 col-xs-12">
-                                                        <label for="exampleInputEmail1" class="text-uppercase">Select</label>
-                                                        <select class="form-control">
-                                                            <option>Select 1</option>
+                                                        <label for="usertype" class="text-uppercase">Applied For</label>
+                                                        <select name="AppliedFor" id="AppliedFor" class="form-control">
+                                                            <option value="">Select</option>
+                                                            <option value="Affected by land acquisition">
+                                                                Affected by land acquisition
+                                                            </option>
+                                                            <option value="Expansion by industrial already established in GIDA">
+                                                                Expansion by industrial already established in GIDA
+                                                            </option>
+                                                            <option value="General">
+                                                                General
+                                                            </option>
+                                                            <option value="Original land owner whose land has been acquired by GIDA">
+                                                                Original land owner whose land has been acquired by GIDA
+                                                            </option>
+                                                            <option value="Industrial unit established outside GIDA">
+                                                                Industrial unit established outside GIDA
+                                                            </option>
+                                                            <option value="New or fresh applicant for industrial use in GIDA.">New or fresh applicant for industrial use in GIDA.</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Scheme Type</label>
+                                                        <select name="SchemeType" id="SchemeType" class="form-control">
+                                                            <option value="">Select</option>
+                                                            <option value="Industrial">Industrial</option>
+                                                            <option value="GroupHousing">Group Housing</option>
+                                                            <option value="Institutional">Institutional</option>
+                                                            <option value="Transport Nagar">Transport Nagar</option>
+                                                            <option value="Residential">Residential</option>
+                                                            <option value="Commercial">Commercial</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Plot Range</label>
+                                                        <select name="PlotRange" id="PlotRange" class="form-control">
+                                                            <option value="">Select</option>
+                                                            <option value="0-4000">0-4000</option>
+                                                            <option value="4001-20000">4001-20000</option>
+                                                            <option value="20001-80000">20001-80000</option>
+                                                            <option value="80001-Above">80001-Above</option>
                                                         </select>
 
                                                     </div>
-
-                                                    <div class="form-group col-sm-12 col-xs-12">
-                                                        <label for="exampleInputEmail1" class="text-uppercase">Remarks</label>
-                                                        <textarea class="form-control"> </textarea>
-
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Scheme Name</label>
+                                                        <select name="SchemeName" id="SchemeName" class="form-control">
+                                                        </select>
                                                     </div>
-
-                                                    <div class="form-check col-sm-12 col-xs-12">
-                                                        <label class="form-check-label col-sm-12" style="padding:0px;">
-                                                            <input type="checkbox" class="form-check-input">
-                                                            <small>Remember Me</small>
-                                                        </label>
-
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Plot Area</label>
+                                                        <input name="plotArea" id="plotArea" class="form-control">
                                                     </div>
-                                                    <div class="form-check col-sm-12 col-xs-12" style="padding-top:10px;">
-                                                        <small>Select Gender</small>
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
-                                                                <input type="radio" id="male" name="gender" value="male">
-                                                                <label for="male">Male</label>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <input type="radio" id="female" name="gender" value="female">
-                                                                <label for="female">Female</label>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <input type="radio" id="other" name="gender" value="other">
-                                                                <label for="other">Other</label>
-                                                            </div>
-                                                        </div>
-
-
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Sector Name</label>
+                                                        <select name="SectorName" id="SectorName" class="form-control">
+                                                        </select>
                                                     </div>
-                                                    <div class="col-sm-12 col-xs-12">
-                                                        <h2 style="padding:20px 0;">Responsive Table with Custom Style</h2>
-                                                        <table class="table table-bordered responsive">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>#</th>
-                                                                    <th>Table heading</th>
-                                                                    <th>Table heading</th>
-                                                                    <th>Table heading</th>
-                                                                    <th>Table heading</th>
-                                                                    <th>Table heading</th>
-
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th row-header="Table heading" scope="row">1</th>
-                                                                    <td row-header="Table">Table cell</td>
-                                                                    <td row-header="Table heading">Table cell</td>
-                                                                    <td row-header="heading">Table cell</td>
-                                                                    <td row-header="Table heading">Table cell</td>
-                                                                    <td row-header="Table heading">Table cell</td>
-
-
-                                                                </tr>
-                                                                <tr>
-                                                                    <th row-header="Table heading" scope="row">2</th>
-                                                                    <td row-header="Table heading">Table cell</td>
-                                                                    <td row-header="Table heading">Table cell</td>
-                                                                    <td row-header="Table heading">Table cell</td>
-                                                                    <td row-header="Table heading">Table cell</td>
-                                                                    <td row-header="Table heading">Table cell</td>
-
-                                                                </tr>
-                                                                <tr>
-                                                                    <th row-header="Table heading" scope="row">3</th>
-                                                                    <td row-header="Table heading">Table cell</td>
-                                                                    <td row-header="Table heading">Table cell</td>
-                                                                    <td row-header="Table heading">Table cell</td>
-                                                                    <td row-header="Table heading">Table cell</td>
-                                                                    <td row-header="Table heading">Table cell</td>
-
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Estimated Rate</label>
+                                                        <input name="EstimatedRate" id="EstimatedRate" class="form-control">
                                                     </div>
-
-
-                                                    <div class="col-sm-12 col-xs-12">
-                                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                                            <div class="panel panel-default">
-                                                                <div class="panel-heading" role="tab" id="headingOne">
-                                                                    <h4 class="panel-title">
-                                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                                            Collapsible Group Item #1
-                                                                        </a>
-                                                                    </h4>
-                                                                </div>
-                                                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                                                    <div class="panel-body">
-                                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                                                                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                                                                        raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="panel panel-default">
-                                                                <div class="panel-heading" role="tab" id="headingTwo">
-                                                                    <h4 class="panel-title">
-                                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                                            Collapsible Group Item #2
-                                                                        </a>
-                                                                    </h4>
-                                                                </div>
-                                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                                    <div class="panel-body">
-                                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                                                                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                                                                        raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="panel panel-default">
-                                                                <div class="panel-heading" role="tab" id="headingThree">
-                                                                    <h4 class="panel-title">
-                                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                                            Collapsible Group Item #3
-                                                                        </a>
-                                                                    </h4>
-                                                                </div>
-                                                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                                                    <div class="panel-body">
-                                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                                                                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                                                                        raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Paymemt Schedule</label>
+                                                        <select name="PaymemtSchedule" id="PaymemtSchedule" class="form-control">
+                                                            <option value="">Select</option>
+                                                            <option value="Industrial">Six Monthly</option>
+                                                        </select>
                                                     </div>
-
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Total Investment</label>
+                                                        <input name="TotalInvestment" id="TotalInvestment" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Application Fee</label>
+                                                        <input name="TotalInvestment" id="TotalInvestment" class="form-control" value="1000">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Earnest Money Deposite</label>
+                                                        <input name="EarnestMoneyDeposite" id="EarnestMoneyDeposite" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">GST</label>
+                                                        <input name="GST" id="GST" class="form-control" value="50">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Net Amount(Payable)</label>
+                                                        <input name="NetAmount" id="NetAmount" class="form-control" value="1000">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Total Amount</label>
+                                                        <input name="TotalAmount" id="TotalAmount" class="form-control" value="1000">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div> <input type="button" name="next" class="next action-button" value="Next Step" />
+
+                                            <h2 class="fs-title">Full Perticulars of the applicant</h2>
+                                            <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                <div class="row">
+                                                    <div class="form-group col-sm-12 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Industry Ownership Type</label>
+                                                        <select name="AppliedFor" id="AppliedFor" class="form-control">
+                                                            <option value="">Select</option>
+                                                            <option value="Affected by land acquisition">
+                                                                Affected by land acquisition
+                                                            </option>
+                                                            <option value="Expansion by industrial already established in GIDA">
+                                                                Expansion by industrial already established in GIDA
+                                                            </option>
+                                                            <option value="General">
+                                                                General
+                                                            </option>
+                                                            <option value="Original land owner whose land has been acquired by GIDA">
+                                                                Original land owner whose land has been acquired by GIDA
+                                                            </option>
+                                                            <option value="Industrial unit established outside GIDA">
+                                                                Industrial unit established outside GIDA
+                                                            </option>
+                                                            <option value="New or fresh applicant for industrial use in GIDA.">New or fresh applicant for industrial use in GIDA.</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="button" name="next" class="next action-button" value="Next Step" />
                                     </fieldset>
                                     <fieldset>
                                         <div class="form-card">
