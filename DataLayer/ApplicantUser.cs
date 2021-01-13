@@ -24,5 +24,9 @@ namespace DataLayer
         public Nullable<System.DateTime> DOB { get; set; }
         public string FatherName { get; set; }
         public string AadharNumber { get; set; }
+        public string SchemeType { get; set; }
+        public string SchemeName { get; set; }
+        public string SectorName { get; set; }
+        public string AllotmentNumber { get; set; }
     }
 }

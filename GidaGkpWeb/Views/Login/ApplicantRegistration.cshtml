@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="~/Scripts/App/Global/App.js"></script>
     <script src="~/Scripts/App/Global/Utility.js"></script>
+    <script src="~/Scripts/App/Masters/ApplicantRegistration.js"></script>
     <style>
         .login-block {
             background: #DE6262; /* fallback for old browsers */
@@ -324,6 +325,46 @@
                     <h2 class="text-left">Sign Up Now</h2>
                 </div>
                 <form class="login-form" action="/login/ApplicantLoginOTP" method="POST">
+
+                    <div class="form-group col-sm-12 col-xs-12">
+                        <label for="usertype" class="text-uppercase">Select User Type</label>
+                        <select name="usertype" id="usertype" class="form-control" onchange="UserTypeChanged()">
+                            <option value="">Select</option>
+                            <option value="New Applicant">New Applicant</option>
+                            <option value="Ex Applicant">Ex Applicant</option>
+                        </select>
+                    </div>
+
+                    <div id="divExAlotee" style="display:none">
+                        <div class="form-group col-sm-12 col-xs-12">
+                            <label for="usertype" class="text-uppercase">Scheme Type</label>
+                            <select name="SchemeType" id="SchemeType" class="form-control">
+                                <option value="">Select</option>
+                                <option value="Industrial">Industrial</option>
+                                <option value="GroupHousing">Group Housing</option>
+                                <option value="Institutional">Institutional</option>
+                                <option value="Transport Nagar">Transport Nagar</option>
+                                <option value="Residential">Residential</option>
+                                <option value="Commercial">Commercial</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-12 col-xs-12">
+                            <label for="usertype" class="text-uppercase">Scheme Name</label>
+                            <select name="SchemeName" id="SchemeName" class="form-control">
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-12 col-xs-12">
+                            <label for="usertype" class="text-uppercase">Sector Name</label>
+                            <select name="SectorName" id="SectorName" class="form-control">
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-12 col-xs-12">
+                            <label for="exampleInputEmail1" class="text-uppercase">Allotment Number</label>
+                            <input name="AllotmentNumber" id="AllotmentNumber" class="form-control" placeholder="Allotment Number">
+                        </div>
+                    </div>
+
                     <div class="form-group col-sm-12 col-xs-12">
                         <label for="exampleInputEmail1" class="text-uppercase">Full Name</label>
                         <input name="fullName" id="fullName" class="form-control" placeholder="Full Name">

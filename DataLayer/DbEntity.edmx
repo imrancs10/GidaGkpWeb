@@ -19,6 +19,10 @@
           <Property Name="DOB" Type="datetime" />
           <Property Name="FatherName" Type="varchar" MaxLength="500" />
           <Property Name="AadharNumber" Type="varchar" MaxLength="50" />
+          <Property Name="SchemeType" Type="varchar" MaxLength="500" />
+          <Property Name="SchemeName" Type="varchar" MaxLength="500" />
+          <Property Name="SectorName" Type="varchar" MaxLength="500" />
+          <Property Name="AllotmentNumber" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="GidaGKPModelStoreContainer">
           <EntitySet Name="ApplicantUser" EntityType="Self.ApplicantUser" Schema="dbo" store:Type="Tables" />
@@ -41,6 +45,10 @@
           <Property Name="DOB" Type="DateTime" Precision="3" />
           <Property Name="FatherName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="AadharNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SchemeType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SchemeName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SectorName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AllotmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="GidaGKPEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ApplicantUsers" EntityType="Self.ApplicantUser" />
@@ -54,6 +62,10 @@
           <EntitySetMapping Name="ApplicantUsers">
             <EntityTypeMapping TypeName="GidaGKPModel.ApplicantUser">
               <MappingFragment StoreEntitySet="ApplicantUser">
+                <ScalarProperty Name="AllotmentNumber" ColumnName="AllotmentNumber" />
+                <ScalarProperty Name="SectorName" ColumnName="SectorName" />
+                <ScalarProperty Name="SchemeName" ColumnName="SchemeName" />
+                <ScalarProperty Name="SchemeType" ColumnName="SchemeType" />
                 <ScalarProperty Name="AadharNumber" ColumnName="AadharNumber" />
                 <ScalarProperty Name="FatherName" ColumnName="FatherName" />
                 <ScalarProperty Name="DOB" ColumnName="DOB" />

@@ -51,7 +51,7 @@ namespace GidaGkpWeb.Controllers
             return View();
         }
 
-        public async Task<ActionResult> ApplicantLoginOTP(string fullName, string email, string contactno, string FName, string Adhaar, string dob, string usrName, string password, string cpassword)
+        public async Task<ActionResult> ApplicantLoginOTP(string fullName, string email, string contactno, string FName, string Adhaar, string dob, string usrName, string password, string cpassword, string SchemeType, string SchemeName, string SectorName, string AllotmentNumber)
         {
             string emailRegEx = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
             if (contactno.Trim().Length != 10)
@@ -89,7 +89,11 @@ namespace GidaGkpWeb.Controllers
                     FatherName = FName,
                     FullName = fullName,
                     Password = password,
-                    UserName = usrName
+                    UserName = usrName,
+                    AllotmentNumber = AllotmentNumber,
+                    SchemeName = SchemeName,
+                    SchemeType = SchemeType,
+                    SectorName = SectorName
                 };
                 if (applicantModel != null)
                 {
@@ -113,14 +117,14 @@ namespace GidaGkpWeb.Controllers
             {
                 var applicantModel = Session["ApplicantModel"] as ApplicantUser;
 
-                RegisterApplicant(applicantModel.FullName, applicantModel.Email, applicantModel.ContactNo, applicantModel.FullName, applicantModel.AadharNumber, applicantModel.DOB.Value, applicantModel.UserName, applicantModel.Password);
+                RegisterApplicant(applicantModel.FullName, applicantModel.Email, applicantModel.ContactNo, applicantModel.FullName, applicantModel.AadharNumber, applicantModel.DOB.Value, applicantModel.UserName, applicantModel.Password, applicantModel.SchemeType, applicantModel.SchemeName, applicantModel.SectorName, applicantModel.AllotmentNumber);
                 SetAlertMessage("Registration successful", "Register Response");
                 return RedirectToAction("ApplicantLogin");
             }
             else
             {
                 SetAlertMessage("OTP not matched", "Register");
-                return RedirectToAction("Register", new { actionName = "getotpscreen" });
+                return RedirectToAction("ApplicantRegistration", new { actionName = "getotpscreen" });
             }
         }
 
@@ -148,10 +152,10 @@ namespace GidaGkpWeb.Controllers
                 //sendMessageStrategy.SendMessages();
             });
         }
-        private void RegisterApplicant(string fullName, string email, string contactno, string FName, string Adhaar, DateTime dob, string usrName, string password)
+        private void RegisterApplicant(string fullName, string email, string contactno, string FName, string Adhaar, DateTime dob, string usrName, string password, string SchemeType, string SchemeName, string SectorName, string AllotmentNumber)
         {
             LoginDetails _details = new LoginDetails();
-            Enums.CrudStatus message = _details.RegisterApplicant(fullName, email, contactno, FName, Adhaar, dob, usrName, password);
+            Enums.CrudStatus message = _details.RegisterApplicant(fullName, email, contactno, FName, Adhaar, dob, usrName, password, SchemeType, SchemeName, SectorName, AllotmentNumber);
         }
 
         private void setUserClaim()

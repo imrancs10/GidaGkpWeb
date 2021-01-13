@@ -430,7 +430,7 @@
     <Content Include="Scripts\App\Masters\BillReport.js" />
     <Content Include="Scripts\App\Masters\LRGenerate.js" />
     <Content Include="Scripts\App\Masters\FreightDetail.js" />
-    <Content Include="Scripts\App\Masters\BillEntry.js" />
+    <Content Include="Scripts\App\Masters\ApplicantRegistration.js" />
     <Content Include="Scripts\App\Masters\TranshipmentAllotment.js" />
     <Content Include="Scripts\App\Masters\ServiceOrder.js" />
     <Content Include="Scripts\App\Masters\MasterDetail.js" />
