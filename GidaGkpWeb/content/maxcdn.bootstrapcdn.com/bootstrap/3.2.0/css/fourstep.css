@@ -83,7 +83,7 @@ html {
 }
 
 #msform .action-button {
-    width: 100px;
+    width: 120px;
     background: skyblue;
     font-weight: bold;
     color: white;
@@ -140,7 +140,7 @@ select.list-dt:focus {
     color: #2C3E50;
     margin-bottom: 10px;
     font-weight: bold;
-    text-align: left
+    text-align: center
 }
 
 #progressbar {
@@ -150,13 +150,13 @@ select.list-dt:focus {
 }
 
 #progressbar .active {
-    color: #000000
+    color: #000000;
 }
 
 #progressbar li {
     list-style-type: none;
     font-size: 12px;
-    width: 25%;
+    width: 20%;
     float: left;
     position: relative
 }

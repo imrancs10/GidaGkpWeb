@@ -13,18 +13,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes">
     <title>Applicant Registration</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,700,600,300" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/styles/bootstrap.css">
+
+    <link rel="stylesheet" href="~/styles/dependencies.css">
+
+    <link rel="stylesheet" href="~/styles/wrapkit.css">
+
+    <link rel="stylesheet" href="~/styles/pages.css">
+
+    <link rel="stylesheet" href="~/styles/deamon.css">
 </head>
 <body style="background-image:url(../images/bg.jpg);">
     <h1 style="text-align:center;color:#ffd800;margin-top:35px;">Online Single Window System & Public Communication Platform</h1>
     <h2 style="text-align:center;color:#ffd800;">Gorakhpur Industrial Development Authority (GIDA)</h2>
-    <main class="signin-wrapper" style="margin-left: 45%;">
+    <main class="signin-wrapper">
         <div class="tab-content">
             <p class="text-center p-4x">
                 <img src="~/Content/files/Gida-mainlogo.png" alt="logo" style="width: 160px;" />
             </p>
-            <div class="tab-pane fade" id="signup">
+            <div class="tab-pane fade in active" id="signup">
                 <form id="signupForm" role="form" action="/login/RegisterApplicant" method="POST">
-                    <p class="lead">Applicant Registration</p>
+                    <p class="lead"style="text-align:center">Applicant Registration</p>
                     <p class="text-muted"><strong>Enter your personal data</strong></p>
                     <div class="form-group has-feedback">
                         <div class="input-group input-group-in">
@@ -62,8 +72,9 @@
                         </div><!-- /input-group-in -->
                     </div><!-- /.form-group -->
                     <div class="form-group">
-                        <label class="control-label" style="margin-right:15px">DOB</label>
-                        <input name="dob" type="date" id="dob" class="form-control" placeholder="DOB">
+                        <label class="control-label" style="margin-right:15px">Date of Birth</label>
+                        <!--<span class="input-group-addon" title="Date of Birth"><i class="icon-doc"></i></span>-->
+                        <input name="dob" type="date" id="dob" class="form-control" placeholder="Date of Birth">
                     </div><!-- /.form-group -->
 
                     <hr>
