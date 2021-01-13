@@ -3,132 +3,358 @@
     ViewBag.Title = "ApplicantDashboard";
     Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
 }
-
+<link href="~/styles/style.css" rel="stylesheet" />
 <!--<h2 style="text-align:center">Applicant Dashboard</h2>-->
-<div class="container-fluid" id="grad1">
-    <div class="row justify-content-center mt-0">
-        <div class="container col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2" style="margin-top: 20px; margin-bottom: 20px;">
-            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                <h4><strong>Apply for Industrial Plot Scheme 2021</strong></h4>
-                <p>Fill all form field to go to next step</p>
-                <div class="row">
-                    <div class="col-md-12 mx-0">
-                        <form id="msform">
-                            <!-- progressbar -->
-                            <ul id="progressbar">
-                                <li id="account"><strong>Plot Details</strong></li>
-                                <li class="active" id="personal"><strong>Applicant Details</strong></li>
-                                <li id="personal"><strong>Project Details</strong></li>
-                                <li id="payment"><strong>Bank Details</strong></li>
-                                <li id="confirm"><strong>Attachment Details</strong></li>
-                            </ul> <!-- fieldsets -->
-                            <!--<fieldset>
-        <div class="form-card">
-            <h2 class="fs-title">Step 1: Plot Details</h2>
-            <div class="col-3"> <label class="pay">Applied For*</label> </div>
-            <select class="list-dt" id="month" name="expmonth">
-                <option selected>a.	Affected by land acquisition</option>
-                <option>b.	Expansion by industrial already established in GIDA</option>
-                <option>c.	General </option>
-                <option>d.	Original land owner whose land has been acquired by GIDA</option>
-                <option>e.	Industrial unit established outside GIDA</option>
-                <option>f.	New or fresh applicant for industrial use in GIDA</option>
-            </select>
-            <hr />
-            <input type="text" name="SchemeType" placeholder="Scheme Type" />
-            <input type="text" name="SchemeName" placeholder="Scheme Name" />
-            <input type="text" name="PlotRange" placeholder="Plot Range" />
-            <input type="text" name="PlotArea" placeholder="Plot Area" />
-            <input type="text" name="SectorName " placeholder="Sector Name" />
-            <input type="text" name="EstimatedRate" placeholder="Estimated Rate/ SQM" />
-            <input type="text" name="PaymentSchedule" placeholder="PaymentSchedule" />
-            <input type="text" name="TotalInvestment" placeholder="Total Investment (In Rs)" />
-            <input type="text" name="ApplicationFee" placeholder="Application Fee" />
-            <input type="text" name="GST " placeholder="GST" />
-            <input type="text" name="TotalFormFees" placeholder="Total Form Fees" />
-            <input type="text" name="Earnest Money" placeholder="Earnest Money" />
-            <input type="text" name="NetAmount " placeholder="Net Amount to be paid" />
-        </div>
-        <input type="button" name="next" class="next action-button" value="Save & Next" />
-    </fieldset>-->
-                            <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title">Applicant Personal Information</h2>
-                                    <input type="text" name="Applicantname" placeholder="Full Name of Applicant" />
-                                    <input type="text" name="FName" placeholder="Father's Name" />
-                                    <input type="text" name="MName" placeholder="Mother's Name" />
-                                    <input type="text" name="SName" placeholder="Spouce Name" />
-                                    <input type="text" name="DOB" placeholder="Date of Birth" />
-                                    <input type="text" name="Gender" placeholder="Gender" />
-                                    <input type="text" name="Category" placeholder="Category" />
-                                    <input type="text" name="Nationality" placeholder="Nationality" />
-                                    <input type="text" name="AadharNo" placeholder="Aadhar Number" />
-                                    <input type="text" name="PAN" placeholder="PAN" />
-                                    <input type="number" name="Mobile" placeholder="Mobile Number" />
-                                    <input type="number" name="Phone" placeholder="Phone Number" />
-                                    <input type="email" name="Email" placeholder="Email Id" />
-                                    <input type="text" name="Religion" placeholder="Religion" />
-                                    <input type="text" name="SubCategory" placeholder="Sub Category" />
-                                    <input type="text" name="CAddres" placeholder="Current Address" />
-                                    <input type="text" name="PAddress" placeholder="Permanent Address" />
-                                    
-                                </div> 
-                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> 
-                                <input type="button" name="next" class="next action-button" value="Next Step" />
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title">Payment Information</h2>
-                                    <div class="radio-group">
-                                        <div class='radio' data-value="credit"><img src="https://i.imgur.com/XzOzVHZ.jpg" width="200px" height="100px"></div>
-                                        <div class='radio' data-value="paypal"><img src="https://i.imgur.com/jXjwZlj.jpg" width="200px" height="100px"></div> <br>
-                                    </div> <label class="pay">Card Holder Name*</label> <input type="text" name="holdername" placeholder="" />
-                                    <div class="row">
-                                        <div class="col-9"> <label class="pay">Card Number*</label> <input type="text" name="cardno" placeholder="" /> </div>
-                                        <div class="col-3"> <label class="pay">CVC*</label> <input type="password" name="cvcpwd" placeholder="***" /> </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-3"> <label class="pay">Expiry Date*</label> </div>
-                                        <div class="col-9">
-                                            <select class="list-dt" id="month" name="expmonth">
-                                                <option selected>Month</option>
-                                                <option>January</option>
-                                                <option>February</option>
-                                                <option>March</option>
-                                                <option>April</option>
-                                                <option>May</option>
-                                                <option>June</option>
-                                                <option>July</option>
-                                                <option>August</option>
-                                                <option>September</option>
-                                                <option>October</option>
-                                                <option>November</option>
-                                                <option>December</option>
-                                            </select> <select class="list-dt" id="year" name="expyear">
-                                                <option selected>Year</option>
-                                            </select>
+<section class="form">
+    <!-- MultiStep Form -->
+    <div class="container-fluid" id="grad1">
+        <div class="container">
+            <div class="row justify-content-center mt-0" style="padding:30px 20px">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                        <h2><strong>Plot Details</strong></h2>
+                        <p>Fill all form field to go to next step</p>
+                        <div class="row">
+                            <div class="col-md-12 mx-0">
+                                <form id="msform">
+                                    <!-- progressbar -->
+                                    <ul id="progressbar">
+                                        <li class="active" id="account"><strong>Account</strong></li>
+                                        <li id="personal"><strong>Personal</strong></li>
+                                        <li id="payment"><strong>Payment</strong></li>
+                                        <li id="payment"><strong>Payment1</strong></li>
+                                        <li id="confirm"><strong>Finish</strong></li>
+                                    </ul> <!-- fieldsets -->
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <h2 class="fs-title">Account Information</h2>
+                                            <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                <div class="row">
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="exampleInputEmail1" class="text-uppercase">Username</label>
+                                                        <input type="text" class="form-control" placeholder="">
+
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="exampleInputEmail1" class="text-uppercase">Password</label>
+                                                        <input type="password" class="form-control" placeholder="">
+
+                                                    </div>
+                                                    <div class="form-group col-sm-12 col-xs-12">
+                                                        <label for="exampleInputEmail1" class="text-uppercase">Select</label>
+                                                        <select class="form-control">
+                                                            <option>Select 1</option>
+                                                        </select>
+
+                                                    </div>
+
+                                                    <div class="form-group col-sm-12 col-xs-12">
+                                                        <label for="exampleInputEmail1" class="text-uppercase">Remarks</label>
+                                                        <textarea class="form-control"> </textarea>
+
+                                                    </div>
+
+                                                    <div class="form-check col-sm-12 col-xs-12">
+                                                        <label class="form-check-label col-sm-12" style="padding:0px;">
+                                                            <input type="checkbox" class="form-check-input">
+                                                            <small>Remember Me</small>
+                                                        </label>
+
+                                                    </div>
+                                                    <div class="form-check col-sm-12 col-xs-12" style="padding-top:10px;">
+                                                        <small>Select Gender</small>
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                <input type="radio" id="male" name="gender" value="male">
+                                                                <label for="male">Male</label>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <input type="radio" id="female" name="gender" value="female">
+                                                                <label for="female">Female</label>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <input type="radio" id="other" name="gender" value="other">
+                                                                <label for="other">Other</label>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class="col-sm-12 col-xs-12">
+                                                        <h2 style="padding:20px 0;">Responsive Table with Custom Style</h2>
+                                                        <table class="table table-bordered responsive">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Table heading</th>
+                                                                    <th>Table heading</th>
+                                                                    <th>Table heading</th>
+                                                                    <th>Table heading</th>
+                                                                    <th>Table heading</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th row-header="Table heading" scope="row">1</th>
+                                                                    <td row-header="Table">Table cell</td>
+                                                                    <td row-header="Table heading">Table cell</td>
+                                                                    <td row-header="heading">Table cell</td>
+                                                                    <td row-header="Table heading">Table cell</td>
+                                                                    <td row-header="Table heading">Table cell</td>
+
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <th row-header="Table heading" scope="row">2</th>
+                                                                    <td row-header="Table heading">Table cell</td>
+                                                                    <td row-header="Table heading">Table cell</td>
+                                                                    <td row-header="Table heading">Table cell</td>
+                                                                    <td row-header="Table heading">Table cell</td>
+                                                                    <td row-header="Table heading">Table cell</td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <th row-header="Table heading" scope="row">3</th>
+                                                                    <td row-header="Table heading">Table cell</td>
+                                                                    <td row-header="Table heading">Table cell</td>
+                                                                    <td row-header="Table heading">Table cell</td>
+                                                                    <td row-header="Table heading">Table cell</td>
+                                                                    <td row-header="Table heading">Table cell</td>
+
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+
+
+                                                    <div class="col-sm-12 col-xs-12">
+                                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading" role="tab" id="headingOne">
+                                                                    <h4 class="panel-title">
+                                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                            Collapsible Group Item #1
+                                                                        </a>
+                                                                    </h4>
+                                                                </div>
+                                                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                                                    <div class="panel-body">
+                                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                                                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+                                                                        raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading" role="tab" id="headingTwo">
+                                                                    <h4 class="panel-title">
+                                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                            Collapsible Group Item #2
+                                                                        </a>
+                                                                    </h4>
+                                                                </div>
+                                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                                    <div class="panel-body">
+                                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                                                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+                                                                        raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading" role="tab" id="headingThree">
+                                                                    <h4 class="panel-title">
+                                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                                            Collapsible Group Item #3
+                                                                        </a>
+                                                                    </h4>
+                                                                </div>
+                                                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                                                    <div class="panel-body">
+                                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                                                                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+                                                                        raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div> <input type="button" name="next" class="next action-button" value="Next Step" />
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <h2 class="fs-title">Personal Information</h2> <input type="text" name="fname" placeholder="First Name" /> <input type="text" name="lname" placeholder="Last Name" /> <input type="text" name="phno" placeholder="Contact No." /> <input type="text" name="phno_2" placeholder="Alternate Contact No." />
+                                        </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="next" class="next action-button" value="Next Step" />
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <h2 class="fs-title">Payment Information</h2>
+                                            <div class="radio-group">
+                                                <div class='radio' data-value="credit"><img src="https://i.imgur.com/XzOzVHZ.jpg" width="200px" height="100px"></div>
+                                                <div class='radio' data-value="paypal"><img src="https://i.imgur.com/jXjwZlj.jpg" width="200px" height="100px"></div> <br>
+                                            </div> <label class="pay">Card Holder Name*</label> <input type="text" name="holdername" placeholder="" />
+                                            <div class="row">
+                                                <div class="col-9"> <label class="pay">Card Number*</label> <input type="text" name="cardno" placeholder="" /> </div>
+                                                <div class="col-3"> <label class="pay">CVC*</label> <input type="password" name="cvcpwd" placeholder="***" /> </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3"> <label class="pay">Expiry Date*</label> </div>
+                                                <div class="col-9">
+                                                    <select class="list-dt" id="month" name="expmonth">
+                                                        <option selected>Month</option>
+                                                        <option>January</option>
+                                                        <option>February</option>
+                                                        <option>March</option>
+                                                        <option>April</option>
+                                                        <option>May</option>
+                                                        <option>June</option>
+                                                        <option>July</option>
+                                                        <option>August</option>
+                                                        <option>September</option>
+                                                        <option>October</option>
+                                                        <option>November</option>
+                                                        <option>December</option>
+                                                    </select> <select class="list-dt" id="year" name="expyear">
+                                                        <option selected>Year</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="make_payment" class="next action-button" value="Confirm" />
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <h2 class="fs-title">Payment Information</h2>
+                                            <div class="radio-group">
+                                                <div class='radio' data-value="credit"><img src="https://i.imgur.com/XzOzVHZ.jpg" width="200px" height="100px"></div>
+                                                <div class='radio' data-value="paypal"><img src="https://i.imgur.com/jXjwZlj.jpg" width="200px" height="100px"></div> <br>
+                                            </div> <label class="pay">Card Holder Name*</label> <input type="text" name="holdername" placeholder="" />
+                                            <div class="row">
+                                                <div class="col-9"> <label class="pay">Card Number*</label> <input type="text" name="cardno" placeholder="" /> </div>
+                                                <div class="col-3"> <label class="pay">CVC*</label> <input type="password" name="cvcpwd" placeholder="***" /> </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-3"> <label class="pay">Expiry Date*</label> </div>
+                                                <div class="col-9">
+                                                    <select class="list-dt" id="month" name="expmonth">
+                                                        <option selected>Month</option>
+                                                        <option>January</option>
+                                                        <option>February</option>
+                                                        <option>March</option>
+                                                        <option>April</option>
+                                                        <option>May</option>
+                                                        <option>June</option>
+                                                        <option>July</option>
+                                                        <option>August</option>
+                                                        <option>September</option>
+                                                        <option>October</option>
+                                                        <option>November</option>
+                                                        <option>December</option>
+                                                    </select> <select class="list-dt" id="year" name="expyear">
+                                                        <option selected>Year</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="make_payment" class="next action-button" value="Confirm" />
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="form-card">
+                                            <h2 class="fs-title text-center">Success !</h2> <br><br>
+                                            <div class="row justify-content-center">
+                                                <div class="col-3 text-center"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image"> </div>
+                                            </div> <br><br>
+                                            <div class="row justify-content-center">
+                                                <div class="col-7 text-center">
+                                                    <h5>You Have Successfully Signed Up</h5>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="make_payment" class="next action-button" value="Confirm" />
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-card">
-                                    <h2 class="fs-title text-center">Success !</h2> <br><br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-3"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image"> </div>
-                                    </div> <br><br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-7 text-center">
-                                            <h5>You Have Successfully Signed Up</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
+    </div>
+</section>
+
+<script>
+
+
+
+    $(document).ready(function () {
+
+        var current_fs, next_fs, previous_fs; //fieldsets
+        var opacity;
+
+        $(".next").click(function () {
+
+            current_fs = $(this).parent();
+            next_fs = $(this).parent().next();
+
+            //Add Class Active
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+            //show the next fieldset
+            next_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate({ opacity: 0 }, {
+                step: function (now) {
+                    // for making fielset appear animation
+                    opacity = 1 - now;
+
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    next_fs.css({ 'opacity': opacity });
+                },
+                duration: 600
+            });
+        });
+
+        $(".previous").click(function () {
+
+            current_fs = $(this).parent();
+            previous_fs = $(this).parent().prev();
+
+            //Remove class active
+            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+            //show the previous fieldset
+            previous_fs.show();
+
+            //hide the current fieldset with style
+            current_fs.animate({ opacity: 0 }, {
+                step: function (now) {
+                    // for making fielset appear animation
+                    opacity = 1 - now;
+
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    previous_fs.css({ 'opacity': opacity });
+                },
+                duration: 600
+            });
+        });
+
+        $('.radio-group .radio').click(function () {
+            $(this).parent().find('.radio').removeClass('selected');
+            $(this).addClass('selected');
+        });
+
+        $(".submit").click(function () {
+            return false;
+        })
+
+    });
+</script>
