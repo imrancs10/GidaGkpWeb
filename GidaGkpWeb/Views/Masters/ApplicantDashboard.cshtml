@@ -602,8 +602,9 @@
                                         <input type="button" name="next" id="Step4NextButton" class="next action-button" value="Next Step" />
                                     </fieldset>
                                     <fieldset>
-                                        <div class="form-card">
-                                            <form>
+                                        @using (Html.BeginForm("SaveApplicantDocument", "Masters", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            <div class="form-card">
                                                 <h3 class="fs-title">Attached Ducument Details</h3>
                                                 <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
                                                     <div class="row">
@@ -624,13 +625,13 @@
 
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">Proposed plan of land usage</label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <input type="file" class="custom-file-input" id="Proposedplan">
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">
                                                                 Partnership Deed/Memorandum & Articles of Association/ Certificate of Incorporation of the Company, as applicable
                                                             </label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <input type="file" class="custom-file-input" id="PartnershipDeed">
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">Scan copy of Pan Card</label>
@@ -735,10 +736,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
-                                        </div>
-                                        <input type="button" name="previous" id="Step2PreviousButton" class="previous action-button-previous" value="Previous" />
-                                        <input type="button" name="next" id="Step2NextButton" class="next action-button" value="Next Step" />
+                                            </div>
+                                            <input type="button" name="previous" id="Step5PreviousButton" class="previous action-button-previous" value="Previous" />
+                                            <input type="submit" name="next" id="Step5NextButton" class="next action-button" value="Next Step" />
+                                        }
                                     </fieldset>
                                 </div>
                             </div>

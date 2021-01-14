@@ -74,6 +74,26 @@ namespace GidaGkpWeb.Controllers
             return Json(CrudResponse(_details.SaveBankDetail(UserData.UserId, BankAccountName, BankAccountNo, BankName, BranchName, BranchAddress, IFSCCode)), JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public ActionResult SaveApplicantDocument(HttpPostedFileBase File1)
+        {
+            ApplicantUploadDoc documentDetail = new ApplicantUploadDoc();
+            if (File1 != null && File1.ContentLength > 0)
+            {
+                documentDetail.AllotmentLetter = new byte[File1.ContentLength];
+                File1.InputStream.Read(documentDetail.AllotmentLetter, 0, File1.ContentLength);
+                ApplicantDetails _details = new ApplicantDetails();
+                _details.SaveApplicantDocument(UserData.UserId, documentDetail);
+                SetAlertMessage("document detail saved", "Document Entry");
+                return RedirectToAction("ApplicantDashboard");
+            }
+            else
+            {
+                SetAlertMessage("Document detail not saved", "Document Entry");
+                return RedirectToAction("ApplicantDashboard");
+            }
+        }
+
         public ActionResult Logout()
         {
             Session.Abandon();

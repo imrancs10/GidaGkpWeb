@@ -168,5 +168,23 @@ namespace GidaGkpWeb.BAL
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
+
+        public Enums.CrudStatus SaveApplicantDocument(int userId, ApplicantUploadDoc docDetail)
+        {
+            _db = new GidaGKPEntities();
+
+            ApplicantFormStep step = new ApplicantFormStep()
+            {
+                UserId = userId,
+                ApplicantStepCompleted = 5
+            };
+            _db.Entry(step).State = EntityState.Added;
+
+            int _effectRow = 0;
+           
+            _db.Entry(docDetail).State = EntityState.Added;
+            _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
     }
 }
