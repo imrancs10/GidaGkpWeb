@@ -95,5 +95,50 @@ namespace GidaGkpWeb.BAL
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
+
+        public Enums.CrudStatus SaveProjectDetail(int userId, string ProposedIndustryType, string ProjectEstimatedCost, string ProposedCoveredArea, string ProposedOpenArea, string PurpuseOpenArea, string ProposedInvestmentLand, string ProposedInvestmentBuilding, string ProposedInvestmentPlant, string FumesNatureQuantity, string LiquidQuantity, string LiquidChemicalComposition, string SolidQuantity, string SolidChemicalComposition, string GasQuantity, string GasChemicalComposition, string PowerRequirement, string FirstYearNoOfTelephone, string FirstYearNoOfFax, string UltimateNoOfTelephone, string UltimateNoOfFax, string Skilled, string UnSkilled)
+        {
+            _db = new GidaGKPEntities();
+
+            ApplicantFormStep step = new ApplicantFormStep()
+            {
+                UserId = userId,
+                ApplicantStepCompleted = 3
+            };
+            _db.Entry(step).State = EntityState.Added;
+
+            int _effectRow = 0;
+            ApplicantProjectDetail _newRecord = new ApplicantProjectDetail()
+            {
+                UserId = userId,
+                CreationDate = DateTime.Now,
+                FirstYearNoOfFax = FirstYearNoOfFax,
+                FirstYearNoOfTelephone = FirstYearNoOfTelephone,
+                FumesNatureQuantity = FumesNatureQuantity,
+                GasChemicalComposition = GasChemicalComposition,
+                GasQuantity = GasQuantity,
+                EffluentTreatmentMeasures = "",
+                LiquidChemicalComposition = LiquidChemicalComposition,
+                LiquidQuantity = LiquidQuantity,
+                PowerRequirement = PowerRequirement,
+                ProjectEstimatedCost = ProjectEstimatedCost,
+                ProposedCoveredArea = ProposedCoveredArea,
+                ProposedIndustryType = ProposedIndustryType,
+                ProposedInvestmentBuilding = ProposedInvestmentBuilding,
+                ProposedInvestmentLand = ProposedInvestmentLand,
+                ProposedInvestmentPlant = ProposedInvestmentPlant,
+                ProposedOpenArea = ProposedOpenArea,
+                PurpuseOpenArea = PurpuseOpenArea,
+                Skilled = Skilled,
+                SolidChemicalComposition = SolidChemicalComposition,
+                SolidQuantity = SolidQuantity,
+                UltimateNoOfFax = UltimateNoOfFax,
+                UltimateNoOfTelephone = UltimateNoOfTelephone,
+                UnSkilled = UnSkilled
+            };
+            _db.Entry(_newRecord).State = EntityState.Added;
+            _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
     }
 }

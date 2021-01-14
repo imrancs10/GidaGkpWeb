@@ -250,5 +250,48 @@ $(document).ready(function () {
         });
     });
 
+
+    $('#Step3PreviousButton').on('click', function (e) {
+        $('#progressbar li').removeClass('active');
+        $('#ApplicantDetail').addClass('active');
+    });
+
+    $('#Step3NextButton').on('click', function (e) {
+        var url = '/masters/SaveProjectDetails';
+        var inputData = {
+            ProposedIndustryType: $('#ProposedIndustryType').val(),
+            ProjectEstimatedCost: $('#ProjectEstimatedCost').val(),
+            ProposedCoveredArea: $('#CoveredArea').val(),
+            ProposedOpenArea: $('#OpenArea').val(),
+            PurpuseOpenArea: $('#Purposeforopenarea').val(),
+            ProposedInvestmentLand: $('#Investmentland').val(),
+            ProposedInvestmentBuilding: $('#InvestmentBuilding').val(),
+            ProposedInvestmentPlant: $('#InvestmentPlant').val(),
+            FumesNatureQuantity: $('#processofmanufacture').val(),
+            LiquidQuantity: $('#LiquidQuantity').val(),
+            LiquidChemicalComposition: $('#LiquidChemicalComposition').val(),
+            SolidQuantity: $('#SolidQuantity').val(),
+            SolidChemicalComposition: $('#SolidChemicalComposition').val(),
+            GasQuantity: $('#GasQuantity').val(),
+            GasChemicalComposition: $('#GasChemicalComposition').val(),
+            //EffluentTreatmentMeasures: $('#GasChemicalComposition').val(),
+            PowerRequirement: $('#PowerRequirement').val(),
+            FirstYearNoOfTelephone: $('#FirstYearTelephonicConnection').val(),
+            FirstYearNoOfFax: $('#FirstYearFaxConnection').val(),
+            UltimateNoOfTelephone: $('#UltimateRequirementTelephonicConnection').val(),
+            UltimateNoOfFax: $('#UltimateRequirementFaxConnection').val(),
+            Skilled: $('#Skilled').val(),
+            UnSkilled: $('#Unskilled').val(),
+        };
+
+        utility.ajax.helperWithData(url, inputData, function (data) {
+            if (data == 'Data has been updated') {
+                $('#progressbar li').removeClass('active');
+                $('#BankDetail').addClass('active');
+                utility.alert.setAlert(utility.alert.alertType.success, 'Project Detail has been Saved');
+            }
+        });
+    });
+
 });
 
