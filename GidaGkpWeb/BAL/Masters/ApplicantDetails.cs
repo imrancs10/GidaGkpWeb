@@ -140,5 +140,33 @@ namespace GidaGkpWeb.BAL
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
+
+        public Enums.CrudStatus SaveBankDetail(int userId, string BankAccountName, string BankAccountNo, string BankName, string BranchName, string BranchAddress, string IFSCCode)
+        {
+            _db = new GidaGKPEntities();
+
+            ApplicantFormStep step = new ApplicantFormStep()
+            {
+                UserId = userId,
+                ApplicantStepCompleted = 4
+            };
+            _db.Entry(step).State = EntityState.Added;
+
+            int _effectRow = 0;
+            ApplicantBankDetail _newRecord = new ApplicantBankDetail()
+            {
+                UserId = userId,
+                CreationDate = DateTime.Now,
+                AccountHolderName = BankAccountName,
+                BankAccountNo = BankAccountNo,
+                BankName = BankName,
+                BBAddress = BranchAddress,
+                BBName = BranchName,
+                IFSC_Code = IFSCCode
+            };
+            _db.Entry(_newRecord).State = EntityState.Added;
+            _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
     }
 }

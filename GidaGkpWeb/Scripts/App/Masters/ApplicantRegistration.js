@@ -293,5 +293,30 @@ $(document).ready(function () {
         });
     });
 
+    $('#Step4PreviousButton').on('click', function (e) {
+        $('#progressbar li').removeClass('active');
+        $('#ProjectDetail').addClass('active');
+    });
+
+    $('#Step4NextButton').on('click', function (e) {
+        var url = '/masters/SaveBankDetail';
+        var inputData = {
+            BankAccountName: $('#BankAccountName').val(),
+            BankAccountNo: $('#BankAccountNo').val(),
+            BankName: $('#BankName').val(),
+            BranchName: $('#BranchName').val(),
+            BranchAddress: $('#BranchAddress').val(),
+            IFSCCode: $('#IFSCCode').val(),
+        };
+
+        utility.ajax.helperWithData(url, inputData, function (data) {
+            if (data == 'Data has been updated') {
+                $('#progressbar li').removeClass('active');
+                $('#AttachDocument').addClass('active');
+                utility.alert.setAlert(utility.alert.alertType.success, 'Bank Detail has been Saved');
+            }
+        });
+    });
+
 });
 
