@@ -75,536 +75,536 @@
                         <p>Fill all form field to go to next step</p>
                         <div class="row">
                             <div class="col-md-12 mx-0">
-                                <div id="msform">
-                                    <!-- progressbar -->
-                                    <ul id="progressbar">
-                                        <li class="active" id="PlotDetail"><strong>Plot Detail</strong></li>
-                                        <li id="ApplicantDetail"><strong>Applicant Detail</strong></li>
-                                        <li id="ProjectDetail"><strong>Project Detail</strong></li>
-                                        <li id="BankDetail"><strong>Bank Detail</strong></li>
-                                        <li id="AttachDocument"><strong>Attach Document</strong></li>
-                                        @*<li id="MakePayment"><strong>Make Payment</strong></li>*@
-                                    </ul>
-                                    <!-- Step1 fieldsets -->
-                                    <fieldset>
-                                        @*<form id="msform" action="/Masters/SavePlotDetail" method="POST">*@
-                                        <div class="form-card">
-                                            <h2 class="fs-title">Plot Detail</h2>
-                                            <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-12 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Applied For</label>
-                                                        <select name="AppliedFor" id="AppliedFor" class="form-control" required>
-                                                            <option value="">Select</option>
-                                                            <option value="Affected by land acquisition">
-                                                                Affected by land acquisition
-                                                            </option>
-                                                            <option value="Expansion by industrial already established in GIDA">
-                                                                Expansion by industrial already established in GIDA
-                                                            </option>
-                                                            <option value="General">
-                                                                General
-                                                            </option>
-                                                            <option value="Original land owner whose land has been acquired by GIDA">
-                                                                Original land owner whose land has been acquired by GIDA
-                                                            </option>
-                                                            <option value="Industrial unit established outside GIDA">
-                                                                Industrial unit established outside GIDA
-                                                            </option>
-                                                            <option value="New or fresh applicant for industrial use in GIDA.">New or fresh applicant for industrial use in GIDA.</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Scheme Type</label>
-                                                        <select name="SchemeType" id="SchemeType" class="form-control">
-                                                            <option value="">Select</option>
-                                                            <option value="Industrial">Industrial</option>
-                                                            <option value="GroupHousing">Group Housing</option>
-                                                            <option value="Institutional">Institutional</option>
-                                                            <option value="Transport Nagar">Transport Nagar</option>
-                                                            <option value="Residential">Residential</option>
-                                                            <option value="Commercial">Commercial</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Plot Range</label>
-                                                        <select name="PlotRange" id="PlotRange" class="form-control">
-                                                            <option value="">Select</option>
-                                                            <option value="0-4000">0-4000</option>
-                                                            <option value="4001-20000">4001-20000</option>
-                                                            <option value="20001-80000">20001-80000</option>
-                                                            <option value="80001-Above">80001-Above</option>
-                                                        </select>
+                                <form action="~/Masters/SaveApplicantDocument" method="post" enctype="multipart/form-data">
+                                    <div id="msform">
+                                        <!-- progressbar -->
+                                        <ul id="progressbar">
+                                            <li class="active" id="PlotDetail"><strong>Plot Detail</strong></li>
+                                            <li id="ApplicantDetail"><strong>Applicant Detail</strong></li>
+                                            <li id="ProjectDetail"><strong>Project Detail</strong></li>
+                                            <li id="BankDetail"><strong>Bank Detail</strong></li>
+                                            <li id="AttachDocument"><strong>Attach Document</strong></li>
+                                            @*<li id="MakePayment"><strong>Make Payment</strong></li>*@
+                                        </ul>
+                                        <!-- Step1 fieldsets -->
+                                        <fieldset>
+                                            @*<form id="msform" action="/Masters/SavePlotDetail" method="POST">*@
+                                            <div class="form-card">
+                                                <h2 class="fs-title">Plot Detail</h2>
+                                                <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-12 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Applied For</label>
+                                                            <select name="AppliedFor" id="AppliedFor" class="form-control" required>
+                                                                <option value="">Select</option>
+                                                                <option value="Affected by land acquisition">
+                                                                    Affected by land acquisition
+                                                                </option>
+                                                                <option value="Expansion by industrial already established in GIDA">
+                                                                    Expansion by industrial already established in GIDA
+                                                                </option>
+                                                                <option value="General">
+                                                                    General
+                                                                </option>
+                                                                <option value="Original land owner whose land has been acquired by GIDA">
+                                                                    Original land owner whose land has been acquired by GIDA
+                                                                </option>
+                                                                <option value="Industrial unit established outside GIDA">
+                                                                    Industrial unit established outside GIDA
+                                                                </option>
+                                                                <option value="New or fresh applicant for industrial use in GIDA.">New or fresh applicant for industrial use in GIDA.</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Scheme Type</label>
+                                                            <select name="SchemeType" id="SchemeType" class="form-control">
+                                                                <option value="">Select</option>
+                                                                <option value="Industrial">Industrial</option>
+                                                                <option value="GroupHousing">Group Housing</option>
+                                                                <option value="Institutional">Institutional</option>
+                                                                <option value="Transport Nagar">Transport Nagar</option>
+                                                                <option value="Residential">Residential</option>
+                                                                <option value="Commercial">Commercial</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Plot Range</label>
+                                                            <select name="PlotRange" id="PlotRange" class="form-control">
+                                                                <option value="">Select</option>
+                                                                <option value="0-4000">0-4000</option>
+                                                                <option value="4001-20000">4001-20000</option>
+                                                                <option value="20001-80000">20001-80000</option>
+                                                                <option value="80001-Above">80001-Above</option>
+                                                            </select>
 
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Scheme Name</label>
+                                                            <select name="SchemeName" id="SchemeName" class="form-control">
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Plot Area</label>
+                                                            <input name="plotArea" id="plotArea" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Sector Name</label>
+                                                            <select name="SectorName" id="SectorName" class="form-control">
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Estimated Rate</label>
+                                                            <input name="EstimatedRate" id="EstimatedRate" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Paymemt Schedule</label>
+                                                            <select name="PaymemtSchedule" id="PaymemtSchedule" class="form-control">
+                                                                <option value="">Select</option>
+                                                                <option value="Industrial">Six Monthly</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Total Investment</label>
+                                                            <input name="TotalInvestment" id="TotalInvestment" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Application Fee</label>
+                                                            <input name="ApplicationFee" id="ApplicationFee" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Earnest Money Deposite</label>
+                                                            <input name="EarnestMoneyDeposite" id="EarnestMoneyDeposite" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">GST</label>
+                                                            <input name="GST" id="GST" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Net Amount(Payable)</label>
+                                                            <input name="NetAmount" id="NetAmount" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Total Amount</label>
+                                                            <input name="TotalAmount" id="TotalAmount" class="form-control">
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Scheme Name</label>
-                                                        <select name="SchemeName" id="SchemeName" class="form-control">
-                                                        </select>
+                                                </div>
+
+                                                <h2 class="fs-title">Full Perticulars of the applicant</h2>
+                                                <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Industry Ownership Type</label>
+                                                            <select name="IndustryOwnershipType" id="IndustryOwnershipType" class="form-control">
+                                                                <option value="">Select</option>
+                                                                <option value="Affected by land acquisition">
+                                                                    Individual or Sole Proprietorship
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Unit Name</label>
+                                                            <input name="UnitName" id="UnitName" class="form-control">
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Plot Area</label>
-                                                        <input name="plotArea" id="plotArea" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Sector Name</label>
-                                                        <select name="SectorName" id="SectorName" class="form-control">
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Estimated Rate</label>
-                                                        <input name="EstimatedRate" id="EstimatedRate" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Paymemt Schedule</label>
-                                                        <select name="PaymemtSchedule" id="PaymemtSchedule" class="form-control">
-                                                            <option value="">Select</option>
-                                                            <option value="Industrial">Six Monthly</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Total Investment</label>
-                                                        <input name="TotalInvestment" id="TotalInvestment" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Application Fee</label>
-                                                        <input name="ApplicationFee" id="ApplicationFee" class="form-control" value="1000">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Earnest Money Deposite</label>
-                                                        <input name="EarnestMoneyDeposite" id="EarnestMoneyDeposite" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">GST</label>
-                                                        <input name="GST" id="GST" class="form-control" value="50">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Net Amount(Payable)</label>
-                                                        <input name="NetAmount" id="NetAmount" class="form-control" value="1000">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Total Amount</label>
-                                                        <input name="TotalAmount" id="TotalAmount" class="form-control" value="1000">
+                                                </div>
+
+                                                <h2 class="fs-title">Signing Person Detail</h2>
+                                                <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Name</label>
+                                                            <input name="Name" id="Name" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Date of Birth</label>
+                                                            <input name="dob" type="date" id="dob" class="form-control" placeholder="Date of Birth">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Present Address</label>
+                                                            <textarea name="PresentAddress" id="PresentAddress" class="form-control"></textarea>
+                                                        </div>
+
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Permanent Address and Contact No</label>
+                                                            <textarea name="PermanentAddress" id="PermanentAddress" class="form-control"></textarea>
+                                                        </div>
+
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Relationship Status</label>
+                                                            <select name="RelationshipStatus" id="RelationshipStatus" class="form-control">
+                                                                <option value="">Select</option>
+                                                                <option value="Married">Married</option>
+                                                                <option value="UnMarried">UnMarried</option>
+                                                                <option value="Devorcy">Devorcy</option>
+                                                            </select>
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <h2 class="fs-title">Full Perticulars of the applicant</h2>
-                                            <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Industry Ownership Type</label>
-                                                        <select name="IndustryOwnershipType" id="IndustryOwnershipType" class="form-control">
-                                                            <option value="">Select</option>
-                                                            <option value="Affected by land acquisition">
-                                                                Individual or Sole Proprietorship
-                                                            </option>
-                                                        </select>
+                                            <input type="button" id="btnPlotDetailSave" name="next" class="next action-button" value="Save & Next" />
+                                            @*</form>*@
+                                        </fieldset>
+                                        <!-- Step2 fieldsets -->
+                                        <fieldset>
+                                            <div class="form-card">
+                                                <h3 class="fs-title">Applicant Peronal Details</h3>
+                                                <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Full Name of Applicant</label>
+                                                            <input name="FullName" id="FullName" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Father's Name</label>
+                                                            <input name="FatherName" id="FName" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Mother's Name</label>
+                                                            <input name="MotherName" id="MName" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Spouce Name</label>
+                                                            <input name="SpouceName" id="SName" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Date of Birth</label>
+                                                            <input name="DOB" type="date" id="DOB" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Gender</label>
+                                                            <select name="Gender" id="Gender" class="form-control">
+                                                                <option value="">Select</option>
+                                                                <option value="Male">Male</option>
+                                                                <option value="Female">Female</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Reservation Category</label>
+                                                            <select name="Reservation" id="Reservation" class="form-control">
+                                                                <option value="">Select</option>
+                                                                <option value="General">General</option>
+                                                                <option value="OBC">OBC</option>
+                                                                <option value="SC">SC</option>
+                                                                <option value="ST">ST</option>
+                                                                <option value="Others">others</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Nationality</label>
+                                                            <select name="Nationality" id="Nationality" class="form-control">
+                                                                <option value="Indian">Indian</option>
+                                                                <option value="Others">others</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Adhaar Number</label>
+                                                            <input name="AdhaarNo" id="AdhaarNo" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">PAN Number</label>
+                                                            <input name="PAN" id="PAN" class="form-control" value="">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Mobile Number</label>
+                                                            <input name="MobileNo" id="MobileNo" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Phone Number</label>
+                                                            <input name="Phone" id="Phone" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Email ID</label>
+                                                            <input name="Email" id="Email" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Religion</label>
+                                                            <select name="Religion" id="Religion" class="form-control">
+                                                                <option value="">Select</option>
+                                                                <option value="Hindu">Hindu</option>
+                                                                <option value="Muslim">Muslim</option>
+                                                                <option value="Sikh">Sikh</option>
+                                                                <option value="Others">others</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Sub-Category</label>
+                                                            <select name="SubCategory" id="SubCategory" class="form-control">
+                                                                <option value="">Select</option>
+                                                                <option value="Others">others</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Unit Name</label>
-                                                        <input name="UnitName" id="UnitName" class="form-control">
+                                                </div>
+                                                <h3 class="fs-title">Applicant Identity Details</h3>
+                                                <div class="form-group col-sm-6 col-xs-12">
+                                                    <label for="usertype" class="text-uppercase">Current Address</label>
+                                                    <input name="CAddress" id="CAddress" class="form-control">
+                                                </div>
+                                                <div class="form-group col-sm-6 col-xs-12">
+                                                    <label for="usertype" class="text-uppercase">Permanent Address</label>
+                                                    <input name="PAddress" id="PAddress" class="form-control">
+                                                </div>
+
+                                                <h3 class="fs-title">Applicant Identity Proof</h3>
+                                                <div class="form-check col-sm-12 col-xs-12" style="padding-top:10px;">
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <input type="radio" id="Passport" name="IdentityProof" value="Passport">
+                                                            <label for="Passport">Passport</label>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <input type="radio" id="PAN" name="IdentityProof" value="PAN">
+                                                            <label for="PAN">PAN</label>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <input type="radio" id="voterIDCard" name="IdentityProof" value="Oter ID Card">
+                                                            <label for="OterIDCard">Voter ID Card</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <input type="radio" id="DrivingLiecence" name="IdentityProof" value="Driving Liecence">
+                                                            <label for="DrivingLiecence">Driving Liecence</label>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <input type="radio" id="AdhaarCard" name="IdentityProof" value="AdhaarCard">
+                                                            <label for="AdhaarCard">Adhaar Card</label>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <input type="radio" id="CompanyIDCard" name="IdentityProof" value="Company ID Card">
+                                                            <label for="CompanyIDCard">Company ID Card</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <h3 class="fs-title">Applicant Residential Proof</h3>
+                                                <div class="form-check col-sm-12 col-xs-12" style="padding-top:10px;">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <input type="radio" id="ElectricBill" name="ResidentialProof" value="Electric Bill">
+                                                            <label for="ElectricBill">Electric Bill</label>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input type="radio" id="ITR" name="ResidentialProof" value="ITR">
+                                                            <label for="ITR">ITR</label>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input type="radio" id="TelephoneBill" name="ResidentialProof" value="Telephone Bill">
+                                                            <label for="TelephoneBill">Telephone Bill</label>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input type="radio" id="BankPassbook" name="ResidentialProof" value="Bank Passbook Account Detail">
+                                                            <label for="BankPassbook">Bank Passbook Account Detail</label>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input type="radio" id="Passport" name="ResidentialProof" value="Passport">
+                                                            <label for="Passport">Passport</label>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input type="radio" id="VoterIDCard" name="ResidentialProof" value="Voter ID Card">
+                                                            <label for="VoterIDCard">Voter ID Card</label>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input type="radio" id="HRBill" name="ResidentialProof" value="HR Bill">
+                                                            <label for="HRBill">HR Bill</label>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input type="radio" id="DrivingLiecence" name="ResidentialProof" value="Driving Liecence">
+                                                            <label for="DrivingLiecence">Driving Liecence</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <h2 class="fs-title">Signing Person Detail</h2>
-                                            <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Name</label>
-                                                        <input name="Name" id="Name" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Date of Birth</label>
-                                                        <input name="dob" type="date" id="dob" class="form-control" placeholder="Date of Birth">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Present Address</label>
-                                                        <textarea name="PresentAddress" id="PresentAddress" class="form-control"></textarea>
-                                                    </div>
-
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Permanent Address and Contact No</label>
-                                                        <textarea name="PermanentAddress" id="PermanentAddress" class="form-control"></textarea>
-                                                    </div>
-
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Relationship Status</label>
-                                                        <select name="RelationshipStatus" id="RelationshipStatus" class="form-control">
-                                                            <option value="">Select</option>
-                                                            <option value="Married">Married</option>
-                                                            <option value="UnMarried">UnMarried</option>
-                                                            <option value="Devorcy">Devorcy</option>
-                                                        </select>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <input type="button" id="btnPlotDetailSave" name="next" class="next action-button" value="Save & Next" />
-                                        @*</form>*@
-                                    </fieldset>
-                                    <!-- Step2 fieldsets -->
-                                    <fieldset>
-                                        <div class="form-card">
-                                            <h3 class="fs-title">Applicant Peronal Details</h3>
-                                            <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Full Name of Applicant</label>
-                                                        <input name="FullName" id="FullName" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Father's Name</label>
-                                                        <input name="FatherName" id="FName" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Mother's Name</label>
-                                                        <input name="MotherName" id="MName" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Spouce Name</label>
-                                                        <input name="SpouceName" id="SName" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Date of Birth</label>
-                                                        <input name="DOB" type="date" id="DOB" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Gender</label>
-                                                        <select name="Gender" id="Gender" class="form-control">
-                                                            <option value="">Select</option>
-                                                            <option value="Male">Male</option>
-                                                            <option value="Female">Female</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Reservation Category</label>
-                                                        <select name="Reservation" id="Reservation" class="form-control">
-                                                            <option value="">Select</option>
-                                                            <option value="General">General</option>
-                                                            <option value="OBC">OBC</option>
-                                                            <option value="SC">SC</option>
-                                                            <option value="ST">ST</option>
-                                                            <option value="Others">others</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Nationality</label>
-                                                        <select name="Nationality" id="Nationality" class="form-control">
-                                                            <option value="Indian">Indian</option>
-                                                            <option value="Others">others</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Adhaar Number</label>
-                                                        <input name="AdhaarNo" id="AdhaarNo" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">PAN Number</label>
-                                                        <input name="PAN" id="PAN" class="form-control" value="">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Mobile Number</label>
-                                                        <input name="MobileNo" id="MobileNo" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Phone Number</label>
-                                                        <input name="Phone" id="Phone" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Email ID</label>
-                                                        <input name="Email" id="Email" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Religion</label>
-                                                        <select name="Religion" id="Religion" class="form-control">
-                                                            <option value="">Select</option>
-                                                            <option value="Hindu">Hindu</option>
-                                                            <option value="Muslim">Muslim</option>
-                                                            <option value="Sikh">Sikh</option>
-                                                            <option value="Others">others</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Sub-Category</label>
-                                                        <select name="SubCategory" id="SubCategory" class="form-control">
-                                                            <option value="">Select</option>
-                                                            <option value="Others">others</option>
-                                                        </select>
+                                            <input type="button" name="previous" id="Step2PreviousButton" class="previous action-button-previous" value="Previous" />
+                                            <input type="button" name="next" id="Step2NextButton" class="next action-button" value="Next Step" />
+                                        </fieldset>
+                                        <!-- Step3 fieldsets -->
+                                        <fieldset>
+                                            <div class="form-card">
+                                                <h3 class="fs-title">Perticular Project Details</h3>
+                                                <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Type of Industry Proposed to be Set up</label>
+                                                            <input name="ProposedIndustryType" id="ProposedIndustryType" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Estimated Cost of The Project (in RS)</label>
+                                                            <input name="ProjectEstimatedCost" id="ProjectEstimatedCost" class="form-control">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <h3 class="fs-title">Applicant Identity Details</h3>
-                                            <div class="form-group col-sm-6 col-xs-12">
-                                                <label for="usertype" class="text-uppercase">Current Address</label>
-                                                <input name="CAddress" id="CAddress" class="form-control">
-                                            </div>
-                                            <div class="form-group col-sm-6 col-xs-12">
-                                                <label for="usertype" class="text-uppercase">Permanent Address</label>
-                                                <input name="PAddress" id="PAddress" class="form-control">
-                                            </div>
 
-                                            <h3 class="fs-title">Applicant Identity Proof</h3>
-                                            <div class="form-check col-sm-12 col-xs-12" style="padding-top:10px;">
-                                                <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <input type="radio" id="Passport" name="IdentityProof" value="Passport">
-                                                        <label for="Passport">Passport</label>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <input type="radio" id="PAN" name="IdentityProof" value="PAN">
-                                                        <label for="PAN">PAN</label>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <input type="radio" id="voterIDCard" name="IdentityProof" value="Oter ID Card">
-                                                        <label for="OterIDCard">Voter ID Card</label>
+                                                <h3>Proposed Layout Plan of Land</h3>
+                                                <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Covered Area</label>
+                                                            <input name="MotherName" id="CoveredArea" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Open Area (Sqr Mtr.)</label>
+                                                            <input name="SpouceName" id="OpenArea" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-12 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Purpose for open area</label>
+                                                            <input name="DOB" id="Purposeforopenarea" class="form-control">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <input type="radio" id="DrivingLiecence" name="IdentityProof" value="Driving Liecence">
-                                                        <label for="DrivingLiecence">Driving Liecence</label>
+
+                                                <h3>Deatails of Proposed Investment</h3>
+                                                <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Investment in land In RS</label>
+                                                            <input name="MotherName" id="Investmentland" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Investment in Building & Factory Shed( InRs )</label>
+                                                            <input name="SpouceName" id="InvestmentBuilding" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-12 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Investment in Plant, Machinery & Equipment (in Rs.)</label>
+                                                            <input name="DOB" id="InvestmentPlant" class="form-control">
+                                                        </div>
                                                     </div>
-                                                    <div class="col-sm-4">
-                                                        <input type="radio" id="AdhaarCard" name="IdentityProof" value="AdhaarCard">
-                                                        <label for="AdhaarCard">Adhaar Card</label>
+                                                </div>
+
+                                                <h3>Fumes & Industrial Effluents Detail</h3>
+                                                <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-12 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Would any fumes be generated in the process of manufacture and if so,their nature and quantity</label>
+                                                            <input name="MotherName" id="processofmanufacture" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-12 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Industrial Efflunets</label>
+                                                            <table class="table table-bordered responsive">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th>Name of the Effluent</th>
+                                                                        <th>Quantity</th>
+                                                                        <th>Chemical Composition</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th row-header="Table heading" scope="row">1</th>
+                                                                        <td row-header="Table">Liquid</td>
+                                                                        <td row-header="Table heading"><input name="SpouceName" id="LiquidQuantity" class="form-control"></td>
+                                                                        <td row-header="heading"><input name="SpouceName" id="LiquidChemicalComposition" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th row-header="Table heading" scope="row">2</th>
+                                                                        <td row-header="Table heading">Solid</td>
+                                                                        <td row-header="Table heading"><input name="SpouceName" id="SolidQuantity" class="form-control"></td>
+                                                                        <td row-header="Table heading"><input name="SpouceName" id="SolidChemicalComposition" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th row-header="Table heading" scope="row">3</th>
+                                                                        <td row-header="Table heading">Gas</td>
+                                                                        <td row-header="Table heading"><input name="SpouceName" id="GasQuantity" class="form-control"></td>
+                                                                        <td row-header="Table heading"><input name="SpouceName" id="GasChemicalComposition" class="form-control"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-sm-4">
-                                                        <input type="radio" id="CompanyIDCard" name="IdentityProof" value="Company ID Card">
-                                                        <label for="CompanyIDCard">Company ID Card</label>
+                                                </div>
+
+                                                <h3>Industry Requirements</h3>
+                                                <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Power Requirement(in KW)</label>
+                                                            <input name="MotherName" id="PowerRequirement" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-12 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Industrial Efflunets</label>
+                                                            <table class="table table-bordered responsive">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th>#</th>
+                                                                        <th>No of Telephonic Connection</th>
+                                                                        <th>No of Fax Connection</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th row-header="Table heading" scope="row">1</th>
+                                                                        <td row-header="Table">First Year</td>
+                                                                        <td row-header="Table heading"><input name="SpouceName" id="FirstYearTelephonicConnection" class="form-control"></td>
+                                                                        <td row-header="Table heading"><input name="SpouceName" id="FirstYearFaxConnection" class="form-control"></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th row-header="Table heading" scope="row">2</th>
+                                                                        <td row-header="Table heading">Ultimate Requirement</td>
+                                                                        <td row-header="Table heading"><input name="SpouceName" id="UltimateRequirementTelephonicConnection" class="form-control"></td>
+                                                                        <td row-header="Table heading"><input name="SpouceName" id="UltimateRequirementFaxConnection" class="form-control"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <h3>Employement Generation</h3>
+                                                <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Skilled</label>
+                                                            <input name="MotherName" id="Skilled" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Unskilled</label>
+                                                            <input name="SpouceName" id="Unskilled" class="form-control">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <h3 class="fs-title">Applicant Residential Proof</h3>
-                                            <div class="form-check col-sm-12 col-xs-12" style="padding-top:10px;">
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <input type="radio" id="ElectricBill" name="ResidentialProof" value="Electric Bill">
-                                                        <label for="ElectricBill">Electric Bill</label>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <input type="radio" id="ITR" name="ResidentialProof" value="ITR">
-                                                        <label for="ITR">ITR</label>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <input type="radio" id="TelephoneBill" name="ResidentialProof" value="Telephone Bill">
-                                                        <label for="TelephoneBill">Telephone Bill</label>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <input type="radio" id="BankPassbook" name="ResidentialProof" value="Bank Passbook Account Detail">
-                                                        <label for="BankPassbook">Bank Passbook Account Detail</label>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <input type="radio" id="Passport" name="ResidentialProof" value="Passport">
-                                                        <label for="Passport">Passport</label>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <input type="radio" id="VoterIDCard" name="ResidentialProof" value="Voter ID Card">
-                                                        <label for="VoterIDCard">Voter ID Card</label>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <input type="radio" id="HRBill" name="ResidentialProof" value="HR Bill">
-                                                        <label for="HRBill">HR Bill</label>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <input type="radio" id="DrivingLiecence" name="ResidentialProof" value="Driving Liecence">
-                                                        <label for="DrivingLiecence">Driving Liecence</label>
-                                                    </div>
+                                            <input type="button" name="previous" id="Step3PreviousButton" class="previous action-button-previous" value="Previous" />
+                                            <input type="button" name="next" id="Step3NextButton" class="next action-button" value="Next Step" />
+                                        </fieldset>
+                                        <!-- Step4 fieldsets -->
+                                        <fieldset>
+                                            <div class="form-card">
+                                                <h2 class="fs-title">Bank Account Details</h2>
+                                                <div class="form-group col-sm-6 col-xs-12">
+                                                    <label for="usertype" class="text-uppercase">Bank Account Holder Name</label>
+                                                    <input name="BankAccountName" id="BankAccountName" class="form-control">
+                                                </div>
+                                                <div class="form-group col-sm-6 col-xs-12">
+                                                    <label for="usertype" class="text-uppercase">Bank Account Number</label>
+                                                    <input name="BankAccountNo" id="BankAccountNo" class="form-control">
+                                                </div>
+                                                <div class="form-group col-sm-6 col-xs-12">
+                                                    <label for="usertype" class="text-uppercase">Bank Name</label>
+                                                    <input name="BankName" id="BankName" class="form-control">
+                                                </div>
+                                                <div class="form-group col-sm-6 col-xs-12">
+                                                    <label for="usertype" class="text-uppercase">Branch Name</label>
+                                                    <input name="BranchName" id="BranchName" class="form-control" />
+                                                </div>
+                                                <div class="form-group col-sm-6 col-xs-12">
+                                                    <label for="usertype" class="text-uppercase">Branch Address</label>
+                                                    <input name="BranchAddress" id="BranchAddress" class="form-control">
+                                                </div>
+                                                <div class="form-group col-sm-6 col-xs-12">
+                                                    <label for="usertype" class="text-uppercase">Bank IFSC Code</label>
+                                                    <input name="IFSCCode" id="IFSCCode" class="form-control">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <input type="button" name="previous" id="Step2PreviousButton" class="previous action-button-previous" value="Previous" />
-                                        <input type="button" name="next" id="Step2NextButton" class="next action-button" value="Next Step" />
-                                    </fieldset>
-                                    <!-- Step3 fieldsets -->
-                                    <fieldset>
-                                        <div class="form-card">
-                                            <h3 class="fs-title">Perticular Project Details</h3>
-                                            <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Type of Industry Proposed to be Set up</label>
-                                                        <input name="ProposedIndustryType" id="ProposedIndustryType" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Estimated Cost of The Project (in RS)</label>
-                                                        <input name="ProjectEstimatedCost" id="ProjectEstimatedCost" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <input type="button" name="previous" id="Step4PreviousButton" class="previous action-button-previous" value="Previous" />
+                                            <input type="button" name="next" id="Step4NextButton" class="next action-button" value="Next Step" />
+                                        </fieldset>
+                                        <!-- Step5 fieldsets -->
+                                        <fieldset>
 
-                                            <h3>Proposed Layout Plan of Land</h3>
-                                            <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Covered Area</label>
-                                                        <input name="MotherName" id="CoveredArea" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Open Area (Sqr Mtr.)</label>
-                                                        <input name="SpouceName" id="OpenArea" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-12 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Purpose for open area</label>
-                                                        <input name="DOB" id="Purposeforopenarea" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <h3>Deatails of Proposed Investment</h3>
-                                            <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Investment in land In RS</label>
-                                                        <input name="MotherName" id="Investmentland" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Investment in Building & Factory Shed( InRs )</label>
-                                                        <input name="SpouceName" id="InvestmentBuilding" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-12 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Investment in Plant, Machinery & Equipment (in Rs.)</label>
-                                                        <input name="DOB" id="InvestmentPlant" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <h3>Fumes & Industrial Effluents Detail</h3>
-                                            <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-12 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Would any fumes be generated in the process of manufacture and if so,their nature and quantity</label>
-                                                        <input name="MotherName" id="processofmanufacture" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-12 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Industrial Efflunets</label>
-                                                        <table class="table table-bordered responsive">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>#</th>
-                                                                    <th>Name of the Effluent</th>
-                                                                    <th>Quantity</th>
-                                                                    <th>Chemical Composition</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th row-header="Table heading" scope="row">1</th>
-                                                                    <td row-header="Table">Liquid</td>
-                                                                    <td row-header="Table heading"><input name="SpouceName" id="LiquidQuantity" class="form-control"></td>
-                                                                    <td row-header="heading"><input name="SpouceName" id="LiquidChemicalComposition" class="form-control"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th row-header="Table heading" scope="row">2</th>
-                                                                    <td row-header="Table heading">Solid</td>
-                                                                    <td row-header="Table heading"><input name="SpouceName" id="SolidQuantity" class="form-control"></td>
-                                                                    <td row-header="Table heading"><input name="SpouceName" id="SolidChemicalComposition" class="form-control"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th row-header="Table heading" scope="row">3</th>
-                                                                    <td row-header="Table heading">Gas</td>
-                                                                    <td row-header="Table heading"><input name="SpouceName" id="GasQuantity" class="form-control"></td>
-                                                                    <td row-header="Table heading"><input name="SpouceName" id="GasChemicalComposition" class="form-control"></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <h3>Industry Requirements</h3>
-                                            <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Power Requirement(in KW)</label>
-                                                        <input name="MotherName" id="PowerRequirement" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-12 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Industrial Efflunets</label>
-                                                        <table class="table table-bordered responsive">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>#</th>
-                                                                    <th>#</th>
-                                                                    <th>No of Telephonic Connection</th>
-                                                                    <th>No of Fax Connection</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th row-header="Table heading" scope="row">1</th>
-                                                                    <td row-header="Table">First Year</td>
-                                                                    <td row-header="Table heading"><input name="SpouceName" id="FirstYearTelephonicConnection" class="form-control"></td>
-                                                                    <td row-header="Table heading"><input name="SpouceName" id="FirstYearFaxConnection" class="form-control"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th row-header="Table heading" scope="row">2</th>
-                                                                    <td row-header="Table heading">Ultimate Requirement</td>
-                                                                    <td row-header="Table heading"><input name="SpouceName" id="UltimateRequirementTelephonicConnection" class="form-control"></td>
-                                                                    <td row-header="Table heading"><input name="SpouceName" id="UltimateRequirementFaxConnection" class="form-control"></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <h3>Employement Generation</h3>
-                                            <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Skilled</label>
-                                                        <input name="MotherName" id="Skilled" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-sm-6 col-xs-12">
-                                                        <label for="usertype" class="text-uppercase">Unskilled</label>
-                                                        <input name="SpouceName" id="Unskilled" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <input type="button" name="previous" id="Step3PreviousButton" class="previous action-button-previous" value="Previous" />
-                                        <input type="button" name="next" id="Step3NextButton" class="next action-button" value="Next Step" />
-                                    </fieldset>
-
-                                    <fieldset>
-                                        <div class="form-card">
-                                            <h2 class="fs-title">Bank Account Details</h2>
-                                            <div class="form-group col-sm-6 col-xs-12">
-                                                <label for="usertype" class="text-uppercase">Bank Account Holder Name</label>
-                                                <input name="BankAccountName" id="BankAccountName" class="form-control">
-                                            </div>
-                                            <div class="form-group col-sm-6 col-xs-12">
-                                                <label for="usertype" class="text-uppercase">Bank Account Number</label>
-                                                <input name="BankAccountNo" id="BankAccountNo" class="form-control">
-                                            </div>
-                                            <div class="form-group col-sm-6 col-xs-12">
-                                                <label for="usertype" class="text-uppercase">Bank Name</label>
-                                                <input name="BankName" id="BankName" class="form-control">
-                                            </div>
-                                            <div class="form-group col-sm-6 col-xs-12">
-                                                <label for="usertype" class="text-uppercase">Branch Name</label>
-                                                <input name="BranchName" id="BranchName" class="form-control" />
-                                            </div>
-                                            <div class="form-group col-sm-6 col-xs-12">
-                                                <label for="usertype" class="text-uppercase">Branch Address</label>
-                                                <input name="BranchAddress" id="BranchAddress" class="form-control">
-                                            </div>
-                                            <div class="form-group col-sm-6 col-xs-12">
-                                                <label for="usertype" class="text-uppercase">Bank IFSC Code</label>
-                                                <input name="IFSCCode" id="IFSCCode" class="form-control">
-                                            </div>
-                                        </div>
-                                        <input type="button" name="previous" id="Step4PreviousButton" class="previous action-button-previous" value="Previous" />
-                                        <input type="button" name="next" id="Step4NextButton" class="next action-button" value="Next Step" />
-                                    </fieldset>
-                                    <fieldset>
-                                        @*@using (Html.BeginForm("SaveApplicantDocument", "Masters", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                            {*@
-                                        <form action="~/Masters/SaveApplicantDocument" method="post" enctype="multipart/form-data">
                                             <div class="form-card">
                                                 <h3 class="fs-title">Attached Ducument Details</h3>
                                                 <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
@@ -920,9 +920,10 @@
                                             </div>
                                             <input type="button" name="previous" id="Step5PreviousButton" class="previous action-button-previous" value="Previous" />
                                             <input type="submit" name="next" id="Step5NextButton" class="next action-button" value="Next Step" />
-                                        </form>
-                                    </fieldset>
-                                </div>
+
+                                        </fieldset>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -942,67 +943,67 @@
         var current_fs, next_fs, previous_fs; //fieldsets
         var opacity;
 
-        $(".next").click(function () {
+        //$(".next").click(function () {
 
-            current_fs = $(this).parent();
-            next_fs = $(this).parent().next();
+        //    current_fs = $(this).parent();
+        //    next_fs = $(this).parent().next();
 
-            //Add Class Active
-            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        //    //Add Class Active
+        //    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-            //show the next fieldset
-            next_fs.show();
-            //hide the current fieldset with style
-            current_fs.animate({ opacity: 0 }, {
-                step: function (now) {
-                    // for making fielset appear animation
-                    opacity = 1 - now;
+        //    //show the next fieldset
+        //    next_fs.show();
+        //    //hide the current fieldset with style
+        //    current_fs.animate({ opacity: 0 }, {
+        //        step: function (now) {
+        //            // for making fielset appear animation
+        //            opacity = 1 - now;
 
-                    current_fs.css({
-                        'display': 'none',
-                        'position': 'relative'
-                    });
-                    next_fs.css({ 'opacity': opacity });
-                },
-                duration: 600
-            });
-        });
+        //            current_fs.css({
+        //                'display': 'none',
+        //                'position': 'relative'
+        //            });
+        //            next_fs.css({ 'opacity': opacity });
+        //        },
+        //        duration: 600
+        //    });
+        //});
 
-        $(".previous").click(function () {
+        //$(".previous").click(function () {
 
-            current_fs = $(this).parent();
-            previous_fs = $(this).parent().prev();
+        //    current_fs = $(this).parent();
+        //    previous_fs = $(this).parent().prev();
 
-            //Remove class active
-            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+        //    //Remove class active
+        //    $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 
-            //show the previous fieldset
-            previous_fs.show();
+        //    //show the previous fieldset
+        //    previous_fs.show();
 
-            //hide the current fieldset with style
-            current_fs.animate({ opacity: 0 }, {
-                step: function (now) {
-                    // for making fielset appear animation
-                    opacity = 1 - now;
+        //    //hide the current fieldset with style
+        //    current_fs.animate({ opacity: 0 }, {
+        //        step: function (now) {
+        //            // for making fielset appear animation
+        //            opacity = 1 - now;
 
-                    current_fs.css({
-                        'display': 'none',
-                        'position': 'relative'
-                    });
-                    previous_fs.css({ 'opacity': opacity });
-                },
-                duration: 600
-            });
-        });
+        //            current_fs.css({
+        //                'display': 'none',
+        //                'position': 'relative'
+        //            });
+        //            previous_fs.css({ 'opacity': opacity });
+        //        },
+        //        duration: 600
+        //    });
+        //});
 
-        $('.radio-group .radio').click(function () {
-            $(this).parent().find('.radio').removeClass('selected');
-            $(this).addClass('selected');
-        });
+        //$('.radio-group .radio').click(function () {
+        //    $(this).parent().find('.radio').removeClass('selected');
+        //    $(this).addClass('selected');
+        //});
 
-        $(".submit").click(function () {
-            return false;
-        })
+        //$(".submit").click(function () {
+        //    return false;
+        //})
 
     });
 </script>
