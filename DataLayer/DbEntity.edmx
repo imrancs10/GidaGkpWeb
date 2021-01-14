@@ -116,6 +116,33 @@
           <Property Name="UnSkilled" Type="varchar" MaxLength="50" />
           <Property Name="CreationDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="ApplicantUploadDoc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ProjectReport" Type="varbinary(max)" />
+          <Property Name="ProposedPlanLandUses" Type="varbinary(max)" />
+          <Property Name="Memorendum" Type="varbinary(max)" />
+          <Property Name="ScanPAN" Type="varbinary(max)" />
+          <Property Name="ScanAddressProof" Type="varbinary(max)" />
+          <Property Name="BalanceSheet" Type="varbinary(max)" />
+          <Property Name="ITReturn" Type="varbinary(max)" />
+          <Property Name="ExperienceProof" Type="varbinary(max)" />
+          <Property Name="ApplicantEduTechQualification" Type="varbinary(max)" />
+          <Property Name="PreEstablishedIndustriesDoc" Type="varbinary(max)" />
+          <Property Name="FinDetailsEstablishedIndustries" Type="varbinary(max)" />
+          <Property Name="OtherDocForProposedIndustry" Type="varbinary(max)" />
+          <Property Name="ScanCastCert" Type="varbinary(max)" />
+          <Property Name="ScanID" Type="varbinary(max)" />
+          <Property Name="AllotmentLetter" Type="varbinary(max)" />
+          <Property Name="LandEquitionDocProof" Type="varbinary(max)" />
+          <Property Name="DocProofForIndustrialEstablishedOutsideGida" Type="varbinary(max)" />
+          <Property Name="ApplicantPhoto" Type="varbinary(max)" />
+          <Property Name="ApplicantSignature" Type="varbinary(max)" />
+          <Property Name="CreationDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="ApplicantUser">
           <Key>
             <PropertyRef Name="Id" />
@@ -141,6 +168,7 @@
           <EntitySet Name="ApplicantFormStep" EntityType="Self.ApplicantFormStep" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantPlotDetails" EntityType="Self.ApplicantPlotDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantProjectDetails" EntityType="Self.ApplicantProjectDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicantUploadDoc" EntityType="Self.ApplicantUploadDoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantUser" EntityType="Self.ApplicantUser" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -253,6 +281,7 @@
           <EntitySet Name="ApplicantPlotDetails" EntityType="Self.ApplicantPlotDetail" />
           <EntitySet Name="ApplicantUsers" EntityType="Self.ApplicantUser" />
           <EntitySet Name="ApplicantProjectDetails" EntityType="GidaGKPModel.ApplicantProjectDetail" />
+          <EntitySet Name="ApplicantUploadDocs" EntityType="GidaGKPModel.ApplicantUploadDoc" />
         </EntityContainer>
         <EntityType Name="ApplicantProjectDetail">
           <Key>
@@ -283,6 +312,33 @@
           <Property Name="UltimateNoOfFax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Skilled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UnSkilled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ApplicantUploadDoc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectReport" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProposedPlanLandUses" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Memorendum" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ScanPAN" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ScanAddressProof" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BalanceSheet" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ITReturn" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ExperienceProof" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ApplicantEduTechQualification" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PreEstablishedIndustriesDoc" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FinDetailsEstablishedIndustries" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="OtherDocForProposedIndustry" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ScanCastCert" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ScanID" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AllotmentLetter" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LandEquitionDocProof" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DocProofForIndustrialEstablishedOutsideGida" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ApplicantPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ApplicantSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
@@ -422,6 +478,34 @@
                 <ScalarProperty Name="ProposedCoveredArea" ColumnName="ProposedCoveredArea" />
                 <ScalarProperty Name="ProjectEstimatedCost" ColumnName="ProjectEstimatedCost" />
                 <ScalarProperty Name="ProposedIndustryType" ColumnName="ProposedIndustryType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantUploadDocs">
+            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantUploadDoc">
+              <MappingFragment StoreEntitySet="ApplicantUploadDoc">
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ApplicantSignature" ColumnName="ApplicantSignature" />
+                <ScalarProperty Name="ApplicantPhoto" ColumnName="ApplicantPhoto" />
+                <ScalarProperty Name="DocProofForIndustrialEstablishedOutsideGida" ColumnName="DocProofForIndustrialEstablishedOutsideGida" />
+                <ScalarProperty Name="LandEquitionDocProof" ColumnName="LandEquitionDocProof" />
+                <ScalarProperty Name="AllotmentLetter" ColumnName="AllotmentLetter" />
+                <ScalarProperty Name="ScanID" ColumnName="ScanID" />
+                <ScalarProperty Name="ScanCastCert" ColumnName="ScanCastCert" />
+                <ScalarProperty Name="OtherDocForProposedIndustry" ColumnName="OtherDocForProposedIndustry" />
+                <ScalarProperty Name="FinDetailsEstablishedIndustries" ColumnName="FinDetailsEstablishedIndustries" />
+                <ScalarProperty Name="PreEstablishedIndustriesDoc" ColumnName="PreEstablishedIndustriesDoc" />
+                <ScalarProperty Name="ApplicantEduTechQualification" ColumnName="ApplicantEduTechQualification" />
+                <ScalarProperty Name="ExperienceProof" ColumnName="ExperienceProof" />
+                <ScalarProperty Name="ITReturn" ColumnName="ITReturn" />
+                <ScalarProperty Name="BalanceSheet" ColumnName="BalanceSheet" />
+                <ScalarProperty Name="ScanAddressProof" ColumnName="ScanAddressProof" />
+                <ScalarProperty Name="ScanPAN" ColumnName="ScanPAN" />
+                <ScalarProperty Name="Memorendum" ColumnName="Memorendum" />
+                <ScalarProperty Name="ProposedPlanLandUses" ColumnName="ProposedPlanLandUses" />
+                <ScalarProperty Name="ProjectReport" ColumnName="ProjectReport" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

@@ -31,5 +31,6 @@ namespace DataLayer
         public virtual DbSet<ApplicantPlotDetail> ApplicantPlotDetails { get; set; }
         public virtual DbSet<ApplicantUser> ApplicantUsers { get; set; }
         public virtual DbSet<ApplicantProjectDetail> ApplicantProjectDetails { get; set; }
+        public virtual DbSet<ApplicantUploadDoc> ApplicantUploadDocs { get; set; }
     }
 }

@@ -3,9 +3,66 @@
     ViewBag.Title = "ApplicantDashboard";
     Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
 }
-<link href="~/styles/style.css" rel="stylesheet" />
+@*<link href="~/styles/style.css" rel="stylesheet" />*@
 <script src="~/Scripts/App/Masters/ApplicantRegistration.js"></script>
 <link href="~/styles/style.css" rel="stylesheet" />
+<style type="text/css">
+    .input-group-btn {
+        font-size: 15px !important;
+        padding-left: 5px !important;
+    }
+
+    .custom-file-uploader {
+        position: relative;
+    }
+
+        .custom-file-uploader input[type=file] {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 5;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: default;
+        }
+
+    .sr-only {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 0;
+        margin: 0px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        border: 0;
+        font-weight: 600;
+    }
+
+    .paragraph {
+        font-size: 12px;
+        padding: 5px 0;
+        color: #eb2323;
+    }
+
+    .upload_btn_cl {
+        background: #0e416c;
+        color: #fff;
+        border: 1px solid #0e416c;
+    }
+
+    .veiw_details {
+        background: #e72d2d;
+        padding: 7px 10px;
+        width: 80px;
+        color: #fff;
+        border-radius: 2px;
+        margin-top: 25px;
+    }
+</style>
 <!--<h2 style="text-align:center">Applicant Dashboard</h2>-->
 <section class="form">
     <!-- MultiStep Form -->
@@ -18,7 +75,7 @@
                         <p>Fill all form field to go to next step</p>
                         <div class="row">
                             <div class="col-md-12 mx-0">
-                                <form id="msform">
+                                <div id="msform">
                                     <!-- progressbar -->
                                     <ul id="progressbar">
                                         <li class="active" id="PlotDetail"><strong>Plot Detail</strong></li>
@@ -546,18 +603,144 @@
                                     </fieldset>
                                     <fieldset>
                                         <div class="form-card">
-                                            <h2 class="fs-title text-center">Success !</h2> <br><br>
-                                            <div class="row justify-content-center">
-                                                <div class="col-3 text-center"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image"> </div>
-                                            </div> <br><br>
-                                            <div class="row justify-content-center">
-                                                <div class="col-7 text-center">
-                                                    <h5>You Have Successfully Signed Up</h5>
+                                            <form>
+                                                <h3 class="fs-title">Attached Ducument Details</h3>
+                                                <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                    <div class="row">
+
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="file" class="sr-only">Project Reports</label>
+                                                            <div class="input-group">
+                                                                <input type="text" name="filename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="file" id="ProjectReports" onchange="this.form.filename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
+                                                        </div>
+
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Proposed plan of land usage</label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">
+                                                                Partnership Deed/Memorandum & Articles of Association/ Certificate of Incorporation of the Company, as applicable
+                                                            </label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Scan copy of Pan Card</label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Scan copy of Address Proof</label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">
+                                                                As per IT Act last three years Audited (FYs 2018-19, 2017-18, 2016-17) Balance Sheet and Profit and Loss account
+                                                            </label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">
+                                                                As per IT Act last three years (FYs 2018-19, 2017-18, 2016-17) Income Tax return and
+                                                                computation of income
+                                                            </label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">
+                                                                Experience proof for industry establishment.(GST Return-if Applicable, ITR, Electricity Bill, Sales/Purchase
+                                                                Vouchers)
+                                                            </label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">
+                                                                Applicant's educational / technical
+                                                                qualification
+                                                            </label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">
+                                                                If expansion or diversification of pre- established industry, then xerox copy of
+                                                                latest electricity bill & other documents
+                                                            </label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">
+                                                                Full financial details for industry
+                                                                establishment
+                                                            </label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">
+                                                                If any other document related to proposed
+                                                                industry
+                                                            </label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Scan copy of Caste Certificate</label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Scan copy of Identity Proof</label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">
+                                                                Copy of, Allotment Letter/Transfer of
+                                                                Plot/Lease Deed
+                                                            </label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">
+                                                                Documentary Proof of Land Acquition from
+                                                                SLAO
+                                                            </label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">
+                                                                If Industrial Unit established outside GIDA, then attach copy of Electricity bill/Landline Telephone bill issued within last one year
+                                                                from the date of application
+                                                            </label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <h3 class="fs-title">Applicant Signatory</h3>
+                                                <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Applicant Photo</label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="usertype" class="text-uppercase">Applicant Signature</label>
+                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
+                                        <input type="button" name="previous" id="Step2PreviousButton" class="previous action-button-previous" value="Previous" />
+                                        <input type="button" name="next" id="Step2NextButton" class="next action-button" value="Next Step" />
                                     </fieldset>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
