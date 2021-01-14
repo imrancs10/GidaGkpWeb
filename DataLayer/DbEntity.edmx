@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GidaGKPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GidaGKPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ApplicantBankDetails">
           <Key>
             <PropertyRef Name="Id" />
@@ -17,6 +17,33 @@
           <Property Name="IFSC_Code" Type="varchar" MaxLength="50" />
           <Property Name="AccountHolderName" Type="varchar" MaxLength="50" />
           <Property Name="BankAccountNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ApplicantDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FullApplicantName" Type="varchar" MaxLength="50" />
+          <Property Name="FName" Type="varchar" MaxLength="50" />
+          <Property Name="MName" Type="varchar" MaxLength="50" />
+          <Property Name="SName" Type="varchar" MaxLength="50" />
+          <Property Name="ApplicantDOB" Type="datetime" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+          <Property Name="Nationality" Type="varchar" MaxLength="50" />
+          <Property Name="AdhaarNumber" Type="varchar" MaxLength="50" />
+          <Property Name="PAN" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="EmailId" Type="varchar" MaxLength="50" />
+          <Property Name="Religion" Type="varchar" MaxLength="50" />
+          <Property Name="SubCategory" Type="varchar" MaxLength="50" />
+          <Property Name="CAddress" Type="varchar" MaxLength="50" />
+          <Property Name="PAddress" Type="varchar" MaxLength="50" />
+          <Property Name="IdentiyProof" Type="varchar" MaxLength="50" />
+          <Property Name="ResidentialProof" Type="varchar" MaxLength="50" />
           <Property Name="CreationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="ApplicantFormStep">
@@ -79,39 +106,16 @@
         </EntityType>
         <EntityContainer Name="GidaGKPModelStoreContainer">
           <EntitySet Name="ApplicantBankDetails" EntityType="Self.ApplicantBankDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicantDetails" EntityType="Self.ApplicantDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantFormStep" EntityType="Self.ApplicantFormStep" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantPlotDetails" EntityType="Self.ApplicantPlotDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantUser" EntityType="Self.ApplicantUser" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GidaGKPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ApplicantUser">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreationDate" Type="DateTime" Precision="3" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FullName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="DOB" Type="DateTime" Precision="3" />
-          <Property Name="FatherName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="AadharNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SchemeType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="SchemeName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="SectorName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="AllotmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityContainer Name="GidaGKPEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ApplicantUsers" EntityType="Self.ApplicantUser" />
-          <EntitySet Name="ApplicantBankDetails" EntityType="GidaGKPModel.ApplicantBankDetail" />
-          <EntitySet Name="ApplicantPlotDetails" EntityType="GidaGKPModel.ApplicantPlotDetail" />
-          <EntitySet Name="ApplicantFormSteps" EntityType="GidaGKPModel.ApplicantFormStep" />
-        </EntityContainer>
         <EntityType Name="ApplicantBankDetail">
           <Key>
             <PropertyRef Name="Id" />
@@ -125,6 +129,41 @@
           <Property Name="AccountHolderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ApplicantDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FullApplicantName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantDOB" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdhaarNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdentiyProof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ResidentialProof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ApplicantFormStep">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ApplicantStepCompleted" Type="Int32" />
         </EntityType>
         <EntityType Name="ApplicantPlotDetail">
           <Key>
@@ -157,93 +196,139 @@
           <Property Name="RelationshipStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="ApplicantFormStep">
+        <EntityType Name="ApplicantUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="ApplicantStepCompleted" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="FullName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="FatherName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AadharNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SchemeType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SchemeName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SectorName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AllotmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityContainer Name="GidaGKPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicantBankDetails" EntityType="Self.ApplicantBankDetail" />
+          <EntitySet Name="ApplicantDetails" EntityType="Self.ApplicantDetail" />
+          <EntitySet Name="ApplicantFormSteps" EntityType="Self.ApplicantFormStep" />
+          <EntitySet Name="ApplicantPlotDetails" EntityType="Self.ApplicantPlotDetail" />
+          <EntitySet Name="ApplicantUsers" EntityType="Self.ApplicantUser" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GidaGKPModelStoreContainer" CdmEntityContainer="GidaGKPEntities">
-          <EntitySetMapping Name="ApplicantUsers">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantUser">
-              <MappingFragment StoreEntitySet="ApplicantUser">
-                <ScalarProperty Name="AllotmentNumber" ColumnName="AllotmentNumber" />
-                <ScalarProperty Name="SectorName" ColumnName="SectorName" />
-                <ScalarProperty Name="SchemeName" ColumnName="SchemeName" />
-                <ScalarProperty Name="SchemeType" ColumnName="SchemeType" />
-                <ScalarProperty Name="AadharNumber" ColumnName="AadharNumber" />
-                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ApplicantBankDetails">
             <EntityTypeMapping TypeName="GidaGKPModel.ApplicantBankDetail">
               <MappingFragment StoreEntitySet="ApplicantBankDetails">
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
-                <ScalarProperty Name="AccountHolderName" ColumnName="AccountHolderName" />
-                <ScalarProperty Name="IFSC_Code" ColumnName="IFSC_Code" />
-                <ScalarProperty Name="BBAddress" ColumnName="BBAddress" />
-                <ScalarProperty Name="BBName" ColumnName="BBName" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BBName" ColumnName="BBName" />
+                <ScalarProperty Name="BBAddress" ColumnName="BBAddress" />
+                <ScalarProperty Name="IFSC_Code" ColumnName="IFSC_Code" />
+                <ScalarProperty Name="AccountHolderName" ColumnName="AccountHolderName" />
+                <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ApplicantPlotDetails">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantPlotDetail">
-              <MappingFragment StoreEntitySet="ApplicantPlotDetails">
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="RelationshipStatus" ColumnName="RelationshipStatus" />
-                <ScalarProperty Name="SignatryPermanentPhoneNumber" ColumnName="SignatryPermanentPhoneNumber" />
-                <ScalarProperty Name="SignatryPermanentAddress" ColumnName="SignatryPermanentAddress" />
-                <ScalarProperty Name="SignatryPresentPhoneNumber" ColumnName="SignatryPresentPhoneNumber" />
-                <ScalarProperty Name="SignatryPresentAddress" ColumnName="SignatryPresentAddress" />
-                <ScalarProperty Name="SignatryDateOfBirth" ColumnName="SignatryDateOfBirth" />
-                <ScalarProperty Name="SignatryName" ColumnName="SignatryName" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="IndustryOwnership" ColumnName="IndustryOwnership" />
-                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
-                <ScalarProperty Name="EarnestMoney" ColumnName="EarnestMoney" />
-                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-                <ScalarProperty Name="ApplicationFee" ColumnName="ApplicationFee" />
-                <ScalarProperty Name="GST" ColumnName="GST" />
-                <ScalarProperty Name="TotalInvestment" ColumnName="TotalInvestment" />
-                <ScalarProperty Name="PaymentSchedule" ColumnName="PaymentSchedule" />
-                <ScalarProperty Name="EstimatedRate" ColumnName="EstimatedRate" />
-                <ScalarProperty Name="SectorName" ColumnName="SectorName" />
-                <ScalarProperty Name="PlotArea" ColumnName="PlotArea" />
-                <ScalarProperty Name="PlotRange" ColumnName="PlotRange" />
-                <ScalarProperty Name="SchemeName" ColumnName="SchemeName" />
-                <ScalarProperty Name="SchemeType" ColumnName="SchemeType" />
-                <ScalarProperty Name="AppliedFor" ColumnName="AppliedFor" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <EntitySetMapping Name="ApplicantDetails">
+            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantDetail">
+              <MappingFragment StoreEntitySet="ApplicantDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FullApplicantName" ColumnName="FullApplicantName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="MName" ColumnName="MName" />
+                <ScalarProperty Name="SName" ColumnName="SName" />
+                <ScalarProperty Name="ApplicantDOB" ColumnName="ApplicantDOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="AdhaarNumber" ColumnName="AdhaarNumber" />
+                <ScalarProperty Name="PAN" ColumnName="PAN" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="CAddress" ColumnName="CAddress" />
+                <ScalarProperty Name="PAddress" ColumnName="PAddress" />
+                <ScalarProperty Name="IdentiyProof" ColumnName="IdentiyProof" />
+                <ScalarProperty Name="ResidentialProof" ColumnName="ResidentialProof" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicantFormSteps">
             <EntityTypeMapping TypeName="GidaGKPModel.ApplicantFormStep">
               <MappingFragment StoreEntitySet="ApplicantFormStep">
-                <ScalarProperty Name="ApplicantStepCompleted" ColumnName="ApplicantStepCompleted" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicantStepCompleted" ColumnName="ApplicantStepCompleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantPlotDetails">
+            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantPlotDetail">
+              <MappingFragment StoreEntitySet="ApplicantPlotDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AppliedFor" ColumnName="AppliedFor" />
+                <ScalarProperty Name="SchemeType" ColumnName="SchemeType" />
+                <ScalarProperty Name="SchemeName" ColumnName="SchemeName" />
+                <ScalarProperty Name="PlotRange" ColumnName="PlotRange" />
+                <ScalarProperty Name="PlotArea" ColumnName="PlotArea" />
+                <ScalarProperty Name="SectorName" ColumnName="SectorName" />
+                <ScalarProperty Name="EstimatedRate" ColumnName="EstimatedRate" />
+                <ScalarProperty Name="PaymentSchedule" ColumnName="PaymentSchedule" />
+                <ScalarProperty Name="TotalInvestment" ColumnName="TotalInvestment" />
+                <ScalarProperty Name="GST" ColumnName="GST" />
+                <ScalarProperty Name="ApplicationFee" ColumnName="ApplicationFee" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="EarnestMoney" ColumnName="EarnestMoney" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="IndustryOwnership" ColumnName="IndustryOwnership" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="SignatryName" ColumnName="SignatryName" />
+                <ScalarProperty Name="SignatryDateOfBirth" ColumnName="SignatryDateOfBirth" />
+                <ScalarProperty Name="SignatryPresentAddress" ColumnName="SignatryPresentAddress" />
+                <ScalarProperty Name="SignatryPresentPhoneNumber" ColumnName="SignatryPresentPhoneNumber" />
+                <ScalarProperty Name="SignatryPermanentAddress" ColumnName="SignatryPermanentAddress" />
+                <ScalarProperty Name="SignatryPermanentPhoneNumber" ColumnName="SignatryPermanentPhoneNumber" />
+                <ScalarProperty Name="RelationshipStatus" ColumnName="RelationshipStatus" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantUsers">
+            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantUser">
+              <MappingFragment StoreEntitySet="ApplicantUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="AadharNumber" ColumnName="AadharNumber" />
+                <ScalarProperty Name="SchemeType" ColumnName="SchemeType" />
+                <ScalarProperty Name="SchemeName" ColumnName="SchemeName" />
+                <ScalarProperty Name="SectorName" ColumnName="SectorName" />
+                <ScalarProperty Name="AllotmentNumber" ColumnName="AllotmentNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

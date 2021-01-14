@@ -28,7 +28,7 @@
                                         <li id="AttachDocument"><strong>Attach Document</strong></li>
                                         @*<li id="MakePayment"><strong>Make Payment</strong></li>*@
                                     </ul>
-                                    <!-- fieldsets -->
+                                    <!-- Step1 fieldsets -->
                                     <fieldset>
                                         @*<form id="msform" action="/Masters/SavePlotDetail" method="POST">*@
                                         <div class="form-card">
@@ -188,6 +188,7 @@
                                         <input type="button" id="btnPlotDetailSave" name="next" class="next action-button" value="Save & Next" />
                                         @*</form>*@
                                     </fieldset>
+                                    <!-- Step2 fieldsets -->
                                     <fieldset>
                                         <div class="form-card">
                                             <h3 class="fs-title">Applicant Peronal Details</h3>
@@ -211,7 +212,7 @@
                                                     </div>
                                                     <div class="form-group col-sm-6 col-xs-12">
                                                         <label for="usertype" class="text-uppercase">Date of Birth</label>
-                                                        <input name="DOB" id="DOB" class="form-control">
+                                                        <input name="DOB"  type="date" id="DOB" class="form-control">
                                                     </div>
                                                     <div class="form-group col-sm-6 col-xs-12">
                                                         <label for="usertype" class="text-uppercase">Gender</label>
@@ -245,7 +246,7 @@
                                                     </div>
                                                     <div class="form-group col-sm-6 col-xs-12">
                                                         <label for="usertype" class="text-uppercase">PAN Number</label>
-                                                        <input name="PAN" id="PAN" class="form-control" value="50">
+                                                        <input name="PAN" id="PAN" class="form-control" value="">
                                                     </div>
                                                     <div class="form-group col-sm-6 col-xs-12">
                                                         <label for="usertype" class="text-uppercase">Mobile Number</label>
@@ -287,74 +288,79 @@
                                                 <label for="usertype" class="text-uppercase">Permanent Address</label>
                                                 <input name="PAddress" id="PAddress" class="form-control">
                                             </div>
-                                        </div>
-                                        <h3 class="fs-title">Applicant Identity Proof</h3>
-                                        <div class="form-check col-sm-12 col-xs-12" style="padding-top:10px;">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="Passport" name="Passport" value="Passport">
-                                                    <label for="Passport">Passport</label>
+
+                                            <h3 class="fs-title">Applicant Identity Proof</h3>
+                                            <div class="form-check col-sm-12 col-xs-12" style="padding-top:10px;">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <input type="radio" id="Passport" name="IdentityProof" value="Passport">
+                                                        <label for="Passport">Passport</label>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input type="radio" id="PAN" name="IdentityProof" value="PAN">
+                                                        <label for="PAN">PAN</label>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input type="radio" id="voterIDCard" name="IdentityProof" value="Oter ID Card">
+                                                        <label for="OterIDCard">Voter ID Card</label>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="PAN" name="PAN" value="PAN">
-                                                    <label for="PAN">PAN</label>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <input type="radio" id="DrivingLiecence" name="IdentityProof" value="Driving Liecence">
+                                                        <label for="DrivingLiecence">Driving Liecence</label>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input type="radio" id="AdhaarCard" name="IdentityProof" value="AdhaarCard">
+                                                        <label for="AdhaarCard">Adhaar Card</label>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <input type="radio" id="CompanyIDCard" name="IdentityProof" value="Company ID Card">
+                                                        <label for="CompanyIDCard">Company ID Card</label>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="OterIDCard" name="OterIDCard" value="Oter ID Card">
-                                                    <label for="OterIDCard">Voter ID Card</label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="DrivingLiecence" name="DrivingLiecence" value="Driving Liecence">
-                                                    <label for="DrivingLiecence">Driving Liecence</label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="AdhaarCard" name="AdhaarCard" value="AdhaarCard">
-                                                    <label for="AdhaarCard">Adhaar Card</label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="CompanyIDCard" name="CompanyIDCard" value="Company ID Card">
-                                                    <label for="CompanyIDCard">Company ID Card</label>
+                                            </div>
+
+                                            <h3 class="fs-title">Applicant Residential Proof</h3>
+                                            <div class="form-check col-sm-12 col-xs-12" style="padding-top:10px;">
+                                                <div class="row">
+                                                    <div class="col-sm-3">
+                                                        <input type="radio" id="ElectricBill" name="ResidentialProof" value="Electric Bill">
+                                                        <label for="ElectricBill">Electric Bill</label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="radio" id="ITR" name="ResidentialProof" value="ITR">
+                                                        <label for="ITR">ITR</label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="radio" id="TelephoneBill" name="ResidentialProof" value="Telephone Bill">
+                                                        <label for="TelephoneBill">Telephone Bill</label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="radio" id="BankPassbook" name="ResidentialProof" value="Bank Passbook Account Detail">
+                                                        <label for="BankPassbook">Bank Passbook Account Detail</label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="radio" id="Passport" name="ResidentialProof" value="Passport">
+                                                        <label for="Passport">Passport</label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="radio" id="VoterIDCard" name="ResidentialProof" value="Voter ID Card">
+                                                        <label for="VoterIDCard">Voter ID Card</label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="radio" id="HRBill" name="ResidentialProof" value="HR Bill">
+                                                        <label for="HRBill">HR Bill</label>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <input type="radio" id="DrivingLiecence" name="ResidentialProof" value="Driving Liecence">
+                                                        <label for="DrivingLiecence">Driving Liecence</label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <h3 class="fs-title">Applicant Residential Proof</h3>
-                                        <div class="form-check col-sm-12 col-xs-12" style="padding-top:10px;">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="ElectricBill" name="ElectricBill" value="Electric Bill">
-                                                    <label for="ElectricBill">Electric Bill</label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="ITR" name="ITR" value="ITR">
-                                                    <label for="ITR">ITR</label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="TelephoneBill" name="TelephoneBill" value="Telephone Bill">
-                                                    <label for="TelephoneBill">Telephone Bill</label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="BankPassbook" name="BankPassbook" value="Bank Passbook Account Detail">
-                                                    <label for="BankPassbook">Bank Passbook Account Detail</label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="Passport" name="Passport" value="Passport">
-                                                    <label for="Passport">Passport</label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="VoterIDCard" name="VoterIDCard" value="Voter ID Card">
-                                                    <label for="VoterIDCard">Voter ID Card</label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="HRBill" name="HRBill" value="HR Bill">
-                                                    <label for="HRBill">HR Bill</label>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="radio" id="DrivingLiecence" name="DrivingLiecence" value="Driving Liecence">
-                                                    <label for="DrivingLiecence">Driving Liecence</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <input type="button" name="next" class="next action-button" value="Next Step" />
+                                        <input type="button" name="previous" id="Step2PreviousButton" class="previous action-button-previous" value="Previous" />
+                                        <input type="button" name="next" id="Step2NextButton" class="next action-button" value="Next Step" />
                                     </fieldset>
                                     <fieldset>
                                         <div class="form-card">

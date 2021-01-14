@@ -131,6 +131,7 @@ $(document).ready(function () {
         //    }
         //});
     }
+   
     $('#btnPlotDetailSave').on('click', function (e) {
         var url = '/masters/SavePlotDetail';
         var inputData = {
@@ -164,5 +165,90 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('#Step2PreviousButton').on('click', function (e) {
+        $('#progressbar li').removeClass('active');
+        $('#PlotDetail').addClass('active');
+    });
+
+    $('#Step2NextButton').on('click', function (e) {
+        var url = '/masters/SaveApplicantDetails';
+        var IdentityProof = '';
+        if ($('#Passport').prop('checked')) {
+            IdentityProof = $('#Passport').val();
+        }
+        else if ($('#PAN').prop('checked')) {
+            IdentityProof = $('#PAN').val();
+        }
+        else if ($('#voterIDCard').prop('checked')) {
+            IdentityProof = $('#voterIDCard').val();
+        }
+        else if ($('#DrivingLiecence').prop('checked')) {
+            IdentityProof = $('#DrivingLiecence').val();
+        }
+        else if ($('#AdhaarCard').prop('checked')) {
+            IdentityProof = $('#AdhaarCard').val();
+        }
+        else if ($('#CompanyIDCard').prop('checked')) {
+            IdentityProof = $('#CompanyIDCard').val();
+        }
+
+        var ResidentialProof = '';
+        if ($('#ElectricBill').prop('checked')) {
+            ResidentialProof = $('#ElectricBill').val();
+        }
+        else if ($('#ITR').prop('checked')) {
+            ResidentialProof = $('#ITR').val();
+        }
+        else if ($('#TelephoneBill').prop('checked')) {
+            ResidentialProof = $('#TelephoneBill').val();
+        }
+        else if ($('#BankPassbook').prop('checked')) {
+            ResidentialProof = $('#BankPassbook').val();
+        }
+        else if ($('#Passport').prop('checked')) {
+            ResidentialProof = $('#Passport').val();
+        }
+        else if ($('#VoterIDCard').prop('checked')) {
+            ResidentialProof = $('#VoterIDCard').val();
+        }
+        else if ($('#HRBill').prop('checked')) {
+            ResidentialProof = $('#HRBill').val();
+        }
+        else if ($('#DrivingLiecence').prop('checked')) {
+            ResidentialProof = $('#DrivingLiecence').val();
+        }
+
+        var inputData = {
+            FullName: $('#FullName').val(),
+            FName: $('#FName').val(),
+            MName: $('#MName').val(),
+            SName: $('#SName').val(),
+            DOB: $('#DOB').val(),
+            Gender: $('#Gender').val(),
+            Reservation: $('#Reservation').val(),
+            Nationality: $('#Nationality').val(),
+            AdhaarNo: $('#AdhaarNo').val(),
+            PAN: $('#PAN').val(),
+            MobileNo: $('#MobileNo').val(),
+            Phone: $('#Phone').val(),
+            Email: $('#Email').val(),
+            Religion: $('#Religion').val(),
+            SubCategory: $('#SubCategory').val(),
+            CAddress: $('#CAddress').val(),
+            PAddress: $('#PAddress').val(),
+            IdentityProof: $('#IdentityProof').val(),
+            ResidentialProof: $('#ResidentialProof').val(),
+        };
+
+        utility.ajax.helperWithData(url, inputData, function (data) {
+            if (data == 'Data has been updated') {
+                $('#progressbar li').removeClass('active');
+                $('#ProjectDetail').addClass('active');
+                utility.alert.setAlert(utility.alert.alertType.success, 'Applicant Detail has been Saved');
+            }
+        });
+    });
+
 });
 

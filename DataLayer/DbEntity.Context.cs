@@ -25,9 +25,10 @@ namespace DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ApplicantUser> ApplicantUsers { get; set; }
         public virtual DbSet<ApplicantBankDetail> ApplicantBankDetails { get; set; }
-        public virtual DbSet<ApplicantPlotDetail> ApplicantPlotDetails { get; set; }
+        public virtual DbSet<ApplicantDetail> ApplicantDetails { get; set; }
         public virtual DbSet<ApplicantFormStep> ApplicantFormSteps { get; set; }
+        public virtual DbSet<ApplicantPlotDetail> ApplicantPlotDetails { get; set; }
+        public virtual DbSet<ApplicantUser> ApplicantUsers { get; set; }
     }
 }

@@ -37,6 +37,19 @@ namespace GidaGkpWeb.Controllers
             return Json(CrudResponse(_details.SavePlotDetail(UserData.UserId, AppliedFor, SchemeType, PlotRange, SchemeName, plotArea, SectorName, EstimatedRate, PaymemtSchedule, TotalInvestment, ApplicationFee, EarnestMoneyDeposite, GST, NetAmount, TotalAmount, IndustryOwnershipType, UnitName, Name, dob, PresentAddress, PermanentAddress, RelationshipStatus)), JsonRequestBehavior.AllowGet);
         }
 
+
+        [HttpPost]
+        public JsonResult SaveApplicantDetails(string FullName, string FName, string MName, string SName, string DOB, string Gender, string Reservation, string Nationality, string AdhaarNo, string PAN, string MobileNo, string Phone, string Email, string Religion, string SubCategory, string CAddress, string PAddress, string IdentityProof, string ResidentialProof)
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            if (string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(FName))
+            {
+                SetAlertMessage("Incomplete Detail", "Error");
+                return null;
+            }
+            return Json(CrudResponse(_details.SaveApplicantDetail(UserData.UserId, FullName, FName, MName, SName, DOB, Gender, Reservation, Nationality, AdhaarNo, PAN, MobileNo, Phone, Email, Religion, SubCategory, CAddress, PAddress, IdentityProof, ResidentialProof)), JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Logout()
         {
             Session.Abandon();

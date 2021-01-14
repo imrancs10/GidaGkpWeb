@@ -122,6 +122,9 @@
     <Compile Include="ApplicantBankDetail.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="ApplicantDetail.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="ApplicantFormStep.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
