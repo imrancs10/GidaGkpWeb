@@ -256,6 +256,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BAL\Login\LoginDetails.cs" />
+    <Compile Include="BAL\Masters\ApplicantDetails.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\CustomPrincipalSerializeModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -283,6 +284,7 @@
     <Compile Include="Infrastructure\Authentication\CustomPrincipal.cs" />
     <Compile Include="Infrastructure\Authentication\CustomPrincipalSerializeModel.cs" />
     <Compile Include="Infrastructure\Authentication\ICustomPrincipal.cs" />
+    <Compile Include="Infrastructure\Utility\BaseViewPage.cs" />
     <Compile Include="Infrastructure\Utility\EmailHelper.cs" />
     <Compile Include="Infrastructure\Utility\Serializer.cs" />
     <Compile Include="Infrastructure\Utility\VerificationCodeGeneration.cs" />
@@ -543,7 +545,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="BAL\Commom\" />
-    <Folder Include="BAL\Masters\" />
     <Folder Include="Models\Common\" />
     <Folder Include="Views\Common\" />
   </ItemGroup>

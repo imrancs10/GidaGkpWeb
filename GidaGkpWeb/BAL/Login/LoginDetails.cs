@@ -29,8 +29,8 @@ namespace GidaGkpWeb.BAL.Login
             {
                 UserData.UserId = _userRow.Id;
                 UserData.Username = _userRow.UserName;
-                UserData.FirstName = _userRow.FullName;
-                UserData.MiddleName = _userRow.Email;
+                UserData.FullName = _userRow.FullName;
+                UserData.Email = _userRow.Email;
                 return Enums.LoginMessage.Authenticated;
             }
             else

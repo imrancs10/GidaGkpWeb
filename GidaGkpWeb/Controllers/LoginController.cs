@@ -162,10 +162,7 @@ namespace GidaGkpWeb.Controllers
         {
             CustomPrincipalSerializeModel serializeModel = new CustomPrincipalSerializeModel();
             serializeModel.Id = UserData.UserId;
-            serializeModel.FirstName = string.IsNullOrEmpty(UserData.FirstName) ? string.Empty : UserData.FirstName;
-            serializeModel.MiddleName = string.IsNullOrEmpty(UserData.MiddleName) ? string.Empty : UserData.MiddleName;
-            serializeModel.LastName = string.IsNullOrEmpty(UserData.LastName) ? string.Empty : UserData.LastName;
-            serializeModel.LastName = string.IsNullOrEmpty(UserData.Username) ? string.Empty : UserData.Username;
+            serializeModel.FullName = string.IsNullOrEmpty(UserData.FullName) ? string.Empty : UserData.FullName;
             serializeModel.Email = string.IsNullOrEmpty(UserData.Email) ? string.Empty : UserData.Email;
 
             JavaScriptSerializer serializer = new JavaScriptSerializer();

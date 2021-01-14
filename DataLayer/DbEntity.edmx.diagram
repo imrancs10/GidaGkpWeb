@@ -6,6 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="94dfead311174a9cb64d335280ad274b" Name="Diagram1">
         <EntityTypeShape EntityType="GidaGKPModel.ApplicantUser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GidaGKPModel.ApplicantBankDetail" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GidaGKPModel.ApplicantPlotDetail" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="GidaGKPModel.ApplicantFormStep" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -8,6 +8,8 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using GidaGkpWeb.Global;
 using GidaGkpWeb.Models.Masters;
+using GidaGkpWeb.BAL.Login;
+using GidaGkpWeb.BAL;
 
 namespace GidaGkpWeb.Controllers
 {
@@ -21,6 +23,18 @@ namespace GidaGkpWeb.Controllers
         public ActionResult ApplicantDashboard()
         {
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult SavePlotDetail(string AppliedFor, string SchemeType, string PlotRange, string SchemeName, string plotArea, string SectorName, string EstimatedRate, string PaymemtSchedule, string TotalInvestment, string ApplicationFee, string EarnestMoneyDeposite, string GST, string NetAmount, string TotalAmount, string IndustryOwnershipType, string UnitName, string Name, string dob, string PresentAddress, string PermanentAddress, string RelationshipStatus)
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            if (string.IsNullOrEmpty(AppliedFor) || string.IsNullOrEmpty(SchemeType))
+            {
+                SetAlertMessage("Incomplete Detail", "Error");
+                return null;
+            }
+            return Json(CrudResponse(_details.SavePlotDetail(UserData.UserId, AppliedFor, SchemeType, PlotRange, SchemeName, plotArea, SectorName, EstimatedRate, PaymemtSchedule, TotalInvestment, ApplicationFee, EarnestMoneyDeposite, GST, NetAmount, TotalAmount, IndustryOwnershipType, UnitName, Name, dob, PresentAddress, PermanentAddress, RelationshipStatus)), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Logout()

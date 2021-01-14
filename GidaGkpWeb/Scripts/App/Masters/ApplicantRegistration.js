@@ -131,5 +131,38 @@ $(document).ready(function () {
         //    }
         //});
     }
+    $('#btnPlotDetailSave').on('click', function (e) {
+        var url = '/masters/SavePlotDetail';
+        var inputData = {
+            ApplicationFee : $('#ApplicationFee').val(),
+            AppliedFor : $('#AppliedFor').val(),
+            EarnestMoney : $('#EarnestMoneyDeposite').val(),
+            EstimatedRate : $('#EstimatedRate').val(),
+            GST : $('#GST').val(),
+            IndustryOwnership : $('#IndustryOwnershipType').val(),
+            NetAmount : $('#NetAmount').val(),
+            PaymentSchedule : $('#PaymemtSchedule').val(),
+            PlotArea : $('#plotArea').val(),
+            PlotRange : $('#PlotRange').val(),
+            RelationshipStatus : $('#RelationshipStatus').val(),
+            SchemeName : $('#SchemeName').val(),
+            SchemeType : $('#SchemeType').val(),
+            SectorName : $('#SectorName').val(),
+            dob: $('#dob').val(),
+            SignatryName : $('#Name').val(),
+            PermanentAddress : $('#PermanentAddress').val(),
+            PresentAddress : $('#PresentAddress').val(),
+            TotalAmount : $('#TotalAmount').val(),
+            TotalInvestment : $('#TotalInvestment').val(),
+            UnitName : $('#UnitName').val()
+        };
+        utility.ajax.helperWithData(url, inputData, function (data) {
+            if (data == 'Data has been updated') {
+                $('#progressbar li').removeClass('active');
+                $('#ApplicantDetail').addClass('active');
+                utility.alert.setAlert(utility.alert.alertType.success, 'Plot Detail has been Saved');
+            }
+        });
+    });
 });
 

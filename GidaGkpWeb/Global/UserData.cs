@@ -33,18 +33,18 @@ namespace GidaGkpWeb.Global
             }
             set { HttpContext.Current.Session["username"] = value; }
         }
-        public static string FirstName
+        public static string FullName
         {
             get
             {
-                if (System.Web.HttpContext.Current.Session["FirstName"] != null)
+                if (System.Web.HttpContext.Current.Session["FullName"] != null)
                 {
-                    return HttpContext.Current.Session["FirstName"].ToString();
+                    return HttpContext.Current.Session["FullName"].ToString();
                 }
                 else
                     return string.Empty;
             }
-            set { HttpContext.Current.Session["FirstName"] = value; }
+            set { HttpContext.Current.Session["FullName"] = value; }
         }
         public static string MiddleName
         {

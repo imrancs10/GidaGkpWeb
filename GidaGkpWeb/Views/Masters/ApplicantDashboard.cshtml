@@ -27,15 +27,17 @@
                                         <li id="BankDetail"><strong>Bank Detail</strong></li>
                                         <li id="AttachDocument"><strong>Attach Document</strong></li>
                                         @*<li id="MakePayment"><strong>Make Payment</strong></li>*@
-                                    </ul> <!-- fieldsets -->
+                                    </ul>
+                                    <!-- fieldsets -->
                                     <fieldset>
+                                        @*<form id="msform" action="/Masters/SavePlotDetail" method="POST">*@
                                         <div class="form-card">
                                             <h2 class="fs-title">Plot Detail</h2>
                                             <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
                                                 <div class="row">
                                                     <div class="form-group col-sm-12 col-xs-12">
                                                         <label for="usertype" class="text-uppercase">Applied For</label>
-                                                        <select name="AppliedFor" id="AppliedFor" class="form-control">
+                                                        <select name="AppliedFor" id="AppliedFor" class="form-control" required>
                                                             <option value="">Select</option>
                                                             <option value="Affected by land acquisition">
                                                                 Affected by land acquisition
@@ -109,7 +111,7 @@
                                                     </div>
                                                     <div class="form-group col-sm-6 col-xs-12">
                                                         <label for="usertype" class="text-uppercase">Application Fee</label>
-                                                        <input name="TotalInvestment" id="TotalInvestment" class="form-control" value="1000">
+                                                        <input name="ApplicationFee" id="ApplicationFee" class="form-control" value="1000">
                                                     </div>
                                                     <div class="form-group col-sm-6 col-xs-12">
                                                         <label for="usertype" class="text-uppercase">Earnest Money Deposite</label>
@@ -135,7 +137,7 @@
                                                 <div class="row">
                                                     <div class="form-group col-sm-6 col-xs-12">
                                                         <label for="usertype" class="text-uppercase">Industry Ownership Type</label>
-                                                        <select name="AppliedFor" id="AppliedFor" class="form-control">
+                                                        <select name="IndustryOwnershipType" id="IndustryOwnershipType" class="form-control">
                                                             <option value="">Select</option>
                                                             <option value="Affected by land acquisition">
                                                                 Individual or Sole Proprietorship
@@ -167,12 +169,12 @@
 
                                                     <div class="form-group col-sm-6 col-xs-12">
                                                         <label for="usertype" class="text-uppercase">Permanent Address and Contact No</label>
-                                                        <textarea name="PresentAddress" class="form-control"></textarea>
+                                                        <textarea name="PermanentAddress" class="form-control"></textarea>
                                                     </div>
 
                                                     <div class="form-group col-sm-6 col-xs-12">
                                                         <label for="usertype" class="text-uppercase">Relationship Status</label>
-                                                        <select name="AppliedFor" id="AppliedFor" class="form-control">
+                                                        <select name="RelationshipStatus" id="AppliedFor" class="form-control">
                                                             <option value="">Select</option>
                                                             <option value="Married">Married</option>
                                                             <option value="UnMarried">UnMarried</option>
@@ -183,7 +185,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <input type="button" name="next" class="next action-button" value="Save & Next" />
+                                        <input type="button" id="btnPlotDetailSave" name="next" class="next action-button" value="Save & Next" />
+                                        @*</form>*@
                                     </fieldset>
                                     <fieldset>
                                         <div class="form-card">

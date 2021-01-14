@@ -5,6 +5,59 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="GidaGKPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApplicantBankDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BankName" Type="varchar" MaxLength="50" />
+          <Property Name="BBName" Type="varchar" MaxLength="50" />
+          <Property Name="BBAddress" Type="varchar" MaxLength="500" />
+          <Property Name="IFSC_Code" Type="varchar" MaxLength="50" />
+          <Property Name="AccountHolderName" Type="varchar" MaxLength="50" />
+          <Property Name="BankAccountNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ApplicantFormStep">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ApplicantStepCompleted" Type="int" />
+        </EntityType>
+        <EntityType Name="ApplicantPlotDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="AppliedFor" Type="nvarchar" MaxLength="50" />
+          <Property Name="SchemeType" Type="nvarchar" MaxLength="50" />
+          <Property Name="SchemeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlotRange" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlotArea" Type="nvarchar" MaxLength="50" />
+          <Property Name="SectorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EstimatedRate" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentSchedule" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalInvestment" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="GST" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ApplicationFee" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="EarnestMoney" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="NetAmount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IndustryOwnership" Type="nvarchar" MaxLength="50" />
+          <Property Name="UnitName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SignatryName" Type="varchar" MaxLength="50" />
+          <Property Name="SignatryDateOfBirth" Type="datetime" />
+          <Property Name="SignatryPresentAddress" Type="varchar" MaxLength="500" />
+          <Property Name="SignatryPresentPhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="SignatryPermanentAddress" Type="varchar" MaxLength="500" />
+          <Property Name="SignatryPermanentPhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="RelationshipStatus" Type="varchar" MaxLength="50" />
+          <Property Name="CreationDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="ApplicantUser">
           <Key>
             <PropertyRef Name="Id" />
@@ -25,6 +78,9 @@
           <Property Name="AllotmentNumber" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="GidaGKPModelStoreContainer">
+          <EntitySet Name="ApplicantBankDetails" EntityType="Self.ApplicantBankDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicantFormStep" EntityType="Self.ApplicantFormStep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicantPlotDetails" EntityType="Self.ApplicantPlotDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantUser" EntityType="Self.ApplicantUser" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -52,7 +108,63 @@
         </EntityType>
         <EntityContainer Name="GidaGKPEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ApplicantUsers" EntityType="Self.ApplicantUser" />
+          <EntitySet Name="ApplicantBankDetails" EntityType="GidaGKPModel.ApplicantBankDetail" />
+          <EntitySet Name="ApplicantPlotDetails" EntityType="GidaGKPModel.ApplicantPlotDetail" />
+          <EntitySet Name="ApplicantFormSteps" EntityType="GidaGKPModel.ApplicantFormStep" />
         </EntityContainer>
+        <EntityType Name="ApplicantBankDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BBName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BBAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IFSC_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountHolderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ApplicantPlotDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="AppliedFor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SchemeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SchemeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlotRange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlotArea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SectorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EstimatedRate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentSchedule" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalInvestment" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="GST" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ApplicationFee" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EarnestMoney" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="NetAmount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IndustryOwnership" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SignatryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SignatryDateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="SignatryPresentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SignatryPresentPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SignatryPermanentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SignatryPermanentPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RelationshipStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ApplicantFormStep">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ApplicantStepCompleted" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -76,6 +188,62 @@
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantBankDetails">
+            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantBankDetail">
+              <MappingFragment StoreEntitySet="ApplicantBankDetails">
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
+                <ScalarProperty Name="AccountHolderName" ColumnName="AccountHolderName" />
+                <ScalarProperty Name="IFSC_Code" ColumnName="IFSC_Code" />
+                <ScalarProperty Name="BBAddress" ColumnName="BBAddress" />
+                <ScalarProperty Name="BBName" ColumnName="BBName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantPlotDetails">
+            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantPlotDetail">
+              <MappingFragment StoreEntitySet="ApplicantPlotDetails">
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="RelationshipStatus" ColumnName="RelationshipStatus" />
+                <ScalarProperty Name="SignatryPermanentPhoneNumber" ColumnName="SignatryPermanentPhoneNumber" />
+                <ScalarProperty Name="SignatryPermanentAddress" ColumnName="SignatryPermanentAddress" />
+                <ScalarProperty Name="SignatryPresentPhoneNumber" ColumnName="SignatryPresentPhoneNumber" />
+                <ScalarProperty Name="SignatryPresentAddress" ColumnName="SignatryPresentAddress" />
+                <ScalarProperty Name="SignatryDateOfBirth" ColumnName="SignatryDateOfBirth" />
+                <ScalarProperty Name="SignatryName" ColumnName="SignatryName" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="IndustryOwnership" ColumnName="IndustryOwnership" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="EarnestMoney" ColumnName="EarnestMoney" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="ApplicationFee" ColumnName="ApplicationFee" />
+                <ScalarProperty Name="GST" ColumnName="GST" />
+                <ScalarProperty Name="TotalInvestment" ColumnName="TotalInvestment" />
+                <ScalarProperty Name="PaymentSchedule" ColumnName="PaymentSchedule" />
+                <ScalarProperty Name="EstimatedRate" ColumnName="EstimatedRate" />
+                <ScalarProperty Name="SectorName" ColumnName="SectorName" />
+                <ScalarProperty Name="PlotArea" ColumnName="PlotArea" />
+                <ScalarProperty Name="PlotRange" ColumnName="PlotRange" />
+                <ScalarProperty Name="SchemeName" ColumnName="SchemeName" />
+                <ScalarProperty Name="SchemeType" ColumnName="SchemeType" />
+                <ScalarProperty Name="AppliedFor" ColumnName="AppliedFor" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantFormSteps">
+            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantFormStep">
+              <MappingFragment StoreEntitySet="ApplicantFormStep">
+                <ScalarProperty Name="ApplicantStepCompleted" ColumnName="ApplicantStepCompleted" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
