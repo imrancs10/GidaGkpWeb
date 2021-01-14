@@ -75,13 +75,73 @@ namespace GidaGkpWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveApplicantDocument(HttpPostedFileBase File1)
+        public ActionResult SaveApplicantDocument(HttpPostedFileBase ProjectReports, HttpPostedFileBase Proposedplan, HttpPostedFileBase PartnershipDeed,
+            HttpPostedFileBase PanCard, HttpPostedFileBase AddressProof, HttpPostedFileBase BalanceSheet, HttpPostedFileBase IncomeTaxreturn,
+            HttpPostedFileBase Experienceproof, HttpPostedFileBase educationalqualification, HttpPostedFileBase electricitybill,
+            HttpPostedFileBase financialdetails, HttpPostedFileBase Otherproposedindustry, HttpPostedFileBase CasteCertificate,
+            HttpPostedFileBase IdentityProof, HttpPostedFileBase AllotmentLetter, HttpPostedFileBase LandAcquition,
+            HttpPostedFileBase outsideGIDAElectricitybill,HttpPostedFileBase ApplicantPhoto,HttpPostedFileBase ApplicantSignature)
         {
             ApplicantUploadDoc documentDetail = new ApplicantUploadDoc();
-            if (File1 != null && File1.ContentLength > 0)
+            if (ProjectReports != null && ProjectReports.ContentLength > 0)
             {
-                documentDetail.AllotmentLetter = new byte[File1.ContentLength];
-                File1.InputStream.Read(documentDetail.AllotmentLetter, 0, File1.ContentLength);
+                documentDetail.ProjectReport = new byte[ProjectReports.ContentLength];
+                ProjectReports.InputStream.Read(documentDetail.ProjectReport, 0, ProjectReports.ContentLength);
+
+                documentDetail.ProposedPlanLandUses = new byte[Proposedplan.ContentLength];
+                Proposedplan.InputStream.Read(documentDetail.ProposedPlanLandUses, 0, Proposedplan.ContentLength);
+
+                documentDetail.Memorendum = new byte[PartnershipDeed.ContentLength];
+                PartnershipDeed.InputStream.Read(documentDetail.Memorendum, 0, PartnershipDeed.ContentLength);
+
+                documentDetail.ScanPAN = new byte[PanCard.ContentLength];
+                PanCard.InputStream.Read(documentDetail.ScanPAN, 0, PanCard.ContentLength);
+
+                documentDetail.ScanAddressProof = new byte[AddressProof.ContentLength];
+                AddressProof.InputStream.Read(documentDetail.ScanPAN, 0, AddressProof.ContentLength);
+
+                documentDetail.BalanceSheet = new byte[BalanceSheet.ContentLength];
+                BalanceSheet.InputStream.Read(documentDetail.ScanPAN, 0, BalanceSheet.ContentLength);
+
+                documentDetail.ITReturn = new byte[IncomeTaxreturn.ContentLength];
+                IncomeTaxreturn.InputStream.Read(documentDetail.ITReturn, 0, IncomeTaxreturn.ContentLength);
+
+                documentDetail.ExperienceProof = new byte[Experienceproof.ContentLength];
+                Experienceproof.InputStream.Read(documentDetail.ExperienceProof, 0, Experienceproof.ContentLength);
+
+                documentDetail.ApplicantEduTechQualification = new byte[educationalqualification.ContentLength];
+                educationalqualification.InputStream.Read(documentDetail.ApplicantEduTechQualification, 0, educationalqualification.ContentLength);
+
+                documentDetail.PreEstablishedIndustriesDoc = new byte[electricitybill.ContentLength];
+                electricitybill.InputStream.Read(documentDetail.PreEstablishedIndustriesDoc, 0, electricitybill.ContentLength);
+
+                documentDetail.FinDetailsEstablishedIndustries = new byte[financialdetails.ContentLength];
+                financialdetails.InputStream.Read(documentDetail.FinDetailsEstablishedIndustries, 0, financialdetails.ContentLength);
+
+                documentDetail.OtherDocForProposedIndustry = new byte[Otherproposedindustry.ContentLength];
+                Otherproposedindustry.InputStream.Read(documentDetail.OtherDocForProposedIndustry, 0, Otherproposedindustry.ContentLength);
+
+                documentDetail.ScanCastCert = new byte[CasteCertificate.ContentLength];
+                CasteCertificate.InputStream.Read(documentDetail.ScanCastCert, 0, CasteCertificate.ContentLength);
+
+                documentDetail.ScanID = new byte[IdentityProof.ContentLength];
+                IdentityProof.InputStream.Read(documentDetail.ScanID, 0, IdentityProof.ContentLength);
+
+                documentDetail.AllotmentLetter = new byte[AllotmentLetter.ContentLength];
+                AllotmentLetter.InputStream.Read(documentDetail.AllotmentLetter, 0, AllotmentLetter.ContentLength);
+
+                documentDetail.LandEquitionDocProof = new byte[LandAcquition.ContentLength];
+                LandAcquition.InputStream.Read(documentDetail.LandEquitionDocProof, 0, LandAcquition.ContentLength);
+
+                //documentDetail.LandEquitionDocProof = new byte[outsideGIDAElectricitybill.ContentLength];
+                //outsideGIDAElectricitybill.InputStream.Read(documentDetail.LandEquitionDocProof, 0, outsideGIDAElectricitybill.ContentLength);
+
+                documentDetail.ApplicantPhoto = new byte[ApplicantPhoto.ContentLength];
+                ApplicantPhoto.InputStream.Read(documentDetail.ApplicantPhoto, 0, ApplicantPhoto.ContentLength);
+
+                documentDetail.ApplicantSignature = new byte[ApplicantSignature.ContentLength];
+                ApplicantSignature.InputStream.Read(documentDetail.ApplicantSignature, 0, ApplicantSignature.ContentLength);
+
                 ApplicantDetails _details = new ApplicantDetails();
                 _details.SaveApplicantDocument(UserData.UserId, documentDetail);
                 SetAlertMessage("document detail saved", "Document Entry");

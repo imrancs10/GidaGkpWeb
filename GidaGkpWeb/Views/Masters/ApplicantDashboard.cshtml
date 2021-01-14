@@ -602,8 +602,9 @@
                                         <input type="button" name="next" id="Step4NextButton" class="next action-button" value="Next Step" />
                                     </fieldset>
                                     <fieldset>
-                                        @using (Html.BeginForm("SaveApplicantDocument", "Masters", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                        {
+                                        @*@using (Html.BeginForm("SaveApplicantDocument", "Masters", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                            {*@
+                                        <form action="~/Masters/SaveApplicantDocument" method="post" enctype="multipart/form-data">
                                             <div class="form-card">
                                                 <h3 class="fs-title">Attached Ducument Details</h3>
                                                 <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
@@ -612,10 +613,10 @@
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="file" class="sr-only">Project Reports</label>
                                                             <div class="input-group">
-                                                                <input type="text" name="filename" class="form-control" placeholder="No file selected" readonly>
+                                                                <input type="text" name="ProjectReportsfilename" class="form-control" placeholder="No file selected" readonly>
                                                                 <span class="input-group-btn">
                                                                     <div class="btn btn-default upload_btn_cl custom-file-uploader">
-                                                                        <input type="file" name="file" id="ProjectReports" onchange="this.form.filename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <input type="file" name="ProjectReports" id="ProjectReports" onchange="this.form.ProjectReportsfilename.value = this.files.length ? this.files[0].name : ''" />
                                                                         <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
                                                                     </div>
                                                                 </span>
@@ -624,122 +625,302 @@
                                                         </div>
 
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Proposed plan of land usage</label>
-                                                            <input type="file" class="custom-file-input" id="Proposedplan">
+                                                            <label for="file" class="sr-only">Proposed plan of land usage</label>
+                                                            <div class="input-group">
+                                                                <input type="text" name="Proposedplanfilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="Proposedplan" onchange="this.form.Proposedplanfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
+
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">
-                                                                Partnership Deed/Memorandum & Articles of Association/ Certificate of Incorporation of the Company, as applicable
-                                                            </label>
-                                                            <input type="file" class="custom-file-input" id="PartnershipDeed">
+                                                            <label for="file" class="sr-only">Partnership Deed/Memorandum & Articles of Association/ Certificate of Incorporation of the Company, as applicable</label>
+                                                            <div class="input-group">
+                                                                <input type="text" name="PartnershipDeedfilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="PartnershipDeed" onchange="this.form.PartnershipDeedfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
+
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Scan copy of Pan Card</label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <label for="file" class="sr-only">Scan copy of Pan Card</label>
+                                                            <div class="input-group">
+                                                                <input type="text" name="PanCardfilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="PanCard" onchange="this.form.PanCardfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
+
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Scan copy of Address Proof</label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <label for="file" class="sr-only">Scan copy of Address Proof</label>
+                                                            <div class="input-group">
+                                                                <input type="text" name="AddressProoffilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="AddressProof" onchange="this.form.AddressProoffilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
+
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">
-                                                                As per IT Act last three years Audited (FYs 2018-19, 2017-18, 2016-17) Balance Sheet and Profit and Loss account
-                                                            </label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <label for="file" class="sr-only">As per IT Act last three years Audited (FYs 2018-19, 2017-18, 2016-17) Balance Sheet and Profit and Loss account</label>
+                                                            <div class="input-group">
+                                                                <input type="text" name="BalanceSheetfilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="BalanceSheet" onchange="this.form.BalanceSheetfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
+
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">
+                                                            <label for="file" class="sr-only">
                                                                 As per IT Act last three years (FYs 2018-19, 2017-18, 2016-17) Income Tax return and
                                                                 computation of income
                                                             </label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <div class="input-group">
+                                                                <input type="text" name="IncomeTaxreturnfilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="IncomeTaxreturn" onchange="this.form.IncomeTaxreturnfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
+
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">
+                                                            <label for="file" class="sr-only">
                                                                 Experience proof for industry establishment.(GST Return-if Applicable, ITR, Electricity Bill, Sales/Purchase
                                                                 Vouchers)
                                                             </label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <div class="input-group">
+                                                                <input type="text" name="Experienceprooffilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="Experienceproof" onchange="this.form.Experienceprooffilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
+
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">
+                                                            <label for="file" class="sr-only">
                                                                 Applicant's educational / technical
                                                                 qualification
                                                             </label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <div class="input-group">
+                                                                <input type="text" name="educationalqualificationfilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="educationalqualification" onchange="this.form.educationalqualificationfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
+
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">
+                                                            <label for="file" class="sr-only">
                                                                 If expansion or diversification of pre- established industry, then xerox copy of
                                                                 latest electricity bill & other documents
                                                             </label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <div class="input-group">
+                                                                <input type="text" name="electricitybillfilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="electricitybill" onchange="this.form.electricitybillfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
+
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">
+                                                            <label for="file" class="sr-only">
                                                                 Full financial details for industry
                                                                 establishment
                                                             </label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <div class="input-group">
+                                                                <input type="text" name="financialdetailsfilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="financialdetails" onchange="this.form.financialdetailsfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
+
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">
+                                                            <label for="file" class="sr-only">
                                                                 If any other document related to proposed
                                                                 industry
                                                             </label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
-                                                        </div>
-                                                        <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Scan copy of Caste Certificate</label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
-                                                        </div>
-                                                        <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Scan copy of Identity Proof</label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <div class="input-group">
+                                                                <input type="text" name="Otherproposedindustryfilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="Otherproposedindustry" onchange="this.form.Otherproposedindustryfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
 
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">
-                                                                Copy of, Allotment Letter/Transfer of
+                                                            <label for="file" class="sr-only">
+                                                                Scan copy of Caste Certificate
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <input type="text" name="CasteCertificatefilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="CasteCertificate" onchange="this.form.CasteCertificatefilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
+                                                        </div>
+
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="file" class="sr-only">
+                                                                Scan copy of Identity Proof
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <input type="text" name="IdentityProoffilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="IdentityProof" onchange="this.form.IdentityProoffilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
+                                                        </div>
+
+                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                            <label for="file" class="sr-only">
+                                                                Copy of Allotment Letter/Transfer of
                                                                 Plot/Lease Deed
                                                             </label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <div class="input-group">
+                                                                <input type="text" name="AllotmentLetterfilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="AllotmentLetter" onchange="this.form.AllotmentLetterfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
 
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">
+                                                            <label for="file" class="sr-only">
                                                                 Documentary Proof of Land Acquition from
                                                                 SLAO
                                                             </label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <div class="input-group">
+                                                                <input type="text" name="LandAcquitionfilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="LandAcquition" onchange="this.form.LandAcquitionfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
 
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">
+                                                            <label for="file" class="sr-only">
                                                                 If Industrial Unit established outside GIDA, then attach copy of Electricity bill/Landline Telephone bill issued within last one year
                                                                 from the date of application
                                                             </label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <div class="input-group">
+                                                                <input type="text" name="outsideGIDAElectricitybillfilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="outsideGIDAElectricitybill" onchange="this.form.outsideGIDAElectricitybillfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                                 <h3 class="fs-title">Applicant Signatory</h3>
                                                 <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
                                                     <div class="row">
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Applicant Photo</label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <label for="file" class="sr-only">
+                                                                Applicant Photo
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <input type="text" name="ApplicantPhotofilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="ApplicantPhoto" onchange="this.form.ApplicantPhotofilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
+
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Applicant Signature</label>
-                                                            <input type="file" class="custom-file-input" id="customFile">
+                                                            <label for="file" class="sr-only">
+                                                                Applicant Signature
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <input type="text" name="ApplicantSignaturefilename" class="form-control" placeholder="No file selected" readonly>
+                                                                <span class="input-group-btn">
+                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                        <input type="file" name="ApplicantSignature" onchange="this.form.ApplicantSignaturefilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select a file
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <input type="button" name="previous" id="Step5PreviousButton" class="previous action-button-previous" value="Previous" />
                                             <input type="submit" name="next" id="Step5NextButton" class="next action-button" value="Next Step" />
-                                        }
+                                        </form>
                                     </fieldset>
                                 </div>
                             </div>
