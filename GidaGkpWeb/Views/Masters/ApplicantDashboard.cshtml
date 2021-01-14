@@ -190,8 +190,171 @@
                                     </fieldset>
                                     <fieldset>
                                         <div class="form-card">
-                                            <h2 class="fs-title">Personal Information</h2> <input type="text" name="fname" placeholder="First Name" /> <input type="text" name="lname" placeholder="Last Name" /> <input type="text" name="phno" placeholder="Contact No." /> <input type="text" name="phno_2" placeholder="Alternate Contact No." />
-                                        </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="next" class="next action-button" value="Next Step" />
+                                            <h3 class="fs-title">Applicant Peronal Details</h3>
+                                            <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
+                                                <div class="row">
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Full Name of Applicant</label>
+                                                        <input name="FullName" id="FullName" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Father's Name</label>
+                                                        <input name="FatherName" id="FName" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Mother's Name</label>
+                                                        <input name="MotherName" id="MName" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Spouce Name</label>
+                                                        <input name="SpouceName" id="SName" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Date of Birth</label>
+                                                        <input name="DOB" id="DOB" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Gender</label>
+                                                        <select name="Gender" id="Gender" class="form-control">
+                                                            <option value="">Select</option>
+                                                            <option value="Male">Male</option>
+                                                            <option value="Female">Female</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Reservation Category</label>
+                                                        <select name="Reservation" id="Reservation" class="form-control">
+                                                            <option value="">Select</option>
+                                                            <option value="General">General</option>
+                                                            <option value="OBC">OBC</option>
+                                                            <option value="SC">SC</option>
+                                                            <option value="ST">ST</option>
+                                                            <option value="Others">others</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Nationality</label>
+                                                        <select name="Nationality" id="Nationality" class="form-control">
+                                                            <option value="Indian">Indian</option>
+                                                            <option value="Others">others</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Adhaar Number</label>
+                                                        <input name="AdhaarNo" id="AdhaarNo" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">PAN Number</label>
+                                                        <input name="PAN" id="PAN" class="form-control" value="50">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Mobile Number</label>
+                                                        <input name="MobileNo" id="MobileNo" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Phone Number</label>
+                                                        <input name="Phone" id="Phone" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Email ID</label>
+                                                        <input name="Email" id="Email" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Religion</label>
+                                                        <select name="Religion" id="Religion" class="form-control">
+                                                            <option value="">Select</option>
+                                                            <option value="Hindu">Hindu</option>
+                                                            <option value="Muslim">Muslim</option>
+                                                            <option value="Sikh">Sikh</option>
+                                                            <option value="Others">others</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="usertype" class="text-uppercase">Sub-Category</label>
+                                                        <select name="SubCategory" id="SubCategory" class="form-control">
+                                                            <option value="">Select</option>
+                                                            <option value="Others">others</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h3 class="fs-title">Applicant Identity Details</h3>
+                                            <div class="form-group col-sm-6 col-xs-12">
+                                                <label for="usertype" class="text-uppercase">Current Address</label>
+                                                <input name="CAddress" id="CAddress" class="form-control">
+                                            </div>
+                                            <div class="form-group col-sm-6 col-xs-12">
+                                                <label for="usertype" class="text-uppercase">Permanent Address</label>
+                                                <input name="PAddress" id="PAddress" class="form-control">
+                                            </div>
+                                        </div>
+                                        <h3 class="fs-title">Applicant Identity Proof</h3>
+                                        <div class="form-check col-sm-12 col-xs-12" style="padding-top:10px;">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="Passport" name="Passport" value="Passport">
+                                                    <label for="Passport">Passport</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="PAN" name="PAN" value="PAN">
+                                                    <label for="PAN">PAN</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="OterIDCard" name="OterIDCard" value="Oter ID Card">
+                                                    <label for="OterIDCard">Voter ID Card</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="DrivingLiecence" name="DrivingLiecence" value="Driving Liecence">
+                                                    <label for="DrivingLiecence">Driving Liecence</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="AdhaarCard" name="AdhaarCard" value="AdhaarCard">
+                                                    <label for="AdhaarCard">Adhaar Card</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="CompanyIDCard" name="CompanyIDCard" value="Company ID Card">
+                                                    <label for="CompanyIDCard">Company ID Card</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3 class="fs-title">Applicant Residential Proof</h3>
+                                        <div class="form-check col-sm-12 col-xs-12" style="padding-top:10px;">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="ElectricBill" name="ElectricBill" value="Electric Bill">
+                                                    <label for="ElectricBill">Electric Bill</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="ITR" name="ITR" value="ITR">
+                                                    <label for="ITR">ITR</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="TelephoneBill" name="TelephoneBill" value="Telephone Bill">
+                                                    <label for="TelephoneBill">Telephone Bill</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="BankPassbook" name="BankPassbook" value="Bank Passbook Account Detail">
+                                                    <label for="BankPassbook">Bank Passbook Account Detail</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="Passport" name="Passport" value="Passport">
+                                                    <label for="Passport">Passport</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="VoterIDCard" name="VoterIDCard" value="Voter ID Card">
+                                                    <label for="VoterIDCard">Voter ID Card</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="HRBill" name="HRBill" value="HR Bill">
+                                                    <label for="HRBill">HR Bill</label>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="radio" id="DrivingLiecence" name="DrivingLiecence" value="Driving Liecence">
+                                                    <label for="DrivingLiecence">Driving Liecence</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="button" name="next" class="next action-button" value="Next Step" />
                                     </fieldset>
                                     <fieldset>
                                         <div class="form-card">
