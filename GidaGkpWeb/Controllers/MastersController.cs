@@ -31,7 +31,7 @@ namespace GidaGkpWeb.Controllers
             ApplicantDetails _details = new ApplicantDetails();
             if (string.IsNullOrEmpty(AppliedFor) || string.IsNullOrEmpty(SchemeType))
             {
-                SetAlertMessage("Incomplete Detail", "Error");
+                //SetAlertMessage("Incomplete Detail", "Error");
                 return null;
             }
             return Json(CrudResponse(_details.SavePlotDetail(UserData.UserId, AppliedFor, SchemeType, PlotRange, SchemeName, plotArea, SectorName, EstimatedRate, PaymemtSchedule, TotalInvestment, ApplicationFee, EarnestMoneyDeposite, GST, NetAmount, TotalAmount, IndustryOwnershipType, UnitName, Name, dob, PresentAddress, PermanentAddress, RelationshipStatus)), JsonRequestBehavior.AllowGet);
@@ -44,7 +44,7 @@ namespace GidaGkpWeb.Controllers
             ApplicantDetails _details = new ApplicantDetails();
             if (string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(FName))
             {
-                SetAlertMessage("Incomplete Detail", "Error");
+                //SetAlertMessage("Incomplete Detail", "Error");
                 return null;
             }
             return Json(CrudResponse(_details.SaveApplicantDetail(UserData.UserId, FullName, FName, MName, SName, DOB, Gender, Reservation, Nationality, AdhaarNo, PAN, MobileNo, Phone, Email, Religion, SubCategory, CAddress, PAddress, IdentityProof, ResidentialProof)), JsonRequestBehavior.AllowGet);
@@ -56,7 +56,7 @@ namespace GidaGkpWeb.Controllers
             ApplicantDetails _details = new ApplicantDetails();
             if (string.IsNullOrEmpty(ProposedIndustryType) || string.IsNullOrEmpty(ProjectEstimatedCost))
             {
-                SetAlertMessage("Incomplete Detail", "Error");
+                //SetAlertMessage("Incomplete Detail", "Error");
                 return null;
             }
             return Json(CrudResponse(_details.SaveProjectDetail(UserData.UserId, ProposedIndustryType, ProjectEstimatedCost, ProposedCoveredArea, ProposedOpenArea, PurpuseOpenArea, ProposedInvestmentLand, ProposedInvestmentBuilding, ProposedInvestmentPlant, FumesNatureQuantity, LiquidQuantity, LiquidChemicalComposition, SolidQuantity, SolidChemicalComposition, GasQuantity, GasChemicalComposition, PowerRequirement, FirstYearNoOfTelephone, FirstYearNoOfFax, UltimateNoOfTelephone, UltimateNoOfFax, Skilled, UnSkilled)), JsonRequestBehavior.AllowGet);
@@ -68,7 +68,7 @@ namespace GidaGkpWeb.Controllers
             ApplicantDetails _details = new ApplicantDetails();
             if (string.IsNullOrEmpty(BankAccountName) || string.IsNullOrEmpty(BankAccountNo))
             {
-                SetAlertMessage("Incomplete Detail", "Error");
+                //SetAlertMessage("Incomplete Detail", "Error");
                 return null;
             }
             return Json(CrudResponse(_details.SaveBankDetail(UserData.UserId, BankAccountName, BankAccountNo, BankName, BranchName, BranchAddress, IFSCCode)), JsonRequestBehavior.AllowGet);
