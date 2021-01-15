@@ -7,154 +7,173 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Welcome to GIDA | Gorakhpur Industrial Development Authority</title>
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="~/styles/bootstrap.css">
-    <link rel="stylesheet" href="~/styles/dependencies.css">
-    <link rel="stylesheet" href="~/styles/components.css">
-    <link rel="stylesheet" href="~/styles/wrapkit.css">
-    <link rel="stylesheet" href="~/styles/demo.css">
-    <link rel="stylesheet" href="~/styles/deamon.css">
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="~/Scripts/App/Global/App.js"></script>
-    <script src="~/Scripts/App/Global/Utility.js"></script>
-    @RenderSection("scripts", required: false)
-    @*gidagkp impots*@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="shortcut icon" href="files/favicon.ico" type="image/vnd.microsoft.icon" />
-    <meta name="Generator" content="Drupal 7 (http://drupal.org)" />
-
-    <!--<link rel="shortcut icon" href="http://www.greaternoidaauthority.com/favicon.ico" />-->
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.base.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.menus.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.messages.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.theme.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/modules/date/date_api/date9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/modules/date/date_popup/themes/datepicker.1.79e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/field/theme/field.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/node/node.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/user/user.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/modules/views/css/views9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-
-    <link href="@Url.Content("~/Content/sites/all/modules/ctools/css/ctools9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/modules/views_ticker/views.ticker.scroller9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-
-
-    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/bootstrap9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/base9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/default9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/compatibility9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-
-    <link href="@Url.Content("~/Content/sites/all/themes/new/css/styles9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/themes/new/css/menu9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="~/Content/ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/flick/jquery-ui.css" />
-
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.base.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.menus.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.messages.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/system/system.theme.css?qisrxa")" rel="stylesheet" type="text/css" />
-
-    <link href="@Url.Content("~/Content/sites/all/modules/date/date_api/date9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/modules/date/date_popup/themes/datepicker.1.79e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/field/theme/field.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/node/node.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("https://www.greaternoidaauthority.in/modules/user/user.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/modules/views/css/views9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-
-    <link href="@Url.Content("~/Content/sites/all/modules/ctools/css/ctools9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/modules/views_ticker/views.ticker.scroller9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-
-    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/bootstrap9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/base9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/default9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/modules/tb_megamenu/css/compatibility9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-
-    <link href="@Url.Content("~/Content/sites/all/themes/new/css/styles9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/sites/all/themes/new/css/menu9e56.css?qisrxa")" rel="stylesheet" type="text/css" />
-
-    <!-- HTML5 element support for IE6-8 -->
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+        <!--New Bootstrep-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/styles/style.css" rel="stylesheet" />   
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="~/Content/sites/all/modules/jquery_update/replace/jquery/1.10/jquery.min468f.js?v=1.10.2"></script>
-    <script type="text/javascript" src="https://www.greaternoidaauthority.in/misc/jquery-extend-3.4.0.js?v=1.10.2"></script>
-    <script type="text/javascript" src="https://www.greaternoidaauthority.in/misc/jquery-html-prefilter-3.5.0-backport.js?v=1.10.2"></script>
-    <script type="text/javascript" src="https://www.greaternoidaauthority.in/misc/jquery.once.js?v=1.2"></script>
-    <script type="text/javascript" src="https://www.greaternoidaauthority.in/misc/drupal.js?qisrxa"></script>
-    <script type="text/javascript" src="~/Content/sites/all/modules/views_ticker/js/jquery.vticker-min9e56.js?qisrxa"></script>
-    <script type="text/javascript">
-    </script>
-    <script type="text/javascript" src="~/Content/sites/all/modules/tb_megamenu/js/tb-megamenu-frontend9e56.js?qisrxa"></script>
-    <script type="text/javascript" src="~/Content/sites/all/modules/tb_megamenu/js/tb-megamenu-touch9e56.js?qisrxa"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">          
+    <style type="text/css">
+    </style>
 </head>
-<body class="html front not-logged-in no-sidebars page-node">
-    <div class="container-fluid" style="background:#EBF9F7">
+<body>
+    <div class="container-fluid" style="background:#f6f6f6">
         <div class="row">
-            <div class="col-xs-3">
-            </div>
-            <div class="col-xs-6">
-                <div class="logotitle" style="text-align:center; margin-top:5px">
-                    <img src="~/Content/files/Gida-mainlogo.png" width="120px" height="80px" alt="logo" /><br />
-                    Gorakhpur Industrial Development Authority (GIDA)<br />
-                    <div class="logohtitle" style="text-align:center; margin-left:100px; margin-bottom:5px">गोरखपुर औद्योगिक विकास प्राधिकरण  (गीडा) </div> <!--<br/><hr>  , गोरखपुर</hr>स्वदेशी उद्योग अंतरराष्ट्रीय मानक से अग्रसारित-->
-                </div>
-            </div>
-            <div class="col-xs-3">
-            </div>
-        </div>
-    </div><!-- EOF:#navbar -->
-    <div class="container-fluid" style="background:#EEF6F5">
-        <div class="row" style="background:#EEF6F5;margin-bottom:0px;height:28px;">
-            <div class="col-md-12 col-sm-12 col-xs-12" style="background:#EEF6F5">
-                <div class="region region-top-menu">
-                    <div id="block-tb-megamenu-main-menu" class="block block-tb-megamenu">
-
-
-                        <div class="content" style="background:#EEF6F5">
-                            <div class="tb-megamenu tb-megamenu-main-menu">
-                                <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar tb-megamenu-button" type="button">
-                                    <i class="fa fa-reorder"></i>
-                                </button>
-                                <div class="nav-collapse  always-show" style="background:#EEF6F5">
-                                    <ul class="tb-megamenu-nav nav level-0 items-8">
-                                        <li data-id="465" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" class="tb-megamenu-item level-2 mega">
-                                            <a href="/Home/ApplicantDashboard" title="Home">
-                                                <span class="glyphicon glyphicon-home"></span>
-                                                Home
-                                            </a>
-                                        </li>
-                                        <li data-id="465" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" class="tb-megamenu-item level-2 mega">
-                                            <a href="/Home/ApplicantDashboard" title="Home">
-                                                <span class="glyphicon glyphicon-envelope"></span>
-                                                Apply for Plot
-                                            </a>
-                                        </li>
-                                        <li data-id="465" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" class="tb-megamenu-item level-2 mega" style="margin-left:900px">
-                                            <a href="/Masters/Logout" title="Logout">
-                                                <span class="glyphicon glyphicon-log-out"></span>
-                                                logout
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-xs-4">
+                <div class="pull-left">
+                    <div style="margin-left:1em; padding-top: 8px;" class="time">
+                        <noscript>
+                            Javascript Required
+                        </noscript>
+                        <script type="text/javascript">
+                            var d = new Date()
+                            var weekday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+                            var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+                            document.write(weekday[d.getDay()] + ", ")
+                            document.write(d.getDate() + " ")
+                            document.write(monthname[d.getMonth()] + ", ")
+                            document.write(d.getFullYear())
+                        </script>Thursday, 14 Jan, 2021
+                        <span id="clockDisplay">10:39:34 PM</span>
                     </div>
                 </div>
-
             </div>
-
+            <div class="col-xs-8">                
+            </div>
         </div>
     </div>
 
+    <div class="container-fluid" style="background:#fff">
+        <div class="row" style="padding:10px 0px;">
+            <div class="col-xs-10">
+
+                <a href="index.html" title="Home" rel="home">
+                    <img src="~/Content/files/Gida-mainlogo.png" class="logo_class" alt="Home">
+                </a>
+
+
+
+                <div class="logotitle">
+                    Gorakhpur Industrial Development Authority (GIDA)<br>
+                    <div class="logohtitle">गोरखपुर औद्योगिक विकास प्राधिकरण  (गीडा) </div> <!--<br/><hr>  , गोरखपुर</hr>स्वदेशी उद्योग अंतरराष्ट्रीय मानक से अग्रसारित-->
+                </div>
+
+            </div>
+            <div class="col-xs-2">
+                <div style="margin-top:0.5em;margin-bottom:0.5em;margin-right:2em;" class="pull-right">
+                    <!--<a href="industrial.html">
+                        <img width="80px" src="files/ecotech.gif" width="">
+                    </a>&nbsp;&nbsp; -->
+                    <a href="javascript:void(0);">
+                        <img height="80px" src="~/Content/files/Uttar_Pradesh.svg.png" width="80px">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="navbar">
+        <nav class="navbar nav_class navbar-default navbar-static-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <div class="col-sm-12 col-xs-12" style="padding: 0 30px;">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/Home/ApplicantDashboard" title="Home">Apply For Plots</a></li>
+                        <li><a href="#">Link</a></li>
+                        <!--<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="kopie"><a href="#">Dropdown</a></li>
+                                <li><a href="#">Dropdown Link 1</a></li>
+                                <li class="active"><a href="#">Dropdown Link 2</a></li>
+                                <li><a href="#">Dropdown Link 3</a></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Link 4</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="kopie"><a href="#">Dropdown Link 4</a></li>
+                                        <li><a href="#">Dropdown Submenu Link 4.1</a></li>
+                                        <li><a href="#">Dropdown Submenu Link 4.2</a></li>
+                                        <li><a href="#">Dropdown Submenu Link 4.3</a></li>
+                                        <li><a href="#">Dropdown Submenu Link 4.4</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Link 5</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="kopie"><a href="#">Dropdown Link 5</a></li>
+                                        <li><a href="#">Dropdown Submenu Link 5.1</a></li>
+                                        <li><a href="#">Dropdown Submenu Link 5.2</a></li>
+                                        <li><a href="#">Dropdown Submenu Link 5.3</a></li>
+                                        <li class="dropdown dropdown-submenu">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Submenu Link 5.4</a>
+                                            <ul class="dropdown-menu">
+                                                <li class="kopie"><a href="#">Dropdown Submenu Link 5.4</a></li>
+                                                <li><a href="#">Dropdown Submenu Link 5.4.1</a></li>
+                                                <li><a href="#">Dropdown Submenu Link 5.4.2</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="kopie"><a href="#">Dropdown2</a></li>
+                                <li><a href="#">Dropdown2 Link 1</a></li>
+                                <li><a href="#">Dropdown2 Link 2</a></li>
+                                <li><a href="#">Dropdown2 Link 3</a></li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 Link 4</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="kopie"><a href="#">Dropdown2 Link 4</a></li>
+                                        <li><a href="#">Dropdown2 Submenu Link 4.1</a></li>
+                                        <li><a href="#">Dropdown2 Submenu Link 4.2</a></li>
+                                        <li><a href="#">Dropdown2 Submenu Link 4.3</a></li>
+                                        <li><a href="#">Dropdown2 Submenu Link 4.4</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-submenu">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 Link 5</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="kopie"><a href="#">Dropdown Link 5</a></li>
+                                        <li><a href="#">Dropdown2 Submenu Link 5.1</a></li>
+                                        <li><a href="#">Dropdown2 Submenu Link 5.2</a></li>
+                                        <li><a href="#">Dropdown2 Submenu Link 5.3</a></li>
+                                        <li class="dropdown dropdown-submenu">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Submenu Link 5.4</a>
+                                            <ul class="dropdown-menu">
+                                                <li class="kopie"><a href="#">Dropdown2 Submenu Link 5.4</a></li>
+                                                <li><a href="#">Dropdown2 Submenu Link 5.4.1</a></li>
+                                                <li><a href="#">Dropdown2 Submenu Link 5.4.2</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>-->
+                    </ul>
+                    
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="apply_btn_cl" style="background: #1b5d95;"><a href="/Masters/Logout" title="Logout"><i class="fa fa-chevron-right" aria-hidden="true"></i> &nbsp; Logout</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+    </div>
     <!-- ============================================
     MAIN CONTENT SECTION
     =============================================== -->
@@ -162,26 +181,19 @@
     <!-- ============================================
     FOOTER SECTION
     =============================================== -->
-    <div id="ft" class="container" style="background:#eee !important;">
-        <div class="row">
-            <br />
-        </div>
-    </div>
 
-    <div class="container-fluid" style="background:#D3D3D3 !important; padding-top:10px; text-align:center;">
+    <div class="container-fluid" style=" background: #082b49 !important; padding-top:20px; text-align:center;">
         <div class="row">
             <div class="container">
-                <div class="col-xs-3">
-                </div>
-                <div class="col-xs-6">
-                    <address style="font-size:1em;">
+               
+                <div class="col-xs-12 text-center">
+                    <address style="font-size:1em; line-height:30px; color:#fff;">
                         Copyright © Gorakhpur Industrial Development Authority,(GIDA) || All rights reserved.<br />
                         Sector-7, GIDA, Gorakhpur, Uttar Pradesh-273212<br />
                         Phone: 0551-2580010, Email: ceogida-up@up.gov.in
                     </address>
                 </div>
-                <div class="col-xs-3">
-                </div>
+               
 
             </div>
         </div>

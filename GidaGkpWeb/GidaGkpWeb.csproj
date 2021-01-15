@@ -314,8 +314,10 @@
     <Content Include="Content\cdn.jsdelivr.net\jquery.marquee\1.4.0\jquery.marquee.min.js" />
     <Content Include="Content\cdnjs.cloudflare.com\ajax\libs\font-awesome\4.4.0\css\font-awesome.min.css" />
     <Content Include="Content\files\app_login.png" />
+    <Content Include="Content\files\assets\ad.gif" />
     <Content Include="Content\files\assets\adityayogi.jpg" />
     <Content Include="Content\files\assets\Advertise_With_Us_GIF_for_Web.gif" />
+    <Content Include="Content\files\assets\BHITI_RAWAT_LAY_OUT.jpg" />
     <Content Include="Content\files\assets\ceo_sanjeev ranjan.jpg" />
     <Content Include="Content\files\assets\Gida_1.jpg" />
     <Content Include="Content\files\assets\Gida_2.jpg" />
@@ -579,6 +581,8 @@
     <Content Include="fonts\weathericons-regular-webfont.woff2" />
     <Content Include="fonts\weathericons-regular-webfontd41d.eot" />
     <Content Include="Content\files\pdf\CitizenCharter.pdf" />
+    <Content Include="Content\files\pdf\GIDA_Ad.pdf" />
+    <Content Include="Content\files\pdf\terms_and_condition.pdf" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Masters\ClientMaster.cshtml" />
     <Content Include="Views\Masters\VendorMaster.cshtml" />

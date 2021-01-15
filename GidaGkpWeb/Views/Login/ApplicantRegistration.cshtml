@@ -27,23 +27,26 @@
         }
 
         .banner-sec {
-            background: url('../../images/id.jpg');
+            background: url(../../images/id.jpg);
             background-size: cover;
             height: 100%;
-            background-attachment: inherit;
-            background-position: -15px 0;
+            position: fixed;
+            background-attachment: fixed;
+            background-position: left;
             display: flex;
-            min-height: 890px;
+            min-height: 658px;
         }
 
         .login-sec {
             padding: 10px 10px;
-            position: absolute;
+            position: relative;
             background: #f9f9f9;
-            width: 38%;
+            width: 40%;
+            margin-left: 60%;
             right: 0;
             float: right;
-            height: 142%;
+            overflow: auto;
+            height: auto;
         }
 
         .text-uppercase {
@@ -65,9 +68,9 @@
             font-size: 13px;
             text-align: center;
         }
-
+       
         .login-sec h2 {
-            margin-bottom: 20px;
+            margin-bottom: 0px;
             font-weight: 600;
             font-size: 24px;
             color: #082860;
@@ -322,7 +325,7 @@
             @if (registerPage == true)
             {
                 @*@((User as CustomPrincipal).FirstName)*@
-                <div class="col-sm-12 col-xs-12" style="padding:0 15px;">
+                <div class="col-sm-6 col-xs-12" style="padding:0 15px;">
                     <h2 class="text-left">Sign Up Now</h2>
                 </div>
                 <form class="login-form" action="/login/ApplicantLoginOTP" method="POST">
@@ -337,7 +340,7 @@
                     </div>
 
                     <div id="divExAlotee" style="display:none">
-                        <div class="form-group col-sm-12 col-xs-12">
+                        <div class="form-group col-sm-6 col-xs-12">
                             <label for="usertype" class="text-uppercase">Scheme Type</label>
                             <select name="SchemeType" id="SchemeType" class="form-control">
                                 <option value="">Select</option>
@@ -349,49 +352,49 @@
                                 <option value="Commercial">Commercial</option>
                             </select>
                         </div>
-                        <div class="form-group col-sm-12 col-xs-12">
+                        <div class="form-group col-sm-6 col-xs-12">
                             <label for="usertype" class="text-uppercase">Scheme Name</label>
                             <select name="SchemeName" id="SchemeName" class="form-control">
                             </select>
                         </div>
-                        <div class="form-group col-sm-12 col-xs-12">
+                        <div class="form-group col-sm-6 col-xs-12">
                             <label for="usertype" class="text-uppercase">Sector Name</label>
                             <select name="SectorName" id="SectorName" class="form-control">
                             </select>
                         </div>
 
-                        <div class="form-group col-sm-12 col-xs-12">
+                        <div class="form-group col-sm-6 col-xs-12">
                             <label for="exampleInputEmail1" class="text-uppercase">Allotment Number</label>
                             <input name="AllotmentNumber" id="AllotmentNumber" class="form-control" placeholder="Allotment Number">
                         </div>
                     </div>
 
-                    <div class="form-group col-sm-12 col-xs-12">
+                    <div class="form-group col-sm-6 col-xs-12">
                         <label for="exampleInputEmail1" class="text-uppercase">Full Name</label>
                         <input name="fullName" id="fullName" class="form-control" placeholder="Full Name">
                     </div>
 
-                    <div class="form-group col-sm-12 col-xs-12">
+                    <div class="form-group col-sm-6 col-xs-12">
                         <label for="exampleInputEmail1" class="text-uppercase">Father Name</label>
                         <input name="FName" id="FName" class="form-control" placeholder="Father's Name">
                     </div>
 
-                    <div class="form-group col-sm-12 col-xs-12">
+                    <div class="form-group col-sm-6 col-xs-12">
                         <label for="exampleInputEmail1" class="text-uppercase">Email</label>
                         <input type="email" name="email" id="email" class="form-control" placeholder="Email">
                     </div>
 
-                    <div class="form-group col-sm-12 col-xs-12">
+                    <div class="form-group col-sm-6 col-xs-12">
                         <label for="exampleInputEmail1" class="text-uppercase">Mobile Number</label>
                         <input name="contactno" id="contact" class="form-control" placeholder="Contact No.">
                     </div>
 
-                    <div class="form-group col-sm-12 col-xs-12">
+                    <div class="form-group col-sm-6 col-xs-12">
                         <label for="exampleInputEmail1" class="text-uppercase">Aadhar Number</label>
                         <input name="Adhaar" id="Adhaar" class="form-control" placeholder="Adhaar No">
                     </div>
 
-                    <div class="form-group col-sm-12 col-xs-12">
+                    <div class="form-group col-sm-6 col-xs-12">
                         <label for="exampleInputEmail1" class="text-uppercase">Date of Birth</label>
                         <input name="dob" type="date" id="dob" class="form-control" placeholder="Date of Birth">
                     </div>
@@ -412,7 +415,7 @@
                     </div>
 
 
-                    @*<div class="form-group col-sm-12 col-xs-12">
+                    @*<div class="form-group col-sm-6 col-xs-12">
                             <label for="exampleInputEmail1" class="text-uppercase">Select State</label>
                             <select name="state" id="state" class="form-control">
                                 <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -465,7 +468,7 @@
                             <input type="number" class="form-control" placeholder="">
 
                         </div>
-                        <div class="form-group col-sm-12 col-xs-12">
+                        <div class="form-group col-sm-6 col-xs-12">
                             <label for="exampleInputEmail1" class="text-uppercase">Address</label>
                             <input type="text" class="form-control" placeholder="">
 
