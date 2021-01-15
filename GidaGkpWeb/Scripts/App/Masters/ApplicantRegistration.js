@@ -31,6 +31,7 @@ $(document).ready(function () {
         if (SchemeType == 'Industrial') {
             dropdown.append($('<option></option>').attr('value', 'Industrial Shed Yojna').text('Industrial Shed Yojna'));
             dropdown.append($('<option></option>').attr('value', 'Industrial Yojna').text('Industrial Yojna'));
+            dropdown.append($('<option></option>').attr('value', 'Industrial Yojna 2021').text('Industrial Yojna 2021'));
         }
         else if (SchemeType == 'Residential') {
             dropdown.append($('<option></option>').attr('value', 'Housing Vistahapan').text('Housing Vistahapan'));
@@ -113,6 +114,9 @@ $(document).ready(function () {
         }
         else if (SchemeName == 'Shopping Complex Yojna') {
             dropdown.append($('<option></option>').attr('value', 'Sector 13').text('Sector 13'));
+        }
+        else if (SchemeName == 'Industrial Yojna 2021') {
+            dropdown.append($('<option></option>').attr('value', 'Sector 26').text('Sector 26'));
         }
         //$.ajax({
         //    contentType: 'application/json; charset=utf-8',
@@ -412,5 +416,10 @@ $(document).ready(function () {
         });
     }
 
+    $('#EarnestMoneyDeposite').on('focusout', function (e) {
+        if ($('#EarnestMoneyDeposite').val() != '') {
+            $('#NetAmount').val(parseInt($('#EarnestMoneyDeposite').val()) + 1180);
+        }
+    });
 });
 
