@@ -92,7 +92,7 @@ $(document).ready(function () {
             url: '/Masters/GetLookupDetail',
             success: function (data) {
                 $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry.Id).text(entry.LRNumber));
+                    dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
                 });
             },
             failure: function (response) {
