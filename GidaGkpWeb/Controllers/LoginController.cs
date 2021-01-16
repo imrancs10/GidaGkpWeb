@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
@@ -132,24 +134,57 @@ namespace GidaGkpWeb.Controllers
         {
             await Task.Run(() =>
             {
-                //Send Email
-                Message msg = new Message()
+                try
                 {
-                    MessageTo = email,
-                    MessageNameTo = fullName,
-                    OTP = verificationCode,
-                    Subject = "Verify Email",
-                    Body = EmailHelper.GetDeviceVerificationEmail(fullName, verificationCode)
-                };
-                ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
-                sendMessageStrategy.SendMessages();
+                    //Create the msg object to be sent
+                    MailMessage msg = new MailMessage();
+                    //Add your email address to the recipients
+                    msg.To.Add(email);
+                    //Configure the address we are sending the mail from
+                    MailAddress address = new MailAddress("patientportalinformationsystem@gmail.com");
+                    msg.From = address;
+                    msg.Subject = "anything";
+                    msg.Body = "anything";
 
-                //Send SMS
-                //msg.Body = "Hello " + string.Format("{0} {1}", firstname, lastname) + "\nAs you requested, here is a OTP " + verificationCode + " you can use it to verify your mobile number before 15 minutes.\n Regards:\n Patient Portal(RMLHIMS)";
-                //msg.MessageTo = mobilenumber;
-                //msg.MessageType = MessageType.OTP;
-                //sendMessageStrategy = new SendMessageStrategyForSMS(msg);
+                    //Configure an SmtpClient to send the mail.
+                    SmtpClient client = new SmtpClient();
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.EnableSsl = false;
+                    client.Host = "relay-hosting.secureserver.net";
+                    client.Port = 25;
+
+                    //Setup credentials to login to our sender email address ("UserName", "Password")
+                    NetworkCredential credentials = new NetworkCredential("patientportalinformationsystem@gmail.com", "patientportal123#");
+                    client.UseDefaultCredentials = true;
+                    client.Credentials = credentials;
+
+                    //Send the msg
+                    client.Send(msg);
+
+                }
+                catch (Exception ex)
+                {
+                    //If the message failed at some point, let the user know
+                    //"Your message failed to send, please try again."
+                }
+                ////Send Email
+                //Message msg = new Message()
+                //{
+                //    MessageTo = email,
+                //    MessageNameTo = fullName,
+                //    OTP = verificationCode,
+                //    Subject = "Verify Email",
+                //    Body = EmailHelper.GetDeviceVerificationEmail(fullName, verificationCode)
+                //};
+                //ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
                 //sendMessageStrategy.SendMessages();
+
+                ////Send SMS
+                ////msg.Body = "Hello " + string.Format("{0} {1}", firstname, lastname) + "\nAs you requested, here is a OTP " + verificationCode + " you can use it to verify your mobile number before 15 minutes.\n Regards:\n Patient Portal(RMLHIMS)";
+                ////msg.MessageTo = mobilenumber;
+                ////msg.MessageType = MessageType.OTP;
+                ////sendMessageStrategy = new SendMessageStrategyForSMS(msg);
+                ////sendMessageStrategy.SendMessages();
             });
         }
         private void RegisterApplicant(string fullName, string email, string contactno, string FName, string Adhaar, DateTime dob, string usrName, string password, string SchemeType, string SchemeName, string SectorName, string AllotmentNumber)
