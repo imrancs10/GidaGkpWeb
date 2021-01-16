@@ -80,7 +80,7 @@ namespace GidaGkpWeb.Controllers
             HttpPostedFileBase Experienceproof, HttpPostedFileBase educationalqualification, HttpPostedFileBase electricitybill,
             HttpPostedFileBase financialdetails, HttpPostedFileBase Otherproposedindustry, HttpPostedFileBase CasteCertificate,
             HttpPostedFileBase IdentityProof, HttpPostedFileBase AllotmentLetter, HttpPostedFileBase LandAcquition,
-            HttpPostedFileBase outsideGIDAElectricitybill,HttpPostedFileBase ApplicantPhoto,HttpPostedFileBase ApplicantSignature)
+            HttpPostedFileBase outsideGIDAElectricitybill, HttpPostedFileBase ApplicantPhoto, HttpPostedFileBase ApplicantSignature)
         {
             ApplicantUploadDoc documentDetail = new ApplicantUploadDoc();
             if (ProjectReports != null && ProjectReports.ContentLength > 0 &&
@@ -107,10 +107,10 @@ namespace GidaGkpWeb.Controllers
                 PanCard.InputStream.Read(documentDetail.ScanPAN, 0, PanCard.ContentLength);
 
                 documentDetail.ScanAddressProof = new byte[AddressProof.ContentLength];
-                AddressProof.InputStream.Read(documentDetail.ScanPAN, 0, AddressProof.ContentLength);
+                AddressProof.InputStream.Read(documentDetail.ScanAddressProof, 0, AddressProof.ContentLength);
 
                 documentDetail.BalanceSheet = new byte[BalanceSheet.ContentLength];
-                BalanceSheet.InputStream.Read(documentDetail.ScanPAN, 0, BalanceSheet.ContentLength);
+                BalanceSheet.InputStream.Read(documentDetail.BalanceSheet, 0, BalanceSheet.ContentLength);
 
                 documentDetail.ITReturn = new byte[IncomeTaxreturn.ContentLength];
                 IncomeTaxreturn.InputStream.Read(documentDetail.ITReturn, 0, IncomeTaxreturn.ContentLength);
@@ -162,6 +162,19 @@ namespace GidaGkpWeb.Controllers
                 return RedirectToAction("ApplicantDashboard");
             }
         }
+
+
+        [HttpPost]
+        public JsonResult GetLookupDetail(int? lookupTypeId, string lookupType)
+        {
+            MasterDetails _details = new MasterDetails();
+            if (lookupTypeId == 0)
+            {
+                lookupTypeId = null;
+            }
+            return Json(_details.GetLookupDetail(lookupTypeId, lookupType), JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult Logout()
         {

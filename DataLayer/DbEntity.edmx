@@ -162,6 +162,15 @@
           <Property Name="SectorName" Type="varchar" MaxLength="500" />
           <Property Name="AllotmentNumber" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="LookupId" />
+          </Key>
+          <Property Name="LookupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LookupType" Type="varchar" MaxLength="500" />
+          <Property Name="LookupName" Type="varchar" MaxLength="500" />
+          <Property Name="ParentLookupId" Type="int" />
+        </EntityType>
         <EntityContainer Name="GidaGKPModelStoreContainer">
           <EntitySet Name="ApplicantBankDetails" EntityType="Self.ApplicantBankDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantDetails" EntityType="Self.ApplicantDetails" Schema="dbo" store:Type="Tables" />
@@ -170,6 +179,7 @@
           <EntitySet Name="ApplicantProjectDetails" EntityType="Self.ApplicantProjectDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantUploadDoc" EntityType="Self.ApplicantUploadDoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantUser" EntityType="Self.ApplicantUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -282,6 +292,7 @@
           <EntitySet Name="ApplicantUsers" EntityType="Self.ApplicantUser" />
           <EntitySet Name="ApplicantProjectDetails" EntityType="GidaGKPModel.ApplicantProjectDetail" />
           <EntitySet Name="ApplicantUploadDocs" EntityType="GidaGKPModel.ApplicantUploadDoc" />
+          <EntitySet Name="Lookups" EntityType="GidaGKPModel.Lookup" />
         </EntityContainer>
         <EntityType Name="ApplicantProjectDetail">
           <Key>
@@ -340,6 +351,15 @@
           <Property Name="ApplicantPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ApplicantSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="LookupId" />
+          </Key>
+          <Property Name="LookupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LookupType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LookupName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ParentLookupId" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -508,6 +528,16 @@
                 <ScalarProperty Name="ProjectReport" ColumnName="ProjectReport" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lookups">
+            <EntityTypeMapping TypeName="GidaGKPModel.Lookup">
+              <MappingFragment StoreEntitySet="Lookup">
+                <ScalarProperty Name="ParentLookupId" ColumnName="ParentLookupId" />
+                <ScalarProperty Name="LookupName" ColumnName="LookupName" />
+                <ScalarProperty Name="LookupType" ColumnName="LookupType" />
+                <ScalarProperty Name="LookupId" ColumnName="LookupId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
