@@ -83,7 +83,16 @@ namespace GidaGkpWeb.Controllers
             HttpPostedFileBase outsideGIDAElectricitybill,HttpPostedFileBase ApplicantPhoto,HttpPostedFileBase ApplicantSignature)
         {
             ApplicantUploadDoc documentDetail = new ApplicantUploadDoc();
-            if (ProjectReports != null && ProjectReports.ContentLength > 0)
+            if (ProjectReports != null && ProjectReports.ContentLength > 0 &&
+                Proposedplan != null && Proposedplan.ContentLength > 0 && PartnershipDeed != null && PartnershipDeed.ContentLength > 0 &&
+                PanCard != null && PanCard.ContentLength > 0 && AddressProof != null && AddressProof.ContentLength > 0 &&
+                BalanceSheet != null && BalanceSheet.ContentLength > 0 && IncomeTaxreturn != null && IncomeTaxreturn.ContentLength > 0 &&
+                Experienceproof != null && Experienceproof.ContentLength > 0 && educationalqualification != null && educationalqualification.ContentLength > 0 &&
+                electricitybill != null && electricitybill.ContentLength > 0 && financialdetails != null && financialdetails.ContentLength > 0 &&
+                Otherproposedindustry != null && Otherproposedindustry.ContentLength > 0 && CasteCertificate != null && CasteCertificate.ContentLength > 0 &&
+                IdentityProof != null && IdentityProof.ContentLength > 0 && AllotmentLetter != null && AllotmentLetter.ContentLength > 0 &&
+                LandAcquition != null && LandAcquition.ContentLength > 0 && ApplicantPhoto != null && ApplicantPhoto.ContentLength > 0 &&
+                ApplicantSignature != null && ApplicantSignature.ContentLength > 0)
             {
                 documentDetail.ProjectReport = new byte[ProjectReports.ContentLength];
                 ProjectReports.InputStream.Read(documentDetail.ProjectReport, 0, ProjectReports.ContentLength);
@@ -149,7 +158,7 @@ namespace GidaGkpWeb.Controllers
             }
             else
             {
-                SetAlertMessage("Document detail not saved", "Document Entry");
+                SetAlertMessage("Document detail not saved, Please Attach all reqired document", "Document Entry");
                 return RedirectToAction("ApplicantDashboard");
             }
         }
