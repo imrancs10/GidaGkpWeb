@@ -365,8 +365,8 @@ $(document).ready(function () {
 
     function NextStep(nextButton) {
 
-        current_fs = $(nextButton).parent();
-        next_fs = $(nextButton).parent().next();
+        current_fs = $(nextButton).parent().parent();
+        next_fs = $(nextButton).parent().parent().next();
 
         //Add Class Active
         $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
