@@ -2,6 +2,7 @@
 /// <reference path="../Global/App.js" />
 /// <reference path="../Global/Utility.js" />
 'use strict';
+
 $(document).ready(function () {
     var current_fs, next_fs, previous_fs; //fieldsets
     var opacity;
@@ -499,10 +500,51 @@ $(document).ready(function () {
         });
     }
 
-    $('#EarnestMoneyDeposite').on('focusout', function (e) {
+    $("#PlotRange").change(function () {
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            data: '{lookupTypeId: "' + $(this).val() + '",lookupType: "EstimatedRate" }',
+            url: '/Masters/GetLookupDetail',
+            success: function (data) {
+                $('#EstimatedRate').val(data[0].LookupName);
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+
+
+    $("#plotArea").change(function () {
+        var plotRangeSelected = $("#PlotRange option:selected").text();
+        if (plotRangeSelected.indexOf('Above') > -1) {
+            var rangeArray = plotRangeSelected.split('-');
+            if (parseInt($(this).val()) < parseInt(rangeArray[0])) {
+                $(this).val('')
+                utility.alert.setAlert(utility.alert.alertType.info, 'Plot Area must in selected plot range');
+            }
+        }
+        else {
+            var rangeArray = plotRangeSelected.split('-');
+            if (parseInt($(this).val()) < parseInt(rangeArray[0]) || parseInt($(this).val()) > parseInt(rangeArray[1])) {
+                $(this).val('')
+                utility.alert.setAlert(utility.alert.alertType.info, 'Plot Area must in selected plot range');
+            }
+        }
+        if ($(this).val() != '' && $('#EstimatedRate').val() != '') {
+            $('#TotalInvestment').val($(this).val() * $('#EstimatedRate').val());
+        }
+        var EMD = (parseInt($(this).val()) + 1000).toString().slice(0, -3) + "0000";
+        $('#EarnestMoneyDeposite').val(EMD);
         if ($('#EarnestMoneyDeposite').val() != '') {
-            $('#NetAmount').val(parseInt($('#EarnestMoneyDeposite').val()) + 1180);
+            $('#NetAmount').val(parseInt($('#EarnestMoneyDeposite').val()) + parseInt($('#TotalAmount').val()));
         }
     });
+
 });
 

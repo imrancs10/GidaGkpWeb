@@ -65,7 +65,6 @@ namespace GidaGkpWeb.Controllers
                 SetAlertMessage(ex.Message, "Send Mail Response");
                 return RedirectToAction("SendMail", "Login");
             }
-            return View();
         }
         // GET: Login
         public ActionResult ApplicantLogin()
