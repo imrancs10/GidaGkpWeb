@@ -539,7 +539,7 @@ $(document).ready(function () {
         if ($(this).val() != '' && $('#EstimatedRate').val() != '') {
             $('#TotalInvestment').val($(this).val() * $('#EstimatedRate').val());
         }
-        var auxValue = (parseInt($(this).val()) + 1000).toString().slice(0, 1);
+        var auxValue = (parseInt($(this).val()) + 1000).toString().slice(1, 4);
         var EMD = "";
         if (auxValue == "000") {
             EMD = (parseInt($(this).val())).toString().slice(0, -3) + "0000";
