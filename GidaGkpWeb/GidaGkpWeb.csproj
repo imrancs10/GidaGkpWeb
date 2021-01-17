@@ -601,6 +601,7 @@
     <Content Include="Views\Shared\_ApplicantLayout.cshtml" />
     <Content Include="Views\Masters\ApplicantDashboard.cshtml" />
     <Content Include="Views\Login\ApplicantRegistration.cshtml" />
+    <Content Include="Views\Login\SendMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

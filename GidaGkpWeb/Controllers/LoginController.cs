@@ -19,6 +19,54 @@ namespace GidaGkpWeb.Controllers
 {
     public class LoginController : CommonController
     {
+
+        public ActionResult SendMail()
+        {
+            ViewData["LoginPage"] = true;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SendMail(string HostAddress, string HostPort, string HostEmail, string HostEmailPassword, string EmailTo, string EnableSSL)
+        {
+            try
+            {
+                //Create the msg object to be sent
+                MailMessage msg = new MailMessage();
+                //Add your email address to the recipients
+                msg.To.Add(EmailTo);
+                //Configure the address we are sending the mail from
+                MailAddress address = new MailAddress(HostEmail);
+                msg.From = address;
+                msg.Subject = "Test GIDA Email";
+                msg.Body = "anything";
+
+                //Configure an SmtpClient to send the mail.
+                SmtpClient client = new SmtpClient();
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.EnableSsl = Convert.ToBoolean(EnableSSL);
+                client.Host = HostAddress;
+                client.Port = Convert.ToInt32(HostPort);
+
+                //Setup credentials to login to our sender email address ("UserName", "Password")
+                NetworkCredential credentials = new NetworkCredential(HostEmail, HostEmailPassword);
+                client.UseDefaultCredentials = true;
+                client.Credentials = credentials;
+
+                //Send the msg
+                client.Send(msg);
+                SetAlertMessage("Mail Send Successfully", "Send Mail Response");
+                return RedirectToAction("SendMail", "Login");
+            }
+            catch (Exception ex)
+            {
+                while (ex.InnerException != null)
+                    ex = ex.InnerException;
+                SetAlertMessage(ex.Message, "Send Mail Response");
+                return RedirectToAction("SendMail", "Login");
+            }
+            return View();
+        }
         // GET: Login
         public ActionResult ApplicantLogin()
         {
