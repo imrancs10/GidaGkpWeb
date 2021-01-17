@@ -539,7 +539,14 @@ $(document).ready(function () {
         if ($(this).val() != '' && $('#EstimatedRate').val() != '') {
             $('#TotalInvestment').val($(this).val() * $('#EstimatedRate').val());
         }
-        var EMD = (parseInt($(this).val()) + 1000).toString().slice(0, -3) + "0000";
+        var auxValue = (parseInt($(this).val()) + 1000).toString().slice(0, 1);
+        var EMD = "";
+        if (auxValue == "000") {
+            EMD = (parseInt($(this).val())).toString().slice(0, -3) + "0000";
+        }
+        else {
+            EMD = (parseInt($(this).val()) + 1000).toString().slice(0, -3) + "0000";
+        }
         $('#EarnestMoneyDeposite').val(EMD);
         if ($('#EarnestMoneyDeposite').val() != '') {
             $('#NetAmount').val(parseInt($('#EarnestMoneyDeposite').val()) + parseInt($('#TotalAmount').val()));

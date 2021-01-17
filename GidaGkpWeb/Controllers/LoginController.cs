@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Mail;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Web.Security;
@@ -31,30 +31,40 @@ namespace GidaGkpWeb.Controllers
         {
             try
             {
-                //Create the msg object to be sent
-                MailMessage msg = new MailMessage();
-                //Add your email address to the recipients
-                msg.To.Add(EmailTo);
-                //Configure the address we are sending the mail from
-                MailAddress address = new MailAddress(HostEmail);
-                msg.From = address;
-                msg.Subject = "Test GIDA Email";
-                msg.Body = "anything";
+                ////Create the msg object to be sent
+                //MailMessage msg = new MailMessage();
+                ////Add your email address to the recipients
+                //msg.To.Add(EmailTo);
+                ////Configure the address we are sending the mail from
+                //MailAddress address = new MailAddress(HostEmail);
+                //msg.From = address;
+                //msg.Subject = "Test GIDA Email";
+                //msg.Body = "anything";
 
-                //Configure an SmtpClient to send the mail.
-                SmtpClient client = new SmtpClient();
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.EnableSsl = Convert.ToBoolean(EnableSSL);
-                client.Host = HostAddress;
-                client.Port = Convert.ToInt32(HostPort);
+                ////Configure an SmtpClient to send the mail.
+                //SmtpClient client = new SmtpClient();
+                //client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                //client.EnableSsl = Convert.ToBoolean(EnableSSL);
+                //client.Host = HostAddress;
+                //client.Port = Convert.ToInt32(HostPort);
 
-                //Setup credentials to login to our sender email address ("UserName", "Password")
-                NetworkCredential credentials = new NetworkCredential(HostEmail, HostEmailPassword);
-                client.UseDefaultCredentials = true;
-                client.Credentials = credentials;
+                ////Setup credentials to login to our sender email address ("UserName", "Password")
+                //NetworkCredential credentials = new NetworkCredential(HostEmail, HostEmailPassword);
+                //client.UseDefaultCredentials = true;
+                //client.Credentials = credentials;
 
-                //Send the msg
-                client.Send(msg);
+                ////Send the msg
+                //client.Send(msg);
+
+                var objMail = new System.Web.Mail.MailMessage();
+                objMail.From = HostEmail;
+                objMail.To = EmailTo;
+                objMail.Subject = "Test email ";
+                objMail.BodyFormat = MailFormat.Html; 
+                objMail.Priority = MailPriority.High;
+                objMail.Body = "This test email was sent at: " + DateTime.Now;
+                SmtpMail.SmtpServer = "relay-hosting.secureserver.net";
+                SmtpMail.Send(objMail);
                 SetAlertMessage("Mail Send Successfully", "Send Mail Response");
                 return RedirectToAction("SendMail", "Login");
             }
