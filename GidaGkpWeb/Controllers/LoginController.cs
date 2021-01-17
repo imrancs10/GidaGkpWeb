@@ -172,7 +172,7 @@ namespace GidaGkpWeb.Controllers
         [HttpPost]
         public ActionResult verifyOTP(string OTP)
         {
-            if ((Convert.ToString(Session["otp"]) == OTP) || OTP == "")
+            if ((Convert.ToString(Session["otp"]) == OTP))
             {
                 var applicantModel = Session["ApplicantModel"] as ApplicantUser;
 
