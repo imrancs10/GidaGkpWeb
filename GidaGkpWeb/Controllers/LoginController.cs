@@ -97,7 +97,7 @@ namespace GidaGkpWeb.Controllers
             if (message == Enums.LoginMessage.Authenticated)
             {
                 setUserClaim();
-                return RedirectToAction("ApplicantDashboard", "Masters");
+                return RedirectToAction("Dashboard", "Masters");
             }
             else
             {

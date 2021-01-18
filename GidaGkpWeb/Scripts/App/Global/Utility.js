@@ -234,3 +234,25 @@ utility.confirmBox = function (message, title, yesFunction, noFunction) {
             }
         });
 };
+
+$(document).ready(function () {
+    $('.navbar-nav li.active').removeClass('active');
+    $('.navbar-nav a[href]').each(function (ind, ele) {
+        if ($(ele).attr('href').toLowerCase().indexOf(location.pathname.toLowerCase()) > -1) {
+            $(ele).parent().addClass('active');
+            //$(ele).parent().parent().show();
+        }
+    });
+
+    $("#dialog").dialog({
+        resizable: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        buttons: {
+            "OK": function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+});

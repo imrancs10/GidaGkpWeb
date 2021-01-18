@@ -1,92 +1,564 @@
 ﻿
 @{
     ViewBag.Title = "Dashboard";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
 }
+<link href="~/styles/dashbaord.css" rel="stylesheet" />
 
-@*MAIN CONTENT SECTION*@
-    @*=============================================== -->*@
-<section class="content-wrapper" role="main">
-    <div class="content">
+<div class="container">
 
-        <div class="content-bar">
-            <ul class="breadcrumb breadcrumb-angle">
-                <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
-                <li class="active">Dashboard</li>
-            </ul>
-        </div><!-- /.content-bar -->
-        <hr />
+    <form>
 
-        <div class="content-body">
-            <img src="~/images/welcome.jpg" class="img-responsive" />
-        </div>
+        <!-- BEGIN: Content-->
+        <div class="app-content content">
+            <div class="content-overlay"></div>
+            <div class="content-wrapper">
 
-
-        <div class="clearfix"></div>
-
-        <!-- customModal2 -->
-        <div class="modal" id="customModal2" data-transition="flipXIn" tabindex="-1" role="dialog" aria-labelledby="modalBasicLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body" style="padding: 0 12px">
+                <div class="content-body">
+                    <section>
                         <div class="row">
-                            <div class="clearfix">
-                                <button type="button" class="btn btn-xs btn-icon pull-right" data-dismiss="modal" aria-hidden="true"><i class="icon_close fa-2x"></i></button>
-
-                                <div class="modal-header" style="background-color:#fff;">
-                                    <h4 class="modal-title" id="modalBasicLabel">Reset Password</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group has-feedback">
-                                        <div class="input-group input-group-in">
-                                            <span class="input-group-addon"><i class="icon-user"></i></span>
-                                            <input type="text" id="txtusername" class="form-control" placeholder="Username"  />
-                                            <span class="form-control-feedback"></span>
-                                        </div>
-                                    </div><!-- /.form-group -->
-                                    <div class="form-group has-feedback">
-                                        <div class="input-group input-group-in">
-                                            <span class="input-group-addon"><i class="icon-key"></i></span>
-                                            <input type="password" id="txtoldpassowrd" class="form-control" placeholder="Old Password"  />
-                                            <span class="form-control-feedback"></span>
-                                        </div>
-                                    </div><!-- /.form-group -->
-                                    <div class="form-group has-feedback">
-                                        <div class="input-group input-group-in">
-                                            <span class="input-group-addon"><i class="icon-key"></i></span>
-                                            <input type="password" id="txtnewpassword" class="form-control" placeholder="New Password"  />
-                                            <span class="form-control-feedback"></span>
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <div class="">
+                                                <div class="media-left align-self-center ">
+                                                    <i class="fa fa-list-alt font-large-2 danger" aria-hidden="true"></i>
+                                                    </i>
+                                                </div>
+                                                <div class="media-body text-center">
+                                                    <h3 class="mb-1 text-bold-700">
+                                                        Our Blog
+                                                    </h3>
+                                                    <span class="text-muted">
+                                                        53 Articles
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="form-group has-feedback">
-                                        <div class="input-group input-group-in">
-                                            <span class="input-group-addon"><i class="icon-check"></i></span>
-                                            <input type="password" id="txtconfirmpassword" class="form-control" placeholder="Confirm Password"  />
-                                            <span class="form-control-feedback"></span>
-                                        </div>
-                                    </div><!-- /.form-group -->
-                                </div>
-
-                                <div class="modal-footer">
-                                    <input id="btnCancel" type="button" name="cancel" value="Cancel" class="btn btn-default" data-dismiss="modal"  />
-                                    <input id="btnlogin" type="submit" name="submit" value="Save Changes" class="btn btn-primary"  />
                                 </div>
                             </div>
-
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <div class="">
+                                                <div class="media-left align-self-center">
+                                                    <i class="fa fa-comments-o font-large-2 danger" aria-hidden="true"></i>
+                                                    </i>
+                                                </div>
+                                                <div class="media-body text-center">
+                                                    <h3 class="mb-1 text-bold-700">
+                                                        Forum
+                                                    </h3>
+                                                    <span class="text-muted">
+                                                        18 Topics
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <div class="">
+                                                <div class="media-left align-self-center">
+                                                    <i class="fa fa-sliders font-large-2 danger" aria-hidden="true"></i>
+                                                    </i>
+                                                </div>
+                                                <div class="media-body text-center">
+                                                    <h3 class="mb-1 text-bold-700">
+                                                        Innovation
+                                                    </h3>
+                                                    <span class="text-muted">
+                                                        43 ideas
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div>
+                                            <div class="">
+                                                <div class="media-left align-self-center">
+                                                    <i class="fa fa-cogs font-large-2 danger" aria-hidden="true"></i>
+                                                    </i>
+                                                </div>
+                                                <div class="media-body text-center">
+                                                    <h3 class="mb-1 text-bold-700">
+                                                        Support
+                                                    </h3>
+                                                    <span class="text-muted">
+                                                        28 Posts
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-        <!-- Template Setups -->
-        <div class="modal fade" id="templateSetup">
-            <div class="modal-dialog">
-                <!-- modal-content -->
-                <div class="modal-content"></div>
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.templateSetup -->
+                        <div class="row">
+                            <div class="col-lg-8 col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="card-title">
+                                                    <h3 class="text-bold-700">
+                                                        Featured Articles
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Activating an Account
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            User Profile
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Using the Dashboard
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Subscribing to Email Alerts
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Changing a Password
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Inviting and Managing Users
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Creating and Managing Groups
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Creating and Managing Groups
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Granting Roles
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Organizing Security Groups
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            if a User is Unable to Login
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="card-footer">
+                                                <a class="card-link info">
+                                                    See all articles (50)
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="card-title">
+                                                    <h3 class="text-bold-700">
+                                                        Latest Articles
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Files Overview
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Search Overview
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Using Tasks
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Events
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Blogs
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Basic Files Module Features
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            How to Add a Single File
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Drag-and-Drop upload files
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Searching Files
+                                                        </p>
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="fa fa-chevron-right">
+                                                        </i>
+                                                        <p class="text-muted display-inline">
+                                                            Digital Rights Management
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="card-footer">
+                                                <a class="card-link info">
+                                                    See all articles (73)
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <div class="row" style="padding: 0 15px;">
+                                    <div class="col-12">
+                                        <div class="card bg-warning">
+                                            <div class="card-content white text-center">
+                                                <div class="card-header">
+
+                                                    <h1 class="card-title font-large-1 white">
+                                                        Support
+                                                    </h1>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="card-text">
+                                                        Contact our support team for
+                                                    </p>
+                                                    <h2 class="white">
+                                                        24x7
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-12 col-md-12 col-sm-6">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="card-title">
+                                                    <h3 class="text-bold-700">
+                                                        Quick Links
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <ul style="padding-left:30px;">
+                                                    <li>
+                                                        <a href="#">
+                                                            Our Blogs
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Plugins
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Ideas
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Wordpress
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Admin
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Themes
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Documentation
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Support
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12 col-md-12 col-sm-6">
+                                        <div class="card">
+                                            <div class="card-header pb-2">
+                                                <div class="card-title">
+                                                    <h3 class="text-bold-700">
+                                                        Tags
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="card-body pt-0 kw-wrapper">
+                                                <span class="badge badge-secondary">
+                                                    admin
+                                                </span>
+                                                <span class="badge badge-secondary">
+                                                    admin dashboard
+                                                </span>
+                                                <span class="badge badge-secondary">
+                                                    admin
+                                                </span>
+                                                <span class="badge badge-secondary">
+                                                    admin theme
+                                                </span>
+                                                <span class="badge badge-secondary">
+                                                    bitcoin
+                                                </span>
+                                                <span class="badge badge-secondary">
+                                                    bootstrap
+                                                </span>
+                                                <span class="badge badge-secondary">
+                                                    bootstrap 4
+                                                </span>
+                                                <span class="badge badge-secondary">
+                                                    bootstrap admin
+                                                </span>
+                                                <span class="badge badge-secondary">
+                                                    bootstrap template
+                                                </span>
+                                                <span class="badge badge-secondary">
+                                                    bootstrap dashboard
+                                                </span>
+                                                <span class="badge badge-secondary">
+                                                    crypto cards
+                                                </span>
+                                                <span class="badge badge-secondary">
+                                                    crypto dashboard
+                                                </span>
+                                                <span class="badge badge-secondary">
+                                                    dashboard template
+                                                </span>
+                                                <span class="badge badge-secondary">
+                                                    responsive
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+        <!-- END: Content-->
+
+    </form>
+
+</div>
+
+<style type="text/css">
+.container {
+    width: 85%;
+}
+
+.custom-file-uploader {
+  position: relative;
+}
+.custom-file-uploader input[type=file] {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: default;
+}
+.sr-only {
+    position:relative;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+    font-weight: 600;
+}
+.paragraph{
+    font-size: 12px;
+    padding: 5px 0;
+    color: #eb2323;
+}
+.upload_btn_cl{
+    background: #0e416c;
+    color: #fff;
+    border: 1px solid #0e416c;
+}
+.veiw_details {
+    background: #e72d2d;
+    padding: 7px 10px;
+    width: 80px;
+    color: #fff;
+    border-radius: 2px;
+    margin-top: 25px;
+}
 
 
-    </div><!-- /.content -->
+.dropdown-menu > li.kopie > a {
+    padding-left:5px;
+}
 
-</section><!-- /MAIN -->
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+   top:0;left:100%;
+   margin-top:-6px;margin-left:-1px;
+   -webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;
+ }
+
+.dropdown-submenu > a:after {
+  border-color: transparent transparent transparent #333;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  content: " ";
+  display: block;
+  float: right;
+  height: 0;
+  margin-right: -10px;
+  margin-top: 5px;
+  width: 0;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color:#555;
+ }
+
+.dropdown-menu > li > a:hover, .dropdown-menu > .active > a:hover {
+  text-decoration: underline;
+}
+
+/*
+header css class */
+
+.logotitle {
+    float: left;
+    text-align: left;
+    margin-top: 5px;
+    margin-left: 10px;
+    color: #3e3e3e;
+    font-size: 2.0em;
+    font-weight: 549;
+    /* font-family: Kokila, Andalus, Microsoft Himalaya; */
+    font-family: Andalus;
+    -webkit-text-size-adjust: 100%;
+}
+.admin_login span, .admin_login a {
+    color: #000;
+}
+.logo_class {
+    float: left;
+    padding-left: 10px;
+    width: 112px;
+    height: 83px;
+    margin-top: 5px;
+}
+li.apply_btn_cl a {
+    color: #fff !important;
+}
+
+</style>

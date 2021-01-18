@@ -91,8 +91,9 @@
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
                 <div class="col-sm-12 col-xs-12" style="padding: 0 30px;">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/Home/ApplicantDashboard" title="Home">Apply For Plots</a></li>
-                        <li><a href="#">Link</a></li>
+                        <li class="active"><a href="/Masters/Dashboard" title="Home">Home</a></li>
+                        <li><a href="/Masters/ApplicantDashboard" title="PlotDetail">Apply For Plots</a></li>
+                        @*<li><a href="#">Link</a></li>*@
                         <!--<li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -278,27 +279,7 @@
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('.nav-item a.active').removeClass('active');
-            $('.nav-item a[href]').each(function (ind, ele) {
-                if ($(ele).attr('href').toLowerCase().indexOf(location.pathname.toLowerCase()) > -1) {
-                    $(ele).parent().addClass('active');
-                    $(ele).parent().parent().show();
-                }
-            });
-
-            $("#dialog").dialog({
-                resizable: false,
-                height: "auto",
-                width: 400,
-                modal: true,
-                buttons: {
-                    "OK": function () {
-                        $(this).dialog("close");
-                    }
-                }
-            });
-        });
+      
     </script>
     <script src="~/Scripts/jquery-ui.js"></script>
     <link href="~/styles/jquery-ui.css" rel="stylesheet" />

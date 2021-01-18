@@ -515,6 +515,7 @@
     <Content Include="Scripts\wrapkit.js" />
     <Content Include="styles\bootstrap.css" />
     <Content Include="styles\components.css" />
+    <Content Include="styles\dashbaord.css" />
     <Content Include="styles\deamon.css" />
     <Content Include="styles\demo.css" />
     <Content Include="styles\dependencies.css" />
