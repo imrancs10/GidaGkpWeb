@@ -137,6 +137,9 @@
     <Compile Include="ApplicantProjectDetail.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="ApplicantTransactionDetail.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="ApplicantUploadDoc.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

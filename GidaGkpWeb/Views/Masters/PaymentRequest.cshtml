@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "PaymentRequest";
+    Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
+}
+<link href="~/styles/style.css" rel="stylesheet" />
+<section class="form">
+    <!-- MultiStep Form -->
+    <div class="container-fluid" id="grad1">
+        <div class="container">
+            <div class="row justify-content-center mt-0" style="padding:30px 20px">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                        <div class="col-sm-12 col-xs-12">
+                            <div class="col-sm-6 col-xs-6">
+                                <h2><strong>Make Payment for Total Amount</strong></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mx-0">
+                    <form method="post" name="redirect" action="https://secure.ccavenue.com/transaction.do?command=initiateTransaction">
+                        <div class="form-group col-sm-6 col-xs-12">
+                            <label for="usertype" class="text-uppercase">Total Amount</label>
+                            <label for="usertype" class="text-uppercase">@Convert.ToString(Session["AmountToBePaid"])</label>
+                            <input type="hidden" id="encRequest" name="encRequest" value="@Convert.ToString(Session["strEncRequest"])" />
+                            <input type="hidden" name="access_code" id="Hidden1" value="@Convert.ToString(Session["strAccessCode"])" />
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="submit" name="next" id="Step6NextButton" class="next action-button pull-right" value="Make Payment" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -448,60 +448,6 @@ $(document).ready(function () {
         PreviousStep($('#Step5PreviousButton'));
     });
 
-
-    function NextStep(nextButton) {
-
-        current_fs = $(nextButton).parent().parent();
-        next_fs = $(nextButton).parent().parent().next();
-
-        //Add Class Active
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-        //show the next fieldset
-        next_fs.show();
-        //hide the current fieldset with style
-        current_fs.animate({ opacity: 0 }, {
-            step: function (now) {
-                // for making fielset appear animation
-                opacity = 1 - now;
-
-                current_fs.css({
-                    'display': 'none',
-                    'position': 'relative'
-                });
-                next_fs.css({ 'opacity': opacity });
-            },
-            duration: 600
-        });
-    }
-
-    function PreviousStep(previousButton) {
-
-        current_fs = $(previousButton).parent();
-        previous_fs = $(previousButton).parent().prev();
-
-        //Remove class active
-        $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-
-        //show the previous fieldset
-        previous_fs.show();
-
-        //hide the current fieldset with style
-        current_fs.animate({ opacity: 0 }, {
-            step: function (now) {
-                // for making fielset appear animation
-                opacity = 1 - now;
-
-                current_fs.css({
-                    'display': 'none',
-                    'position': 'relative'
-                });
-                previous_fs.css({ 'opacity': opacity });
-            },
-            duration: 600
-        });
-    }
-
     $("#PlotRange").change(function () {
         $.ajax({
             contentType: 'application/json; charset=utf-8',
@@ -554,6 +500,59 @@ $(document).ready(function () {
             $('#NetAmount').val(parseInt($('#EarnestMoneyDeposite').val()) + parseInt($('#TotalAmount').val()));
         }
     });
+
+    function NextStep(nextButton) {
+
+        current_fs = $(nextButton).parent().parent().parent();
+        next_fs = $(nextButton).parent().parent().parent().next();
+
+        //Add Class Active
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+        //show the next fieldset
+        next_fs.show();
+        //hide the current fieldset with style
+        current_fs.animate({ opacity: 0 }, {
+            step: function (now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({ 'opacity': opacity });
+            },
+            duration: 600
+        });
+    }
+
+    function PreviousStep(previousButton) {
+
+        current_fs = $(previousButton).parent().parent().parent();
+        previous_fs = $(previousButton).parent().parent().parent().prev();
+
+        //Remove class active
+        $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+        //show the previous fieldset
+        previous_fs.show();
+
+        //hide the current fieldset with style
+        current_fs.animate({ opacity: 0 }, {
+            step: function (now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                previous_fs.css({ 'opacity': opacity });
+            },
+            duration: 600
+        });
+    }
 
 });
 

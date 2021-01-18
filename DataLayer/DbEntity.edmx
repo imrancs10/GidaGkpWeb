@@ -125,6 +125,25 @@
           <Property Name="UnSkilled" Type="varchar" MaxLength="50" />
           <Property Name="CreationDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="ApplicantTransactionDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="order_id" Type="bigint" />
+          <Property Name="tracking_id" Type="bigint" />
+          <Property Name="bank_ref_no" Type="varchar" MaxLength="50" />
+          <Property Name="order_status" Type="varchar" MaxLength="50" />
+          <Property Name="payment_mode" Type="varchar" MaxLength="50" />
+          <Property Name="card_name" Type="varchar" MaxLength="50" />
+          <Property Name="status_message" Type="varchar" MaxLength="500" />
+          <Property Name="amount" Type="varchar" MaxLength="50" />
+          <Property Name="billing_name" Type="varchar" MaxLength="50" />
+          <Property Name="billing_address" Type="varchar" MaxLength="50" />
+          <Property Name="trans_date" Type="datetime" />
+          <Property Name="created_date" Type="datetime" />
+        </EntityType>
         <EntityType Name="ApplicantUploadDoc">
           <Key>
             <PropertyRef Name="Id" />
@@ -187,6 +206,7 @@
           <EntitySet Name="ApplicantFormStep" EntityType="Self.ApplicantFormStep" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantPlotDetails" EntityType="Self.ApplicantPlotDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantProjectDetails" EntityType="Self.ApplicantProjectDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicantTransactionDetail" EntityType="Self.ApplicantTransactionDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantUploadDoc" EntityType="Self.ApplicantUploadDoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantUser" EntityType="Self.ApplicantUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
@@ -304,6 +324,7 @@
           <EntitySet Name="ApplicantUploadDocs" EntityType="GidaGKPModel.ApplicantUploadDoc" />
           <EntitySet Name="Lookups" EntityType="GidaGKPModel.Lookup" />
           <EntitySet Name="ApplicantApplicationDetails" EntityType="GidaGKPModel.ApplicantApplicationDetail" />
+          <EntitySet Name="ApplicantTransactionDetails" EntityType="GidaGKPModel.ApplicantTransactionDetail" />
         </EntityContainer>
         <EntityType Name="ApplicantProjectDetail">
           <Key>
@@ -380,6 +401,25 @@
           <Property Name="ApplicationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AllotmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ApplicantTransactionDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="order_id" Type="Int64" />
+          <Property Name="tracking_id" Type="Int64" />
+          <Property Name="bank_ref_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="order_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="payment_mode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="card_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status_message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="billing_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="billing_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trans_date" Type="DateTime" Precision="3" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -568,6 +608,26 @@
                 <ScalarProperty Name="AllotmentNumber" ColumnName="AllotmentNumber" />
                 <ScalarProperty Name="ApplicationNumber" ColumnName="ApplicationNumber" />
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantTransactionDetails">
+            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantTransactionDetail">
+              <MappingFragment StoreEntitySet="ApplicantTransactionDetail">
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="trans_date" ColumnName="trans_date" />
+                <ScalarProperty Name="billing_address" ColumnName="billing_address" />
+                <ScalarProperty Name="billing_name" ColumnName="billing_name" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="status_message" ColumnName="status_message" />
+                <ScalarProperty Name="card_name" ColumnName="card_name" />
+                <ScalarProperty Name="payment_mode" ColumnName="payment_mode" />
+                <ScalarProperty Name="order_status" ColumnName="order_status" />
+                <ScalarProperty Name="bank_ref_no" ColumnName="bank_ref_no" />
+                <ScalarProperty Name="tracking_id" ColumnName="tracking_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

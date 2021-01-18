@@ -12,6 +12,13 @@ namespace GidaGkpWeb.BAL
     {
         GidaGKPEntities _db = null;
 
+        public int SaveApplicantTransactionDeatil(ApplicantTransactionDetail detail)
+        {
+            _db = new GidaGKPEntities();
+            _db.Entry(detail).State = EntityState.Added;
+            return _db.SaveChanges();
+
+        }
         public string SavePlotDetail(int userId, string AppliedFor, string SchemeType, string PlotRange, string SchemeName, string plotArea, string SectorName, string EstimatedRate, string PaymemtSchedule, string TotalInvestment, string ApplicationFee, string EarnestMoneyDeposite, string GST, string NetAmount, string TotalAmount, string IndustryOwnershipType, string UnitName, string Name, string dob, string PresentAddress, string PermanentAddress, string RelationshipStatus)
         {
             _db = new GidaGKPEntities();

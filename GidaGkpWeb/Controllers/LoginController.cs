@@ -14,6 +14,9 @@ using GidaGkpWeb.BAL.Login;
 using GidaGkpWeb.Global;
 using GidaGkpWeb.Infrastructure;
 using GidaGkpWeb.Infrastructure.Utility;
+using System.Collections.Specialized;
+using CCA.Util;
+using System.IO;
 
 namespace GidaGkpWeb.Controllers
 {
@@ -31,6 +34,8 @@ namespace GidaGkpWeb.Controllers
         {
             try
             {
+
+
                 ////Create the msg object to be sent
                 //MailMessage msg = new MailMessage();
                 ////Add your email address to the recipients
@@ -55,12 +60,11 @@ namespace GidaGkpWeb.Controllers
 
                 ////Send the msg
                 //client.Send(msg);
-
                 var objMail = new System.Web.Mail.MailMessage();
                 objMail.From = HostEmail;
                 objMail.To = EmailTo;
                 objMail.Subject = "Test email ";
-                objMail.BodyFormat = MailFormat.Html; 
+                objMail.BodyFormat = MailFormat.Html;
                 objMail.Priority = MailPriority.High;
                 objMail.Body = "This test email was sent at: " + DateTime.Now;
                 SmtpMail.SmtpServer = "relay-hosting.secureserver.net";
@@ -77,6 +81,7 @@ namespace GidaGkpWeb.Controllers
             }
         }
         // GET: Login
+
         public ActionResult ApplicantLogin()
         {
             ViewData["LoginPage"] = true;

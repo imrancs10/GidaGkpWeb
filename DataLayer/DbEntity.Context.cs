@@ -34,5 +34,6 @@ namespace DataLayer
         public virtual DbSet<ApplicantUploadDoc> ApplicantUploadDocs { get; set; }
         public virtual DbSet<Lookup> Lookups { get; set; }
         public virtual DbSet<ApplicantApplicationDetail> ApplicantApplicationDetails { get; set; }
+        public virtual DbSet<ApplicantTransactionDetail> ApplicantTransactionDetails { get; set; }
     }
 }

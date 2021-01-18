@@ -52,6 +52,9 @@
     <Reference Include="Elmah.Mvc, Version=2.1.2.1389, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="MCPG.CCA.Util">
+      <HintPath>..\..\API Document Sample Code\STATUS API (ASP.NET)\CCAvenue_API_Kit(Status Json)\CCAvenue_API_Kit\bin\MCPG.CCA.Util.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -590,6 +593,8 @@
     <Content Include="Views\Masters\ApplicantDashboard.cshtml" />
     <Content Include="Views\Login\ApplicantRegistration.cshtml" />
     <Content Include="Views\Login\SendMail.cshtml" />
+    <Content Include="Views\Masters\PaymentResponse.cshtml" />
+    <Content Include="Views\Masters\PaymentRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

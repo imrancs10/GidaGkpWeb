@@ -83,20 +83,19 @@
 
                         <div class="row">
                             <div class="col-md-12 mx-0">
-                                <form action="~/Masters/SaveApplicantDocument" method="post" enctype="multipart/form-data">
-                                    <div id="msform">
-                                        <!-- progressbar -->
-                                        <ul id="progressbar">
-                                            <li class="active" id="PlotDetail"><strong>Plot Details</strong></li>
-                                            <li id="ApplicantDetail"><strong>Applicant Details</strong></li>
-                                            <li id="ProjectDetail"><strong>Project Details</strong></li>
-                                            <li id="BankDetail"><strong>Bank Details</strong></li>
-                                            <li id="AttachDocument"><strong>Attach Documents</strong></li>
-                                            @*<li id="MakePayment"><strong>Make Payment</strong></li>*@
-                                        </ul>
-                                        <!-- Step1 fieldsets -->
-                                        <fieldset>
-                                            @*<form id="msform" action="/Masters/SavePlotDetail" method="POST">*@
+                                <div id="msform">
+                                    <!-- progressbar -->
+                                    <ul id="progressbar">
+                                        <li class="active" id="PlotDetail"><strong>Plot Details</strong></li>
+                                        <li id="ApplicantDetail"><strong>Applicant Details</strong></li>
+                                        <li id="ProjectDetail"><strong>Project Details</strong></li>
+                                        <li id="BankDetail"><strong>Bank Details</strong></li>
+                                        <li id="AttachDocument"><strong>Attach Documents</strong></li>
+                                        @*<li id="MakePayment"><strong>Make Payment</strong></li>*@
+                                    </ul>
+                                    <!-- Step1 fieldsets -->
+                                    <fieldset>
+                                        <form>
                                             <div class="form-card">
                                                 <h2 class="fs-title">Plot Details</h2>
                                                 <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
@@ -216,10 +215,11 @@
                                                 <input type="button" id="btnPlotDetailSave" name="next" class="next action-button pull-right" value="Save & Next" />
                                             </div>
 
-                                            @*</form>*@
-                                        </fieldset>
-                                        <!-- Step2 fieldsets -->
-                                        <fieldset>
+                                        </form>
+                                    </fieldset>
+                                    <!-- Step2 fieldsets -->
+                                    <fieldset>
+                                        <form>
                                             <div class="form-card">
                                                 <h3 class="fs-title">Applicant Peronal Details</h3>
                                                 <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
@@ -393,9 +393,11 @@
                                                 <input type="button" name="previous" id="Step2PreviousButton" class="previous action-button-previous pull-right" value="Previous" />
                                                 <input type="button" name="next" id="Step2NextButton" class="next action-button pull-right" value="Next Step" />
                                             </div>
-                                        </fieldset>
-                                        <!-- Step3 fieldsets -->
-                                        <fieldset>
+                                        </form>
+                                    </fieldset>
+                                    <!-- Step3 fieldsets -->
+                                    <fieldset>
+                                        <form>
                                             <div class="form-card">
                                                 <h3 class="fs-title">Perticular Project Details</h3>
                                                 <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
@@ -545,9 +547,11 @@
                                                 <input type="button" name="previous" id="Step3PreviousButton" class="previous action-button-previous pull-right" value="Previous" />
                                                 <input type="button" name="next" id="Step3NextButton" class="next action-button pull-right" value="Next Step" />
                                             </div>
-                                        </fieldset>
-                                        <!-- Step4 fieldsets -->
-                                        <fieldset>
+                                        </form>
+                                    </fieldset>
+                                    <!-- Step4 fieldsets -->
+                                    <fieldset>
+                                        <form>
                                             <div class="form-card">
                                                 <h2 class="fs-title">Bank Account Details</h2>
                                                 <div class="form-group col-sm-6 col-xs-12">
@@ -579,10 +583,11 @@
                                                 <input type="button" name="previous" id="Step4PreviousButton" class="previous action-button-previous pull-right" value="Previous" />
                                                 <input type="button" name="next" id="Step4NextButton" class="next action-button pull-right" value="Next Step" />
                                             </div>
-                                        </fieldset>
-                                        <!-- Step5 fieldsets -->
-                                        <fieldset>
-
+                                        </form>
+                                    </fieldset>
+                                    <!-- Step5 fieldsets -->
+                                    <fieldset>
+                                        <form action="~/Masters/SaveApplicantDocument" method="post" enctype="multipart/form-data">
                                             <div class="form-card">
                                                 <h3 class="fs-title">Attached Ducument Details</h3>
                                                 <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
@@ -898,12 +903,11 @@
                                             </div>
                                             <div class="col-sm-12 col-xs-12">
                                                 <input type="button" name="previous" id="Step5PreviousButton" class="previous action-button-previous pull-right" value="Previous" />
-                                                <input type="submit" name="next" id="Step5NextButton" class="next action-button pull-right" value="Next Step" />
+                                                <input type="submit" name="next" id="Step5NextButton" class="next action-button pull-right" value="Save & Next" />
                                             </div>
-
-                                        </fieldset>
-                                    </div>
-                                </form>
+                                        </form>
+                                    </fieldset>
+                                </div>
                             </div>
                         </div>
                     </div>
