@@ -34,7 +34,7 @@ namespace GidaGkpWeb.Controllers
                 //SetAlertMessage("Incomplete Detail", "Error");
                 return null;
             }
-            return Json(CrudResponse(_details.SavePlotDetail(UserData.UserId, AppliedFor, SchemeType, PlotRange, SchemeName, plotArea, SectorName, EstimatedRate, PaymemtSchedule, TotalInvestment, ApplicationFee, EarnestMoneyDeposite, GST, NetAmount, TotalAmount, IndustryOwnershipType, UnitName, Name, dob, PresentAddress, PermanentAddress, RelationshipStatus)), JsonRequestBehavior.AllowGet);
+            return Json(_details.SavePlotDetail(UserData.UserId, AppliedFor, SchemeType, PlotRange, SchemeName, plotArea, SectorName, EstimatedRate, PaymemtSchedule, TotalInvestment, ApplicationFee, EarnestMoneyDeposite, GST, NetAmount, TotalAmount, IndustryOwnershipType, UnitName, Name, dob, PresentAddress, PermanentAddress, RelationshipStatus), JsonRequestBehavior.AllowGet);
         }
 
 

@@ -119,6 +119,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicantApplicationDetail.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="ApplicantBankDetail.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

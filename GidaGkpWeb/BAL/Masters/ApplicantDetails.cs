@@ -12,7 +12,7 @@ namespace GidaGkpWeb.BAL
     {
         GidaGKPEntities _db = null;
 
-        public Enums.CrudStatus SavePlotDetail(int userId, string AppliedFor, string SchemeType, string PlotRange, string SchemeName, string plotArea, string SectorName, string EstimatedRate, string PaymemtSchedule, string TotalInvestment, string ApplicationFee, string EarnestMoneyDeposite, string GST, string NetAmount, string TotalAmount, string IndustryOwnershipType, string UnitName, string Name, string dob, string PresentAddress, string PermanentAddress, string RelationshipStatus)
+        public string SavePlotDetail(int userId, string AppliedFor, string SchemeType, string PlotRange, string SchemeName, string plotArea, string SectorName, string EstimatedRate, string PaymemtSchedule, string TotalInvestment, string ApplicationFee, string EarnestMoneyDeposite, string GST, string NetAmount, string TotalAmount, string IndustryOwnershipType, string UnitName, string Name, string dob, string PresentAddress, string PermanentAddress, string RelationshipStatus)
         {
             _db = new GidaGKPEntities();
 
@@ -22,6 +22,23 @@ namespace GidaGkpWeb.BAL
                 ApplicantStepCompleted = 1
             };
             _db.Entry(step).State = EntityState.Added;
+
+            var applciationDeatil = _db.ApplicantApplicationDetails.OrderByDescending(x => x.ApplicationId).Take(1).FirstOrDefault();
+            int maxId = 0;
+            if (applciationDeatil != null)
+            {
+                maxId = applciationDeatil.ApplicationId + 1;
+            }
+            else
+            {
+                maxId = 1;
+            }
+            ApplicantApplicationDetail app = new ApplicantApplicationDetail()
+            {
+                UserId = userId,
+                ApplicationNumber = DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + SchemeName + maxId.ToString().PadLeft(4, '0')
+            };
+            _db.Entry(app).State = EntityState.Added;
 
             int _effectRow = 0;
             ApplicantPlotDetail _newRecord = new ApplicantPlotDetail()
@@ -52,7 +69,7 @@ namespace GidaGkpWeb.BAL
             };
             _db.Entry(_newRecord).State = EntityState.Added;
             _effectRow = _db.SaveChanges();
-            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+            return _effectRow > 0 ? app.ApplicationNumber : "Error";
         }
 
         public Enums.CrudStatus SaveApplicantDetail(int userId, string FullName, string FName, string MName, string SName, string DOB, string Gender, string Reservation, string Nationality, string AdhaarNo, string PAN, string MobileNo, string Phone, string Email, string Religion, string SubCategory, string CAddress, string PAddress, string IdentityProof, string ResidentialProof)
@@ -181,7 +198,7 @@ namespace GidaGkpWeb.BAL
             _db.Entry(step).State = EntityState.Added;
 
             int _effectRow = 0;
-           
+
             _db.Entry(docDetail).State = EntityState.Added;
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;

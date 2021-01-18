@@ -13,6 +13,7 @@
         <EntityTypeShape EntityType="GidaGKPModel.ApplicantProjectDetail" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="GidaGKPModel.ApplicantUploadDoc" Width="1.5" PointX="7.375" PointY="5.75" />
         <EntityTypeShape EntityType="GidaGKPModel.Lookup" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="GidaGKPModel.ApplicantApplicationDetail" Width="1.5" PointX="9.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

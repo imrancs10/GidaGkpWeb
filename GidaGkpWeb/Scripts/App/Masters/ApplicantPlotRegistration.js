@@ -250,11 +250,13 @@ $(document).ready(function () {
                 UnitName: $('#UnitName').val()
             };
             utility.ajax.helperWithData(url, inputData, function (data) {
-                if (data == 'Data has been saved') {
+                if (data != 'Error') {
                     //$('#progressbar li').removeClass('active');
                     //$('#ApplicantDetail').addClass('active');
                     NextStep($('#btnPlotDetailSave'));
-                    utility.alert.setAlert(utility.alert.alertType.success, 'Plot Detail has been Saved');
+                    $('#spanApplicationNumber').html(data);
+                    $('#divApplicationNumber').css('display','block');
+                    utility.alert.setAlert(utility.alert.alertType.success, 'Plot Detail has been Saved, Your Application Number is ' + data);
                 }
             });
         }

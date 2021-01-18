@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="GidaGKPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApplicantApplicationDetail">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationNumber" Type="varchar" MaxLength="50" />
+          <Property Name="AllotmentNumber" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
         <EntityType Name="ApplicantBankDetails">
           <Key>
             <PropertyRef Name="Id" />
@@ -172,6 +181,7 @@
           <Property Name="ParentLookupId" Type="int" />
         </EntityType>
         <EntityContainer Name="GidaGKPModelStoreContainer">
+          <EntitySet Name="ApplicantApplicationDetail" EntityType="Self.ApplicantApplicationDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantBankDetails" EntityType="Self.ApplicantBankDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantDetails" EntityType="Self.ApplicantDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantFormStep" EntityType="Self.ApplicantFormStep" Schema="dbo" store:Type="Tables" />
@@ -293,6 +303,7 @@
           <EntitySet Name="ApplicantProjectDetails" EntityType="GidaGKPModel.ApplicantProjectDetail" />
           <EntitySet Name="ApplicantUploadDocs" EntityType="GidaGKPModel.ApplicantUploadDoc" />
           <EntitySet Name="Lookups" EntityType="GidaGKPModel.Lookup" />
+          <EntitySet Name="ApplicantApplicationDetails" EntityType="GidaGKPModel.ApplicantApplicationDetail" />
         </EntityContainer>
         <EntityType Name="ApplicantProjectDetail">
           <Key>
@@ -360,6 +371,15 @@
           <Property Name="LookupType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="LookupName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ParentLookupId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ApplicantApplicationDetail">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AllotmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -538,6 +558,16 @@
                 <ScalarProperty Name="LookupName" ColumnName="LookupName" />
                 <ScalarProperty Name="LookupType" ColumnName="LookupType" />
                 <ScalarProperty Name="LookupId" ColumnName="LookupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantApplicationDetails">
+            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantApplicationDetail">
+              <MappingFragment StoreEntitySet="ApplicantApplicationDetail">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AllotmentNumber" ColumnName="AllotmentNumber" />
+                <ScalarProperty Name="ApplicationNumber" ColumnName="ApplicationNumber" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
