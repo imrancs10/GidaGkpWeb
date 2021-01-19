@@ -52,8 +52,9 @@
     <Reference Include="Elmah.Mvc, Version=2.1.2.1389, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="MCPG.CCA.Util">
-      <HintPath>..\..\API Document Sample Code\STATUS API (ASP.NET)\CCAvenue_API_Kit(Status Json)\CCAvenue_API_Kit\bin\MCPG.CCA.Util.dll</HintPath>
+    <Reference Include="MCPG.CCA.Util, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3d7072b2634875da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternalLibrary\MCPG.CCA.Util.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -400,6 +401,7 @@
     <Content Include="Content\sites\all\themes\new\css\styles9e56.css" />
     <Content Include="Content\sites\all\themes\new\css\tbmm.css" />
     <Content Include="Content\taxonomy\term\12.html" />
+    <Content Include="ExternalLibrary\MCPG.CCA.Util.dll" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\ElegantIcons.svg" />
     <Content Include="fonts\fontawesome-webfont93e3.svg" />
