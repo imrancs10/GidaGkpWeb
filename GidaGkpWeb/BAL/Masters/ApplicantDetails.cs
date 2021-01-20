@@ -5,6 +5,7 @@ using System.Web;
 using DataLayer;
 using GidaGkpWeb.Global;
 using System.Data.Entity;
+using GidaGkpWeb.Models.Masters;
 
 namespace GidaGkpWeb.BAL
 {
@@ -210,5 +211,26 @@ namespace GidaGkpWeb.BAL
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
+
+        public ApplicationDetailModel GetUserPlotDetail(int userId)
+        {
+            _db = new GidaGKPEntities();
+            return (from application in _db.ApplicantApplicationDetails
+                    join applicantDetail in _db.ApplicantDetails on application.UserId equals applicantDetail.UserId
+                    join fee in _db.ApplicantPlotDetails on application.UserId equals fee.UserId
+                    where application.UserId == userId
+                    select new ApplicationDetailModel
+                    {
+                        ApplicationNumber = application.ApplicationNumber,
+                        FullApplicantName = applicantDetail.FullApplicantName,
+                        CAddress = applicantDetail.CAddress,
+                        Mobile = applicantDetail.Mobile,
+                        TotalAmount = fee.TotalAmount,
+                        NetAmount = fee.NetAmount
+
+                    }).FirstOrDefault();
+        }
     }
+
+    
 }

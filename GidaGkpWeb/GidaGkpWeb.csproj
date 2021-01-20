@@ -293,9 +293,7 @@
     <Compile Include="Infrastructure\Utility\EmailHelper.cs" />
     <Compile Include="Infrastructure\Utility\Serializer.cs" />
     <Compile Include="Infrastructure\Utility\VerificationCodeGeneration.cs" />
-    <Compile Include="Models\Masters\ClientBillDescriptionModel.cs" />
-    <Compile Include="Models\Masters\ClientBillDetailModel.cs" />
-    <Compile Include="Models\Masters\ServiceOrderModel.cs" />
+    <Compile Include="Models\Masters\ApplicationDetailModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

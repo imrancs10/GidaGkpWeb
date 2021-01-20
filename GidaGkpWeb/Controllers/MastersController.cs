@@ -36,6 +36,9 @@ namespace GidaGkpWeb.Controllers
 
         public ActionResult PaymentRequest()
         {
+            ApplicantDetails _details = new ApplicantDetails();
+            var data = _details.GetUserPlotDetail(UserData.UserId);
+            ViewData["UserData"] = data;
             return View();
         }
         public ActionResult PaymentResponse()
@@ -89,7 +92,7 @@ namespace GidaGkpWeb.Controllers
                 return View();
             }
 
-            
+
         }
 
         [HttpPost]
@@ -107,7 +110,10 @@ namespace GidaGkpWeb.Controllers
             Session["strEncRequest"] = ccaCrypto.Encrypt(ccaRequest, workingKey);
             Session["strAccessCode"] = strAccessCode;
             Session["AmountToBePaid"] = NetAmount;
-            return Json(_details.SavePlotDetail(UserData.UserId, AppliedFor, SchemeType, PlotRange, SchemeName, plotArea, SectorName, EstimatedRate, PaymemtSchedule, TotalInvestment, ApplicationFee, EarnestMoneyDeposite, GST, NetAmount, TotalAmount, IndustryOwnershipType, UnitName, Name, dob, PresentAddress, PermanentAddress, RelationshipStatus), JsonRequestBehavior.AllowGet);
+            var AppNumber = _details.SavePlotDetail(UserData.UserId, AppliedFor, SchemeType, PlotRange, SchemeName, plotArea, SectorName, EstimatedRate, PaymemtSchedule, TotalInvestment, ApplicationFee, EarnestMoneyDeposite, GST, NetAmount, TotalAmount, IndustryOwnershipType, UnitName, Name, dob, PresentAddress, PermanentAddress, RelationshipStatus);
+            if (AppNumber != "Error")
+                Session["ApplicationNumber"] = AppNumber;
+            return Json(AppNumber, JsonRequestBehavior.AllowGet);
         }
 
 
