@@ -13,5 +13,9 @@ namespace GidaGkpWeb.Models.Masters
         public string Mobile { get; set; }
         public decimal? TotalAmount { get; set; }
         public decimal? NetAmount { get; set; }
+        public decimal? ApplicationFee { get; set; }
+        public decimal? GST { get; set; }
+        public decimal? EarnestMoneyDeposit { get; set; }
+        public DateTime? PaymentDate { get; set; }
     }
 }

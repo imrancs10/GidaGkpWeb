@@ -1,0 +1,36 @@
+﻿@using GidaGkpWeb.Infrastructure.Authentication;
+@using GidaGkpWeb.Models.Masters;
+@{
+    ViewBag.Title = "PaymentResponseSuccess";
+    Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
+    var UserData = ViewData["UserData"] as ApplicationDetailModel;
+}
+
+<link href="~/styles/style.css" rel="stylesheet" />
+<section class="form">
+    <!-- MultiStep Form -->
+    <div class="container-fluid" id="grad1">
+        <div class="container">
+            <div class="row justify-content-center mt-0" style="padding:30px 20px">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                        <div class="col-sm-12 col-xs-12">
+                            <center><h2><strong>Payment/Acknowledgement Detail</strong></h2></center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mx-0">
+                    <div class="col-sm-6 col-xs-12" style="padding-left:20px">
+                        <center><a name="next" href="/Masters/PaymentReciept" target="_blank" class="btn btn-primary pull-right">Print Payment Reciept</a></center>
+
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <center><a name="next" href="/Masters/PaymentAcknowledgement" target="_blank" class="btn btn-primary pull-right">Print Acknowledgement Form</a></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

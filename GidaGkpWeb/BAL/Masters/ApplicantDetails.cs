@@ -217,7 +217,8 @@ namespace GidaGkpWeb.BAL
             _db = new GidaGKPEntities();
             return (from application in _db.ApplicantApplicationDetails
                     join applicantDetail in _db.ApplicantDetails on application.UserId equals applicantDetail.UserId
-                    join fee in _db.ApplicantPlotDetails on application.UserId equals fee.UserId
+                    join plotDetail in _db.ApplicantPlotDetails on application.UserId equals plotDetail.UserId
+                    join transaction in _db.ApplicantTransactionDetails on applicantDetail.UserId equals transaction.UserId
                     where application.UserId == userId
                     select new ApplicationDetailModel
                     {
@@ -225,12 +226,15 @@ namespace GidaGkpWeb.BAL
                         FullApplicantName = applicantDetail.FullApplicantName,
                         CAddress = applicantDetail.CAddress,
                         Mobile = applicantDetail.Mobile,
-                        TotalAmount = fee.TotalAmount,
-                        NetAmount = fee.NetAmount
-
+                        TotalAmount = plotDetail.TotalAmount,
+                        NetAmount = plotDetail.NetAmount,
+                        ApplicationFee = plotDetail.ApplicationFee,
+                        EarnestMoneyDeposit = plotDetail.EarnestMoney,
+                        GST = plotDetail.GST,
+                        PaymentDate = transaction.trans_date
                     }).FirstOrDefault();
         }
     }
 
-    
+
 }

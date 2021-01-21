@@ -34,67 +34,6 @@ namespace GidaGkpWeb.Controllers
             return View();
         }
 
-        public ActionResult PaymentRequest()
-        {
-            ApplicantDetails _details = new ApplicantDetails();
-            var data = _details.GetUserPlotDetail(UserData.UserId);
-            ViewData["UserData"] = data;
-            return View();
-        }
-        public ActionResult PaymentResponse()
-        {
-            CCACrypto ccaCrypto = new CCACrypto();
-            string encResponse = ccaCrypto.Decrypt(Request.Form["encResp"], workingKey);
-            NameValueCollection Params = new NameValueCollection();
-            string[] segments = encResponse.Split('&');
-            foreach (string seg in segments)
-            {
-                string[] parts = seg.Split('=');
-                if (parts.Length > 0)
-                {
-                    string Key = parts[0].Trim();
-                    string Value = parts[1].Trim();
-                    Params.Add(Key, Value);
-                }
-            }
-
-            //for (int i = 0; i < Params.Count; i++)
-            //{
-            //    Response.Write(Params.Keys[i] + " = " + Params[i] + "<br>");
-            //}
-
-            if (Params["status_message"] == "Completed Successfully")
-            {
-                ApplicantDetails _details = new ApplicantDetails();
-                ApplicantTransactionDetail detail = new ApplicantTransactionDetail()
-                {
-                    UserId = UserData.UserId,
-                    amount = Params["amount"],
-                    bank_ref_no = Params["bank_ref_no"],
-                    billing_address = Params["billing_address"],
-                    billing_name = Params["billing_name"],
-                    card_name = Params["card_name"],
-                    created_date = DateTime.Now,
-                    order_id = Convert.ToInt64(Params["order_id"]),
-                    order_status = Params["order_status"],
-                    payment_mode = Params["payment_mode"],
-                    status_message = Params["status_message"],
-                    tracking_id = Convert.ToInt64(Params["tracking_id"]),
-                    trans_date = DateTime.Now,
-                };
-                _details.SaveApplicantTransactionDeatil(detail);
-                SetAlertMessage("Payment done successfully", "Payment Status");
-                return RedirectToAction("Dashboard");
-            }
-            else
-            {
-                SetAlertMessage("Payment Failed", "Error");
-                return View();
-            }
-
-
-        }
-
         [HttpPost]
         public JsonResult SavePlotDetail(string AppliedFor, string SchemeType, string PlotRange, string SchemeName, string plotArea, string SectorName, string EstimatedRate, string PaymemtSchedule, string TotalInvestment, string ApplicationFee, string EarnestMoneyDeposite, string GST, string NetAmount, string TotalAmount, string IndustryOwnershipType, string UnitName, string Name, string dob, string PresentAddress, string PermanentAddress, string RelationshipStatus)
         {
@@ -254,12 +193,84 @@ namespace GidaGkpWeb.Controllers
             return Json(_details.GetLookupDetail(lookupTypeId, lookupType), JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult PaymentResp()
+        public ActionResult PaymentRequest()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            var data = _details.GetUserPlotDetail(UserData.UserId);
+            ViewData["UserData"] = data;
+            return View();
+        }
+        public ActionResult PaymentResponse()
+        {
+            CCACrypto ccaCrypto = new CCACrypto();
+            string encResponse = ccaCrypto.Decrypt(Request.Form["encResp"], workingKey);
+            NameValueCollection Params = new NameValueCollection();
+            string[] segments = encResponse.Split('&');
+            foreach (string seg in segments)
+            {
+                string[] parts = seg.Split('=');
+                if (parts.Length > 0)
+                {
+                    string Key = parts[0].Trim();
+                    string Value = parts[1].Trim();
+                    Params.Add(Key, Value);
+                }
+            }
+
+            //for (int i = 0; i < Params.Count; i++)
+            //{
+            //    Response.Write(Params.Keys[i] + " = " + Params[i] + "<br>");
+            //}
+
+            if (Params["status_message"] == "Completed Successfully")
+            {
+                ApplicantDetails _details = new ApplicantDetails();
+                ApplicantTransactionDetail detail = new ApplicantTransactionDetail()
+                {
+                    UserId = UserData.UserId,
+                    amount = Params["amount"],
+                    bank_ref_no = Params["bank_ref_no"],
+                    billing_address = Params["billing_address"],
+                    billing_name = Params["billing_name"],
+                    card_name = Params["card_name"],
+                    created_date = DateTime.Now,
+                    order_id = Convert.ToInt64(Params["order_id"]),
+                    order_status = Params["order_status"],
+                    payment_mode = Params["payment_mode"],
+                    status_message = Params["status_message"],
+                    tracking_id = Convert.ToInt64(Params["tracking_id"]),
+                    trans_date = DateTime.Now,
+                };
+                _details.SaveApplicantTransactionDeatil(detail);
+                SetAlertMessage("Payment done successfully", "Payment Status");
+                return RedirectToAction("PaymentResp");
+            }
+            else
+            {
+                SetAlertMessage("Payment Failed", "Error");
+                return View();
+            }
+
+
+        }
+
+        public ActionResult PaymentResponseSuccess()
         {
             return View();
         }
 
+        public ActionResult PaymentReciept()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            var data = _details.GetUserPlotDetail(UserData.UserId);
+            ViewData["UserData"] = data;
+            return View();
+        }
 
+        public ActionResult PaymentAcknowledgement()
+        {
+            return View();
+        }
         public ActionResult Logout()
         {
             Session.Abandon();
