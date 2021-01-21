@@ -97,6 +97,10 @@ $(document).ready(function () {
         FillSector(valueSelected);
     });
 
+    $('#SectorName').on('change', function (e) {
+        $('#SectorDescription').val($("#SectorName option:selected").text());
+    });
+
     function FillSector(SchemeNameId) {
         let dropdown = $('#SectorName');
         dropdown.empty();
@@ -247,7 +251,8 @@ $(document).ready(function () {
                 PresentAddress: $('#PresentAddress').val(),
                 TotalAmount: $('#TotalAmount').val(),
                 TotalInvestment: $('#TotalInvestment').val(),
-                UnitName: $('#UnitName').val()
+                UnitName: $('#UnitName').val(),
+                SectorDescription: $('#SectorDescription').val()
             };
             utility.ajax.helperWithData(url, inputData, function (data) {
                 if (data != 'Error') {
@@ -255,7 +260,7 @@ $(document).ready(function () {
                     //$('#ApplicantDetail').addClass('active');
                     NextStep($('#btnPlotDetailSave'));
                     $('#spanApplicationNumber').html(data);
-                    $('#divApplicationNumber').css('display','block');
+                    $('#divApplicationNumber').css('display', 'block');
                     utility.alert.setAlert(utility.alert.alertType.success, 'Plot Detail has been Saved, Your Application Number is ' + data);
                 }
             });

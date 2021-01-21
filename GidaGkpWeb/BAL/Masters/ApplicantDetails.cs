@@ -20,7 +20,7 @@ namespace GidaGkpWeb.BAL
             return _db.SaveChanges();
 
         }
-        public string SavePlotDetail(int userId, string AppliedFor, string SchemeType, string PlotRange, string SchemeName, string plotArea, string SectorName, string EstimatedRate, string PaymemtSchedule, string TotalInvestment, string ApplicationFee, string EarnestMoneyDeposite, string GST, string NetAmount, string TotalAmount, string IndustryOwnershipType, string UnitName, string Name, string dob, string PresentAddress, string PermanentAddress, string RelationshipStatus)
+        public string SavePlotDetail(int userId, string AppliedFor, string SchemeType, string PlotRange, string SchemeName, string plotArea, string SectorName, string SectorDescription, string EstimatedRate, string PaymemtSchedule, string TotalInvestment, string ApplicationFee, string EarnestMoneyDeposite, string GST, string NetAmount, string TotalAmount, string IndustryOwnershipType, string UnitName, string Name, string dob, string PresentAddress, string PermanentAddress, string RelationshipStatus)
         {
             _db = new GidaGKPEntities();
 
@@ -44,7 +44,7 @@ namespace GidaGkpWeb.BAL
             ApplicantApplicationDetail app = new ApplicantApplicationDetail()
             {
                 UserId = userId,
-                ApplicationNumber = DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + SchemeName + maxId.ToString().PadLeft(4, '0')
+                ApplicationNumber = DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + SectorDescription.Replace("Sector ", "") + maxId.ToString().PadLeft(4, '0')
             };
             _db.Entry(app).State = EntityState.Added;
 

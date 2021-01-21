@@ -35,7 +35,7 @@ namespace GidaGkpWeb.Controllers
         }
 
         [HttpPost]
-        public JsonResult SavePlotDetail(string AppliedFor, string SchemeType, string PlotRange, string SchemeName, string plotArea, string SectorName, string EstimatedRate, string PaymemtSchedule, string TotalInvestment, string ApplicationFee, string EarnestMoneyDeposite, string GST, string NetAmount, string TotalAmount, string IndustryOwnershipType, string UnitName, string Name, string dob, string PresentAddress, string PermanentAddress, string RelationshipStatus)
+        public JsonResult SavePlotDetail(string AppliedFor, string SchemeType, string PlotRange, string SchemeName, string plotArea, string SectorName, string SectorDescription, string EstimatedRate, string PaymemtSchedule, string TotalInvestment, string ApplicationFee, string EarnestMoneyDeposite, string GST, string NetAmount, string TotalAmount, string IndustryOwnershipType, string UnitName, string Name, string dob, string PresentAddress, string PermanentAddress, string RelationshipStatus)
         {
             ApplicantDetails _details = new ApplicantDetails();
             if (string.IsNullOrEmpty(AppliedFor) || string.IsNullOrEmpty(SchemeType))
@@ -49,7 +49,7 @@ namespace GidaGkpWeb.Controllers
             Session["strEncRequest"] = ccaCrypto.Encrypt(ccaRequest, workingKey);
             Session["strAccessCode"] = strAccessCode;
             Session["AmountToBePaid"] = NetAmount;
-            var AppNumber = _details.SavePlotDetail(UserData.UserId, AppliedFor, SchemeType, PlotRange, SchemeName, plotArea, SectorName, EstimatedRate, PaymemtSchedule, TotalInvestment, ApplicationFee, EarnestMoneyDeposite, GST, NetAmount, TotalAmount, IndustryOwnershipType, UnitName, Name, dob, PresentAddress, PermanentAddress, RelationshipStatus);
+            var AppNumber = _details.SavePlotDetail(UserData.UserId, AppliedFor, SchemeType, PlotRange, SchemeName, plotArea, SectorName, SectorDescription, EstimatedRate, PaymemtSchedule, TotalInvestment, ApplicationFee, EarnestMoneyDeposite, GST, NetAmount, TotalAmount, IndustryOwnershipType, UnitName, Name, dob, PresentAddress, PermanentAddress, RelationshipStatus);
             if (AppNumber != "Error")
                 Session["ApplicationNumber"] = AppNumber;
             return Json(AppNumber, JsonRequestBehavior.AllowGet);
