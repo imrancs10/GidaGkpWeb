@@ -269,6 +269,9 @@ namespace GidaGkpWeb.Controllers
 
         public ActionResult PaymentAcknowledgement()
         {
+            ApplicantDetails _details = new ApplicantDetails();
+            var data = _details.GetAcknowledgementDetail(UserData.UserId);
+            ViewData["UserData"] = data;
             return View();
         }
         public ActionResult Logout()

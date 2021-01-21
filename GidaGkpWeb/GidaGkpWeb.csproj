@@ -599,6 +599,7 @@
     <Content Include="Views\Masters\ApplicationFormPrint.cshtml" />
     <Content Include="Views\Masters\PaymentResponseSuccess.cshtml" />
     <Content Include="Views\Masters\PaymentReciept.cshtml" />
+    <Content Include="Views\Masters\PaymentAcknowledgement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

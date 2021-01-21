@@ -234,6 +234,66 @@ namespace GidaGkpWeb.BAL
                         PaymentDate = transaction.trans_date
                     }).FirstOrDefault();
         }
+
+        public AcknowledgementDetailModel GetAcknowledgementDetail(int userId)
+        {
+            _db = new GidaGKPEntities();
+            return (from applicationDetail in _db.ApplicantApplicationDetails
+                    join applicantDetail in _db.ApplicantDetails on applicationDetail.UserId equals applicantDetail.UserId
+                    join plotDetail in _db.ApplicantPlotDetails on applicationDetail.UserId equals plotDetail.UserId
+                    join transactionDetail in _db.ApplicantTransactionDetails on applicantDetail.UserId equals transactionDetail.UserId
+                    join projectDetail in _db.ApplicantProjectDetails on applicantDetail.UserId equals projectDetail.UserId
+                    join documentDetail in _db.ApplicantUploadDocs on applicantDetail.UserId equals documentDetail.UserId
+                    where applicationDetail.UserId == userId
+                    select new AcknowledgementDetailModel
+                    {
+                        ApplicationNumber = applicationDetail.ApplicationNumber,
+                        FullApplicantName = applicantDetail.FullApplicantName,
+                        CAddress = applicantDetail.CAddress,
+                        Mobile = applicantDetail.Mobile,
+                        TotalAmount = plotDetail.TotalAmount,
+                        NetAmount = plotDetail.NetAmount,
+                        ApplicationFee = plotDetail.ApplicationFee,
+                        EarnestMoneyDeposit = plotDetail.EarnestMoney,
+                        GST = plotDetail.GST,
+                        PaymentDate = transactionDetail.trans_date,
+                        BankName = transactionDetail.payment_mode,
+                        ApplicantPhoto = documentDetail.ApplicantPhoto,
+                        ApplicantSignature = documentDetail.ApplicantSignature,
+                        EffluentTreatmentMeasures = projectDetail.EffluentTreatmentMeasures,
+                        FirstYearNoOfFax = projectDetail.FirstYearNoOfFax,
+                        FirstYearNoOfTelephone = projectDetail.FirstYearNoOfTelephone,
+                        FumesNatureQuantity = projectDetail.FumesNatureQuantity,
+                        GasChemicalComposition = projectDetail.GasChemicalComposition,
+                        GasQuantity = projectDetail.GasQuantity,
+                        IndustryOwnership = plotDetail.IndustryOwnership,
+                        LiquidChemicalComposition = projectDetail.LiquidChemicalComposition,
+                        LiquidQuantity = projectDetail.LiquidQuantity,
+                        PlotArea = plotDetail.PlotArea,
+                        PowerRequirement = projectDetail.PowerRequirement,
+                        ProjectEstimatedCost = projectDetail.ProjectEstimatedCost,
+                        ProposedCoveredArea = projectDetail.ProposedCoveredArea,
+                        ProposedIndustryType = projectDetail.ProposedIndustryType,
+                        ProposedInvestmentBuilding = projectDetail.ProposedInvestmentBuilding,
+                        ProposedInvestmentLand = projectDetail.ProposedInvestmentLand,
+                        ProposedInvestmentPlant = projectDetail.ProposedInvestmentPlant,
+                        ProposedOpenArea = projectDetail.ProposedOpenArea,
+                        PurpuseOpenArea = projectDetail.PurpuseOpenArea,
+                        RelationshipStatus = plotDetail.RelationshipStatus,
+                        SectorName = plotDetail.SectorName,
+                        SignatryDateOfBirth = plotDetail.SignatryDateOfBirth,
+                        SignatryName = plotDetail.SignatryName,
+                        SignatryPermanentAddress = plotDetail.SignatryPermanentAddress,
+                        SignatryPermanentPhoneNumber = plotDetail.SignatryPermanentPhoneNumber,
+                        SignatryPresentAddress = plotDetail.SignatryPresentAddress,
+                        SignatryPresentPhoneNumber = plotDetail.SignatryPresentPhoneNumber,
+                        SolidChemicalComposition = projectDetail.SolidChemicalComposition,
+                        SolidQuantity = projectDetail.SolidQuantity,
+                        UltimateNoOfFax = projectDetail.UltimateNoOfFax,
+                        UltimateNoOfTelephone = projectDetail.UltimateNoOfTelephone,
+                        UnitName = plotDetail.UnitName
+                    }).FirstOrDefault();
+        }
     }
 
 
