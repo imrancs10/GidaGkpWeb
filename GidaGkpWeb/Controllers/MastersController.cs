@@ -254,6 +254,11 @@ namespace GidaGkpWeb.Controllers
             return Json(_details.GetLookupDetail(lookupTypeId, lookupType), JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult PaymentResp()
+        {
+            return View();
+        }
+
 
         public ActionResult Logout()
         {
