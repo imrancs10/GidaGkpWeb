@@ -218,7 +218,8 @@ namespace GidaGkpWeb.BAL
             return (from application in _db.ApplicantApplicationDetails
                     join applicantDetail in _db.ApplicantDetails on application.UserId equals applicantDetail.UserId
                     join plotDetail in _db.ApplicantPlotDetails on application.UserId equals plotDetail.UserId
-                    join transaction in _db.ApplicantTransactionDetails on applicantDetail.UserId equals transaction.UserId
+                    join transaction1 in _db.ApplicantTransactionDetails on applicantDetail.UserId equals transaction1.UserId into transaction2
+                    from transaction in transaction2.DefaultIfEmpty()
                     where application.UserId == userId
                     select new ApplicationDetailModel
                     {
@@ -231,7 +232,7 @@ namespace GidaGkpWeb.BAL
                         ApplicationFee = plotDetail.ApplicationFee,
                         EarnestMoneyDeposit = plotDetail.EarnestMoney,
                         GST = plotDetail.GST,
-                        PaymentDate = transaction.trans_date
+                        PaymentDate = transaction != null ? transaction.trans_date : DateTime.Now
                     }).FirstOrDefault();
         }
 
