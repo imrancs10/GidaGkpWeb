@@ -40,5 +40,7 @@ namespace DataLayer
         public string Skilled { get; set; }
         public string UnSkilled { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
+        public string FullApplicantName { get; set; }
     }
 }

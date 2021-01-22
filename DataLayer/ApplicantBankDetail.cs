@@ -23,5 +23,6 @@ namespace DataLayer
         public string AccountHolderName { get; set; }
         public string BankAccountNo { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     }
 }

@@ -40,5 +40,6 @@ namespace DataLayer
         public string SignatryPermanentPhoneNumber { get; set; }
         public string RelationshipStatus { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     }
 }

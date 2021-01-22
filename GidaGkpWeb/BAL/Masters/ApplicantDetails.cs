@@ -24,13 +24,6 @@ namespace GidaGkpWeb.BAL
         {
             _db = new GidaGKPEntities();
 
-            ApplicantFormStep step = new ApplicantFormStep()
-            {
-                UserId = userId,
-                ApplicantStepCompleted = 1
-            };
-            _db.Entry(step).State = EntityState.Added;
-
             var applciationDeatil = _db.ApplicantApplicationDetails.OrderByDescending(x => x.ApplicationId).Take(1).FirstOrDefault();
             int maxId = 0;
             if (applciationDeatil != null)
@@ -47,6 +40,16 @@ namespace GidaGkpWeb.BAL
                 ApplicationNumber = DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + SectorDescription.Replace("Sector ", "") + maxId.ToString().PadLeft(4, '0')
             };
             _db.Entry(app).State = EntityState.Added;
+            _db.SaveChanges();
+            UserData.ApplicationId = app.ApplicationId;
+
+            ApplicantFormStep step = new ApplicantFormStep()
+            {
+                UserId = userId,
+                ApplicantStepCompleted = 1,
+                ApplicationId = UserData.ApplicationId
+            };
+            _db.Entry(step).State = EntityState.Added;
 
             int _effectRow = 0;
             ApplicantPlotDetail _newRecord = new ApplicantPlotDetail()
@@ -73,8 +76,10 @@ namespace GidaGkpWeb.BAL
                 SignatryPresentAddress = PresentAddress,
                 TotalAmount = Convert.ToDecimal(TotalAmount),
                 TotalInvestment = Convert.ToDecimal(TotalInvestment),
-                UnitName = UnitName
+                UnitName = UnitName,
+                ApplicationId = UserData.ApplicationId
             };
+
             _db.Entry(_newRecord).State = EntityState.Added;
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? app.ApplicationNumber : "Error";
@@ -87,7 +92,8 @@ namespace GidaGkpWeb.BAL
             ApplicantFormStep step = new ApplicantFormStep()
             {
                 UserId = userId,
-                ApplicantStepCompleted = 2
+                ApplicantStepCompleted = 2,
+                ApplicationId = UserData.ApplicationId
             };
             _db.Entry(step).State = EntityState.Added;
 
@@ -114,7 +120,8 @@ namespace GidaGkpWeb.BAL
                 Phone = Phone,
                 Religion = Religion,
                 ResidentialProof = ResidentialProof,
-                SName = SName
+                SName = SName,
+                ApplicationId= UserData.ApplicationId
             };
             _db.Entry(_newRecord).State = EntityState.Added;
             _effectRow = _db.SaveChanges();
@@ -128,7 +135,8 @@ namespace GidaGkpWeb.BAL
             ApplicantFormStep step = new ApplicantFormStep()
             {
                 UserId = userId,
-                ApplicantStepCompleted = 3
+                ApplicantStepCompleted = 3,
+                ApplicationId = UserData.ApplicationId
             };
             _db.Entry(step).State = EntityState.Added;
 
@@ -159,7 +167,8 @@ namespace GidaGkpWeb.BAL
                 SolidQuantity = SolidQuantity,
                 UltimateNoOfFax = UltimateNoOfFax,
                 UltimateNoOfTelephone = UltimateNoOfTelephone,
-                UnSkilled = UnSkilled
+                UnSkilled = UnSkilled,
+                ApplicationId = UserData.ApplicationId
             };
             _db.Entry(_newRecord).State = EntityState.Added;
             _effectRow = _db.SaveChanges();
@@ -173,7 +182,8 @@ namespace GidaGkpWeb.BAL
             ApplicantFormStep step = new ApplicantFormStep()
             {
                 UserId = userId,
-                ApplicantStepCompleted = 4
+                ApplicantStepCompleted = 4,
+                ApplicationId = UserData.ApplicationId
             };
             _db.Entry(step).State = EntityState.Added;
 
@@ -187,7 +197,8 @@ namespace GidaGkpWeb.BAL
                 BankName = BankName,
                 BBAddress = BranchAddress,
                 BBName = BranchName,
-                IFSC_Code = IFSCCode
+                IFSC_Code = IFSCCode,
+                ApplicationId = UserData.ApplicationId
             };
             _db.Entry(_newRecord).State = EntityState.Added;
             _effectRow = _db.SaveChanges();
@@ -201,12 +212,13 @@ namespace GidaGkpWeb.BAL
             ApplicantFormStep step = new ApplicantFormStep()
             {
                 UserId = userId,
-                ApplicantStepCompleted = 5
+                ApplicantStepCompleted = 5,
+                ApplicationId = UserData.ApplicationId
             };
             _db.Entry(step).State = EntityState.Added;
 
             int _effectRow = 0;
-
+            docDetail.ApplicationId = UserData.ApplicationId;
             _db.Entry(docDetail).State = EntityState.Added;
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;

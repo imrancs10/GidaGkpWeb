@@ -36,5 +36,6 @@ namespace DataLayer
         public byte[] ApplicantPhoto { get; set; }
         public byte[] ApplicantSignature { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     }
 }

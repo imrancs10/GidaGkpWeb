@@ -36,5 +36,6 @@ namespace DataLayer
         public string IdentiyProof { get; set; }
         public string ResidentialProof { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     }
 }

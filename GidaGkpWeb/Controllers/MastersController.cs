@@ -233,7 +233,7 @@ namespace GidaGkpWeb.Controllers
             var data = _details.GetUserPlotDetail(((CustomPrincipal)User).Id);
 
             string baseURL = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
-            string amountToBePaid = "1";  //NetAmount
+            string amountToBePaid = "1";  //data.NetAmount
             string ccaRequest = "tid=" + VerificationCodeGeneration.GetSerialNumber() + "&merchant_id=" + strMerchantId + "&order_id=" + VerificationCodeGeneration.GetSerialNumber() + "&amount=" + amountToBePaid + "&currency=INR&redirect_url=" + baseURL + "Masters/PaymentResponse&cancel_url=" + baseURL + "Masters/PaymentResponse&language=EN&billing_name=" + data.FullApplicantName + "&billing_address=" + data.CAddress + "&billing_city=&billing_state=&billing_zip=&billing_country=&billing_tel=&billing_email=&delivery_name=" + data.FullApplicantName + "&delivery_address=" + data.CAddress + "&delivery_city=&delivery_state=&delivery_zip=&delivery_country=&delivery_tel=&merchant_param1=additional+Info.&merchant_param2=additional+Info.&merchant_param3=additional+Info.&merchant_param4=additional+Info.&merchant_param5=additional+Info.&payment_option=OPTNBK&emi_plan_id=&emi_tenure_id=&card_type=&card_name=&data_accept=&card_number=&expiry_month=&expiry_year=&cvv_number=&issuing_bank=&mobile_number=&mm_id=&otp=&promo_code=&";
             Session["strEncRequest"] = ccaCrypto.Encrypt(ccaRequest, workingKey);
             Session["strAccessCode"] = strAccessCode;

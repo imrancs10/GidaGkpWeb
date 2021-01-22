@@ -85,6 +85,19 @@ namespace GidaGkpWeb.Global
             }
             set { HttpContext.Current.Session["Email"] = value; }
         }
+        public static int ApplicationId
+        {
+            get
+            {
+                if (HttpContext.Current.Session["ApplicationId"] != null)
+                {
+                    return Convert.ToInt32(HttpContext.Current.Session["ApplicationId"]);
+                }
+                else
+                    return 0;
+            }
+            set { HttpContext.Current.Session["ApplicationId"] = value; }
+        }
 
     }
 }
