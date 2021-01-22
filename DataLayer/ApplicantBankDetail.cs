@@ -16,6 +16,7 @@ namespace DataLayer
     {
         public int Id { get; set; }
         public int UserId { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
         public string BankName { get; set; }
         public string BBName { get; set; }
         public string BBAddress { get; set; }
@@ -23,6 +24,5 @@ namespace DataLayer
         public string AccountHolderName { get; set; }
         public string BankAccountNo { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
-        public Nullable<int> ApplicationId { get; set; }
     }
 }

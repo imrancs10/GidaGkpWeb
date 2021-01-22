@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GidaGKPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GidaGKPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ApplicantApplicationDetail">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -73,21 +73,21 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" />
           <Property Name="ApplicationId" Type="int" />
-          <Property Name="AppliedFor" Type="nvarchar" MaxLength="50" />
-          <Property Name="SchemeType" Type="nvarchar" MaxLength="50" />
-          <Property Name="SchemeName" Type="nvarchar" MaxLength="50" />
-          <Property Name="PlotRange" Type="nvarchar" MaxLength="50" />
+          <Property Name="AppliedFor" Type="int" />
+          <Property Name="SchemeType" Type="int" />
+          <Property Name="SchemeName" Type="int" />
+          <Property Name="PlotRange" Type="int" />
           <Property Name="PlotArea" Type="nvarchar" MaxLength="50" />
-          <Property Name="SectorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SectorName" Type="int" />
           <Property Name="EstimatedRate" Type="nvarchar" MaxLength="50" />
-          <Property Name="PaymentSchedule" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentSchedule" Type="int" />
           <Property Name="TotalInvestment" Type="decimal" Precision="18" Scale="0" />
           <Property Name="GST" Type="decimal" Precision="18" Scale="0" />
           <Property Name="ApplicationFee" Type="decimal" Precision="18" Scale="0" />
           <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" />
           <Property Name="EarnestMoney" Type="decimal" Precision="18" Scale="0" />
           <Property Name="NetAmount" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="IndustryOwnership" Type="nvarchar" MaxLength="50" />
+          <Property Name="IndustryOwnership" Type="int" />
           <Property Name="UnitName" Type="nvarchar" MaxLength="50" />
           <Property Name="SignatryName" Type="varchar" MaxLength="50" />
           <Property Name="SignatryDateOfBirth" Type="datetime" />
@@ -95,7 +95,7 @@
           <Property Name="SignatryPresentPhoneNumber" Type="varchar" MaxLength="50" />
           <Property Name="SignatryPermanentAddress" Type="varchar" MaxLength="500" />
           <Property Name="SignatryPermanentPhoneNumber" Type="varchar" MaxLength="50" />
-          <Property Name="RelationshipStatus" Type="varchar" MaxLength="50" />
+          <Property Name="RelationshipStatus" Type="int" />
           <Property Name="CreationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="ApplicantProjectDetails">
@@ -219,16 +219,27 @@
           <EntitySet Name="ApplicantUser" EntityType="Self.ApplicantUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GidaGKPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ApplicantApplicationDetail">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AllotmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
         <EntityType Name="ApplicantBankDetail">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationId" Type="Int32" />
           <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BBName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BBAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -236,7 +247,6 @@
           <Property Name="AccountHolderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
-          <Property Name="ApplicationId" Type="Int32" />
         </EntityType>
         <EntityType Name="ApplicantDetail">
           <Key>
@@ -244,6 +254,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationId" Type="Int32" />
           <Property Name="FullApplicantName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -264,7 +275,6 @@
           <Property Name="IdentiyProof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ResidentialProof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
-          <Property Name="ApplicationId" Type="Int32" />
         </EntityType>
         <EntityType Name="ApplicantFormStep">
           <Key>
@@ -281,21 +291,22 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" />
-          <Property Name="AppliedFor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SchemeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SchemeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PlotRange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationId" Type="Int32" />
+          <Property Name="AppliedFor" Type="Int32" />
+          <Property Name="SchemeType" Type="Int32" />
+          <Property Name="SchemeName" Type="Int32" />
+          <Property Name="PlotRange" Type="Int32" />
           <Property Name="PlotArea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SectorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SectorName" Type="Int32" />
           <Property Name="EstimatedRate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PaymentSchedule" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentSchedule" Type="Int32" />
           <Property Name="TotalInvestment" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="GST" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="ApplicationFee" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="EarnestMoney" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="NetAmount" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="IndustryOwnership" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IndustryOwnership" Type="Int32" />
           <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SignatryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SignatryDateOfBirth" Type="DateTime" Precision="3" />
@@ -303,47 +314,17 @@
           <Property Name="SignatryPresentPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SignatryPermanentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="SignatryPermanentPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RelationshipStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RelationshipStatus" Type="Int32" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
-          <Property Name="ApplicationId" Type="Int32" />
         </EntityType>
-        <EntityType Name="ApplicantUser">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreationDate" Type="DateTime" Precision="3" />
-          <Property Name="FullName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DOB" Type="DateTime" Precision="3" />
-          <Property Name="FatherName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="AadharNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SchemeType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="SchemeName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="SectorName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="AllotmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityContainer Name="GidaGKPEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ApplicantBankDetails" EntityType="Self.ApplicantBankDetail" />
-          <EntitySet Name="ApplicantDetails" EntityType="Self.ApplicantDetail" />
-          <EntitySet Name="ApplicantFormSteps" EntityType="Self.ApplicantFormStep" />
-          <EntitySet Name="ApplicantPlotDetails" EntityType="Self.ApplicantPlotDetail" />
-          <EntitySet Name="ApplicantUsers" EntityType="Self.ApplicantUser" />
-          <EntitySet Name="ApplicantProjectDetails" EntityType="GidaGKPModel.ApplicantProjectDetail" />
-          <EntitySet Name="ApplicantUploadDocs" EntityType="GidaGKPModel.ApplicantUploadDoc" />
-          <EntitySet Name="Lookups" EntityType="GidaGKPModel.Lookup" />
-          <EntitySet Name="ApplicantApplicationDetails" EntityType="GidaGKPModel.ApplicantApplicationDetail" />
-          <EntitySet Name="ApplicantTransactionDetails" EntityType="GidaGKPModel.ApplicantTransactionDetail" />
-        </EntityContainer>
         <EntityType Name="ApplicantProjectDetail">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationId" Type="Int32" />
+          <Property Name="FullApplicantName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProposedIndustryType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProjectEstimatedCost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProposedCoveredArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -368,8 +349,26 @@
           <Property Name="Skilled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UnSkilled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ApplicantTransactionDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
           <Property Name="ApplicationId" Type="Int32" />
-          <Property Name="FullApplicantName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="order_id" Type="Int64" />
+          <Property Name="tracking_id" Type="Int64" />
+          <Property Name="bank_ref_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="order_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="payment_mode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="card_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status_message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="billing_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="billing_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="trans_date" Type="DateTime" Precision="3" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ApplicantUploadDoc">
           <Key>
@@ -377,6 +376,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationId" Type="Int32" />
           <Property Name="ProjectReport" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ProposedPlanLandUses" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Memorendum" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -397,7 +397,25 @@
           <Property Name="ApplicantPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ApplicantSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
-          <Property Name="ApplicationId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ApplicantUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="FullName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="FatherName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AadharNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SchemeType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SchemeName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SectorName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AllotmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Lookup">
           <Key>
@@ -408,47 +426,40 @@
           <Property Name="LookupName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ParentLookupId" Type="Int32" />
         </EntityType>
-        <EntityType Name="ApplicantApplicationDetail">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-          </Key>
-          <Property Name="ApplicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ApplicationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AllotmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserId" Type="Int32" />
-        </EntityType>
-        <EntityType Name="ApplicantTransactionDetail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="order_id" Type="Int64" />
-          <Property Name="tracking_id" Type="Int64" />
-          <Property Name="bank_ref_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="order_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="payment_mode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="card_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="status_message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="billing_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="billing_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="trans_date" Type="DateTime" Precision="3" />
-          <Property Name="created_date" Type="DateTime" Precision="3" />
-          <Property Name="ApplicationId" Type="Int32" />
-        </EntityType>
+        <EntityContainer Name="GidaGKPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicantApplicationDetails" EntityType="Self.ApplicantApplicationDetail" />
+          <EntitySet Name="ApplicantBankDetails" EntityType="Self.ApplicantBankDetail" />
+          <EntitySet Name="ApplicantDetails" EntityType="Self.ApplicantDetail" />
+          <EntitySet Name="ApplicantFormSteps" EntityType="Self.ApplicantFormStep" />
+          <EntitySet Name="ApplicantPlotDetails" EntityType="Self.ApplicantPlotDetail" />
+          <EntitySet Name="ApplicantProjectDetails" EntityType="Self.ApplicantProjectDetail" />
+          <EntitySet Name="ApplicantTransactionDetails" EntityType="Self.ApplicantTransactionDetail" />
+          <EntitySet Name="ApplicantUploadDocs" EntityType="Self.ApplicantUploadDoc" />
+          <EntitySet Name="ApplicantUsers" EntityType="Self.ApplicantUser" />
+          <EntitySet Name="Lookups" EntityType="Self.Lookup" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GidaGKPModelStoreContainer" CdmEntityContainer="GidaGKPEntities">
+          <EntitySetMapping Name="ApplicantApplicationDetails">
+            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantApplicationDetail">
+              <MappingFragment StoreEntitySet="ApplicantApplicationDetail">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="ApplicationNumber" ColumnName="ApplicationNumber" />
+                <ScalarProperty Name="AllotmentNumber" ColumnName="AllotmentNumber" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ApplicantBankDetails">
             <EntityTypeMapping TypeName="GidaGKPModel.ApplicantBankDetail">
               <MappingFragment StoreEntitySet="ApplicantBankDetails">
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
                 <ScalarProperty Name="BBName" ColumnName="BBName" />
                 <ScalarProperty Name="BBAddress" ColumnName="BBAddress" />
@@ -462,9 +473,9 @@
           <EntitySetMapping Name="ApplicantDetails">
             <EntityTypeMapping TypeName="GidaGKPModel.ApplicantDetail">
               <MappingFragment StoreEntitySet="ApplicantDetails">
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="FullApplicantName" ColumnName="FullApplicantName" />
                 <ScalarProperty Name="FName" ColumnName="FName" />
                 <ScalarProperty Name="MName" ColumnName="MName" />
@@ -491,19 +502,19 @@
           <EntitySetMapping Name="ApplicantFormSteps">
             <EntityTypeMapping TypeName="GidaGKPModel.ApplicantFormStep">
               <MappingFragment StoreEntitySet="ApplicantFormStep">
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ApplicantStepCompleted" ColumnName="ApplicantStepCompleted" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicantPlotDetails">
             <EntityTypeMapping TypeName="GidaGKPModel.ApplicantPlotDetail">
               <MappingFragment StoreEntitySet="ApplicantPlotDetails">
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="AppliedFor" ColumnName="AppliedFor" />
                 <ScalarProperty Name="SchemeType" ColumnName="SchemeType" />
                 <ScalarProperty Name="SchemeName" ColumnName="SchemeName" />
@@ -531,6 +542,90 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantProjectDetails">
+            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantProjectDetail">
+              <MappingFragment StoreEntitySet="ApplicantProjectDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="FullApplicantName" ColumnName="FullApplicantName" />
+                <ScalarProperty Name="ProposedIndustryType" ColumnName="ProposedIndustryType" />
+                <ScalarProperty Name="ProjectEstimatedCost" ColumnName="ProjectEstimatedCost" />
+                <ScalarProperty Name="ProposedCoveredArea" ColumnName="ProposedCoveredArea" />
+                <ScalarProperty Name="ProposedOpenArea" ColumnName="ProposedOpenArea" />
+                <ScalarProperty Name="PurpuseOpenArea" ColumnName="PurpuseOpenArea" />
+                <ScalarProperty Name="ProposedInvestmentLand" ColumnName="ProposedInvestmentLand" />
+                <ScalarProperty Name="ProposedInvestmentBuilding" ColumnName="ProposedInvestmentBuilding" />
+                <ScalarProperty Name="ProposedInvestmentPlant" ColumnName="ProposedInvestmentPlant" />
+                <ScalarProperty Name="FumesNatureQuantity" ColumnName="FumesNatureQuantity" />
+                <ScalarProperty Name="LiquidQuantity" ColumnName="LiquidQuantity" />
+                <ScalarProperty Name="LiquidChemicalComposition" ColumnName="LiquidChemicalComposition" />
+                <ScalarProperty Name="SolidQuantity" ColumnName="SolidQuantity" />
+                <ScalarProperty Name="SolidChemicalComposition" ColumnName="SolidChemicalComposition" />
+                <ScalarProperty Name="GasQuantity" ColumnName="GasQuantity" />
+                <ScalarProperty Name="GasChemicalComposition" ColumnName="GasChemicalComposition" />
+                <ScalarProperty Name="EffluentTreatmentMeasures" ColumnName="EffluentTreatmentMeasures" />
+                <ScalarProperty Name="PowerRequirement" ColumnName="PowerRequirement" />
+                <ScalarProperty Name="FirstYearNoOfTelephone" ColumnName="FirstYearNoOfTelephone" />
+                <ScalarProperty Name="FirstYearNoOfFax" ColumnName="FirstYearNoOfFax" />
+                <ScalarProperty Name="UltimateNoOfTelephone" ColumnName="UltimateNoOfTelephone" />
+                <ScalarProperty Name="UltimateNoOfFax" ColumnName="UltimateNoOfFax" />
+                <ScalarProperty Name="Skilled" ColumnName="Skilled" />
+                <ScalarProperty Name="UnSkilled" ColumnName="UnSkilled" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantTransactionDetails">
+            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantTransactionDetail">
+              <MappingFragment StoreEntitySet="ApplicantTransactionDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="tracking_id" ColumnName="tracking_id" />
+                <ScalarProperty Name="bank_ref_no" ColumnName="bank_ref_no" />
+                <ScalarProperty Name="order_status" ColumnName="order_status" />
+                <ScalarProperty Name="payment_mode" ColumnName="payment_mode" />
+                <ScalarProperty Name="card_name" ColumnName="card_name" />
+                <ScalarProperty Name="status_message" ColumnName="status_message" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="billing_name" ColumnName="billing_name" />
+                <ScalarProperty Name="billing_address" ColumnName="billing_address" />
+                <ScalarProperty Name="trans_date" ColumnName="trans_date" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicantUploadDocs">
+            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantUploadDoc">
+              <MappingFragment StoreEntitySet="ApplicantUploadDoc">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="ProjectReport" ColumnName="ProjectReport" />
+                <ScalarProperty Name="ProposedPlanLandUses" ColumnName="ProposedPlanLandUses" />
+                <ScalarProperty Name="Memorendum" ColumnName="Memorendum" />
+                <ScalarProperty Name="ScanPAN" ColumnName="ScanPAN" />
+                <ScalarProperty Name="ScanAddressProof" ColumnName="ScanAddressProof" />
+                <ScalarProperty Name="BalanceSheet" ColumnName="BalanceSheet" />
+                <ScalarProperty Name="ITReturn" ColumnName="ITReturn" />
+                <ScalarProperty Name="ExperienceProof" ColumnName="ExperienceProof" />
+                <ScalarProperty Name="ApplicantEduTechQualification" ColumnName="ApplicantEduTechQualification" />
+                <ScalarProperty Name="PreEstablishedIndustriesDoc" ColumnName="PreEstablishedIndustriesDoc" />
+                <ScalarProperty Name="FinDetailsEstablishedIndustries" ColumnName="FinDetailsEstablishedIndustries" />
+                <ScalarProperty Name="OtherDocForProposedIndustry" ColumnName="OtherDocForProposedIndustry" />
+                <ScalarProperty Name="ScanCastCert" ColumnName="ScanCastCert" />
+                <ScalarProperty Name="ScanID" ColumnName="ScanID" />
+                <ScalarProperty Name="AllotmentLetter" ColumnName="AllotmentLetter" />
+                <ScalarProperty Name="LandEquitionDocProof" ColumnName="LandEquitionDocProof" />
+                <ScalarProperty Name="DocProofForIndustrialEstablishedOutsideGida" ColumnName="DocProofForIndustrialEstablishedOutsideGida" />
+                <ScalarProperty Name="ApplicantPhoto" ColumnName="ApplicantPhoto" />
+                <ScalarProperty Name="ApplicantSignature" ColumnName="ApplicantSignature" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ApplicantUsers">
             <EntityTypeMapping TypeName="GidaGKPModel.ApplicantUser">
               <MappingFragment StoreEntitySet="ApplicantUser">
@@ -551,107 +646,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ApplicantProjectDetails">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantProjectDetail">
-              <MappingFragment StoreEntitySet="ApplicantProjectDetails">
-                <ScalarProperty Name="FullApplicantName" ColumnName="FullApplicantName" />
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="UnSkilled" ColumnName="UnSkilled" />
-                <ScalarProperty Name="Skilled" ColumnName="Skilled" />
-                <ScalarProperty Name="UltimateNoOfFax" ColumnName="UltimateNoOfFax" />
-                <ScalarProperty Name="UltimateNoOfTelephone" ColumnName="UltimateNoOfTelephone" />
-                <ScalarProperty Name="FirstYearNoOfFax" ColumnName="FirstYearNoOfFax" />
-                <ScalarProperty Name="FirstYearNoOfTelephone" ColumnName="FirstYearNoOfTelephone" />
-                <ScalarProperty Name="PowerRequirement" ColumnName="PowerRequirement" />
-                <ScalarProperty Name="EffluentTreatmentMeasures" ColumnName="EffluentTreatmentMeasures" />
-                <ScalarProperty Name="GasChemicalComposition" ColumnName="GasChemicalComposition" />
-                <ScalarProperty Name="GasQuantity" ColumnName="GasQuantity" />
-                <ScalarProperty Name="SolidChemicalComposition" ColumnName="SolidChemicalComposition" />
-                <ScalarProperty Name="SolidQuantity" ColumnName="SolidQuantity" />
-                <ScalarProperty Name="LiquidChemicalComposition" ColumnName="LiquidChemicalComposition" />
-                <ScalarProperty Name="LiquidQuantity" ColumnName="LiquidQuantity" />
-                <ScalarProperty Name="FumesNatureQuantity" ColumnName="FumesNatureQuantity" />
-                <ScalarProperty Name="ProposedInvestmentPlant" ColumnName="ProposedInvestmentPlant" />
-                <ScalarProperty Name="ProposedInvestmentBuilding" ColumnName="ProposedInvestmentBuilding" />
-                <ScalarProperty Name="ProposedInvestmentLand" ColumnName="ProposedInvestmentLand" />
-                <ScalarProperty Name="PurpuseOpenArea" ColumnName="PurpuseOpenArea" />
-                <ScalarProperty Name="ProposedOpenArea" ColumnName="ProposedOpenArea" />
-                <ScalarProperty Name="ProposedCoveredArea" ColumnName="ProposedCoveredArea" />
-                <ScalarProperty Name="ProjectEstimatedCost" ColumnName="ProjectEstimatedCost" />
-                <ScalarProperty Name="ProposedIndustryType" ColumnName="ProposedIndustryType" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ApplicantUploadDocs">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantUploadDoc">
-              <MappingFragment StoreEntitySet="ApplicantUploadDoc">
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="ApplicantSignature" ColumnName="ApplicantSignature" />
-                <ScalarProperty Name="ApplicantPhoto" ColumnName="ApplicantPhoto" />
-                <ScalarProperty Name="DocProofForIndustrialEstablishedOutsideGida" ColumnName="DocProofForIndustrialEstablishedOutsideGida" />
-                <ScalarProperty Name="LandEquitionDocProof" ColumnName="LandEquitionDocProof" />
-                <ScalarProperty Name="AllotmentLetter" ColumnName="AllotmentLetter" />
-                <ScalarProperty Name="ScanID" ColumnName="ScanID" />
-                <ScalarProperty Name="ScanCastCert" ColumnName="ScanCastCert" />
-                <ScalarProperty Name="OtherDocForProposedIndustry" ColumnName="OtherDocForProposedIndustry" />
-                <ScalarProperty Name="FinDetailsEstablishedIndustries" ColumnName="FinDetailsEstablishedIndustries" />
-                <ScalarProperty Name="PreEstablishedIndustriesDoc" ColumnName="PreEstablishedIndustriesDoc" />
-                <ScalarProperty Name="ApplicantEduTechQualification" ColumnName="ApplicantEduTechQualification" />
-                <ScalarProperty Name="ExperienceProof" ColumnName="ExperienceProof" />
-                <ScalarProperty Name="ITReturn" ColumnName="ITReturn" />
-                <ScalarProperty Name="BalanceSheet" ColumnName="BalanceSheet" />
-                <ScalarProperty Name="ScanAddressProof" ColumnName="ScanAddressProof" />
-                <ScalarProperty Name="ScanPAN" ColumnName="ScanPAN" />
-                <ScalarProperty Name="Memorendum" ColumnName="Memorendum" />
-                <ScalarProperty Name="ProposedPlanLandUses" ColumnName="ProposedPlanLandUses" />
-                <ScalarProperty Name="ProjectReport" ColumnName="ProjectReport" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Lookups">
             <EntityTypeMapping TypeName="GidaGKPModel.Lookup">
               <MappingFragment StoreEntitySet="Lookup">
-                <ScalarProperty Name="ParentLookupId" ColumnName="ParentLookupId" />
-                <ScalarProperty Name="LookupName" ColumnName="LookupName" />
-                <ScalarProperty Name="LookupType" ColumnName="LookupType" />
                 <ScalarProperty Name="LookupId" ColumnName="LookupId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ApplicantApplicationDetails">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantApplicationDetail">
-              <MappingFragment StoreEntitySet="ApplicantApplicationDetail">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="AllotmentNumber" ColumnName="AllotmentNumber" />
-                <ScalarProperty Name="ApplicationNumber" ColumnName="ApplicationNumber" />
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ApplicantTransactionDetails">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantTransactionDetail">
-              <MappingFragment StoreEntitySet="ApplicantTransactionDetail">
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-                <ScalarProperty Name="created_date" ColumnName="created_date" />
-                <ScalarProperty Name="trans_date" ColumnName="trans_date" />
-                <ScalarProperty Name="billing_address" ColumnName="billing_address" />
-                <ScalarProperty Name="billing_name" ColumnName="billing_name" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="status_message" ColumnName="status_message" />
-                <ScalarProperty Name="card_name" ColumnName="card_name" />
-                <ScalarProperty Name="payment_mode" ColumnName="payment_mode" />
-                <ScalarProperty Name="order_status" ColumnName="order_status" />
-                <ScalarProperty Name="bank_ref_no" ColumnName="bank_ref_no" />
-                <ScalarProperty Name="tracking_id" ColumnName="tracking_id" />
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LookupType" ColumnName="LookupType" />
+                <ScalarProperty Name="LookupName" ColumnName="LookupName" />
+                <ScalarProperty Name="ParentLookupId" ColumnName="ParentLookupId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

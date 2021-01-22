@@ -16,6 +16,8 @@ namespace DataLayer
     {
         public int Id { get; set; }
         public int UserId { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
+        public string FullApplicantName { get; set; }
         public string ProposedIndustryType { get; set; }
         public string ProjectEstimatedCost { get; set; }
         public string ProposedCoveredArea { get; set; }
@@ -40,7 +42,5 @@ namespace DataLayer
         public string Skilled { get; set; }
         public string UnSkilled { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
-        public Nullable<int> ApplicationId { get; set; }
-        public string FullApplicantName { get; set; }
     }
 }

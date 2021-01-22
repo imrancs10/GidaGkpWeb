@@ -16,6 +16,7 @@ namespace DataLayer
     {
         public int Id { get; set; }
         public int UserId { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
         public string FullApplicantName { get; set; }
         public string FName { get; set; }
         public string MName { get; set; }
@@ -36,6 +37,5 @@ namespace DataLayer
         public string IdentiyProof { get; set; }
         public string ResidentialProof { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
-        public Nullable<int> ApplicationId { get; set; }
     }
 }

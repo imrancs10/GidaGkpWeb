@@ -32,6 +32,19 @@ namespace GidaGkpWeb.Controllers
 
         public ActionResult ApplicantDashboard()
         {
+            ApplicantDetails _details = new ApplicantDetails();
+            var dataCount = _details.GetUserApplicationCount(((CustomPrincipal)User).Id);
+            if (dataCount > 0)
+            {
+                return RedirectToAction("ApplicantViewApplication");
+            }
+            return View();
+        }
+
+        public ActionResult ApplicantViewApplication()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            ViewData["ApplicationData"] = _details.GetUserApplicationDetail(((CustomPrincipal)User).Id);
             return View();
         }
 
@@ -44,7 +57,7 @@ namespace GidaGkpWeb.Controllers
                 //SetAlertMessage("Incomplete Detail", "Error");
                 return null;
             }
-           
+
             var AppNumber = _details.SavePlotDetail(((CustomPrincipal)User).Id, AppliedFor, SchemeType, PlotRange, SchemeName, plotArea, SectorName, SectorDescription, EstimatedRate, PaymemtSchedule, TotalInvestment, ApplicationFee, EarnestMoneyDeposite, GST, NetAmount, TotalAmount, IndustryOwnershipType, UnitName, Name, dob, PresentAddress, PermanentAddress, RelationshipStatus);
             if (AppNumber != "Error")
                 Session["ApplicationNumber"] = AppNumber;

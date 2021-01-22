@@ -16,6 +16,7 @@ namespace DataLayer
     {
         public int Id { get; set; }
         public Nullable<int> UserId { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
         public Nullable<long> order_id { get; set; }
         public Nullable<long> tracking_id { get; set; }
         public string bank_ref_no { get; set; }
@@ -28,6 +29,5 @@ namespace DataLayer
         public string billing_address { get; set; }
         public Nullable<System.DateTime> trans_date { get; set; }
         public Nullable<System.DateTime> created_date { get; set; }
-        public Nullable<int> ApplicationId { get; set; }
     }
 }

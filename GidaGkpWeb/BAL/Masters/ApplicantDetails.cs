@@ -56,20 +56,20 @@ namespace GidaGkpWeb.BAL
             {
                 ApplicationFee = Convert.ToDecimal(ApplicationFee),
                 UserId = userId,
-                AppliedFor = AppliedFor,
+                AppliedFor = Convert.ToInt32(AppliedFor),
                 CreationDate = DateTime.Now,
                 EarnestMoney = Convert.ToDecimal(EarnestMoneyDeposite),
                 EstimatedRate = EstimatedRate,
                 GST = Convert.ToDecimal(GST),
-                IndustryOwnership = IndustryOwnershipType,
+                IndustryOwnership = Convert.ToInt32(IndustryOwnershipType),
                 NetAmount = Convert.ToDecimal(NetAmount),
-                PaymentSchedule = PaymemtSchedule,
+                PaymentSchedule = Convert.ToInt32(PaymemtSchedule),
                 PlotArea = plotArea,
-                PlotRange = PlotRange,
-                RelationshipStatus = RelationshipStatus,
-                SchemeName = SchemeName,
-                SchemeType = SchemeType,
-                SectorName = SectorName,
+                PlotRange = Convert.ToInt32(PlotRange),
+                RelationshipStatus = Convert.ToInt32(RelationshipStatus),
+                SchemeName = Convert.ToInt32(SchemeName),
+                SchemeType = Convert.ToInt32(SchemeType),
+                SectorName = Convert.ToInt32(SectorName),
                 SignatryDateOfBirth = Convert.ToDateTime(dob),
                 SignatryName = Name,
                 SignatryPermanentAddress = PermanentAddress,
@@ -121,7 +121,7 @@ namespace GidaGkpWeb.BAL
                 Religion = Religion,
                 ResidentialProof = ResidentialProof,
                 SName = SName,
-                ApplicationId= UserData.ApplicationId
+                ApplicationId = UserData.ApplicationId
             };
             _db.Entry(_newRecord).State = EntityState.Added;
             _effectRow = _db.SaveChanges();
@@ -228,9 +228,9 @@ namespace GidaGkpWeb.BAL
         {
             _db = new GidaGKPEntities();
             return (from application in _db.ApplicantApplicationDetails
-                    join applicantDetail in _db.ApplicantDetails on application.UserId equals applicantDetail.UserId
-                    join plotDetail in _db.ApplicantPlotDetails on application.UserId equals plotDetail.UserId
-                    join transaction1 in _db.ApplicantTransactionDetails on applicantDetail.UserId equals transaction1.UserId into transaction2
+                    join applicantDetail in _db.ApplicantDetails on application.ApplicationId equals applicantDetail.ApplicationId
+                    join plotDetail in _db.ApplicantPlotDetails on application.ApplicationId equals plotDetail.ApplicationId
+                    join transaction1 in _db.ApplicantTransactionDetails on applicantDetail.ApplicationId equals transaction1.ApplicationId into transaction2
                     from transaction in transaction2.DefaultIfEmpty()
                     where application.UserId == userId
                     select new ApplicationDetailModel
@@ -252,11 +252,15 @@ namespace GidaGkpWeb.BAL
         {
             _db = new GidaGKPEntities();
             return (from applicationDetail in _db.ApplicantApplicationDetails
-                    join applicantDetail in _db.ApplicantDetails on applicationDetail.UserId equals applicantDetail.UserId
-                    join plotDetail in _db.ApplicantPlotDetails on applicationDetail.UserId equals plotDetail.UserId
-                    join transactionDetail in _db.ApplicantTransactionDetails on applicantDetail.UserId equals transactionDetail.UserId
-                    join projectDetail in _db.ApplicantProjectDetails on applicantDetail.UserId equals projectDetail.UserId
-                    join documentDetail in _db.ApplicantUploadDocs on applicantDetail.UserId equals documentDetail.UserId
+                    join applicantDetail in _db.ApplicantDetails on applicationDetail.ApplicationId equals applicantDetail.ApplicationId
+                    join plotDetail in _db.ApplicantPlotDetails on applicationDetail.ApplicationId equals plotDetail.ApplicationId
+                    join transactionDetail in _db.ApplicantTransactionDetails on applicantDetail.ApplicationId equals transactionDetail.ApplicationId
+                    join projectDetail in _db.ApplicantProjectDetails on applicantDetail.ApplicationId equals projectDetail.ApplicationId
+                    join documentDetail in _db.ApplicantUploadDocs on applicantDetail.ApplicationId equals documentDetail.ApplicationId
+                    join IndustryOwnership in _db.Lookups on plotDetail.IndustryOwnership equals IndustryOwnership.LookupId
+                    join RelationshipStatus in _db.Lookups on plotDetail.RelationshipStatus equals RelationshipStatus.LookupId
+                    join lookupSectorName in _db.Lookups on plotDetail.SectorName equals lookupSectorName.LookupId
+
                     where applicationDetail.UserId == userId
                     select new AcknowledgementDetailModel
                     {
@@ -279,7 +283,7 @@ namespace GidaGkpWeb.BAL
                         FumesNatureQuantity = projectDetail.FumesNatureQuantity,
                         GasChemicalComposition = projectDetail.GasChemicalComposition,
                         GasQuantity = projectDetail.GasQuantity,
-                        IndustryOwnership = plotDetail.IndustryOwnership,
+                        IndustryOwnership = IndustryOwnership.LookupName,
                         LiquidChemicalComposition = projectDetail.LiquidChemicalComposition,
                         LiquidQuantity = projectDetail.LiquidQuantity,
                         PlotArea = plotDetail.PlotArea,
@@ -292,8 +296,8 @@ namespace GidaGkpWeb.BAL
                         ProposedInvestmentPlant = projectDetail.ProposedInvestmentPlant,
                         ProposedOpenArea = projectDetail.ProposedOpenArea,
                         PurpuseOpenArea = projectDetail.PurpuseOpenArea,
-                        RelationshipStatus = plotDetail.RelationshipStatus,
-                        SectorName = plotDetail.SectorName,
+                        RelationshipStatus = RelationshipStatus.LookupName,
+                        SectorName = lookupSectorName.LookupName,
                         SignatryDateOfBirth = plotDetail.SignatryDateOfBirth,
                         SignatryName = plotDetail.SignatryName,
                         SignatryPermanentAddress = plotDetail.SignatryPermanentAddress,
@@ -307,7 +311,57 @@ namespace GidaGkpWeb.BAL
                         UnitName = plotDetail.UnitName
                     }).FirstOrDefault();
         }
+
+        public List<ApplicationDetailModel> GetUserApplicationDetail(int userId)
+        {
+            _db = new GidaGKPEntities();
+            return (from application in _db.ApplicantApplicationDetails
+                    join applicantDetail1 in _db.ApplicantDetails on application.ApplicationId equals applicantDetail1.ApplicationId into applicantDetail2
+                    from applicantDetail in applicantDetail2.DefaultIfEmpty()
+                    join plotDetail1 in _db.ApplicantPlotDetails on application.ApplicationId equals plotDetail1.ApplicationId into plotDetail2
+                    from plotDetail in plotDetail2.DefaultIfEmpty()
+                    join transaction1 in _db.ApplicantTransactionDetails on applicantDetail.ApplicationId equals transaction1.ApplicationId into transaction2
+                    from transaction in transaction2.DefaultIfEmpty()
+                    join lookupSchemeType1 in _db.Lookups on plotDetail.SchemeType equals lookupSchemeType1.LookupId into lookupSchemeType2
+                    from lookupSchemeType in lookupSchemeType2.DefaultIfEmpty()
+
+                    join lookupSchemeName1 in _db.Lookups on plotDetail.SchemeName equals lookupSchemeName1.LookupId into lookupSchemeName2
+                    from lookupSchemeName in lookupSchemeName2.DefaultIfEmpty()
+
+                    join lookupSectorName1 in _db.Lookups on plotDetail.SchemeName equals lookupSectorName1.LookupId into lookupSectorName2
+                    from lookupSectorName in lookupSectorName2.DefaultIfEmpty()
+
+                    where application.UserId == userId
+                    select new ApplicationDetailModel
+                    {
+                        ApplicationId = application.ApplicationId,
+                        ApplicationNumber = application.ApplicationNumber,
+                        FullApplicantName = applicantDetail.FullApplicantName,
+                        CAddress = applicantDetail.CAddress,
+                        Mobile = applicantDetail.Mobile,
+                        TotalAmount = plotDetail.TotalAmount,
+                        NetAmount = plotDetail.NetAmount,
+                        ApplicationFee = plotDetail.ApplicationFee,
+                        EarnestMoneyDeposit = plotDetail.EarnestMoney,
+                        GST = plotDetail.GST,
+                        PaymentDate = transaction != null ? transaction.trans_date : DateTime.Now,
+                        PlotArea = plotDetail.PlotArea,
+                        SchemeType = lookupSchemeType != null ? lookupSchemeType.LookupName : "",
+                        SchemeName = lookupSchemeName != null ? lookupSchemeName.LookupName : "",
+                        SectorName = lookupSectorName != null ? lookupSectorName.LookupName : ""
+                    }).ToList();
+        }
+
+        public int GetUserApplicationCount(int userId)
+        {
+            _db = new GidaGKPEntities();
+            return (from application in _db.ApplicantApplicationDetails
+                    where application.UserId == userId
+                    select new ApplicationDetailModel
+                    {
+                        ApplicationId = application.ApplicationId,
+                        ApplicationNumber = application.ApplicationNumber,
+                    }).ToList().Count();
+        }
     }
-
-
 }

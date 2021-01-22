@@ -7,6 +7,7 @@ namespace GidaGkpWeb.Models.Masters
 {
     public class ApplicationDetailModel
     {
+        public int ApplicationId { get; set; }
         public string ApplicationNumber { get; set; }
         public string FullApplicantName { get; set; }
         public string CAddress { get; set; }
@@ -17,6 +18,10 @@ namespace GidaGkpWeb.Models.Masters
         public decimal? GST { get; set; }
         public decimal? EarnestMoneyDeposit { get; set; }
         public DateTime? PaymentDate { get; set; }
+        public string SchemeType { get; set; }
+        public string SchemeName { get; set; }
+        public string SectorName { get; set; }
+        public string PlotArea { get; set; }
     }
     public class AcknowledgementDetailModel : ApplicationDetailModel
     {

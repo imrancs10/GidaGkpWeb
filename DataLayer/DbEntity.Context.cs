@@ -25,15 +25,15 @@ namespace DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ApplicantApplicationDetail> ApplicantApplicationDetails { get; set; }
         public virtual DbSet<ApplicantBankDetail> ApplicantBankDetails { get; set; }
         public virtual DbSet<ApplicantDetail> ApplicantDetails { get; set; }
         public virtual DbSet<ApplicantFormStep> ApplicantFormSteps { get; set; }
         public virtual DbSet<ApplicantPlotDetail> ApplicantPlotDetails { get; set; }
-        public virtual DbSet<ApplicantUser> ApplicantUsers { get; set; }
         public virtual DbSet<ApplicantProjectDetail> ApplicantProjectDetails { get; set; }
-        public virtual DbSet<ApplicantUploadDoc> ApplicantUploadDocs { get; set; }
-        public virtual DbSet<Lookup> Lookups { get; set; }
-        public virtual DbSet<ApplicantApplicationDetail> ApplicantApplicationDetails { get; set; }
         public virtual DbSet<ApplicantTransactionDetail> ApplicantTransactionDetails { get; set; }
+        public virtual DbSet<ApplicantUploadDoc> ApplicantUploadDocs { get; set; }
+        public virtual DbSet<ApplicantUser> ApplicantUsers { get; set; }
+        public virtual DbSet<Lookup> Lookups { get; set; }
     }
 }

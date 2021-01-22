@@ -1,0 +1,65 @@
+﻿@using GidaGkpWeb.Infrastructure.Authentication;
+@using GidaGkpWeb.Models.Masters;
+@using GidaGkpWeb.Infrastructure.Authentication;
+@using GidaGkpWeb.Models.Masters;
+
+@{
+    ViewBag.Title = "ApplicantDashboard";
+    Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
+
+    var UserData = ViewData["ApplicationData"] as List<ApplicationDetailModel>;
+    int index = 1;
+}
+<script src="~/Scripts/App/Masters/ApplicantPlotRegistration.js"></script>
+<link href="~/styles/style.css" rel="stylesheet" />
+<section class="form">
+    <!-- MultiStep Form -->
+    <div class="container-fluid" id="grad1">
+        <div class="container">
+            @if (UserData != null && UserData.Count > 0)
+            {
+                <div class="row justify-content-center mt-0" style="padding:30px 20px" id="divExitingPlotRegistration">
+                    <div class="col-sm-12 col-xs-12">
+                        <h2 style="padding:20px 0;">View Submitted Application Detail</h2>
+                        <table class="table table-bordered responsive">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Application Number</th>
+                                    <th>Applicant Name</th>
+                                    <th>Scheme Type</th>
+                                    <th>Scheme Name</th>
+                                    <th>Sector Type</th>
+                                    <th>Plot Area</th>
+                                    <th>Amount Paid</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var data in UserData)
+                                {
+                                    <tr>
+                                        <th row-header="Table heading" scope="row">@index</th>
+                                        <td row-header="Table">@data.ApplicationNumber</td>
+                                        <td row-header="Table heading">@data.FullApplicantName</td>
+                                        <td row-header="heading">@data.SchemeType</td>
+                                        <td row-header="Table heading">@data.SchemeName</td>
+                                        <td row-header="Table heading">@data.SectorName</td>
+                                        <td row-header="Table heading">@data.PlotArea</td>
+                                        <td row-header="heading">@data.NetAmount</td>
+                                        <td row-header="Table heading">
+                                            <input type="button" name="btnViewApplication" id="btnViewApplication" class="previous action-button-previous pull-right" value="View Application" />
+                                        </td>
+                                    </tr>
+                                    index++;
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>

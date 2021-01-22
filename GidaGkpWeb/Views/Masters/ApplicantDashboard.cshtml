@@ -1,7 +1,12 @@
-﻿
+﻿@using GidaGkpWeb.Infrastructure.Authentication;
+@using GidaGkpWeb.Models.Masters;
+
 @{
     ViewBag.Title = "ApplicantDashboard";
     Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
+
+    //var UserData = ViewData["UserData"] as List<ApplicationDetailModel>;
+    //int index = 1;
 }
 <script src="~/Scripts/App/Masters/ApplicantPlotRegistration.js"></script>
 <link href="~/styles/style.css" rel="stylesheet" />
@@ -9,7 +14,7 @@
     <!-- MultiStep Form -->
     <div class="container-fluid" id="grad1">
         <div class="container">
-            <div class="row justify-content-center mt-0" style="padding:30px 20px">
+            <div class="row justify-content-center mt-0" style="padding:30px 20px" id="divNewPlotRegistration">
                 <div class="col-sm-12 col-xs-12">
                     <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                         <div class="col-sm-12 col-xs-12">
@@ -71,7 +76,7 @@
                                                             <label for="usertype" class="text-uppercase">Sector Name</label>
                                                             <select name="SectorName" id="SectorName" class="form-control">
                                                             </select>
-                                                            <input type="hidden" id="SectorDescription" name="SectorDescription"  />
+                                                            <input type="hidden" id="SectorDescription" name="SectorDescription" />
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">Estimated Rate (In Rs.)</label>
@@ -245,7 +250,7 @@
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">Sub-Category</label>
-                                                            <input name="SubCategory" id="SubCategory" class="form-control">                                                            
+                                                            <input name="SubCategory" id="SubCategory" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>

@@ -12,6 +12,27 @@ $(document).ready(function () {
     FillRelationshipStatus();
     FillIndustryOwnershipType();
     FillPaymemtSchedule();
+    //getPlotRegistrationDetail();
+
+    //function getPlotRegistrationDetail() {
+    //    $.ajax({
+    //        contentType: 'application/json; charset=utf-8',
+    //        dataType: 'json',
+    //        type: 'GET',
+    //        url: '/Masters/GetPlotRegistrationDetail',
+    //        success: function (data) {
+    //            $.each(data, function (key, entry) {
+    //                dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
+    //            });
+    //        },
+    //        failure: function (response) {
+    //            alert(response);
+    //        },
+    //        error: function (response) {
+    //            alert(response.responseText);
+    //        }
+    //    });
+    //}
 
     function FillSchemeType() {
         let dropdown = $('#SchemeType');

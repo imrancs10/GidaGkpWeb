@@ -600,6 +600,7 @@
     <Content Include="Views\Masters\PaymentResponseSuccess.cshtml" />
     <Content Include="Views\Masters\PaymentReciept.cshtml" />
     <Content Include="Views\Masters\PaymentAcknowledgement.cshtml" />
+    <Content Include="Views\Masters\ApplicantViewApplication.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

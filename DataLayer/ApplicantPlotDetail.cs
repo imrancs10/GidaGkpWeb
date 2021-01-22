@@ -16,21 +16,22 @@ namespace DataLayer
     {
         public int Id { get; set; }
         public Nullable<int> UserId { get; set; }
-        public string AppliedFor { get; set; }
-        public string SchemeType { get; set; }
-        public string SchemeName { get; set; }
-        public string PlotRange { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
+        public Nullable<int> AppliedFor { get; set; }
+        public Nullable<int> SchemeType { get; set; }
+        public Nullable<int> SchemeName { get; set; }
+        public Nullable<int> PlotRange { get; set; }
         public string PlotArea { get; set; }
-        public string SectorName { get; set; }
+        public Nullable<int> SectorName { get; set; }
         public string EstimatedRate { get; set; }
-        public string PaymentSchedule { get; set; }
+        public Nullable<int> PaymentSchedule { get; set; }
         public Nullable<decimal> TotalInvestment { get; set; }
         public Nullable<decimal> GST { get; set; }
         public Nullable<decimal> ApplicationFee { get; set; }
         public Nullable<decimal> TotalAmount { get; set; }
         public Nullable<decimal> EarnestMoney { get; set; }
         public Nullable<decimal> NetAmount { get; set; }
-        public string IndustryOwnership { get; set; }
+        public Nullable<int> IndustryOwnership { get; set; }
         public string UnitName { get; set; }
         public string SignatryName { get; set; }
         public Nullable<System.DateTime> SignatryDateOfBirth { get; set; }
@@ -38,8 +39,7 @@ namespace DataLayer
         public string SignatryPresentPhoneNumber { get; set; }
         public string SignatryPermanentAddress { get; set; }
         public string SignatryPermanentPhoneNumber { get; set; }
-        public string RelationshipStatus { get; set; }
+        public Nullable<int> RelationshipStatus { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
-        public Nullable<int> ApplicationId { get; set; }
     }
 }
