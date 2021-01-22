@@ -30,15 +30,26 @@ namespace GidaGkpWeb.Controllers
             return View();
         }
 
-        public ActionResult ApplicantDashboard()
+        public ActionResult ApplicantDashboard(int? applicationId = null)
         {
-            ApplicantDetails _details = new ApplicantDetails();
-            var dataCount = _details.GetUserApplicationCount(((CustomPrincipal)User).Id);
-            if (dataCount > 0)
+            if (applicationId != null && applicationId > 0)
             {
-                return RedirectToAction("ApplicantViewApplication");
+                return View();
             }
-            return View();
+            else
+            {
+                ApplicantDetails _details = new ApplicantDetails();
+                var dataCount = _details.GetUserApplicationCount(((CustomPrincipal)User).Id);
+                if (dataCount > 0)
+                {
+                    return RedirectToAction("ApplicantViewApplication");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+
         }
 
         public ActionResult ApplicantViewApplication()
@@ -327,6 +338,19 @@ namespace GidaGkpWeb.Controllers
             ViewData["UserData"] = data;
             return View();
         }
+
+        [HttpPost]
+        public JsonResult GetPlotRegistrationDetail(int applicationId)
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            if (applicationId > 0)
+            {
+                var data = _details.GetApplciantPlotDetailByApplicationId(applicationId);
+                return Json(data, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
+
         public ActionResult Logout()
         {
             Session.Abandon();

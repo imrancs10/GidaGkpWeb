@@ -3,38 +3,78 @@
 /// <reference path="../Global/Utility.js" />
 'use strict';
 
+
 $(document).ready(function () {
     var current_fs, next_fs, previous_fs; //fieldsets
     var opacity;
-    FillSchemeType();
-    FillAppliedFor();
-    FillPlotRange();
-    FillRelationshipStatus();
-    FillIndustryOwnershipType();
-    FillPaymemtSchedule();
-    //getPlotRegistrationDetail();
 
-    //function getPlotRegistrationDetail() {
-    //    $.ajax({
-    //        contentType: 'application/json; charset=utf-8',
-    //        dataType: 'json',
-    //        type: 'GET',
-    //        url: '/Masters/GetPlotRegistrationDetail',
-    //        success: function (data) {
-    //            $.each(data, function (key, entry) {
-    //                dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
-    //            });
-    //        },
-    //        failure: function (response) {
-    //            alert(response);
-    //        },
-    //        error: function (response) {
-    //            alert(response.responseText);
-    //        }
-    //    });
-    //}
 
-    function FillSchemeType() {
+    var applicationId = getUrlParameter('applicationId');
+    if (applicationId != null && applicationId != undefined && applicationId > 0) {
+        getPlotRegistrationDetail(applicationId);
+    }
+    else {
+        FillSchemeType();
+        FillAppliedFor();
+        FillPlotRange();
+        FillRelationshipStatus();
+        FillIndustryOwnershipType();
+        FillPaymemtSchedule();
+    }
+
+    function getPlotRegistrationDetail(applicationId) {
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            data: '{applicationId: ' + applicationId + '}',
+            url: '/Masters/GetPlotRegistrationDetail',
+            success: function (data) {
+                if (data != null && data != undefined) {
+                    FillAppliedFor(data.AppliedFor);
+                    FillSchemeType(data.SchemeType)
+                    FillSchemeName(data.SchemeType, data.SchemeName);
+                    FillSector(data.SchemeName, data.SectorName);
+
+                    FillPlotRange(data.PlotRange);
+                    FillRelationshipStatus(data.RelationshipStatus);
+                    FillIndustryOwnershipType(data.IndustryOwnership);
+                    FillPaymemtSchedule(data.PaymentSchedule);
+
+                    $('#plotArea').val(data.PlotArea);
+                    $('#EstimatedRate').val(data.EstimatedRate);
+                    $('#TotalInvestment').val(data.TotalInvestment);
+                    $('#ApplicationFee').val(data.ApplicationFee);
+                    $('#EarnestMoneyDeposite').val(data.EarnestMoney);
+                    $('#GST').val(data.GST);
+                    $('#NetAmount').val(data.NetAmount);
+                    $('#TotalAmount').val(data.TotalAmount);
+                    $('#UnitName').val(data.UnitName);
+                    $('#Name').val(data.SignatryName);
+                    $('#PresentAddress').val(data.SignatryPresentAddress);
+                    var milli = data.SignatryDateOfBirth.replace(/\/Date\((-?\d+)\)\//, '$1');
+                    var now = new Date(parseInt(milli));
+
+                    var day = ("0" + now.getDate()).slice(-2);
+                    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+                    var today = now.getFullYear() + "-" + (month) + "-" + (day);
+
+                    $('#dob').val(today);
+                    $('#PermanentAddress').val(data.SignatryPermanentAddress);
+                    $('#btnStep1Skip').removeClass('hidden');
+                }
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+    function FillSchemeType(selectedSchemeTypeId = null) {
         let dropdown = $('#SchemeType');
         dropdown.empty();
         dropdown.append('<option value="">Select</option>');
@@ -49,6 +89,9 @@ $(document).ready(function () {
                 $.each(data, function (key, entry) {
                     dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
                 });
+                if (selectedSchemeTypeId != null) {
+                    dropdown.val(selectedSchemeTypeId);
+                }
             },
             failure: function (response) {
                 alert(response);
@@ -64,7 +107,7 @@ $(document).ready(function () {
         FillSchemeName(valueSelected);
     });
 
-    function FillAppliedFor() {
+    function FillAppliedFor(selectedAppliedForID = null) {
         let dropdown = $('#AppliedFor');
         dropdown.empty();
         dropdown.append('<option value="">Select</option>');
@@ -79,6 +122,9 @@ $(document).ready(function () {
                 $.each(data, function (key, entry) {
                     dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
                 });
+                if (selectedAppliedForID != null) {
+                    dropdown.val(selectedAppliedForID);
+                }
             },
             failure: function (response) {
                 alert(response);
@@ -89,7 +135,7 @@ $(document).ready(function () {
         });
     }
 
-    function FillSchemeName(SchemeTypeId) {
+    function FillSchemeName(SchemeTypeId, selectedSchemeNameId = null) {
         let dropdown = $('#SchemeName');
         dropdown.empty();
         dropdown.append('<option value="">Select</option>');
@@ -104,6 +150,9 @@ $(document).ready(function () {
                 $.each(data, function (key, entry) {
                     dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
                 });
+                if (selectedSchemeNameId != null) {
+                    dropdown.val(selectedSchemeNameId);
+                }
             },
             failure: function (response) {
                 alert(response);
@@ -122,7 +171,7 @@ $(document).ready(function () {
         $('#SectorDescription').val($("#SectorName option:selected").text());
     });
 
-    function FillSector(SchemeNameId) {
+    function FillSector(SchemeNameId, selectedSectorId = null) {
         let dropdown = $('#SectorName');
         dropdown.empty();
         dropdown.append('<option value="">Select</option>');
@@ -138,6 +187,9 @@ $(document).ready(function () {
                 $.each(data, function (key, entry) {
                     dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
                 });
+                if (selectedSectorId != null) {
+                    dropdown.val(selectedSectorId);
+                }
             },
             failure: function (response) {
                 alert(response);
@@ -148,7 +200,7 @@ $(document).ready(function () {
         });
     }
 
-    function FillPlotRange() {
+    function FillPlotRange(selectedPlotRange = null) {
         let dropdown = $('#PlotRange');
         dropdown.empty();
         dropdown.append('<option value="">Select</option>');
@@ -163,6 +215,9 @@ $(document).ready(function () {
                 $.each(data, function (key, entry) {
                     dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
                 });
+                if (selectedPlotRange != null) {
+                    dropdown.val(selectedPlotRange);
+                }
             },
             failure: function (response) {
                 alert(response);
@@ -173,7 +228,7 @@ $(document).ready(function () {
         });
     }
 
-    function FillPaymemtSchedule() {
+    function FillPaymemtSchedule(selectedPaymemtSchedule = null) {
         let dropdown = $('#PaymemtSchedule');
         dropdown.empty();
         dropdown.append('<option value="">Select</option>');
@@ -188,6 +243,9 @@ $(document).ready(function () {
                 $.each(data, function (key, entry) {
                     dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
                 });
+                if (selectedPaymemtSchedule != null) {
+                    dropdown.val(selectedPaymemtSchedule);
+                }
             },
             failure: function (response) {
                 alert(response);
@@ -198,7 +256,7 @@ $(document).ready(function () {
         });
     }
 
-    function FillIndustryOwnershipType() {
+    function FillIndustryOwnershipType(selectedIndustryOwnershipType = null) {
         let dropdown = $('#IndustryOwnershipType');
         dropdown.empty();
         dropdown.append('<option value="">Select</option>');
@@ -213,6 +271,9 @@ $(document).ready(function () {
                 $.each(data, function (key, entry) {
                     dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
                 });
+                if (selectedIndustryOwnershipType != null) {
+                    dropdown.val(selectedIndustryOwnershipType);
+                }
             },
             failure: function (response) {
                 alert(response);
@@ -223,7 +284,7 @@ $(document).ready(function () {
         });
     }
 
-    function FillRelationshipStatus() {
+    function FillRelationshipStatus(selectedRelationshipStatus = null) {
         let dropdown = $('#RelationshipStatus');
         dropdown.empty();
         dropdown.append('<option value="">Select</option>');
@@ -238,6 +299,9 @@ $(document).ready(function () {
                 $.each(data, function (key, entry) {
                     dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
                 });
+                if (selectedRelationshipStatus != null) {
+                    dropdown.val(selectedRelationshipStatus)
+                }
             },
             failure: function (response) {
                 alert(response);
@@ -526,6 +590,22 @@ $(document).ready(function () {
             $('#NetAmount').val(parseInt($('#EarnestMoneyDeposite').val()) + parseInt($('#TotalAmount').val()));
         }
     });
+
+    function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    }
+
 
     function NextStep(nextButton) {
 

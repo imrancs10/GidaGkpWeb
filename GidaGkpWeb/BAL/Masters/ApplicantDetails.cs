@@ -363,5 +363,13 @@ namespace GidaGkpWeb.BAL
                         ApplicationNumber = application.ApplicationNumber,
                     }).ToList().Count();
         }
+
+        public ApplicantPlotDetail GetApplciantPlotDetailByApplicationId(int applicationId)
+        {
+            _db = new GidaGKPEntities();
+            return _db.ApplicantPlotDetails.Where(x => x.ApplicationId == applicationId).FirstOrDefault();
+
+
+        }
     }
 }
