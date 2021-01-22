@@ -243,7 +243,7 @@ namespace GidaGkpWeb.Controllers
                 };
                 _details.SaveApplicantTransactionDeatil(detail);
                 SetAlertMessage("Payment done successfully", "Payment Status");
-                return RedirectToAction("PaymentResp");
+                return RedirectToAction("PaymentResponseSuccess");
             }
             else
             {
