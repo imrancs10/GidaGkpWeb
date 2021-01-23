@@ -27,6 +27,19 @@ namespace GidaGkpWeb.Controllers
         public string strAccessCode = "AVHE00IA10BD01EHDB";// put the access key in the quotes provided here.
         public ActionResult Dashboard()
         {
+            //show gida logo and info
+            return View();
+        }
+
+        public ActionResult ApplyForPlot()
+        {
+            //Squire box colofull
+            return View();
+        }
+
+        public ActionResult ViewAdvertisement()
+        {
+            //Table with scheme Advertisement
             return View();
         }
 

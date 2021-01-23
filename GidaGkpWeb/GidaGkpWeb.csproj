@@ -601,6 +601,8 @@
     <Content Include="Views\Masters\PaymentReciept.cshtml" />
     <Content Include="Views\Masters\PaymentAcknowledgement.cshtml" />
     <Content Include="Views\Masters\ApplicantViewApplication.cshtml" />
+    <Content Include="Views\Masters\ApplyForPlot.cshtml" />
+    <Content Include="Views\Masters\ViewAdvertisement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
