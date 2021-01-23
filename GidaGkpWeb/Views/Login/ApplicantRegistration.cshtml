@@ -17,6 +17,12 @@
     <script src="~/Scripts/App/Global/Utility.js"></script>
     <script src="~/Scripts/App/Masters/ApplicantRegistration.js"></script>
     <style>
+
+        .required-field::before {
+            content: "*";
+            color: red;
+        }
+
         .login-block {
             background: #DE6262; /* fallback for old browsers */
             background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262); /* Chrome 10-25, Safari 5.1-6 */
@@ -331,7 +337,7 @@
                 <form class="login-form" action="/login/ApplicantLoginOTP" method="POST">
 
                     <div class="form-group col-sm-12 col-xs-12">
-                        <label for="usertype" class="text-uppercase">Select User Type</label>
+                        <label for="usertype" class="text-uppercase">Select User Type<span class="required-field"></span></label>
                         <select name="usertype" id="usertype" class="form-control">
                             <option value="">Select</option>
                             <option value="New Applicant">New Applicant</option>
@@ -341,7 +347,7 @@
 
                     <div id="divExAlotee" style="display:none">
                         <div class="form-group col-sm-6 col-xs-12">
-                            <label for="usertype" class="text-uppercase">Scheme Type</label>
+                            <label for="usertype" class="text-uppercase">Scheme Type<span class="required-field"></span></label>
                             <select name="SchemeType" id="SchemeType" class="form-control">
                                 <option value="">Select</option>
                                 <option value="Industrial">Industrial</option>
@@ -353,39 +359,39 @@
                             </select>
                         </div>
                         <div class="form-group col-sm-6 col-xs-12">
-                            <label for="usertype" class="text-uppercase">Scheme Name</label>
+                            <label for="usertype" class="text-uppercase">Scheme Name<span class="required-field"></span></label>
                             <select name="SchemeName" id="SchemeName" class="form-control">
                             </select>
                         </div>
                         <div class="form-group col-sm-6 col-xs-12">
-                            <label for="usertype" class="text-uppercase">Sector Name</label>
+                            <label for="usertype" class="text-uppercase">Sector Name<span class="required-field"></span></label>
                             <select name="SectorName" id="SectorName" class="form-control">
                             </select>
                         </div>
 
                         <div class="form-group col-sm-6 col-xs-12">
-                            <label for="exampleInputEmail1" class="text-uppercase">Allotment Number</label>
+                            <label for="exampleInputEmail1" class="text-uppercase">Allotment Number<span class="required-field"></span></label>
                             <input name="AllotmentNumber" id="AllotmentNumber" class="form-control" placeholder="Allotment Number">
                         </div>
                     </div>
 
                     <div class="form-group col-sm-6 col-xs-12">
-                        <label for="exampleInputEmail1" class="text-uppercase">Full Name</label>
+                        <label for="exampleInputEmail1" class="text-uppercase">Full Name<span class="required-field"></span></label>
                         <input name="fullName" id="fullName" class="form-control" placeholder="Full Name">
                     </div>
 
                     <div class="form-group col-sm-6 col-xs-12">
-                        <label for="exampleInputEmail1" class="text-uppercase">Father Name</label>
+                        <label for="exampleInputEmail1" class="text-uppercase">Father Name<span class="required-field"></span></label>
                         <input name="FName" id="FName" class="form-control" placeholder="Father's Name">
                     </div>
 
                     <div class="form-group col-sm-6 col-xs-12">
-                        <label for="exampleInputEmail1" class="text-uppercase">Email</label>
+                        <label for="exampleInputEmail1" class="text-uppercase">Email<span class="required-field"></span></label>
                         <input type="email" name="email" id="email" class="form-control" placeholder="Email">
                     </div>
 
                     <div class="form-group col-sm-6 col-xs-12">
-                        <label for="exampleInputEmail1" class="text-uppercase">Mobile Number</label>
+                        <label for="exampleInputEmail1" class="text-uppercase">Mobile Number<span class="required-field"></span></label>
                         <input name="contactno" id="contact" class="form-control" placeholder="Contact No.">
                     </div>
 
@@ -395,22 +401,22 @@
                     </div>
 
                     <div class="form-group col-sm-6 col-xs-12">
-                        <label for="exampleInputEmail1" class="text-uppercase">Date of Birth</label>
+                        <label for="exampleInputEmail1" class="text-uppercase">Date of Birth<span class="required-field"></span></label>
                         <input name="dob" type="date" id="dob" class="form-control" placeholder="Date of Birth">
                     </div>
 
                     <div class="form-group col-sm-12 col-xs-12">
-                        <label for="exampleInputEmail1" class="text-uppercase">Username</label>
+                        <label for="exampleInputEmail1" class="text-uppercase">Username<span class="required-field"></span></label>
                         <input name="usrName" id="usrName" class="form-control" placeholder="Username">
                     </div>
 
                     <div class="form-group col-sm-6 col-xs-12">
-                        <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+                        <label for="exampleInputPassword1" class="text-uppercase">Password<span class="required-field"></span></label>
                         <input type="password" name="password" id="password" class="form-control" placeholder="Password">
                     </div>
 
                     <div class="form-group col-sm-6 col-xs-12">
-                        <label for="exampleInputPassword1" class="text-uppercase">Confirm Password</label>
+                        <label for="exampleInputPassword1" class="text-uppercase">Confirm Password<span class="required-field"></span></label>
                         <input type="password" name="cpassword" id="cpassword" class="form-control" placeholder="Enter Password Again">
                     </div>
 
