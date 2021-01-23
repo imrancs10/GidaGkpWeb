@@ -63,6 +63,100 @@ $(document).ready(function () {
                     $('#dob').val(today);
                     $('#PermanentAddress').val(data.SignatryPermanentAddress);
                     $('#btnStep1Skip').removeClass('hidden');
+                    $('#spanApplicationNumber').html(data.ApplicationNumber);
+                }
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+    function getApplicantPersonalDetail() {
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            data: '',
+            url: '/Masters/GetApplicantPersonalDetail',
+            success: function (data) {
+                if (data != null && data != undefined) {
+                    //IdentiyProof
+                    if (data.IdentiyProof =='Passport') {
+                        $('#IDPassport').prop('checked', true);
+                    }
+                    else if (data.IdentiyProof == 'PAN') {
+                        $('#IDPAN').prop('checked', true);
+                    }
+                    else if (data.IdentiyProof == 'voterIDCard') {
+                        $('#IDvoterIDCard').prop('checked', true);
+                    }
+                    else if (data.IdentiyProof == 'DrivingLiecence') {
+                        $('#IDDrivingLiecence').prop('checked', true);
+                    }
+                    else if (data.IdentiyProof == 'AdhaarCard') {
+                        $('#IDAdhaarCard').prop('checked', true);
+                    }
+                    else if (data.IdentiyProof == 'CompanyIDCard') {
+                        $('#IDCompanyIDCard').prop('checked', true);
+                    }
+
+                    //ResidentialProof
+                    if (data.ResidentialProof == 'ElectricBill') {
+                        $('#RPElectricBill').prop('checked', true);
+                    }
+                    else if (data.ResidentialProof == 'ITR') {
+                        $('#RPITR').prop('checked', true);
+                    }
+                    else if (data.ResidentialProof == 'TelephoneBill') {
+                        $('#RPTelephoneBill').prop('checked', true);
+                    }
+
+                    else if (data.ResidentialProof == 'BankPassbook') {
+                        $('#RPBankPassbook').prop('checked', true);
+                    }
+                    else if (data.ResidentialProof == 'Passport') {
+                        $('#RPPassport').prop('checked', true);
+                    }
+                    else if (data.ResidentialProof == 'VoterIDCard') {
+                        $('#RPVoterIDCard').prop('checked', true);
+                    }
+
+                    else if (data.ResidentialProof == 'HRBill') {
+                        $('#RPHRBill').prop('checked', true);
+                    }
+                    else if (data.ResidentialProof == 'DrivingLiecence') {
+                        $('#RPDrivingLiecence').prop('checked', true);
+                    }
+
+                    $('#FullName').val(data.FullApplicantName);
+                    $('#FName').val(data.FName);
+                    $('#MName').val(data.MName);
+                    $('#SName').val(data.SName);
+                    $('#Gender').val(data.Gender);
+                    $('#Reservation').val(data.Category);
+                    $('#Nationality').val(data.Nationality);
+                    $('#AdhaarNo').val(data.AdhaarNumber);
+                    $('#PAN').val(data.PAN);
+                    $('#MobileNo').val(data.Mobile);
+                    $('#Phone').val(data.Phone);
+                    $('#Email').val(data.EmailId);
+                    $('#Religion').val(data.Religion);
+                    $('#SubCategory').val(data.SubCategory);
+                    $('#CAddress').val(data.CAddress);
+                    $('#PAddress').val(data.PAddress);
+
+                    var milli = data.ApplicantDOB.replace(/\/Date\((-?\d+)\)\//, '$1');
+                    var now = new Date(parseInt(milli));
+
+                    var day = ("0" + now.getDate()).slice(-2);
+                    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+                    var today = now.getFullYear() + "-" + (month) + "-" + (day);
+                    $('#DOB').val(today);
                 }
             },
             failure: function (response) {
@@ -344,8 +438,10 @@ $(document).ready(function () {
                     //$('#progressbar li').removeClass('active');
                     //$('#ApplicantDetail').addClass('active');
                     NextStep($('#btnPlotDetailSave'));
+                    getApplicantPersonalDetail();
                     $('#spanApplicationNumber').html(data);
                     $('#divApplicationNumber').css('display', 'block');
+
                     utility.alert.setAlert(utility.alert.alertType.success, 'Plot Detail has been Saved, Your Application Number is ' + data);
                 }
             });
@@ -366,48 +462,48 @@ $(document).ready(function () {
         if ($('#FullName').val() != '' && $('#FName').val() != '' && $('#MName').val() != '') {
             var url = '/masters/SaveApplicantDetails';
             var IdentityProof = '';
-            if ($('#Passport').prop('checked')) {
+            if ($('#IDPassport').prop('checked')) {
                 IdentityProof = $('#Passport').val();
             }
-            else if ($('#PAN').prop('checked')) {
+            else if ($('#IDPAN').prop('checked')) {
                 IdentityProof = $('#PAN').val();
             }
-            else if ($('#voterIDCard').prop('checked')) {
+            else if ($('#IDvoterIDCard').prop('checked')) {
                 IdentityProof = $('#voterIDCard').val();
             }
-            else if ($('#DrivingLiecence').prop('checked')) {
+            else if ($('#IDDrivingLiecence').prop('checked')) {
                 IdentityProof = $('#DrivingLiecence').val();
             }
-            else if ($('#AdhaarCard').prop('checked')) {
+            else if ($('#IDAdhaarCard').prop('checked')) {
                 IdentityProof = $('#AdhaarCard').val();
             }
-            else if ($('#CompanyIDCard').prop('checked')) {
+            else if ($('#IDCompanyIDCard').prop('checked')) {
                 IdentityProof = $('#CompanyIDCard').val();
             }
 
             var ResidentialProof = '';
-            if ($('#ElectricBill').prop('checked')) {
+            if ($('#RPElectricBill').prop('checked')) {
                 ResidentialProof = $('#ElectricBill').val();
             }
-            else if ($('#ITR').prop('checked')) {
+            else if ($('#RPITR').prop('checked')) {
                 ResidentialProof = $('#ITR').val();
             }
-            else if ($('#TelephoneBill').prop('checked')) {
+            else if ($('#RPTelephoneBill').prop('checked')) {
                 ResidentialProof = $('#TelephoneBill').val();
             }
-            else if ($('#BankPassbook').prop('checked')) {
+            else if ($('#RPBankPassbook').prop('checked')) {
                 ResidentialProof = $('#BankPassbook').val();
             }
-            else if ($('#Passport').prop('checked')) {
+            else if ($('#RPPassport').prop('checked')) {
                 ResidentialProof = $('#Passport').val();
             }
-            else if ($('#VoterIDCard').prop('checked')) {
+            else if ($('#RPVoterIDCard').prop('checked')) {
                 ResidentialProof = $('#VoterIDCard').val();
             }
-            else if ($('#HRBill').prop('checked')) {
+            else if ($('#RPHRBill').prop('checked')) {
                 ResidentialProof = $('#HRBill').val();
             }
-            else if ($('#DrivingLiecence').prop('checked')) {
+            else if ($('#RPDrivingLiecence').prop('checked')) {
                 ResidentialProof = $('#DrivingLiecence').val();
             }
 
@@ -418,7 +514,7 @@ $(document).ready(function () {
                 SName: $('#SName').val(),
                 DOB: $('#DOB').val(),
                 Gender: $('#Gender').val(),
-                Reservation: $('#Reservation').val(),
+                Category: $('#Reservation').val(),
                 Nationality: $('#Nationality').val(),
                 AdhaarNo: $('#AdhaarNo').val(),
                 PAN: $('#PAN').val(),
@@ -591,6 +687,16 @@ $(document).ready(function () {
         }
     });
 
+
+    $('#btnStep1Skip').click(function () {
+        NextStep($('#btnStep1Skip'));
+        getApplicantPersonalDetail();
+    });
+
+    $('#btnStep2Skip').click(function () {
+        NextStep($('#btnStep2Skip'));
+    });
+
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1),
             sURLVariables = sPageURL.split('&'),
@@ -605,7 +711,6 @@ $(document).ready(function () {
             }
         }
     }
-
 
     function NextStep(nextButton) {
 

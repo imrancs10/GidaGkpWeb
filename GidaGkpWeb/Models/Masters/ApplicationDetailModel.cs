@@ -61,4 +61,62 @@ namespace GidaGkpWeb.Models.Masters
         public byte[] ApplicantPhoto { get; set; }
         public byte[] ApplicantSignature { get; set; }
     }
+
+    public class ApplicantPlotDetailModel
+    {
+        public int Id { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
+        public string ApplicationNumber { get; set; }
+        public Nullable<int> AppliedFor { get; set; }
+        public Nullable<int> SchemeType { get; set; }
+        public Nullable<int> SchemeName { get; set; }
+        public Nullable<int> PlotRange { get; set; }
+        public string PlotArea { get; set; }
+        public Nullable<int> SectorName { get; set; }
+        public string EstimatedRate { get; set; }
+        public Nullable<int> PaymentSchedule { get; set; }
+        public Nullable<decimal> TotalInvestment { get; set; }
+        public Nullable<decimal> GST { get; set; }
+        public Nullable<decimal> ApplicationFee { get; set; }
+        public Nullable<decimal> TotalAmount { get; set; }
+        public Nullable<decimal> EarnestMoney { get; set; }
+        public Nullable<decimal> NetAmount { get; set; }
+        public Nullable<int> IndustryOwnership { get; set; }
+        public string UnitName { get; set; }
+        public string SignatryName { get; set; }
+        public Nullable<System.DateTime> SignatryDateOfBirth { get; set; }
+        public string SignatryPresentAddress { get; set; }
+        public string SignatryPresentPhoneNumber { get; set; }
+        public string SignatryPermanentAddress { get; set; }
+        public string SignatryPermanentPhoneNumber { get; set; }
+        public Nullable<int> RelationshipStatus { get; set; }
+        public Nullable<System.DateTime> CreationDate { get; set; }
+    }
+    public  class ApplicantDetailModel
+    {
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
+        public string FullApplicantName { get; set; }
+        public string FName { get; set; }
+        public string MName { get; set; }
+        public string SName { get; set; }
+        public Nullable<System.DateTime> ApplicantDOB { get; set; }
+        public string Gender { get; set; }
+        public string Category { get; set; }
+        public string Nationality { get; set; }
+        public string AdhaarNumber { get; set; }
+        public string PAN { get; set; }
+        public string Mobile { get; set; }
+        public string Phone { get; set; }
+        public string EmailId { get; set; }
+        public string Religion { get; set; }
+        public string SubCategory { get; set; }
+        public string CAddress { get; set; }
+        public string PAddress { get; set; }
+        public string IdentiyProof { get; set; }
+        public string ResidentialProof { get; set; }
+        public Nullable<System.DateTime> CreationDate { get; set; }
+    }
 }

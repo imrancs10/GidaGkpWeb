@@ -34,6 +34,7 @@ namespace GidaGkpWeb.Controllers
         {
             if (applicationId != null && applicationId > 0)
             {
+                UserData.ApplicationId = applicationId.Value;
                 return View();
             }
             else
@@ -68,7 +69,6 @@ namespace GidaGkpWeb.Controllers
                 //SetAlertMessage("Incomplete Detail", "Error");
                 return null;
             }
-
             var AppNumber = _details.SavePlotDetail(((CustomPrincipal)User).Id, AppliedFor, SchemeType, PlotRange, SchemeName, plotArea, SectorName, SectorDescription, EstimatedRate, PaymemtSchedule, TotalInvestment, ApplicationFee, EarnestMoneyDeposite, GST, NetAmount, TotalAmount, IndustryOwnershipType, UnitName, Name, dob, PresentAddress, PermanentAddress, RelationshipStatus);
             if (AppNumber != "Error")
                 Session["ApplicationNumber"] = AppNumber;
@@ -346,6 +346,18 @@ namespace GidaGkpWeb.Controllers
             if (applicationId > 0)
             {
                 var data = _details.GetApplciantPlotDetailByApplicationId(applicationId);
+                return Json(data, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
+
+        [HttpPost]
+        public JsonResult GetApplicantPersonalDetail()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            if (UserData.ApplicationId > 0)
+            {
+                var data = _details.GetApplicantPersonalDetail(UserData.ApplicationId);
                 return Json(data, JsonRequestBehavior.AllowGet);
             }
             return null;

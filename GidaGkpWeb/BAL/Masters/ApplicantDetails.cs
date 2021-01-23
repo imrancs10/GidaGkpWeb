@@ -23,65 +23,99 @@ namespace GidaGkpWeb.BAL
         public string SavePlotDetail(int userId, string AppliedFor, string SchemeType, string PlotRange, string SchemeName, string plotArea, string SectorName, string SectorDescription, string EstimatedRate, string PaymemtSchedule, string TotalInvestment, string ApplicationFee, string EarnestMoneyDeposite, string GST, string NetAmount, string TotalAmount, string IndustryOwnershipType, string UnitName, string Name, string dob, string PresentAddress, string PermanentAddress, string RelationshipStatus)
         {
             _db = new GidaGKPEntities();
-
-            var applciationDeatil = _db.ApplicantApplicationDetails.OrderByDescending(x => x.ApplicationId).Take(1).FirstOrDefault();
-            int maxId = 0;
-            if (applciationDeatil != null)
-            {
-                maxId = applciationDeatil.ApplicationId + 1;
-            }
-            else
-            {
-                maxId = 1;
-            }
-            ApplicantApplicationDetail app = new ApplicantApplicationDetail()
-            {
-                UserId = userId,
-                ApplicationNumber = DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + SectorDescription.Replace("Sector ", "") + maxId.ToString().PadLeft(4, '0')
-            };
-            _db.Entry(app).State = EntityState.Added;
-            _db.SaveChanges();
-            UserData.ApplicationId = app.ApplicationId;
-
-            ApplicantFormStep step = new ApplicantFormStep()
-            {
-                UserId = userId,
-                ApplicantStepCompleted = 1,
-                ApplicationId = UserData.ApplicationId
-            };
-            _db.Entry(step).State = EntityState.Added;
-
             int _effectRow = 0;
-            ApplicantPlotDetail _newRecord = new ApplicantPlotDetail()
-            {
-                ApplicationFee = Convert.ToDecimal(ApplicationFee),
-                UserId = userId,
-                AppliedFor = Convert.ToInt32(AppliedFor),
-                CreationDate = DateTime.Now,
-                EarnestMoney = Convert.ToDecimal(EarnestMoneyDeposite),
-                EstimatedRate = EstimatedRate,
-                GST = Convert.ToDecimal(GST),
-                IndustryOwnership = Convert.ToInt32(IndustryOwnershipType),
-                NetAmount = Convert.ToDecimal(NetAmount),
-                PaymentSchedule = Convert.ToInt32(PaymemtSchedule),
-                PlotArea = plotArea,
-                PlotRange = Convert.ToInt32(PlotRange),
-                RelationshipStatus = Convert.ToInt32(RelationshipStatus),
-                SchemeName = Convert.ToInt32(SchemeName),
-                SchemeType = Convert.ToInt32(SchemeType),
-                SectorName = Convert.ToInt32(SectorName),
-                SignatryDateOfBirth = Convert.ToDateTime(dob),
-                SignatryName = Name,
-                SignatryPermanentAddress = PermanentAddress,
-                SignatryPresentAddress = PresentAddress,
-                TotalAmount = Convert.ToDecimal(TotalAmount),
-                TotalInvestment = Convert.ToDecimal(TotalInvestment),
-                UnitName = UnitName,
-                ApplicationId = UserData.ApplicationId
-            };
+            ApplicantApplicationDetail app = new ApplicantApplicationDetail();
 
-            _db.Entry(_newRecord).State = EntityState.Added;
-            _effectRow = _db.SaveChanges();
+            var extingApplication = _db.ApplicantApplicationDetails.Where(x => x.ApplicationId == UserData.ApplicationId).FirstOrDefault();
+            if (extingApplication != null)  // update plot detail
+            {
+                app.ApplicationNumber = extingApplication.ApplicationNumber;
+                var existingPlotDetail = _db.ApplicantPlotDetails.Where(x => x.ApplicationId == UserData.ApplicationId).FirstOrDefault();
+                existingPlotDetail.ApplicationFee = Convert.ToDecimal(ApplicationFee);
+                existingPlotDetail.UserId = userId;
+                existingPlotDetail.AppliedFor = Convert.ToInt32(AppliedFor);
+                existingPlotDetail.EarnestMoney = Convert.ToDecimal(EarnestMoneyDeposite);
+                existingPlotDetail.EstimatedRate = EstimatedRate;
+                existingPlotDetail.GST = Convert.ToDecimal(GST);
+                existingPlotDetail.IndustryOwnership = Convert.ToInt32(IndustryOwnershipType);
+                existingPlotDetail.NetAmount = Convert.ToDecimal(NetAmount);
+                existingPlotDetail.PaymentSchedule = Convert.ToInt32(PaymemtSchedule);
+                existingPlotDetail.PlotArea = plotArea;
+                existingPlotDetail.PlotRange = Convert.ToInt32(PlotRange);
+                existingPlotDetail.RelationshipStatus = Convert.ToInt32(RelationshipStatus);
+                existingPlotDetail.SchemeName = Convert.ToInt32(SchemeName);
+                existingPlotDetail.SchemeType = Convert.ToInt32(SchemeType);
+                existingPlotDetail.SectorName = Convert.ToInt32(SectorName);
+                existingPlotDetail.SignatryDateOfBirth = Convert.ToDateTime(dob);
+                existingPlotDetail.SignatryName = Name;
+                existingPlotDetail.SignatryPermanentAddress = PermanentAddress;
+                existingPlotDetail.SignatryPresentAddress = PresentAddress;
+                existingPlotDetail.TotalAmount = Convert.ToDecimal(TotalAmount);
+                existingPlotDetail.TotalInvestment = Convert.ToDecimal(TotalInvestment);
+                existingPlotDetail.UnitName = UnitName;
+                existingPlotDetail.ApplicationId = UserData.ApplicationId;
+                _db.Entry(existingPlotDetail).State = EntityState.Modified;
+                _effectRow = _db.SaveChanges();
+            }
+            else //save plot detail
+            {
+                var applciationDeatil = _db.ApplicantApplicationDetails.OrderByDescending(x => x.ApplicationId).Take(1).FirstOrDefault();
+                int maxId = 0;
+                if (applciationDeatil != null)
+                {
+                    maxId = applciationDeatil.ApplicationId + 1;
+                }
+                else
+                {
+                    maxId = 1;
+                }
+                app.UserId = userId;
+                app.ApplicationNumber = DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + SectorDescription.Replace("Sector ", "") + maxId.ToString().PadLeft(4, '0');
+                _db.Entry(app).State = EntityState.Added;
+                _db.SaveChanges();
+                UserData.ApplicationId = app.ApplicationId;
+
+                ApplicantFormStep step = new ApplicantFormStep()
+                {
+                    UserId = userId,
+                    ApplicantStepCompleted = 1,
+                    ApplicationId = UserData.ApplicationId
+                };
+                _db.Entry(step).State = EntityState.Added;
+
+                ApplicantPlotDetail _newRecord = new ApplicantPlotDetail()
+                {
+                    ApplicationFee = Convert.ToDecimal(ApplicationFee),
+                    UserId = userId,
+                    AppliedFor = Convert.ToInt32(AppliedFor),
+                    CreationDate = DateTime.Now,
+                    EarnestMoney = Convert.ToDecimal(EarnestMoneyDeposite),
+                    EstimatedRate = EstimatedRate,
+                    GST = Convert.ToDecimal(GST),
+                    IndustryOwnership = Convert.ToInt32(IndustryOwnershipType),
+                    NetAmount = Convert.ToDecimal(NetAmount),
+                    PaymentSchedule = Convert.ToInt32(PaymemtSchedule),
+                    PlotArea = plotArea,
+                    PlotRange = Convert.ToInt32(PlotRange),
+                    RelationshipStatus = Convert.ToInt32(RelationshipStatus),
+                    SchemeName = Convert.ToInt32(SchemeName),
+                    SchemeType = Convert.ToInt32(SchemeType),
+                    SectorName = Convert.ToInt32(SectorName),
+                    SignatryDateOfBirth = Convert.ToDateTime(dob),
+                    SignatryName = Name,
+                    SignatryPermanentAddress = PermanentAddress,
+                    SignatryPresentAddress = PresentAddress,
+                    TotalAmount = Convert.ToDecimal(TotalAmount),
+                    TotalInvestment = Convert.ToDecimal(TotalInvestment),
+                    UnitName = UnitName,
+                    ApplicationId = UserData.ApplicationId
+                };
+
+                _db.Entry(_newRecord).State = EntityState.Added;
+                _effectRow = _db.SaveChanges();
+            }
+
+
             return _effectRow > 0 ? app.ApplicationNumber : "Error";
         }
 
@@ -364,12 +398,76 @@ namespace GidaGkpWeb.BAL
                     }).ToList().Count();
         }
 
-        public ApplicantPlotDetail GetApplciantPlotDetailByApplicationId(int applicationId)
+        public ApplicantPlotDetailModel GetApplciantPlotDetailByApplicationId(int applicationId)
         {
             _db = new GidaGKPEntities();
-            return _db.ApplicantPlotDetails.Where(x => x.ApplicationId == applicationId).FirstOrDefault();
+            return (from plotDetail in _db.ApplicantPlotDetails
+                    join app in _db.ApplicantApplicationDetails on plotDetail.ApplicationId equals app.ApplicationId
+                    where app.ApplicationId == applicationId
+                    select new ApplicantPlotDetailModel
+                    {
+                        ApplicationFee = plotDetail.ApplicationFee,
+                        ApplicationId = plotDetail.ApplicationId,
+                        ApplicationNumber = app.ApplicationNumber,
+                        AppliedFor = plotDetail.AppliedFor,
+                        CreationDate = plotDetail.CreationDate,
+                        EarnestMoney = plotDetail.EarnestMoney,
+                        EstimatedRate = plotDetail.EstimatedRate,
+                        GST = plotDetail.GST,
+                        Id = plotDetail.Id,
+                        IndustryOwnership = plotDetail.IndustryOwnership,
+                        NetAmount = plotDetail.NetAmount,
+                        PaymentSchedule = plotDetail.PaymentSchedule,
+                        PlotArea = plotDetail.PlotArea,
+                        PlotRange = plotDetail.PlotRange,
+                        RelationshipStatus = plotDetail.RelationshipStatus,
+                        SchemeName = plotDetail.SchemeName,
+                        SchemeType = plotDetail.SchemeType,
+                        SectorName = plotDetail.SectorName,
+                        SignatryDateOfBirth = plotDetail.SignatryDateOfBirth,
+                        SignatryName = plotDetail.SignatryName,
+                        SignatryPermanentAddress = plotDetail.SignatryPermanentAddress,
+                        SignatryPermanentPhoneNumber = plotDetail.SignatryPermanentPhoneNumber,
+                        SignatryPresentAddress = plotDetail.SignatryPresentAddress,
+                        SignatryPresentPhoneNumber = plotDetail.SignatryPresentPhoneNumber,
+                        TotalAmount = plotDetail.TotalAmount,
+                        TotalInvestment = plotDetail.TotalInvestment,
+                        UnitName = plotDetail.UnitName,
+                        UserId = plotDetail.UserId
+                    }).FirstOrDefault();
+        }
 
-
+        public ApplicantDetailModel GetApplicantPersonalDetail(int applicationId)
+        {
+            _db = new GidaGKPEntities();
+            return (from applicantDetail in _db.ApplicantDetails
+                    join app in _db.ApplicantApplicationDetails on applicantDetail.ApplicationId equals app.ApplicationId
+                    where app.ApplicationId == applicationId
+                    select new ApplicantDetailModel
+                    {
+                        AdhaarNumber = applicantDetail.AdhaarNumber,
+                        UserId = applicantDetail.UserId,
+                        SubCategory = applicantDetail.SubCategory,
+                        ApplicantDOB = applicantDetail.ApplicantDOB,
+                        CAddress = applicantDetail.CAddress,
+                        Category = applicantDetail.Category,
+                        CreationDate = DateTime.Now,
+                        EmailId = applicantDetail.EmailId,
+                        FName = applicantDetail.FName,
+                        FullApplicantName = applicantDetail.FullApplicantName,
+                        Gender = applicantDetail.Gender,
+                        IdentiyProof = applicantDetail.IdentiyProof,
+                        MName = applicantDetail.MName,
+                        Mobile = applicantDetail.Mobile,
+                        Nationality = applicantDetail.Nationality,
+                        PAddress = applicantDetail.PAddress,
+                        PAN = applicantDetail.PAN,
+                        Phone = applicantDetail.Phone,
+                        Religion = applicantDetail.Religion,
+                        ResidentialProof = applicantDetail.ResidentialProof,
+                        SName = applicantDetail.SName,
+                        ApplicationId = UserData.ApplicationId
+                    }).FirstOrDefault();
         }
     }
 }
