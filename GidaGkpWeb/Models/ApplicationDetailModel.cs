@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace GidaGkpWeb.Models.Masters
+namespace GidaGkpWeb.Models
 {
     public class ApplicationDetailModel
     {

@@ -28,7 +28,7 @@ $(document).ready(function () {
             dataType: 'json',
             type: 'POST',
             data: '{applicationId: ' + applicationId + '}',
-            url: '/Masters/GetPlotRegistrationDetail',
+            url: '/Applicant/GetPlotRegistrationDetail',
             success: function (data) {
                 if (data != null && data != undefined) {
                     FillAppliedFor(data.AppliedFor);
@@ -81,7 +81,7 @@ $(document).ready(function () {
             dataType: 'json',
             type: 'POST',
             data: '',
-            url: '/Masters/GetApplicantPersonalDetail',
+            url: '/Applicant/GetApplicantPersonalDetail',
             success: function (data) {
                 if (data != null && data != undefined) {
                     //IdentiyProof
@@ -408,7 +408,7 @@ $(document).ready(function () {
 
     $('#btnPlotDetailSave').on('click', function (e) {
         if ($('#ApplicationFee').val() != '' && $('#AppliedFor').val() != '' && $('#EarnestMoneyDeposite').val() != '') {
-            var url = '/masters/SavePlotDetail';
+            var url = '/Applicant/SavePlotDetail';
             var inputData = {
                 ApplicationFee: $('#ApplicationFee').val(),
                 AppliedFor: $('#AppliedFor').val(),
@@ -460,7 +460,7 @@ $(document).ready(function () {
 
     $('#Step2NextButton').on('click', function (e) {
         if ($('#FullName').val() != '' && $('#FName').val() != '' && $('#MName').val() != '') {
-            var url = '/masters/SaveApplicantDetails';
+            var url = '/Applicant/SaveApplicantDetails';
             var IdentityProof = '';
             if ($('#IDPassport').prop('checked')) {
                 IdentityProof = $('#Passport').val();
@@ -553,7 +553,7 @@ $(document).ready(function () {
 
     $('#Step3NextButton').on('click', function (e) {
         if ($('#ProposedIndustryType').val() != '' && $('#ProjectEstimatedCost').val() != '' && $('#CoveredArea').val() != '') {
-            var url = '/masters/SaveProjectDetails';
+            var url = '/Applicant/SaveProjectDetails';
             var inputData = {
                 ProposedIndustryType: $('#ProposedIndustryType').val(),
                 ProjectEstimatedCost: $('#ProjectEstimatedCost').val(),
@@ -603,7 +603,7 @@ $(document).ready(function () {
 
     $('#Step4NextButton').on('click', function (e) {
         if ($('#BankAccountName').val() != '' && $('#BankAccountNo').val() != '' && $('#BankName').val() != '') {
-            var url = '/masters/SaveBankDetail';
+            var url = '/Applicant/SaveBankDetail';
             var inputData = {
                 BankAccountName: $('#BankAccountName').val(),
                 BankAccountNo: $('#BankAccountNo').val(),

@@ -5,7 +5,7 @@ using System.Web;
 using DataLayer;
 using GidaGkpWeb.Global;
 using System.Data.Entity;
-using GidaGkpWeb.Models.Masters;
+using GidaGkpWeb.Models;
 
 namespace GidaGkpWeb.BAL
 {
