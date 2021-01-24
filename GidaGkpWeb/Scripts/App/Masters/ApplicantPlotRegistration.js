@@ -137,7 +137,7 @@ $(document).ready(function () {
                     $('#MName').val(data.MName);
                     $('#SName').val(data.SName);
                     $('#Gender').val(data.Gender);
-                    $('#Reservation').val(data.Category);
+                    $('#Category').val(data.Category);
                     $('#Nationality').val(data.Nationality);
                     $('#AdhaarNo').val(data.AdhaarNumber);
                     $('#PAN').val(data.PAN);
@@ -516,7 +516,7 @@ $(document).ready(function () {
                 SName: $('#SName').val(),
                 DOB: $('#DOB').val(),
                 Gender: $('#Gender').val(),
-                Category: $('#Reservation').val(),
+                Category: $('#Category').val(),
                 Nationality: $('#Nationality').val(),
                 AdhaarNo: $('#AdhaarNo').val(),
                 PAN: $('#PAN').val(),

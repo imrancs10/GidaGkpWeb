@@ -90,7 +90,7 @@ namespace GidaGkpWeb.Controllers
 
 
         [HttpPost]
-        public JsonResult SaveApplicantDetails(string FullName, string FName, string MName, string SName, string DOB, string Gender, string Reservation, string Nationality, string AdhaarNo, string PAN, string MobileNo, string Phone, string Email, string Religion, string SubCategory, string CAddress, string PAddress, string IdentityProof, string ResidentialProof)
+        public JsonResult SaveApplicantDetails(string FullName, string FName, string MName, string SName, string DOB, string Gender, string Category, string Nationality, string AdhaarNo, string PAN, string MobileNo, string Phone, string Email, string Religion, string SubCategory, string CAddress, string PAddress, string IdentityProof, string ResidentialProof)
         {
             ApplicantDetails _details = new ApplicantDetails();
             if (string.IsNullOrEmpty(FullName) || string.IsNullOrEmpty(FName))
@@ -98,7 +98,7 @@ namespace GidaGkpWeb.Controllers
                 //SetAlertMessage("Incomplete Detail", "Error");
                 return null;
             }
-            return Json(CrudResponse(_details.SaveApplicantDetail(((CustomPrincipal)User).Id, FullName, FName, MName, SName, DOB, Gender, Reservation, Nationality, AdhaarNo, PAN, MobileNo, Phone, Email, Religion, SubCategory, CAddress, PAddress, IdentityProof, ResidentialProof)), JsonRequestBehavior.AllowGet);
+            return Json(CrudResponse(_details.SaveApplicantDetail(((CustomPrincipal)User).Id, FullName, FName, MName, SName, DOB, Gender, Category, Nationality, AdhaarNo, PAN, MobileNo, Phone, Email, Religion, SubCategory, CAddress, PAddress, IdentityProof, ResidentialProof)), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -287,7 +287,7 @@ namespace GidaGkpWeb.Controllers
             //    Response.Write(Params.Keys[i] + " = " + Params[i] + "<br>");
             //}
 
-            if (Params["status_message"] == "Completed Successfully")
+            if (Params["order_status"] == "Success")
             {
                 ApplicantDetails _details = new ApplicantDetails();
                 ApplicantTransactionDetail detail = new ApplicantTransactionDetail()
@@ -311,13 +311,16 @@ namespace GidaGkpWeb.Controllers
                 SetAlertMessage("Payment done successfully", "Payment Status");
                 return RedirectToAction("PaymentResponseSuccess");
             }
+            else if (Params["order_status"] == "Aborted")
+            {
+                SetAlertMessage("Payment Aborted", "Error");
+                return RedirectToAction("PaymentRequest");
+            }
             else
             {
                 SetAlertMessage("Payment Failed", "Error");
                 return RedirectToAction("PaymentRequest");
             }
-
-
         }
 
         public ActionResult PaymentResponseSuccess()

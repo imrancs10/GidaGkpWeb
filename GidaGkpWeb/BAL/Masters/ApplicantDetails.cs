@@ -118,7 +118,7 @@ namespace GidaGkpWeb.BAL
             return _effectRow > 0 ? app.ApplicationNumber : "Error";
         }
 
-        public Enums.CrudStatus SaveApplicantDetail(int userId, string FullName, string FName, string MName, string SName, string DOB, string Gender, string Reservation, string Nationality, string AdhaarNo, string PAN, string MobileNo, string Phone, string Email, string Religion, string SubCategory, string CAddress, string PAddress, string IdentityProof, string ResidentialProof)
+        public Enums.CrudStatus SaveApplicantDetail(int userId, string FullName, string FName, string MName, string SName, string DOB, string Gender, string Category, string Nationality, string AdhaarNo, string PAN, string MobileNo, string Phone, string Email, string Religion, string SubCategory, string CAddress, string PAddress, string IdentityProof, string ResidentialProof)
         {
             _db = new GidaGKPEntities();
 
@@ -140,7 +140,7 @@ namespace GidaGkpWeb.BAL
                 extingApplicantDetail.SubCategory = SubCategory;
                 extingApplicantDetail.ApplicantDOB = Convert.ToDateTime(DOB);
                 extingApplicantDetail.CAddress = CAddress;
-                extingApplicantDetail.Category = SubCategory;
+                extingApplicantDetail.Category = Category;
                 extingApplicantDetail.CreationDate = DateTime.Now;
                 extingApplicantDetail.EmailId = Email;
                 extingApplicantDetail.FName = FName;
@@ -169,7 +169,7 @@ namespace GidaGkpWeb.BAL
                     SubCategory = SubCategory,
                     ApplicantDOB = Convert.ToDateTime(DOB),
                     CAddress = CAddress,
-                    Category = SubCategory,
+                    Category = Category,
                     CreationDate = DateTime.Now,
                     EmailId = Email,
                     FName = FName,
