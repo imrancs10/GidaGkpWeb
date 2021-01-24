@@ -1,5 +1,5 @@
 ﻿@using GidaGkpWeb.Infrastructure.Authentication;
-@using GidaGkpWeb.Models.Masters;
+@using GidaGkpWeb.Models;
 @{
     ViewBag.Title = "PaymentResponseSuccess";
     Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
@@ -23,11 +23,11 @@
             <div class="row">
                 <div class="col-md-12 mx-0">
                     <div class="col-sm-6 col-xs-12" style="padding-left:20px">
-                        <center><a name="next" href="/Masters/PaymentReciept" target="_blank" class="btn btn-primary pull-right">Print Payment Reciept</a></center>
+                        <center><a name="next" href="/Applicant/PaymentReciept" target="_blank" class="btn btn-primary pull-right">Print Payment Reciept</a></center>
 
                     </div>
                     <div class="col-sm-6 col-xs-12">
-                        <center><a name="next" href="/Masters/PaymentAcknowledgement" target="_blank" class="btn btn-primary pull-right">Print Acknowledgement Form</a></center>
+                        <center><a name="next" href="/Applicant/PaymentAcknowledgement" target="_blank" class="btn btn-primary pull-right">Print Acknowledgement Form</a></center>
                     </div>
                 </div>
             </div>

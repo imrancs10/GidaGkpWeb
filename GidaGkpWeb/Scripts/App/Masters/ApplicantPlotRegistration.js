@@ -85,7 +85,7 @@ $(document).ready(function () {
             success: function (data) {
                 if (data != null && data != undefined) {
                     //IdentiyProof
-                    if (data.IdentiyProof =='Passport') {
+                    if (data.IdentiyProof == 'Passport') {
                         $('#IDPassport').prop('checked', true);
                     }
                     else if (data.IdentiyProof == 'PAN') {
@@ -157,6 +157,8 @@ $(document).ready(function () {
 
                     var today = now.getFullYear() + "-" + (month) + "-" + (day);
                     $('#DOB').val(today);
+
+                    $('#btnStep2Skip').removeClass('hidden');
                 }
             },
             failure: function (response) {
@@ -534,6 +536,7 @@ $(document).ready(function () {
                     //$('#progressbar li').removeClass('active');
                     //$('#ProjectDetail').addClass('active');
                     NextStep($('#Step2NextButton'));
+                    getApplicantProjectDetail();
                     utility.alert.setAlert(utility.alert.alertType.success, 'Applicant Detail has been Saved');
                 }
             });
@@ -585,6 +588,7 @@ $(document).ready(function () {
                     //$('#progressbar li').removeClass('active');
                     //$('#BankDetail').addClass('active');
                     utility.alert.setAlert(utility.alert.alertType.success, 'Project Detail has been Saved');
+                    getApplicantBankDetail();
                     NextStep($('#Step3NextButton'));
                 }
             });
@@ -619,6 +623,8 @@ $(document).ready(function () {
                     //$('#AttachDocument').addClass('active');
                     utility.alert.setAlert(utility.alert.alertType.success, 'Bank Detail has been Saved');
                     NextStep($('#Step4NextButton'));
+                    getApplicantDocumentDetail();
+                    $('#btnStep5Skip').removeClass('hidden');
                 }
             });
         }
@@ -695,7 +701,119 @@ $(document).ready(function () {
 
     $('#btnStep2Skip').click(function () {
         NextStep($('#btnStep2Skip'));
+        getApplicantProjectDetail();
     });
+
+    $('#btnStep3Skip').click(function () {
+        NextStep($('#btnStep3Skip'));
+        getApplicantBankDetail();
+    });
+
+    $('#btnStep4Skip').click(function () {
+        NextStep($('#btnStep4Skip'));
+        //getApplicantDocumentDetail();
+        $('#btnStep5Skip').removeClass('hidden');
+    });
+
+    $('#btnStep5Skip').click(function () {
+        window.location.href = "/Applicant/PaymentRequest";
+    });
+
+    function getApplicantDocumentDetail() {
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            data: '',
+            url: '/Applicant/GetApplicantDocumentDetail',
+            success: function (data) {
+                if (data != null && data != undefined) {
+                    $('#BankAccountName').val(data.AccountHolderName);
+                    $('#BankAccountNo').val(data.BankAccountNo);
+                    $('#BankName').val(data.BankName);
+                    $('#BranchName').val(data.BBName);
+                    $('#BranchAddress').val(data.BBAddress);
+                    $('#IFSCCode').val(data.IFSC_Code);
+                }
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+    function getApplicantBankDetail() {
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            data: '',
+            url: '/Applicant/GetApplicantBankDetail',
+            success: function (data) {
+                if (data != null && data != undefined) {
+                    $('#BankAccountName').val(data.AccountHolderName);
+                    $('#BankAccountNo').val(data.BankAccountNo);
+                    $('#BankName').val(data.BankName);
+                    $('#BranchName').val(data.BBName);
+                    $('#BranchAddress').val(data.BBAddress);
+                    $('#IFSCCode').val(data.IFSC_Code);
+                    $('#btnStep4Skip').removeClass('hidden');
+                }
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+    function getApplicantProjectDetail() {
+        $.ajax({
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            type: 'POST',
+            data: '',
+            url: '/Applicant/GetApplicantProjectDetail',
+            success: function (data) {
+                if (data != null && data != undefined) {
+                    $('#ProposedIndustryType').val(data.ProposedIndustryType);
+                    $('#ProjectEstimatedCost').val(data.ProjectEstimatedCost);
+                    $('#CoveredArea').val(data.ProposedCoveredArea);
+                    $('#OpenArea').val(data.ProposedOpenArea);
+                    $('#Purposeforopenarea').val(data.PurpuseOpenArea);
+                    $('#Investmentland').val(data.ProposedInvestmentLand);
+                    $('#InvestmentBuilding').val(data.ProposedInvestmentBuilding);
+                    $('#InvestmentPlant').val(data.ProposedInvestmentPlant);
+                    $('#processofmanufacture').val(data.FumesNatureQuantity);
+                    $('#LiquidQuantity').val(data.LiquidQuantity);
+                    $('#LiquidChemicalComposition').val(data.LiquidChemicalComposition);
+                    $('#SolidQuantity').val(data.SolidQuantity);
+                    $('#SolidChemicalComposition').val(data.SolidChemicalComposition);
+                    $('#GasQuantity').val(data.GasQuantity);
+                    $('#GasChemicalComposition').val(data.GasChemicalComposition);
+                    $('#PowerRequirement').val(data.PowerRequirement);
+                    $('#FirstYearTelephonicConnection').val(data.FirstYearNoOfTelephone);
+                    $('#FirstYearFaxConnection').val(data.FirstYearNoOfFax);
+                    $('#UltimateRequirementTelephonicConnection').val(data.UltimateNoOfTelephone);
+                    $('#UltimateRequirementFaxConnection').val(data.UltimateNoOfFax);
+                    $('#Skilled').val(data.Skilled);
+                    $('#Unskilled').val(data.UnSkilled);
+                    $('#btnStep3Skip').removeClass('hidden');
+                }
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
 
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1),

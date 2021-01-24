@@ -492,7 +492,8 @@
                                             </div>
                                             <div class="col-sm-12 col-xs-12">
                                                 <input type="button" name="previous" id="Step3PreviousButton" class="previous action-button-previous pull-right" value="Previous" />
-                                                <input type="button" name="next" id="Step3NextButton" class="next action-button pull-right" value="Next Step" />
+                                                <input type="button" name="next" id="Step3NextButton" class="next action-button pull-right" value="Save & Next" />
+                                                <input type="button" id="btnStep3Skip" name="next" class="next action-button pull-right hidden" value="Next" />
                                             </div>
                                         </form>
                                     </fieldset>
@@ -528,13 +529,14 @@
                                             </div>
                                             <div class="col-sm-12 col-xs-12">
                                                 <input type="button" name="previous" id="Step4PreviousButton" class="previous action-button-previous pull-right" value="Previous" />
-                                                <input type="button" name="next" id="Step4NextButton" class="next action-button pull-right" value="Next Step" />
+                                                <input type="button" name="next" id="Step4NextButton" class="next action-button pull-right" value="Save & Next" />
+                                                <input type="button" id="btnStep4Skip" name="next" class="next action-button pull-right hidden" value="Next" />
                                             </div>
                                         </form>
                                     </fieldset>
                                     <!-- Step5 fieldsets -->
                                     <fieldset>
-                                        <form action="~/Masters/SaveApplicantDocument" method="post" enctype="multipart/form-data">
+                                        <form action="~/Applicant/SaveApplicantDocument" method="post" enctype="multipart/form-data">
                                             <div class="form-card">
                                                 <h3 class="fs-title">Attached Ducument Details</h3>
                                                 <p class="paragraph">Note: Scan all required self attested document and upload by 'Select File'. The file to be uploaded .jpg, .jpeg, .png, .doc, .pdf </p>
@@ -852,6 +854,7 @@
                                             <div class="col-sm-12 col-xs-12">
                                                 <input type="button" name="previous" id="Step5PreviousButton" class="previous action-button-previous pull-right" value="Previous" />
                                                 <input type="submit" name="next" id="Step5NextButton" class="next action-button pull-right" value="Save & Next" />
+                                                <input type="button" id="btnStep5Skip" name="next" class="next action-button pull-right hidden" value="Next" />
                                             </div>
                                         </form>
                                     </fieldset>

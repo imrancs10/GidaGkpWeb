@@ -26,11 +26,10 @@ namespace GidaGkpWeb.BAL
             int _effectRow = 0;
             ApplicantApplicationDetail app = new ApplicantApplicationDetail();
 
-            var extingApplication = _db.ApplicantApplicationDetails.Where(x => x.ApplicationId == UserData.ApplicationId).FirstOrDefault();
-            if (extingApplication != null)  // update plot detail
+            var existingPlotDetail = _db.ApplicantPlotDetails.Where(x => x.ApplicationId == UserData.ApplicationId).FirstOrDefault();
+            if (existingPlotDetail != null)  // update plot detail
             {
-                app.ApplicationNumber = extingApplication.ApplicationNumber;
-                var existingPlotDetail = _db.ApplicantPlotDetails.Where(x => x.ApplicationId == UserData.ApplicationId).FirstOrDefault();
+                app.ApplicationNumber = _db.ApplicantApplicationDetails.Where(x => x.ApplicationId == UserData.ApplicationId).FirstOrDefault().ApplicationNumber;
                 existingPlotDetail.ApplicationFee = Convert.ToDecimal(ApplicationFee);
                 existingPlotDetail.UserId = userId;
                 existingPlotDetail.AppliedFor = Convert.ToInt32(AppliedFor);
@@ -132,33 +131,66 @@ namespace GidaGkpWeb.BAL
             _db.Entry(step).State = EntityState.Added;
 
             int _effectRow = 0;
-            ApplicantDetail _newRecord = new ApplicantDetail()
+
+            var extingApplicantDetail = _db.ApplicantDetails.Where(x => x.ApplicationId == UserData.ApplicationId).FirstOrDefault();
+            if (extingApplicantDetail != null)  // update Applicant detail
             {
-                AdhaarNumber = AdhaarNo,
-                UserId = userId,
-                SubCategory = SubCategory,
-                ApplicantDOB = Convert.ToDateTime(DOB),
-                CAddress = CAddress,
-                Category = SubCategory,
-                CreationDate = DateTime.Now,
-                EmailId = Email,
-                FName = FName,
-                FullApplicantName = FullName,
-                Gender = Gender,
-                IdentiyProof = IdentityProof,
-                MName = MName,
-                Mobile = MobileNo,
-                Nationality = Nationality,
-                PAddress = PAddress,
-                PAN = PAN,
-                Phone = Phone,
-                Religion = Religion,
-                ResidentialProof = ResidentialProof,
-                SName = SName,
-                ApplicationId = UserData.ApplicationId
-            };
-            _db.Entry(_newRecord).State = EntityState.Added;
-            _effectRow = _db.SaveChanges();
+                extingApplicantDetail.AdhaarNumber = AdhaarNo;
+                extingApplicantDetail.UserId = userId;
+                extingApplicantDetail.SubCategory = SubCategory;
+                extingApplicantDetail.ApplicantDOB = Convert.ToDateTime(DOB);
+                extingApplicantDetail.CAddress = CAddress;
+                extingApplicantDetail.Category = SubCategory;
+                extingApplicantDetail.CreationDate = DateTime.Now;
+                extingApplicantDetail.EmailId = Email;
+                extingApplicantDetail.FName = FName;
+                extingApplicantDetail.FullApplicantName = FullName;
+                extingApplicantDetail.Gender = Gender;
+                extingApplicantDetail.IdentiyProof = IdentityProof;
+                extingApplicantDetail.MName = MName;
+                extingApplicantDetail.Mobile = MobileNo;
+                extingApplicantDetail.Nationality = Nationality;
+                extingApplicantDetail.PAddress = PAddress;
+                extingApplicantDetail.PAN = PAN;
+                extingApplicantDetail.Phone = Phone;
+                extingApplicantDetail.Religion = Religion;
+                extingApplicantDetail.ResidentialProof = ResidentialProof;
+                extingApplicantDetail.SName = SName;
+                extingApplicantDetail.ApplicationId = UserData.ApplicationId;
+                _db.Entry(extingApplicantDetail).State = EntityState.Modified;
+                _effectRow = _db.SaveChanges();
+            }
+            else
+            {
+                ApplicantDetail _newRecord = new ApplicantDetail()
+                {
+                    AdhaarNumber = AdhaarNo,
+                    UserId = userId,
+                    SubCategory = SubCategory,
+                    ApplicantDOB = Convert.ToDateTime(DOB),
+                    CAddress = CAddress,
+                    Category = SubCategory,
+                    CreationDate = DateTime.Now,
+                    EmailId = Email,
+                    FName = FName,
+                    FullApplicantName = FullName,
+                    Gender = Gender,
+                    IdentiyProof = IdentityProof,
+                    MName = MName,
+                    Mobile = MobileNo,
+                    Nationality = Nationality,
+                    PAddress = PAddress,
+                    PAN = PAN,
+                    Phone = Phone,
+                    Religion = Religion,
+                    ResidentialProof = ResidentialProof,
+                    SName = SName,
+                    ApplicationId = UserData.ApplicationId
+                };
+                _db.Entry(_newRecord).State = EntityState.Added;
+                _effectRow = _db.SaveChanges();
+            }
+
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
 
@@ -175,37 +207,73 @@ namespace GidaGkpWeb.BAL
             _db.Entry(step).State = EntityState.Added;
 
             int _effectRow = 0;
-            ApplicantProjectDetail _newRecord = new ApplicantProjectDetail()
+
+            var extingProjectDetail = _db.ApplicantProjectDetails.Where(x => x.ApplicationId == UserData.ApplicationId).FirstOrDefault();
+            if (extingProjectDetail != null)  // update project detail
             {
-                UserId = userId,
-                CreationDate = DateTime.Now,
-                FirstYearNoOfFax = FirstYearNoOfFax,
-                FirstYearNoOfTelephone = FirstYearNoOfTelephone,
-                FumesNatureQuantity = FumesNatureQuantity,
-                GasChemicalComposition = GasChemicalComposition,
-                GasQuantity = GasQuantity,
-                EffluentTreatmentMeasures = "",
-                LiquidChemicalComposition = LiquidChemicalComposition,
-                LiquidQuantity = LiquidQuantity,
-                PowerRequirement = PowerRequirement,
-                ProjectEstimatedCost = ProjectEstimatedCost,
-                ProposedCoveredArea = ProposedCoveredArea,
-                ProposedIndustryType = ProposedIndustryType,
-                ProposedInvestmentBuilding = ProposedInvestmentBuilding,
-                ProposedInvestmentLand = ProposedInvestmentLand,
-                ProposedInvestmentPlant = ProposedInvestmentPlant,
-                ProposedOpenArea = ProposedOpenArea,
-                PurpuseOpenArea = PurpuseOpenArea,
-                Skilled = Skilled,
-                SolidChemicalComposition = SolidChemicalComposition,
-                SolidQuantity = SolidQuantity,
-                UltimateNoOfFax = UltimateNoOfFax,
-                UltimateNoOfTelephone = UltimateNoOfTelephone,
-                UnSkilled = UnSkilled,
-                ApplicationId = UserData.ApplicationId
-            };
-            _db.Entry(_newRecord).State = EntityState.Added;
-            _effectRow = _db.SaveChanges();
+                extingProjectDetail.UserId = userId;
+                extingProjectDetail.FirstYearNoOfFax = FirstYearNoOfFax;
+                extingProjectDetail.FirstYearNoOfTelephone = FirstYearNoOfTelephone;
+                extingProjectDetail.FumesNatureQuantity = FumesNatureQuantity;
+                extingProjectDetail.GasChemicalComposition = GasChemicalComposition;
+                extingProjectDetail.GasQuantity = GasQuantity;
+                extingProjectDetail.EffluentTreatmentMeasures = "";
+                extingProjectDetail.LiquidChemicalComposition = LiquidChemicalComposition;
+                extingProjectDetail.LiquidQuantity = LiquidQuantity;
+                extingProjectDetail.PowerRequirement = PowerRequirement;
+                extingProjectDetail.ProjectEstimatedCost = ProjectEstimatedCost;
+                extingProjectDetail.ProposedCoveredArea = ProposedCoveredArea;
+                extingProjectDetail.ProposedIndustryType = ProposedIndustryType;
+                extingProjectDetail.ProposedInvestmentBuilding = ProposedInvestmentBuilding;
+                extingProjectDetail.ProposedInvestmentLand = ProposedInvestmentLand;
+                extingProjectDetail.ProposedInvestmentPlant = ProposedInvestmentPlant;
+                extingProjectDetail.ProposedOpenArea = ProposedOpenArea;
+                extingProjectDetail.PurpuseOpenArea = PurpuseOpenArea;
+                extingProjectDetail.Skilled = Skilled;
+                extingProjectDetail.SolidChemicalComposition = SolidChemicalComposition;
+                extingProjectDetail.SolidQuantity = SolidQuantity;
+                extingProjectDetail.UltimateNoOfFax = UltimateNoOfFax;
+                extingProjectDetail.UltimateNoOfTelephone = UltimateNoOfTelephone;
+                extingProjectDetail.UnSkilled = UnSkilled;
+                extingProjectDetail.ApplicationId = UserData.ApplicationId;
+                _db.Entry(extingProjectDetail).State = EntityState.Modified;
+                _effectRow = _db.SaveChanges();
+            }
+            else
+            {
+                ApplicantProjectDetail _newRecord = new ApplicantProjectDetail()
+                {
+                    UserId = userId,
+                    CreationDate = DateTime.Now,
+                    FirstYearNoOfFax = FirstYearNoOfFax,
+                    FirstYearNoOfTelephone = FirstYearNoOfTelephone,
+                    FumesNatureQuantity = FumesNatureQuantity,
+                    GasChemicalComposition = GasChemicalComposition,
+                    GasQuantity = GasQuantity,
+                    EffluentTreatmentMeasures = "",
+                    LiquidChemicalComposition = LiquidChemicalComposition,
+                    LiquidQuantity = LiquidQuantity,
+                    PowerRequirement = PowerRequirement,
+                    ProjectEstimatedCost = ProjectEstimatedCost,
+                    ProposedCoveredArea = ProposedCoveredArea,
+                    ProposedIndustryType = ProposedIndustryType,
+                    ProposedInvestmentBuilding = ProposedInvestmentBuilding,
+                    ProposedInvestmentLand = ProposedInvestmentLand,
+                    ProposedInvestmentPlant = ProposedInvestmentPlant,
+                    ProposedOpenArea = ProposedOpenArea,
+                    PurpuseOpenArea = PurpuseOpenArea,
+                    Skilled = Skilled,
+                    SolidChemicalComposition = SolidChemicalComposition,
+                    SolidQuantity = SolidQuantity,
+                    UltimateNoOfFax = UltimateNoOfFax,
+                    UltimateNoOfTelephone = UltimateNoOfTelephone,
+                    UnSkilled = UnSkilled,
+                    ApplicationId = UserData.ApplicationId
+                };
+                _db.Entry(_newRecord).State = EntityState.Added;
+                _effectRow = _db.SaveChanges();
+            }
+
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
 
@@ -222,20 +290,38 @@ namespace GidaGkpWeb.BAL
             _db.Entry(step).State = EntityState.Added;
 
             int _effectRow = 0;
-            ApplicantBankDetail _newRecord = new ApplicantBankDetail()
+
+            var extingBankDetail = _db.ApplicantBankDetails.Where(x => x.ApplicationId == UserData.ApplicationId).FirstOrDefault();
+            if (extingBankDetail != null)  // update bank detail
             {
-                UserId = userId,
-                CreationDate = DateTime.Now,
-                AccountHolderName = BankAccountName,
-                BankAccountNo = BankAccountNo,
-                BankName = BankName,
-                BBAddress = BranchAddress,
-                BBName = BranchName,
-                IFSC_Code = IFSCCode,
-                ApplicationId = UserData.ApplicationId
-            };
-            _db.Entry(_newRecord).State = EntityState.Added;
-            _effectRow = _db.SaveChanges();
+                extingBankDetail.AccountHolderName = BankAccountName;
+                extingBankDetail.BankAccountNo = BankAccountNo;
+                extingBankDetail.BankName = BankName;
+                extingBankDetail.BBAddress = BranchAddress;
+                extingBankDetail.BBName = BranchName;
+                extingBankDetail.IFSC_Code = IFSCCode;
+                _db.Entry(extingBankDetail).State = EntityState.Modified;
+                _effectRow = _db.SaveChanges();
+            }
+
+            else
+            {
+                ApplicantBankDetail _newRecord = new ApplicantBankDetail()
+                {
+                    UserId = userId,
+                    CreationDate = DateTime.Now,
+                    AccountHolderName = BankAccountName,
+                    BankAccountNo = BankAccountNo,
+                    BankName = BankName,
+                    BBAddress = BranchAddress,
+                    BBName = BranchName,
+                    IFSC_Code = IFSCCode,
+                    ApplicationId = UserData.ApplicationId
+                };
+                _db.Entry(_newRecord).State = EntityState.Added;
+                _effectRow = _db.SaveChanges();
+            }
+
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
 
@@ -252,9 +338,39 @@ namespace GidaGkpWeb.BAL
             _db.Entry(step).State = EntityState.Added;
 
             int _effectRow = 0;
-            docDetail.ApplicationId = UserData.ApplicationId;
-            _db.Entry(docDetail).State = EntityState.Added;
-            _effectRow = _db.SaveChanges();
+
+            var extingDocumentDetail = _db.ApplicantUploadDocs.Where(x => x.ApplicationId == UserData.ApplicationId).FirstOrDefault();
+            if (extingDocumentDetail != null)  // update doc detail
+            {
+                extingDocumentDetail.AllotmentLetter = docDetail.AllotmentLetter;
+                extingDocumentDetail.ApplicantEduTechQualification = docDetail.ApplicantEduTechQualification;
+                extingDocumentDetail.ApplicantPhoto = docDetail.ApplicantPhoto; 
+                extingDocumentDetail.ApplicantSignature = docDetail.ApplicantSignature; 
+                extingDocumentDetail.BalanceSheet = docDetail.BalanceSheet;
+                extingDocumentDetail.DocProofForIndustrialEstablishedOutsideGida = docDetail.DocProofForIndustrialEstablishedOutsideGida; 
+                extingDocumentDetail.ExperienceProof = docDetail.ExperienceProof; 
+                extingDocumentDetail.FinDetailsEstablishedIndustries = docDetail.FinDetailsEstablishedIndustries; 
+                extingDocumentDetail.ITReturn = docDetail.ITReturn; 
+                extingDocumentDetail.LandEquitionDocProof = docDetail.LandEquitionDocProof; 
+                extingDocumentDetail.Memorendum= docDetail.Memorendum; 
+                extingDocumentDetail.OtherDocForProposedIndustry = docDetail.OtherDocForProposedIndustry; 
+                extingDocumentDetail.PreEstablishedIndustriesDoc = docDetail.PreEstablishedIndustriesDoc; 
+                extingDocumentDetail.ProjectReport = docDetail.ProjectReport; 
+                extingDocumentDetail.ProposedPlanLandUses = docDetail.ProposedPlanLandUses; 
+                extingDocumentDetail.ScanAddressProof = docDetail.ScanAddressProof; 
+                extingDocumentDetail.ScanCastCert = docDetail.ScanCastCert; 
+                extingDocumentDetail.ScanID = docDetail.ScanID;
+                extingDocumentDetail.ScanPAN = docDetail.ScanPAN;
+                _db.Entry(extingDocumentDetail).State = EntityState.Modified;
+                _effectRow = _db.SaveChanges();
+            }
+            else
+            {
+                docDetail.ApplicationId = UserData.ApplicationId;
+                _db.Entry(docDetail).State = EntityState.Added;
+                _effectRow = _db.SaveChanges();
+            }
+
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
 
@@ -469,5 +585,66 @@ namespace GidaGkpWeb.BAL
                         ApplicationId = UserData.ApplicationId
                     }).FirstOrDefault();
         }
+
+        public ApplicantProjectDetailModel GetApplicantProjectDetail(int applicationId)
+        {
+            _db = new GidaGKPEntities();
+            return (from applicantDetail in _db.ApplicantProjectDetails
+                    join app in _db.ApplicantApplicationDetails on applicantDetail.ApplicationId equals app.ApplicationId
+                    where app.ApplicationId == applicationId
+                    select new ApplicantProjectDetailModel
+                    {
+                        CreationDate = applicantDetail.CreationDate,
+                        EffluentTreatmentMeasures = applicantDetail.EffluentTreatmentMeasures,
+                        FirstYearNoOfFax = applicantDetail.FirstYearNoOfFax,
+                        FirstYearNoOfTelephone = applicantDetail.FirstYearNoOfTelephone,
+                        FullApplicantName = applicantDetail.FullApplicantName,
+                        FumesNatureQuantity = applicantDetail.FumesNatureQuantity,
+                        GasChemicalComposition = applicantDetail.GasChemicalComposition,
+                        GasQuantity = applicantDetail.GasQuantity,
+                        Id = applicantDetail.Id,
+                        LiquidChemicalComposition = applicantDetail.LiquidChemicalComposition,
+                        LiquidQuantity = applicantDetail.LiquidQuantity,
+                        PowerRequirement = applicantDetail.PowerRequirement,
+                        ProjectEstimatedCost = applicantDetail.ProjectEstimatedCost,
+                        ProposedCoveredArea = applicantDetail.ProposedCoveredArea,
+                        ProposedIndustryType = applicantDetail.ProposedIndustryType,
+                        ProposedInvestmentBuilding = applicantDetail.ProposedInvestmentBuilding,
+                        ProposedInvestmentPlant = applicantDetail.ProposedInvestmentPlant,
+                        ProposedOpenArea = applicantDetail.ProposedOpenArea,
+                        PurpuseOpenArea = applicantDetail.PurpuseOpenArea,
+                        Skilled = applicantDetail.Skilled,
+                        SolidChemicalComposition = applicantDetail.SolidChemicalComposition,
+                        SolidQuantity = applicantDetail.SolidQuantity,
+                        UltimateNoOfFax = applicantDetail.UltimateNoOfFax,
+                        UltimateNoOfTelephone = applicantDetail.UltimateNoOfTelephone,
+                        UnSkilled = applicantDetail.UnSkilled,
+                        UserId = applicantDetail.UserId,
+                        ProposedInvestmentLand = applicantDetail.ProposedInvestmentLand,
+                        ApplicationId = UserData.ApplicationId
+                    }).FirstOrDefault();
+        }
+
+        public ApplicantBankDetailModel GetApplicantBankDetail(int applicationId)
+        {
+            _db = new GidaGKPEntities();
+            return (from bankDetail in _db.ApplicantBankDetails
+                    join app in _db.ApplicantApplicationDetails on bankDetail.ApplicationId equals app.ApplicationId
+                    where app.ApplicationId == applicationId
+                    select new ApplicantBankDetailModel
+                    {
+                        UserId = bankDetail.UserId,
+                        AccountHolderName = bankDetail.AccountHolderName,
+                        ApplicationId = bankDetail.ApplicationId,
+                        BankAccountNo = bankDetail.BankAccountNo,
+                        BankName = bankDetail.BankName,
+                        BBAddress = bankDetail.BBAddress,
+                        BBName = bankDetail.BBName,
+                        CreationDate = bankDetail.CreationDate,
+                        Id = bankDetail.Id,
+                        IFSC_Code = bankDetail.IFSC_Code
+                    }).FirstOrDefault();
+        }
+
     }
 }

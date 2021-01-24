@@ -304,6 +304,7 @@ namespace GidaGkpWeb.Controllers
                     payment_mode = Params["payment_mode"],
                     status_message = Params["status_message"],
                     tracking_id = Convert.ToInt64(Params["tracking_id"]),
+                    ApplicationId = UserData.ApplicationId,
                     trans_date = DateTime.Now,
                 };
                 _details.SaveApplicantTransactionDeatil(detail);
@@ -313,7 +314,7 @@ namespace GidaGkpWeb.Controllers
             else
             {
                 SetAlertMessage("Payment Failed", "Error");
-                return View();
+                return RedirectToAction("PaymentRequest");
             }
 
 
@@ -363,6 +364,44 @@ namespace GidaGkpWeb.Controllers
             }
             return null;
         }
+
+        [HttpPost]
+        public JsonResult GetApplicantProjectDetail()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            if (UserData.ApplicationId > 0)
+            {
+                var data = _details.GetApplicantProjectDetail(UserData.ApplicationId);
+                return Json(data, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
+
+        [HttpPost]
+        public JsonResult GetApplicantBankDetail()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            if (UserData.ApplicationId > 0)
+            {
+                var data = _details.GetApplicantBankDetail(UserData.ApplicationId);
+                return Json(data, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
+
+        //public FileContentResult GetFile(int id)
+        //{
+        //    byte[] fileContent = null;
+        //    string mimeType = ""; string fileName = "";
+        //    ApplicantDetails _details = new ApplicantDetails();
+        //    var data = _details.GetApplicantPersonalDetail(UserData.ApplicationId);
+
+        //    fileContent = (byte[])rdr["FileContent"];
+        //    mimeType = rdr["MimeType"].ToString();
+        //    fileName = rdr["FileName"].ToString();
+
+        //    return File(fileContent, mimeType, fileName);
+        //}
 
         public ActionResult Logout()
         {

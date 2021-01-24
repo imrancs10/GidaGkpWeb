@@ -119,4 +119,50 @@ namespace GidaGkpWeb.Models
         public string ResidentialProof { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
     }
+
+    public  class ApplicantProjectDetailModel
+    {
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
+        public string FullApplicantName { get; set; }
+        public string ProposedIndustryType { get; set; }
+        public string ProjectEstimatedCost { get; set; }
+        public string ProposedCoveredArea { get; set; }
+        public string ProposedOpenArea { get; set; }
+        public string PurpuseOpenArea { get; set; }
+        public string ProposedInvestmentLand { get; set; }
+        public string ProposedInvestmentBuilding { get; set; }
+        public string ProposedInvestmentPlant { get; set; }
+        public string FumesNatureQuantity { get; set; }
+        public string LiquidQuantity { get; set; }
+        public string LiquidChemicalComposition { get; set; }
+        public string SolidQuantity { get; set; }
+        public string SolidChemicalComposition { get; set; }
+        public string GasQuantity { get; set; }
+        public string GasChemicalComposition { get; set; }
+        public string EffluentTreatmentMeasures { get; set; }
+        public string PowerRequirement { get; set; }
+        public string FirstYearNoOfTelephone { get; set; }
+        public string FirstYearNoOfFax { get; set; }
+        public string UltimateNoOfTelephone { get; set; }
+        public string UltimateNoOfFax { get; set; }
+        public string Skilled { get; set; }
+        public string UnSkilled { get; set; }
+        public Nullable<System.DateTime> CreationDate { get; set; }
+    }
+
+    public class ApplicantBankDetailModel
+    {
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
+        public string BankName { get; set; }
+        public string BBName { get; set; }
+        public string BBAddress { get; set; }
+        public string IFSC_Code { get; set; }
+        public string AccountHolderName { get; set; }
+        public string BankAccountNo { get; set; }
+        public Nullable<System.DateTime> CreationDate { get; set; }
+    }
 }
