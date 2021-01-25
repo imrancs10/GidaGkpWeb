@@ -344,21 +344,21 @@ namespace GidaGkpWeb.BAL
             {
                 extingDocumentDetail.AllotmentLetter = docDetail.AllotmentLetter;
                 extingDocumentDetail.ApplicantEduTechQualification = docDetail.ApplicantEduTechQualification;
-                extingDocumentDetail.ApplicantPhoto = docDetail.ApplicantPhoto; 
-                extingDocumentDetail.ApplicantSignature = docDetail.ApplicantSignature; 
+                extingDocumentDetail.ApplicantPhoto = docDetail.ApplicantPhoto;
+                extingDocumentDetail.ApplicantSignature = docDetail.ApplicantSignature;
                 extingDocumentDetail.BalanceSheet = docDetail.BalanceSheet;
-                extingDocumentDetail.DocProofForIndustrialEstablishedOutsideGida = docDetail.DocProofForIndustrialEstablishedOutsideGida; 
-                extingDocumentDetail.ExperienceProof = docDetail.ExperienceProof; 
-                extingDocumentDetail.FinDetailsEstablishedIndustries = docDetail.FinDetailsEstablishedIndustries; 
-                extingDocumentDetail.ITReturn = docDetail.ITReturn; 
-                extingDocumentDetail.LandEquitionDocProof = docDetail.LandEquitionDocProof; 
-                extingDocumentDetail.Memorendum= docDetail.Memorendum; 
-                extingDocumentDetail.OtherDocForProposedIndustry = docDetail.OtherDocForProposedIndustry; 
-                extingDocumentDetail.PreEstablishedIndustriesDoc = docDetail.PreEstablishedIndustriesDoc; 
-                extingDocumentDetail.ProjectReport = docDetail.ProjectReport; 
-                extingDocumentDetail.ProposedPlanLandUses = docDetail.ProposedPlanLandUses; 
-                extingDocumentDetail.ScanAddressProof = docDetail.ScanAddressProof; 
-                extingDocumentDetail.ScanCastCert = docDetail.ScanCastCert; 
+                extingDocumentDetail.DocProofForIndustrialEstablishedOutsideGida = docDetail.DocProofForIndustrialEstablishedOutsideGida;
+                extingDocumentDetail.ExperienceProof = docDetail.ExperienceProof;
+                extingDocumentDetail.FinDetailsEstablishedIndustries = docDetail.FinDetailsEstablishedIndustries;
+                extingDocumentDetail.ITReturn = docDetail.ITReturn;
+                extingDocumentDetail.LandEquitionDocProof = docDetail.LandEquitionDocProof;
+                extingDocumentDetail.Memorendum = docDetail.Memorendum;
+                extingDocumentDetail.OtherDocForProposedIndustry = docDetail.OtherDocForProposedIndustry;
+                extingDocumentDetail.PreEstablishedIndustriesDoc = docDetail.PreEstablishedIndustriesDoc;
+                extingDocumentDetail.ProjectReport = docDetail.ProjectReport;
+                extingDocumentDetail.ProposedPlanLandUses = docDetail.ProposedPlanLandUses;
+                extingDocumentDetail.ScanAddressProof = docDetail.ScanAddressProof;
+                extingDocumentDetail.ScanCastCert = docDetail.ScanCastCert;
                 extingDocumentDetail.ScanID = docDetail.ScanID;
                 extingDocumentDetail.ScanPAN = docDetail.ScanPAN;
                 _db.Entry(extingDocumentDetail).State = EntityState.Modified;
@@ -480,7 +480,7 @@ namespace GidaGkpWeb.BAL
                     join lookupSectorName1 in _db.Lookups on plotDetail.SchemeName equals lookupSectorName1.LookupId into lookupSectorName2
                     from lookupSectorName in lookupSectorName2.DefaultIfEmpty()
 
-                    where application.UserId == userId
+                    where application.UserId == userId && transaction == null
                     select new ApplicationDetailModel
                     {
                         ApplicationId = application.ApplicationId,
