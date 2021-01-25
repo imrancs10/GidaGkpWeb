@@ -374,7 +374,7 @@ namespace GidaGkpWeb.BAL
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
         }
 
-        public ApplicationDetailModel GetUserPlotDetail(int userId)
+        public ApplicationDetailModel GetUserPlotDetail(int appID)
         {
             _db = new GidaGKPEntities();
             return (from application in _db.ApplicantApplicationDetails
@@ -382,7 +382,7 @@ namespace GidaGkpWeb.BAL
                     join plotDetail in _db.ApplicantPlotDetails on application.ApplicationId equals plotDetail.ApplicationId
                     join transaction1 in _db.ApplicantTransactionDetails on applicantDetail.ApplicationId equals transaction1.ApplicationId into transaction2
                     from transaction in transaction2.DefaultIfEmpty()
-                    where application.UserId == userId
+                    where application.ApplicationId == appID
                     select new ApplicationDetailModel
                     {
                         ApplicationNumber = application.ApplicationNumber,
@@ -398,7 +398,7 @@ namespace GidaGkpWeb.BAL
                     }).FirstOrDefault();
         }
 
-        public AcknowledgementDetailModel GetAcknowledgementDetail(int userId)
+        public AcknowledgementDetailModel GetAcknowledgementDetail(int appID)
         {
             _db = new GidaGKPEntities();
             return (from applicationDetail in _db.ApplicantApplicationDetails
@@ -410,8 +410,7 @@ namespace GidaGkpWeb.BAL
                     join IndustryOwnership in _db.Lookups on plotDetail.IndustryOwnership equals IndustryOwnership.LookupId
                     join RelationshipStatus in _db.Lookups on plotDetail.RelationshipStatus equals RelationshipStatus.LookupId
                     join lookupSectorName in _db.Lookups on plotDetail.SectorName equals lookupSectorName.LookupId
-
-                    where applicationDetail.UserId == userId
+                    where applicationDetail.ApplicationId == appID
                     select new AcknowledgementDetailModel
                     {
                         ApplicationNumber = applicationDetail.ApplicationNumber,
@@ -499,7 +498,7 @@ namespace GidaGkpWeb.BAL
                         SchemeType = lookupSchemeType != null ? lookupSchemeType.LookupName : "",
                         SchemeName = lookupSchemeName != null ? lookupSchemeName.LookupName : "",
                         SectorName = lookupSectorName != null ? lookupSectorName.LookupName : ""
-                    }).ToList();
+                    }).Distinct().ToList();
         }
 
         public int GetUserApplicationCount(int userId)

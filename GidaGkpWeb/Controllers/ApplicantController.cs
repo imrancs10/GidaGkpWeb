@@ -14,6 +14,8 @@ using CCA.Util;
 using System.Collections.Specialized;
 using GidaGkpWeb.Infrastructure.Utility;
 using GidaGkpWeb.Infrastructure.Authentication;
+using System.Web.Script.Serialization;
+using System.Web.Security;
 
 namespace GidaGkpWeb.Controllers
 {
@@ -255,11 +257,11 @@ namespace GidaGkpWeb.Controllers
         public ActionResult PaymentRequest()
         {
             ApplicantDetails _details = new ApplicantDetails();
-            var data = _details.GetUserPlotDetail(((CustomPrincipal)User).Id);
+            var data = _details.GetUserPlotDetail(UserData.ApplicationId);
 
             string baseURL = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
             string amountToBePaid = "1";  //data.NetAmount
-            string ccaRequest = "tid=" + VerificationCodeGeneration.GetSerialNumber() + "&merchant_id=" + strMerchantId + "&order_id=" + VerificationCodeGeneration.GetSerialNumber() + "&amount=" + amountToBePaid + "&currency=INR&redirect_url=" + baseURL + "Applicant/PaymentResponse&cancel_url=" + baseURL + "Applicant/PaymentResponse&language=EN&billing_name=" + data.FullApplicantName + "&billing_address=" + data.CAddress + "&billing_city=&billing_state=&billing_zip=&billing_country=&billing_tel=&billing_email=&delivery_name=" + data.FullApplicantName + "&delivery_address=" + data.CAddress + "&delivery_city=&delivery_state=&delivery_zip=&delivery_country=&delivery_tel=&merchant_param1=additional+Info.&merchant_param2=additional+Info.&merchant_param3=additional+Info.&merchant_param4=additional+Info.&merchant_param5=additional+Info.&payment_option=OPTNBK&emi_plan_id=&emi_tenure_id=&card_type=&card_name=&data_accept=&card_number=&expiry_month=&expiry_year=&cvv_number=&issuing_bank=&mobile_number=&mm_id=&otp=&promo_code=&";
+            string ccaRequest = "tid=" + VerificationCodeGeneration.GetSerialNumber() + "&merchant_id=" + strMerchantId + "&order_id=" + VerificationCodeGeneration.GetSerialNumber() + "&amount=" + amountToBePaid + "&currency=INR&redirect_url=" + baseURL + "Applicant/PaymentResponse&cancel_url=" + baseURL + "Applicant/PaymentResponse&language=EN&billing_name=" + data.FullApplicantName + "&billing_address=" + data.CAddress + "&billing_city=&billing_state=&billing_zip=&billing_country=&billing_tel=&billing_email=&delivery_name=" + data.FullApplicantName + "&delivery_address=" + data.CAddress + "&delivery_city=&delivery_state=&delivery_zip=&delivery_country=&delivery_tel=&merchant_param1=" + UserData.UserId + "&merchant_param2=" + UserData.ApplicationId + "&merchant_param3=" + UserData.Username + "&merchant_param4=" + UserData.Email + "&merchant_param5=" + UserData.FullName + "&payment_option=OPTNBK&emi_plan_id=&emi_tenure_id=&card_type=&card_name=&data_accept=&card_number=&expiry_month=&expiry_year=&cvv_number=&issuing_bank=&mobile_number=&mm_id=&otp=&promo_code=&";
             Session["strEncRequest"] = ccaCrypto.Encrypt(ccaRequest, workingKey);
             Session["strAccessCode"] = strAccessCode;
             ViewData["UserData"] = data;
@@ -282,17 +284,12 @@ namespace GidaGkpWeb.Controllers
                 }
             }
 
-            //for (int i = 0; i < Params.Count; i++)
-            //{
-            //    Response.Write(Params.Keys[i] + " = " + Params[i] + "<br>");
-            //}
-
             if (Params["order_status"] == "Success")
             {
                 ApplicantDetails _details = new ApplicantDetails();
                 ApplicantTransactionDetail detail = new ApplicantTransactionDetail()
                 {
-                    UserId = UserData.UserId,
+                    UserId = Convert.ToInt32(Params["merchant_param1"]),
                     amount = Params["amount"],
                     bank_ref_no = Params["bank_ref_no"],
                     billing_address = Params["billing_address"],
@@ -304,9 +301,15 @@ namespace GidaGkpWeb.Controllers
                     payment_mode = Params["payment_mode"],
                     status_message = Params["status_message"],
                     tracking_id = Convert.ToInt64(Params["tracking_id"]),
-                    ApplicationId = UserData.ApplicationId,
+                    ApplicationId = Convert.ToInt32(Params["merchant_param2"]),
                     trans_date = DateTime.Now,
                 };
+                UserData.UserId = Convert.ToInt32(Params["merchant_param1"]);
+                UserData.ApplicationId = Convert.ToInt32(Params["merchant_param2"]);
+                UserData.Username = Convert.ToString(Params["merchant_param3"]);
+                UserData.Email = Convert.ToString(Params["merchant_param4"]);
+                UserData.FullName = Convert.ToString(Params["merchant_param5"]);
+                setUserClaim();
                 _details.SaveApplicantTransactionDeatil(detail);
                 SetAlertMessage("Payment done successfully", "Payment Status");
                 return RedirectToAction("PaymentResponseSuccess");
@@ -331,7 +334,7 @@ namespace GidaGkpWeb.Controllers
         public ActionResult PaymentReciept()
         {
             ApplicantDetails _details = new ApplicantDetails();
-            var data = _details.GetUserPlotDetail(((CustomPrincipal)User).Id);
+            var data = _details.GetUserPlotDetail(UserData.ApplicationId);
             ViewData["UserData"] = data;
             return View();
         }
@@ -339,7 +342,7 @@ namespace GidaGkpWeb.Controllers
         public ActionResult PaymentAcknowledgement()
         {
             ApplicantDetails _details = new ApplicantDetails();
-            var data = _details.GetAcknowledgementDetail(((CustomPrincipal)User).Id);
+            var data = _details.GetAcknowledgementDetail(UserData.ApplicationId);
             ViewData["UserData"] = data;
             return View();
         }
@@ -411,6 +414,30 @@ namespace GidaGkpWeb.Controllers
             Session.Abandon();
             Session.Clear();
             return RedirectToAction("ApplicantLogin", "Login");
+        }
+
+        private void setUserClaim()
+        {
+            CustomPrincipalSerializeModel serializeModel = new CustomPrincipalSerializeModel();
+            serializeModel.Id = UserData.UserId;
+            serializeModel.FullName = string.IsNullOrEmpty(UserData.FullName) ? string.Empty : UserData.FullName;
+            serializeModel.Email = string.IsNullOrEmpty(UserData.Email) ? string.Empty : UserData.Email;
+
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+            string userData = serializer.Serialize(serializeModel);
+
+            FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
+                     1,
+                     UserData.Email,
+                     DateTime.Now,
+                     DateTime.Now.AddMinutes(15),
+                     false,
+                     userData);
+
+            string encTicket = FormsAuthentication.Encrypt(authTicket);
+            HttpCookie faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+            Response.Cookies.Add(faCookie);
         }
     }
 }
