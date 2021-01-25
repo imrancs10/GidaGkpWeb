@@ -610,7 +610,7 @@
                                                         </div>
 
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="file" class="sr-only">As per IT Act last three years Audited (FYs 2018-19, 2017-18, 2016-17) Balance Sheet and Profit and Loss account<span class="required-field"></span></label>
+                                                            <label for="file" class="sr-only">As per IT Act past three financial years (AYs 2019-20, 2018-19, 2017-18) Audited Balance Sheet and Profit and Loss Statement (If applicable)<span class="required-field"></span></label>
                                                             <div class="input-group">
                                                                 <input type="text" name="BalanceSheetfilename" class="form-control" placeholder="No file selected" readonly>
                                                                 <span class="input-group-btn">
@@ -627,8 +627,7 @@
                                                     <div class="row">
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="file" class="sr-only">
-                                                                As per IT Act last three years (FYs 2018-19, 2017-18, 2016-17) Income Tax return and
-                                                                computation of income<span class="required-field"></span>
+                                                                As per IT Act past three financial years (AYs 2019-20, 2018-19, 2017-18) Income Tax Return  and computation of income<span class="required-field"></span>
                                                             </label>
                                                             <div class="input-group">
                                                                 <input type="text" name="IncomeTaxreturnfilename" class="form-control" placeholder="No file selected" readonly>
@@ -644,8 +643,7 @@
 
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="file" class="sr-only">
-                                                                Experience proof for industry establishment.(GST Return-if Applicable, ITR, Electricity Bill, Sales/Purchase
-                                                                Vouchers)<span class="required-field"></span>
+                                                                Experience proof for industry establishment.(GST Return-if Applicable, ITR, Electricity Bill, Sales/Purchase Vouchers)<span class="required-field"></span>
                                                             </label>
                                                             <div class="input-group">
                                                                 <input type="text" name="Experienceprooffilename" class="form-control" placeholder="No file selected" readonly>
@@ -663,8 +661,7 @@
                                                     <div class="row">
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="file" class="sr-only">
-                                                                Applicant's educational / technical
-                                                                qualification<span class="required-field"></span>
+                                                                Applicant's educational / technical qualification.<span class="required-field"></span>
                                                             </label>
                                                             <div class="input-group">
                                                                 <input type="text" name="educationalqualificationfilename" class="form-control" placeholder="No file selected" readonly>
@@ -680,8 +677,7 @@
 
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="file" class="sr-only">
-                                                                If expansion or diversification of pre- established industry, then xerox copy of
-                                                                latest electricity bill & other documents<span class="required-field"></span>
+                                                                If expansion or diversification of pre-established industry, then Xerox copy of latest electricity bill & other documents<span class="required-field"></span>
                                                             </label>
                                                             <div class="input-group">
                                                                 <input type="text" name="electricitybillfilename" class="form-control" placeholder="No file selected" readonly>
@@ -699,8 +695,7 @@
                                                     <div class="row">
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="file" class="sr-only">
-                                                                Full financial details for industry
-                                                                establishment<span class="required-field"></span>
+                                                                Full financial details for industry establishment<span class="required-field"></span>
                                                             </label>
                                                             <div class="input-group">
                                                                 <input type="text" name="financialdetailsfilename" class="form-control" placeholder="No file selected" readonly>
@@ -716,8 +711,7 @@
 
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="file" class="sr-only">
-                                                                If any other document related to proposed
-                                                                industry
+                                                                If any other document related to proposed industry
                                                             </label>
                                                             <div class="input-group">
                                                                 <input type="text" name="Otherproposedindustryfilename" class="form-control" placeholder="No file selected" readonly>
@@ -765,7 +759,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <!--<div class="form-group col-sm-6 col-xs-12">
+                                                    @*<div class="form-group col-sm-6 col-xs-12">
         <label for="file" class="sr-only">
             Copy of Allotment Letter/Transfer of
             Plot/Lease Deed*
@@ -797,26 +791,41 @@
             </span>
         </div>
         <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
-    </div>-->
-                                                    <div class="row">
-                                                        <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="file" class="sr-only">
-                                                                If Industrial Unit established outside GIDA, then attach copy of Electricity bill/Landline Telephone bill issued within last one year
-                                                                from the date of application<span class="required-field"></span>
-                                                            </label>
-                                                            <div class="input-group">
-                                                                <input type="text" name="outsideGIDAElectricitybillfilename" class="form-control" placeholder="No file selected" readonly>
-                                                                <span class="input-group-btn">
-                                                                    <div class="btn btn-default upload_btn_cl custom-file-uploader">
-                                                                        <input type="file" name="outsideGIDAElectricitybill" onchange="this.form.outsideGIDAElectricitybillfilename.value = this.files.length ? this.files[0].name : ''" />
-                                                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select file
-                                                                    </div>
-                                                                </span>
-                                                            </div>
-                                                            <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
+    </div>*@
+                                                <div class="row">
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="file" class="sr-only">
+                                                            If Industrial Unit established outside GIDA, then attach related documents issued within last
+                                                            one year from the date of application<span class="required-field"></span>
+                                                        </label>
+                                                        <div class="input-group">
+                                                            <input type="text" name="outsideGIDAElectricitybillfilename" class="form-control" placeholder="No file selected" readonly>
+                                                            <span class="input-group-btn">
+                                                                <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                    <input type="file" name="outsideGIDAElectricitybill" onchange="this.form.outsideGIDAElectricitybillfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select file
+                                                                </div>
+                                                            </span>
                                                         </div>
-
+                                                        <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
                                                     </div>
+
+                                                    <div class="form-group col-sm-6 col-xs-12">
+                                                        <label for="file" class="sr-only">
+                                                            Related bank verified signature.
+                                                        </label>
+                                                        <div class="input-group">
+                                                            <input type="text" name="LandAcquitionfilename" class="form-control" placeholder="No file selected" readonly>
+                                                            <span class="input-group-btn">
+                                                                <div class="btn btn-default upload_btn_cl custom-file-uploader">
+                                                                    <input type="file" name="LandAcquition" onchange="this.form.LandAcquitionfilename.value = this.files.length ? this.files[0].name : ''" />
+                                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; Select file
+                                                                </div>
+                                                            </span>
+                                                        </div>
+                                                        <p class="paragraph">File Size cannot exceed the limit 200 KB</p>
+                                                    </div>
+                                                </div> 
                                                 </div>
                                                 <h3 class="fs-title">Applicant Signatory</h3>
                                                 <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
