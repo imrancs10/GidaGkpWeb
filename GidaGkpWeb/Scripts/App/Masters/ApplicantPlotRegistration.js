@@ -162,10 +162,10 @@ $(document).ready(function () {
                 }
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     }
@@ -190,10 +190,10 @@ $(document).ready(function () {
                 }
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     }
@@ -223,10 +223,10 @@ $(document).ready(function () {
                 }
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     }
@@ -251,10 +251,10 @@ $(document).ready(function () {
                 }
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     }
@@ -288,10 +288,10 @@ $(document).ready(function () {
                 }
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     }
@@ -316,10 +316,10 @@ $(document).ready(function () {
                 }
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     }
@@ -344,10 +344,10 @@ $(document).ready(function () {
                 }
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     }
@@ -372,10 +372,10 @@ $(document).ready(function () {
                 }
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     }
@@ -400,10 +400,10 @@ $(document).ready(function () {
                 }
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     }
@@ -651,10 +651,10 @@ $(document).ready(function () {
                 $('#EstimatedRate').val(data[0].LookupName);
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     });
@@ -737,10 +737,10 @@ $(document).ready(function () {
                 }
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     }
@@ -764,10 +764,10 @@ $(document).ready(function () {
                 }
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     }
@@ -807,10 +807,10 @@ $(document).ready(function () {
                 }
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     }
