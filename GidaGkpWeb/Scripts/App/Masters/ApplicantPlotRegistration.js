@@ -414,7 +414,7 @@ $(document).ready(function () {
             var inputData = {
                 ApplicationFee: $('#ApplicationFee').val(),
                 AppliedFor: $('#AppliedFor').val(),
-                EarnestMoney: $('#EarnestMoneyDeposite').val(),
+                EarnestMoneyDeposite: $('#EarnestMoneyDeposite').val(),
                 EstimatedRate: $('#EstimatedRate').val(),
                 GST: $('#GST').val(),
                 IndustryOwnershipType: $('#IndustryOwnershipType').val(),
