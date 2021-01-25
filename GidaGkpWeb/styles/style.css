@@ -1657,12 +1657,12 @@ body {
 }
 
 td a {
-    color: #333;
+    color: #142dab;
     text-decoration: none;
 }
 
     td a:hover {
-        color: #333;
+        color: #142dab;
         text-decoration: underline;
     }
 
@@ -2640,7 +2640,7 @@ li.apply_btn_cl a {
 }
 
 .container {
-    min-height: 315px;
+    /*min-height: auto;*/
 }
 
 .text-danger strong {

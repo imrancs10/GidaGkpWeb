@@ -292,7 +292,7 @@ namespace GidaGkpWeb.Controllers
                 ApplicantDetails _details = new ApplicantDetails();
                 ApplicantTransactionDetail detail = new ApplicantTransactionDetail()
                 {
-                    UserId = ((CustomPrincipal)User).Id,
+                    UserId = UserData.UserId,
                     amount = Params["amount"],
                     bank_ref_no = Params["bank_ref_no"],
                     billing_address = Params["billing_address"],
