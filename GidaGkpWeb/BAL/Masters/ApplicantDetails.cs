@@ -342,77 +342,116 @@ namespace GidaGkpWeb.BAL
             var extingDocumentDetail = _db.ApplicantUploadDocs.Where(x => x.ApplicationId == UserData.ApplicationId).FirstOrDefault();
             if (extingDocumentDetail != null)  // update doc detail
             {
-                extingDocumentDetail.ApplicantEduTechQualification = docDetail.ApplicantEduTechQualification;
-                extingDocumentDetail.ApplicantEduTechQualificationFileName = docDetail.ApplicantEduTechQualificationFileName;
-                extingDocumentDetail.ApplicantEduTechQualificationFileType = docDetail.ApplicantEduTechQualificationFileType;
+                if (docDetail.ApplicantEduTechQualification != null)
+                {
+                    extingDocumentDetail.ApplicantEduTechQualification = docDetail.ApplicantEduTechQualification;
+                    extingDocumentDetail.ApplicantEduTechQualificationFileName = docDetail.ApplicantEduTechQualificationFileName;
+                    extingDocumentDetail.ApplicantEduTechQualificationFileType = docDetail.ApplicantEduTechQualificationFileType;
+                }
 
-                extingDocumentDetail.ApplicantPhoto = docDetail.ApplicantPhoto;
-                extingDocumentDetail.ApplicantPhotoFileName = docDetail.ApplicantPhotoFileName;
-                extingDocumentDetail.ApplicantPhotoFileType = docDetail.ApplicantPhotoFileType;
+                if (docDetail.ApplicantPhoto != null)
+                {
+                    extingDocumentDetail.ApplicantPhoto = docDetail.ApplicantPhoto;
+                    extingDocumentDetail.ApplicantPhotoFileName = docDetail.ApplicantPhotoFileName;
+                    extingDocumentDetail.ApplicantPhotoFileType = docDetail.ApplicantPhotoFileType;
+                }
+                if (docDetail.ApplicantSignature != null)
+                {
+                    extingDocumentDetail.ApplicantSignature = docDetail.ApplicantSignature;
+                    extingDocumentDetail.ApplicantSignatureFileName = docDetail.ApplicantSignatureFileName;
+                    extingDocumentDetail.ApplicantSignatureFileType = docDetail.ApplicantSignatureFileType;
+                }
+                if (docDetail.BalanceSheet != null)
+                {
+                    extingDocumentDetail.BalanceSheet = docDetail.BalanceSheet;
+                    extingDocumentDetail.BalanceSheetFileName = docDetail.BalanceSheetFileName;
+                    extingDocumentDetail.BalanceSheetFileType = docDetail.BalanceSheetFileType;
+                }
+                if (docDetail.DocProofForIndustrialEstablishedOutsideGida != null)
+                {
+                    extingDocumentDetail.DocProofForIndustrialEstablishedOutsideGida = docDetail.DocProofForIndustrialEstablishedOutsideGida;
+                    extingDocumentDetail.DocProofForIndustrialEstablishedOutsideGidaFileName = docDetail.DocProofForIndustrialEstablishedOutsideGidaFileName;
+                    extingDocumentDetail.DocProofForIndustrialEstablishedOutsideGidaFileType = docDetail.DocProofForIndustrialEstablishedOutsideGidaFileType;
+                }
+                if (docDetail.ExperienceProof != null)
+                {
+                    extingDocumentDetail.ExperienceProof = docDetail.ExperienceProof;
+                    extingDocumentDetail.ExperienceProofFileName = docDetail.ExperienceProofFileName;
+                    extingDocumentDetail.ExperienceProofFileType = docDetail.ExperienceProofFileType;
+                }
+                if (docDetail.FinDetailsEstablishedIndustries != null)
+                {
+                    extingDocumentDetail.FinDetailsEstablishedIndustries = docDetail.FinDetailsEstablishedIndustries;
+                    extingDocumentDetail.FinDetailsEstablishedIndustriesFileName = docDetail.FinDetailsEstablishedIndustriesFileName;
+                    extingDocumentDetail.FinDetailsEstablishedIndustriesFileType = docDetail.FinDetailsEstablishedIndustriesFileType;
+                }
+                if (docDetail.ITReturn != null)
+                {
+                    extingDocumentDetail.ITReturn = docDetail.ITReturn;
+                    extingDocumentDetail.ITReturnFileName = docDetail.ITReturnFileName;
+                    extingDocumentDetail.ITReturnFileType = docDetail.ITReturnFileType;
+                }
+                if (docDetail.BankVerifiedSignature != null)
+                {
+                    extingDocumentDetail.BankVerifiedSignature = docDetail.BankVerifiedSignature;
+                    extingDocumentDetail.BankVerifiedSignatureFileName = docDetail.BankVerifiedSignatureFileName;
+                    extingDocumentDetail.BankVerifiedSignatureFileType = docDetail.BankVerifiedSignatureFileType;
+                }
+                if (docDetail.Memorendum != null)
+                {
+                    extingDocumentDetail.Memorendum = docDetail.Memorendum;
+                    extingDocumentDetail.MemorendumFileName = docDetail.MemorendumFileName;
+                    extingDocumentDetail.MemorendumFileType = docDetail.MemorendumFileType;
+                }
+                if (docDetail.OtherDocForProposedIndustry != null)
+                {
+                    extingDocumentDetail.OtherDocForProposedIndustry = docDetail.OtherDocForProposedIndustry;
+                    extingDocumentDetail.OtherDocForProposedIndustryFileName = docDetail.OtherDocForProposedIndustryFileName;
+                    extingDocumentDetail.OtherDocForProposedIndustryFileType = docDetail.OtherDocForProposedIndustryFileType;
+                }
+                if (docDetail.PreEstablishedIndustriesDoc != null)
+                {
+                    extingDocumentDetail.PreEstablishedIndustriesDoc = docDetail.PreEstablishedIndustriesDoc;
+                    extingDocumentDetail.PreEstablishedIndustriesDocFileName = docDetail.PreEstablishedIndustriesDocFileName;
+                    extingDocumentDetail.PreEstablishedIndustriesDocFileType = docDetail.PreEstablishedIndustriesDocFileType;
+                }
+                if (docDetail.ProjectReport != null)
+                {
+                    extingDocumentDetail.ProjectReport = docDetail.ProjectReport;
+                    extingDocumentDetail.ProjectReportFileName = docDetail.ProjectReportFileName;
+                    extingDocumentDetail.ProjectReportFileType = docDetail.ProjectReportFileType;
+                }
+                if (docDetail.ProposedPlanLandUses != null)
+                {
+                    extingDocumentDetail.ProposedPlanLandUses = docDetail.ProposedPlanLandUses;
+                    extingDocumentDetail.ProposedPlanLandUsesFileName = docDetail.ProposedPlanLandUsesFileName;
+                    extingDocumentDetail.ProposedPlanLandUsesFileType = docDetail.ProposedPlanLandUsesFileType;
+                }
+                if (docDetail.ScanAddressProof != null)
+                {
+                    extingDocumentDetail.ScanAddressProof = docDetail.ScanAddressProof;
+                    extingDocumentDetail.ScanAddressProofFileName = docDetail.ScanAddressProofFileName;
+                    extingDocumentDetail.ScanAddressProofFileType = docDetail.ScanAddressProofFileType;
+                }
+                if (docDetail.ScanCastCert != null)
+                {
+                    extingDocumentDetail.ScanCastCert = docDetail.ScanCastCert;
+                    extingDocumentDetail.ScanCastCertFileName = docDetail.ScanCastCertFileName;
+                    extingDocumentDetail.ScanCastCertFileType = docDetail.ScanCastCertFileType;
+                }
+                if (docDetail.ScanID != null)
+                {
+                    extingDocumentDetail.ScanID = docDetail.ScanID;
+                    extingDocumentDetail.ScanIDFileName = docDetail.ScanIDFileName;
+                    extingDocumentDetail.ScanIDFileType = docDetail.ScanIDFileType;
+                }
+                if (docDetail.ScanPAN != null)
+                {
+                    extingDocumentDetail.ScanPAN = docDetail.ScanPAN;
+                    extingDocumentDetail.ScanPANFileName = docDetail.ScanPANFileName;
+                    extingDocumentDetail.ScanPANFileType = docDetail.ScanPANFileType;
+                }
 
-                extingDocumentDetail.ApplicantSignature = docDetail.ApplicantSignature;
-                extingDocumentDetail.ApplicantSignatureFileName = docDetail.ApplicantSignatureFileName;
-                extingDocumentDetail.ApplicantSignatureFileType = docDetail.ApplicantSignatureFileType;
-
-                extingDocumentDetail.BalanceSheet = docDetail.BalanceSheet;
-                extingDocumentDetail.BalanceSheetFileName = docDetail.BalanceSheetFileName;
-                extingDocumentDetail.BalanceSheetFileType = docDetail.BalanceSheetFileType;
-
-                extingDocumentDetail.DocProofForIndustrialEstablishedOutsideGida = docDetail.DocProofForIndustrialEstablishedOutsideGida;
-                extingDocumentDetail.DocProofForIndustrialEstablishedOutsideGidaFileName = docDetail.DocProofForIndustrialEstablishedOutsideGidaFileName;
-                extingDocumentDetail.DocProofForIndustrialEstablishedOutsideGidaFileType = docDetail.DocProofForIndustrialEstablishedOutsideGidaFileType;
-
-                extingDocumentDetail.ExperienceProof = docDetail.ExperienceProof;
-                extingDocumentDetail.ExperienceProofFileName = docDetail.ExperienceProofFileName;
-                extingDocumentDetail.ExperienceProofFileType = docDetail.ExperienceProofFileType;
-
-                extingDocumentDetail.FinDetailsEstablishedIndustries = docDetail.FinDetailsEstablishedIndustries;
-                extingDocumentDetail.FinDetailsEstablishedIndustriesFileName = docDetail.FinDetailsEstablishedIndustriesFileName;
-                extingDocumentDetail.FinDetailsEstablishedIndustriesFileType = docDetail.FinDetailsEstablishedIndustriesFileType;
-
-                extingDocumentDetail.ITReturn = docDetail.ITReturn;
-                extingDocumentDetail.ITReturnFileName = docDetail.ITReturnFileName;
-                extingDocumentDetail.ITReturnFileType = docDetail.ITReturnFileType;
-
-                extingDocumentDetail.BankVerifiedSignature = docDetail.BankVerifiedSignature;
-                extingDocumentDetail.BankVerifiedSignatureFileName = docDetail.BankVerifiedSignatureFileName;
-                extingDocumentDetail.BankVerifiedSignatureFileType = docDetail.BankVerifiedSignatureFileType;
-
-                extingDocumentDetail.Memorendum = docDetail.Memorendum;
-                extingDocumentDetail.MemorendumFileName = docDetail.MemorendumFileName;
-                extingDocumentDetail.MemorendumFileType = docDetail.MemorendumFileType;
-
-                extingDocumentDetail.OtherDocForProposedIndustry = docDetail.OtherDocForProposedIndustry;
-                extingDocumentDetail.OtherDocForProposedIndustryFileName = docDetail.OtherDocForProposedIndustryFileName;
-                extingDocumentDetail.OtherDocForProposedIndustryFileType = docDetail.OtherDocForProposedIndustryFileType;
-
-                extingDocumentDetail.PreEstablishedIndustriesDoc = docDetail.PreEstablishedIndustriesDoc;
-                extingDocumentDetail.PreEstablishedIndustriesDocFileName = docDetail.PreEstablishedIndustriesDocFileName;
-                extingDocumentDetail.PreEstablishedIndustriesDocFileType = docDetail.PreEstablishedIndustriesDocFileType;
-
-                extingDocumentDetail.ProjectReport = docDetail.ProjectReport;
-                extingDocumentDetail.ProjectReportFileName = docDetail.ProjectReportFileName;
-                extingDocumentDetail.ProjectReportFileType = docDetail.ProjectReportFileType;
-
-                extingDocumentDetail.ProposedPlanLandUses = docDetail.ProposedPlanLandUses;
-                extingDocumentDetail.ProposedPlanLandUsesFileName = docDetail.ProposedPlanLandUsesFileName;
-                extingDocumentDetail.ProposedPlanLandUsesFileType = docDetail.ProposedPlanLandUsesFileType;
-
-                extingDocumentDetail.ScanAddressProof = docDetail.ScanAddressProof;
-                extingDocumentDetail.ScanAddressProofFileName = docDetail.ScanAddressProofFileName;
-                extingDocumentDetail.ScanAddressProofFileType = docDetail.ScanAddressProofFileType;
-
-                extingDocumentDetail.ScanCastCert = docDetail.ScanCastCert;
-                extingDocumentDetail.ScanCastCertFileName = docDetail.ScanCastCertFileName;
-                extingDocumentDetail.ScanCastCertFileType = docDetail.ScanCastCertFileType;
-
-                extingDocumentDetail.ScanID = docDetail.ScanID;
-                extingDocumentDetail.ScanIDFileName = docDetail.ScanIDFileName;
-                extingDocumentDetail.ScanIDFileType = docDetail.ScanIDFileType;
-
-                extingDocumentDetail.ScanPAN = docDetail.ScanPAN;
-                extingDocumentDetail.ScanPANFileName = docDetail.ScanPANFileName;
-                extingDocumentDetail.ScanPANFileType = docDetail.ScanPANFileType;
                 _db.Entry(extingDocumentDetail).State = EntityState.Modified;
                 _effectRow = _db.SaveChanges();
             }
