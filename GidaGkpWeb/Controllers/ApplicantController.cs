@@ -374,6 +374,7 @@ namespace GidaGkpWeb.Controllers
             }
             else if (data.Count == 1)
             {
+                ViewData["PrintReciept"] = true;
                 UserData.ApplicationId = data[0].ApplicationId;
             }
             return View();

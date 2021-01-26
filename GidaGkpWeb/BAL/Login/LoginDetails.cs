@@ -58,7 +58,8 @@ namespace GidaGkpWeb.BAL.Login
                     AllotmentNumber = AllotmentNumber,
                     SchemeName = SchemeName,
                     SchemeType = SchemeType,
-                    SectorName = SectorName
+                    SectorName = SectorName,
+                    CreationDate = DateTime.Now
                 };
                 _db.Entry(_newRecord).State = EntityState.Added;
                 _effectRow = _db.SaveChanges();
