@@ -3068,3 +3068,6 @@ h4.main_cla_profile {
     color: red;
 }
 
+.ui-dialog{
+    top:500px!important;
+}

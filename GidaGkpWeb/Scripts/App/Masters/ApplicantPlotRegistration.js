@@ -464,49 +464,49 @@ $(document).ready(function () {
         if ($('#FullName').val() != '' && $('#FName').val() != '' && $('#MName').val() != '') {
             var url = '/Applicant/SaveApplicantDetails';
             var IdentityProof = '';
-            if ($('#IDPassport').prop('checked')) {
-                IdentityProof = $('#Passport').val();
+            if ($('#c').prop('checked')) {
+                IdentityProof = $('#IDPAN').val();
             }
             else if ($('#IDPAN').prop('checked')) {
-                IdentityProof = $('#PAN').val();
+                IdentityProof = $('#IDPAN').val();
             }
             else if ($('#IDvoterIDCard').prop('checked')) {
-                IdentityProof = $('#voterIDCard').val();
+                IdentityProof = $('#IDvoterIDCard').val();
             }
             else if ($('#IDDrivingLiecence').prop('checked')) {
-                IdentityProof = $('#DrivingLiecence').val();
+                IdentityProof = $('#IDDrivingLiecence').val();
             }
             else if ($('#IDAdhaarCard').prop('checked')) {
-                IdentityProof = $('#AdhaarCard').val();
+                IdentityProof = $('#IDAdhaarCard').val();
             }
             else if ($('#IDCompanyIDCard').prop('checked')) {
-                IdentityProof = $('#CompanyIDCard').val();
+                IdentityProof = $('#IDCompanyIDCard').val();
             }
 
             var ResidentialProof = '';
             if ($('#RPElectricBill').prop('checked')) {
-                ResidentialProof = $('#ElectricBill').val();
+                ResidentialProof = $('#RPElectricBill').val();
             }
             else if ($('#RPITR').prop('checked')) {
-                ResidentialProof = $('#ITR').val();
+                ResidentialProof = $('#RPITR').val();
             }
             else if ($('#RPTelephoneBill').prop('checked')) {
-                ResidentialProof = $('#TelephoneBill').val();
+                ResidentialProof = $('#RPTelephoneBill').val();
             }
             else if ($('#RPBankPassbook').prop('checked')) {
-                ResidentialProof = $('#BankPassbook').val();
+                ResidentialProof = $('#RPBankPassbook').val();
             }
             else if ($('#RPPassport').prop('checked')) {
-                ResidentialProof = $('#Passport').val();
+                ResidentialProof = $('#RPPassport').val();
             }
             else if ($('#RPVoterIDCard').prop('checked')) {
-                ResidentialProof = $('#VoterIDCard').val();
+                ResidentialProof = $('#RPVoterIDCard').val();
             }
             else if ($('#RPHRBill').prop('checked')) {
-                ResidentialProof = $('#HRBill').val();
+                ResidentialProof = $('#RPHRBill').val();
             }
             else if ($('#RPDrivingLiecence').prop('checked')) {
-                ResidentialProof = $('#DrivingLiecence').val();
+                ResidentialProof = $('#RPDrivingLiecence').val();
             }
 
             var inputData = {
@@ -527,8 +527,8 @@ $(document).ready(function () {
                 SubCategory: $('#SubCategory').val(),
                 CAddress: $('#CAddress').val(),
                 PAddress: $('#PAddress').val(),
-                IdentityProof: $('#IdentityProof').val(),
-                ResidentialProof: $('#ResidentialProof').val(),
+                IdentityProof: IdentityProof,
+                ResidentialProof: ResidentialProof,
             };
 
             utility.ajax.helperWithData(url, inputData, function (data) {
@@ -854,6 +854,7 @@ $(document).ready(function () {
             },
             duration: 600
         });
+        window.scrollTo(0, 200);
     }
 
     function PreviousStep(previousButton) {
@@ -881,6 +882,7 @@ $(document).ready(function () {
             },
             duration: 600
         });
+        window.scrollTo(0, 0);
     }
 
 });

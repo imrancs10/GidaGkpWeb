@@ -1,4 +1,5 @@
 ﻿@using GidaGkpWeb.Global
+@using GidaGkpWeb.Infrastructure.Authentication;
 <!DOCTYPE html>
 <html class="no-js">
 <head>
@@ -20,182 +21,189 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid" style="background:#f6f6f6">
-        <div class="row">
-            <div class="col-xs-4">
-                <div class="pull-left">
-                    <div style="margin-left:1em; padding-top: 8px;" class="time">
-                        <noscript>
-                            Javascript Required
-                        </noscript>
-                        <script type="text/javascript">
-                            var d = new Date()
-                            var weekday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
-                            var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-                            document.write(weekday[d.getDay()] + ", ")
-                            document.write(d.getDate() + " ")
-                            document.write(monthname[d.getMonth()] + ", ")
-                            document.write(d.getFullYear())
-                        </script>Thursday, 14 Jan, 2021
-                        <span id="clockDisplay">10:39:34 PM</span>
+
+    @if ((User as CustomPrincipal) != null)
+    {
+
+        <div class="container-fluid" style="background:#f6f6f6">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="pull-left">
+                        <div style="margin-left:1em; padding-top: 8px;" class="time">
+                            <noscript>
+                                Javascript Required
+                            </noscript>
+                            <script type="text/javascript">
+                                var d = new Date()
+                                var weekday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+                                var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+                                document.write(weekday[d.getDay()] + ", ")
+                                document.write(d.getDate() + " ")
+                                document.write(monthname[d.getMonth()] + ", ")
+                                document.write(d.getFullYear())
+                            </script>Thursday, 14 Jan, 2021
+                            <span id="clockDisplay">10:39:34 PM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid" style="background:#fff">
+            <div class="row" style="padding:10px 0px;">
+                <div class="col-xs-10">
+
+                    <a href="index.html" title="Home" rel="home">
+                        <img src="~/Content/files/Gida-mainlogo.png" class="logo_class" alt="Home">
+                    </a>
+
+
+
+                    <div class="logotitle">
+                        Gorakhpur Industrial Development Authority (GIDA)<br>
+                        <div class="logohtitle">गोरखपुर औद्योगिक विकास प्राधिकरण  (गीडा) </div> <!--<br/><hr>  , गोरखपुर</hr>स्वदेशी उद्योग अंतरराष्ट्रीय मानक से अग्रसारित-->
+                    </div>
+
+                </div>
+                <div class="col-xs-2">
+                    <div style="margin-top:0.5em;margin-bottom:0.5em;margin-right:2em;" class="pull-right">
+                        <!--<a href="industrial.html">
+                            <img width="80px" src="files/ecotech.gif" width="">
+                        </a>&nbsp;&nbsp; -->
+                        <a href="javascript:void(0);">
+                            <img height="80px" src="~/Content/files/Uttar_Pradesh.svg.png" width="80px">
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-8">
-            </div>
         </div>
-    </div>
 
-    <div class="container-fluid" style="background:#fff">
-        <div class="row" style="padding:10px 0px;">
-            <div class="col-xs-10">
+        <div id="navbar">
+            <nav class="navbar nav_class navbar-default navbar-static-top" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-                <a href="index.html" title="Home" rel="home">
-                    <img src="~/Content/files/Gida-mainlogo.png" class="logo_class" alt="Home">
-                </a>
-
-
-
-                <div class="logotitle">
-                    Gorakhpur Industrial Development Authority (GIDA)<br>
-                    <div class="logohtitle">गोरखपुर औद्योगिक विकास प्राधिकरण  (गीडा) </div> <!--<br/><hr>  , गोरखपुर</hr>स्वदेशी उद्योग अंतरराष्ट्रीय मानक से अग्रसारित-->
                 </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                    <div class="col-sm-12 col-xs-12" style="padding: 0 30px;">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="/Applicant/Dashboard" title="Home">Home</a></li>
+                            <li><a href="/Applicant/ApplyForPlot" title="PlotDetail">Apply For Plots</a></li>
+                            @*<li><a href="#">Link</a></li>*@
+                            <!--<li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li class="kopie"><a href="#">Dropdown</a></li>
+                                    <li><a href="#">Dropdown Link 1</a></li>
+                                    <li class="active"><a href="#">Dropdown Link 2</a></li>
+                                    <li><a href="#">Dropdown Link 3</a></li>
+                                    <li class="dropdown dropdown-submenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Link 4</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="kopie"><a href="#">Dropdown Link 4</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 4.1</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 4.2</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 4.3</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 4.4</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown dropdown-submenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Link 5</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="kopie"><a href="#">Dropdown Link 5</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 5.1</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 5.2</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 5.3</a></li>
+                                            <li class="dropdown dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Submenu Link 5.4</a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="kopie"><a href="#">Dropdown Submenu Link 5.4</a></li>
+                                                    <li><a href="#">Dropdown Submenu Link 5.4.1</a></li>
+                                                    <li><a href="#">Dropdown Submenu Link 5.4.2</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li class="kopie"><a href="#">Dropdown2</a></li>
+                                    <li><a href="#">Dropdown2 Link 1</a></li>
+                                    <li><a href="#">Dropdown2 Link 2</a></li>
+                                    <li><a href="#">Dropdown2 Link 3</a></li>
+                                    <li class="dropdown dropdown-submenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 Link 4</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="kopie"><a href="#">Dropdown2 Link 4</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 4.1</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 4.2</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 4.3</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 4.4</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown dropdown-submenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 Link 5</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="kopie"><a href="#">Dropdown Link 5</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 5.1</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 5.2</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 5.3</a></li>
+                                            <li class="dropdown dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Submenu Link 5.4</a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="kopie"><a href="#">Dropdown2 Submenu Link 5.4</a></li>
+                                                    <li><a href="#">Dropdown2 Submenu Link 5.4.1</a></li>
+                                                    <li><a href="#">Dropdown2 Submenu Link 5.4.2</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>-->
+                        </ul>
 
-            </div>
-            <div class="col-xs-2">
-                <div style="margin-top:0.5em;margin-bottom:0.5em;margin-right:2em;" class="pull-right">
-                    <!--<a href="industrial.html">
-                        <img width="80px" src="files/ecotech.gif" width="">
-                    </a>&nbsp;&nbsp; -->
-                    <a href="javascript:void(0);">
-                        <img height="80px" src="~/Content/files/Uttar_Pradesh.svg.png" width="80px">
-                    </a>
+                        <ul class="nav navbar-nav pull-right">
+                            <li class="apply_btn_cl" style="background: #1b5d95;"><a href="/Applicant/Logout" title="Logout"><i class="fa fa-chevron-right" aria-hidden="true"></i> &nbsp; Logout</a></li>
+
+                        </ul>
+                    </div>
                 </div>
-            </div>
+                <!-- /.navbar-collapse -->
+            </nav>
         </div>
-    </div>
+        <!-- ============================================
+        MAIN CONTENT SECTION
+        =============================================== -->
+        @RenderBody()
+        <!-- ============================================
+        FOOTER SECTION
+        =============================================== -->
 
-    <div id="navbar">
-        <nav class="navbar nav_class navbar-default navbar-static-top" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+        <div class="container-fluid" style=" background: #082b49 !important; padding-top:20px; text-align:center;">
+            <div class="row">
+                <div class="container">
 
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                <div class="col-sm-12 col-xs-12" style="padding: 0 30px;">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="/Applicant/Dashboard" title="Home">Home</a></li>
-                        <li><a href="/Applicant/ApplyForPlot" title="PlotDetail">Apply For Plots</a></li>
-                        @*<li><a href="#">Link</a></li>*@
-                        <!--<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li class="kopie"><a href="#">Dropdown</a></li>
-                                <li><a href="#">Dropdown Link 1</a></li>
-                                <li class="active"><a href="#">Dropdown Link 2</a></li>
-                                <li><a href="#">Dropdown Link 3</a></li>
-                                <li class="dropdown dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Link 4</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="kopie"><a href="#">Dropdown Link 4</a></li>
-                                        <li><a href="#">Dropdown Submenu Link 4.1</a></li>
-                                        <li><a href="#">Dropdown Submenu Link 4.2</a></li>
-                                        <li><a href="#">Dropdown Submenu Link 4.3</a></li>
-                                        <li><a href="#">Dropdown Submenu Link 4.4</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Link 5</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="kopie"><a href="#">Dropdown Link 5</a></li>
-                                        <li><a href="#">Dropdown Submenu Link 5.1</a></li>
-                                        <li><a href="#">Dropdown Submenu Link 5.2</a></li>
-                                        <li><a href="#">Dropdown Submenu Link 5.3</a></li>
-                                        <li class="dropdown dropdown-submenu">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Submenu Link 5.4</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="kopie"><a href="#">Dropdown Submenu Link 5.4</a></li>
-                                                <li><a href="#">Dropdown Submenu Link 5.4.1</a></li>
-                                                <li><a href="#">Dropdown Submenu Link 5.4.2</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li class="kopie"><a href="#">Dropdown2</a></li>
-                                <li><a href="#">Dropdown2 Link 1</a></li>
-                                <li><a href="#">Dropdown2 Link 2</a></li>
-                                <li><a href="#">Dropdown2 Link 3</a></li>
-                                <li class="dropdown dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 Link 4</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="kopie"><a href="#">Dropdown2 Link 4</a></li>
-                                        <li><a href="#">Dropdown2 Submenu Link 4.1</a></li>
-                                        <li><a href="#">Dropdown2 Submenu Link 4.2</a></li>
-                                        <li><a href="#">Dropdown2 Submenu Link 4.3</a></li>
-                                        <li><a href="#">Dropdown2 Submenu Link 4.4</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 Link 5</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="kopie"><a href="#">Dropdown Link 5</a></li>
-                                        <li><a href="#">Dropdown2 Submenu Link 5.1</a></li>
-                                        <li><a href="#">Dropdown2 Submenu Link 5.2</a></li>
-                                        <li><a href="#">Dropdown2 Submenu Link 5.3</a></li>
-                                        <li class="dropdown dropdown-submenu">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Submenu Link 5.4</a>
-                                            <ul class="dropdown-menu">
-                                                <li class="kopie"><a href="#">Dropdown2 Submenu Link 5.4</a></li>
-                                                <li><a href="#">Dropdown2 Submenu Link 5.4.1</a></li>
-                                                <li><a href="#">Dropdown2 Submenu Link 5.4.2</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>-->
-                    </ul>
-
-                    <ul class="nav navbar-nav pull-right">
-                        <li class="apply_btn_cl" style="background: #1b5d95;"><a href="/Applicant/Logout" title="Logout"><i class="fa fa-chevron-right" aria-hidden="true"></i> &nbsp; Logout</a></li>
-
-                    </ul>
-                </div>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
-    </div>
-    <!-- ============================================
-    MAIN CONTENT SECTION
-    =============================================== -->
-    @RenderBody()
-    <!-- ============================================
-    FOOTER SECTION
-    =============================================== -->
-
-    <div class="container-fluid" style=" background: #082b49 !important; padding-top:20px; text-align:center;">
-        <div class="row">
-            <div class="container">
-
-                <div class="col-xs-12 text-center">
-                    <address style="font-size:1em; line-height:20px; color:#fff;">
-                        Copyright © Gorakhpur Industrial Development Authority,(GIDA) || All rights reserved.<br />
-                        Sector-7, GIDA, Gorakhpur, Uttar Pradesh-273212<br />
-                        Phone: 0551-2580010, Email: ceogida-up@up.gov.in
-                    </address>
+                    <div class="col-xs-12 text-center">
+                        <address style="font-size:1em; line-height:20px; color:#fff;">
+                            Copyright © Gorakhpur Industrial Development Authority,(GIDA) || All rights reserved.<br />
+                            Sector-7, GIDA, Gorakhpur, Uttar Pradesh-273212<br />
+                            Phone: 0551-2580010, Email: ceogida-up@up.gov.in
+                        </address>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+    }
+
     <script src="~/Content/js/carousel.html"></script>
     <script>
         // Comment ... //

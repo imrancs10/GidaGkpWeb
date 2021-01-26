@@ -1,4 +1,5 @@
-﻿@using GidaGkpWeb.Global
+﻿@using System.Configuration;
+@using GidaGkpWeb.Global
 <!DOCTYPE html>
 <html class="no-js">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -2182,7 +2183,14 @@
                 <div class="pull-right" style="margin-right:1em;">
                     <div class="region region-social">
                         <div id="block-block-97" class="block block-block">
-                            <a target="_blank" href="#"><img height="2%" style="margin-top:5px;" src="~/Content/files/app_login.png"></a>
+                            @if (Convert.ToBoolean(ConfigurationManager.AppSettings["isProductionServer"]) == false)
+                            {
+                                <a target="_blank" href="/Login/ApplicantLogin"><img height="2%" style="margin-top:5px;" src="~/Content/files/app_login.png"></a>
+                            }
+                            else
+                            {
+                                <a target="_blank" href="#"><img height="2%" style="margin-top:5px;" src="~/Content/files/app_login.png"></a>
+                            }
                         </div>
                     </div>
                 </div>
@@ -2243,10 +2251,10 @@
             </div>
             <div class="ticker_to" style="background:#EEF6F5">
                 <!--<div class="col-md-2" style="background:#EEF6F5">
-            <p style="margin-left:1em;text-align:right"><a target="_blank" href="#"><img alt="advertise" class="img-responsive img-thumbnail" src="files/assets/ad.gif"  width="105px" /></a>
+                    <p style="margin-left:1em;text-align:right"><a target="_blank" href="#"><img alt="advertise" class="img-responsive img-thumbnail" src="files/assets/ad.gif"  width="105px" /></a>
 
-        </p>
-          </div>-->
+                </p>
+                  </div>-->
                 <div class="scroll-left" style="background:#EEF6F5" style="margin-top:1em;margin-bottom:1em;">
                     <!--<marquee behavior="scroll" direction="left" scrollamount="5">-->
                     <p style="margin-top:0.5em;font-size:1.9; text-align:center">
