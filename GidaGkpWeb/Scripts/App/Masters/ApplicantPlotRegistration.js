@@ -409,7 +409,7 @@ $(document).ready(function () {
     }
 
     $('#btnPlotDetailSave').on('click', function (e) {
-        if ($('#ApplicationFee').val() != '' && $('#AppliedFor').val() != '' && $('#EarnestMoneyDeposite').val() != '') {
+        if ($('#ApplicationFee').val() != '' && $('#AppliedFor').val() != '' && $('#EarnestMoneyDeposite').val() != '' && $('#EstimatedRate').val() != '' && $('#GST').val() != '' && $('#IndustryOwnershipType').val() != '' && $('#NetAmount').val() != '' && $('#PaymemtSchedule').val() != '' && $('#plotArea').val() != '' && $('#PlotRange').val() != '' && $('#RelationshipStatus').val() != '' && $('#SchemeName').val() != '' && $('#SchemeType').val() != '' && $('#SectorName').val() != '' && $('#dob').val() != '' && $('#Name').val() != '' && $('#PermanentAddress').val() != '' && $('#PresentAddress').val() != '' && $('#TotalAmount').val() != '' && $('#TotalInvestment').val() != '' && $('#UnitName').val() != '' && $('#SectorDescription').val() != '' ) {
             var url = '/Applicant/SavePlotDetail';
             var inputData = {
                 ApplicationFee: $('#ApplicationFee').val(),
@@ -461,7 +461,7 @@ $(document).ready(function () {
     });
 
     $('#Step2NextButton').on('click', function (e) {
-        if ($('#FullName').val() != '' && $('#FName').val() != '' && $('#MName').val() != '') {
+        if ($('#FullName').val() != '' && $('#FName').val() != '' && $('#MName').val() != '' && $('#DOB').val() != '' && $('#Gender').val() != '' && $('#Category').val() != '' && $('#Nationality').val() != '' && $('#PAN').val() != '' && $('#MobileNo').val() != '' && $('#Email').val() != '' && $('#Religion').val() != '' && $('#CAddress').val() != '' && $('#PAddress').val() != '') {
             var url = '/Applicant/SaveApplicantDetails';
             var IdentityProof = '';
             if ($('#c').prop('checked')) {
