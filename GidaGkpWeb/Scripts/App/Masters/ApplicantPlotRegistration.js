@@ -624,12 +624,60 @@ $(document).ready(function () {
                     utility.alert.setAlert(utility.alert.alertType.success, 'Bank Detail has been Saved');
                     NextStep($('#Step4NextButton'));
                     getApplicantDocumentDetail();
-                    $('#btnStep5Skip').removeClass('hidden');
+                    //$('#btnStep5Skip').removeClass('hidden');
                 }
             });
         }
         else {
             utility.alert.setAlert(utility.alert.alertType.error, 'Please fill required input.');
+        }
+
+    });
+
+    $('#Step5NextButton').click(function () {
+        //var ProjectReports = document.getElementById('ProjectReports');
+        //var Proposedplan = document.getElementById('Proposedplan');
+        //var PartnershipDeed = document.getElementById('PartnershipDeed');
+        //var PanCard = document.getElementById('PanCard');
+        //var AddressProof = document.getElementById('AddressProof');
+        //var IncomeTaxreturn = document.getElementById('IncomeTaxreturn');
+        //var Experienceproof = document.getElementById('Experienceproof');
+        //var educationalqualification = document.getElementById('educationalqualification');
+        //var electricitybill = document.getElementById('electricitybill');
+        //var financialdetails = document.getElementById('financialdetails');
+        //var IdentityProof = document.getElementById('IdentityProof');
+        //var BankVerifiedSignature = document.getElementById('BankVerifiedSignature');
+        //var ApplicantPhoto = document.getElementById('ApplicantPhoto');
+        //var ApplicantSignature = document.getElementById('ApplicantSignature');
+        //ProjectReports.files.length === 0 || Proposedplan.files.length === 0 || PartnershipDeed.files.length === 0 ||
+        //PanCard.files.length === 0 || AddressProof.files.length === 0 || IncomeTaxreturn.files.length === 0 ||
+        //Experienceproof.files.length === 0 || ApplicantSignature.files.length === 0 || educationalqualification.files.length === 0 ||
+        //electricitybill.files.length === 0 || financialdetails.files.length === 0 || IdentityProof.files.length === 0 ||
+        //BankVerifiedSignature.files.length === 0 || ApplicantPhoto.files.length === 0
+
+        var ProjectReportsfilename = $('[name*=ProjectReportsfilename]').val();
+        var Proposedplanfilename = $('[name*=Proposedplanfilename]').val();
+        var PartnershipDeedfilename = $('[name*=PartnershipDeedfilename]').val();
+        var PanCardfilename = $('[name*=PanCardfilename]').val();
+        var AddressProoffilename = $('[name*=AddressProoffilename]').val();
+        var IncomeTaxreturnfilename = $('[name*=IncomeTaxreturnfilename]').val();
+        var Experienceprooffilename = $('[name*=Experienceprooffilename]').val();
+        var educationalqualificationfilename = $('[name*=educationalqualificationfilename]').val();
+        var electricitybillfilename = $('[name*=electricitybillfilename]').val();
+        var financialdetailsfilename = $('[name*=financialdetailsfilename]').val();
+        var IdentityProoffilename = $('[name*=IdentityProoffilename]').val();
+        var BankVerifiedSignaturefilename = $('[name*=BankVerifiedSignaturefilename]').val();
+        var ApplicantPhotofilename = $('[name*=ApplicantPhotofilename]').val();
+        var ApplicantSignaturefilename = $('[name*=ApplicantSignaturefilename]').val();
+        if (ProjectReportsfilename == "" || Proposedplanfilename == "" || PartnershipDeedfilename == "" || PanCardfilename == "" ||
+            AddressProoffilename == "" || IncomeTaxreturnfilename == "" || Experienceprooffilename == "" || educationalqualificationfilename == "" ||
+            electricitybillfilename == "" || financialdetailsfilename == "" || IdentityProoffilename == "" || BankVerifiedSignaturefilename == "" ||
+            ApplicantPhotofilename == "" || ApplicantSignaturefilename == "") {
+            utility.alert.setAlert(utility.alert.alertType.error, 'Please select required file.');
+            return false;
+        }
+        else {
+            $('#formSaveDocument').submit();
         }
 
     });
@@ -711,8 +759,8 @@ $(document).ready(function () {
 
     $('#btnStep4Skip').click(function () {
         NextStep($('#btnStep4Skip'));
-        //getApplicantDocumentDetail();
-        $('#btnStep5Skip').removeClass('hidden');
+        getApplicantDocumentDetail();
+        //$('#btnStep5Skip').removeClass('hidden');
     });
 
     $('#btnStep5Skip').click(function () {
@@ -728,12 +776,27 @@ $(document).ready(function () {
             url: '/Applicant/GetApplicantDocumentDetail',
             success: function (data) {
                 if (data != null && data != undefined) {
-                    $('#BankAccountName').val(data.AccountHolderName);
-                    $('#BankAccountNo').val(data.BankAccountNo);
-                    $('#BankName').val(data.BankName);
-                    $('#BranchName').val(data.BBName);
-                    $('#BranchAddress').val(data.BBAddress);
-                    $('#IFSCCode').val(data.IFSC_Code);
+                    $('[name*=ProjectReportsfilename]').val(data.ProjectReportFileName);
+                    $('[name*=Proposedplanfilename]').val(data.ProposedPlanLandUsesFileName);
+                    $('[name*=PartnershipDeedfilename]').val(data.MemorendumFileName);
+                    $('[name*=PanCardfilename]').val(data.ScanPANFileNameFileName);
+                    $('[name*=AddressProoffilename]').val(data.ScanAddressProofFileName);
+                    $('[name*=IncomeTaxreturnfilename]').val(data.ITReturnFileName);
+                    $('[name*=Experienceprooffilename]').val(data.ExperienceProofFileName);
+                    $('[name*=educationalqualificationfilename]').val(data.ApplicantEduTechQualificationFileName);
+                    $('[name*=electricitybillfilename]').val(data.PreEstablishedIndustriesDocFileName);
+                    $('[name*=financialdetailsfilename]').val(data.FinDetailsEstablishedIndustriesFileName);
+                    $('[name*=IdentityProoffilename]').val(data.ScanIDFileName);
+                    $('[name*=BankVerifiedSignaturefilename]').val(data.BankVerifiedSignatureFileName);
+                    $('[name*=ApplicantPhotofilename]').val(data.ApplicantPhotoFileName);
+                    $('[name*=ApplicantSignaturefilename]').val(data.ApplicantSignatureFileName);
+
+                    $('[name*=BalanceSheetfilename]').val(data.BalanceSheetFileName);
+                    $('[name*=Otherproposedindustryfilename]').val(data.OtherDocForProposedIndustryFileName);
+                    $('[name*=CasteCertificatefilename]').val(data.ScanCastCertFileName);
+                    $('[name*=outsideGIDAElectricitybillfilename]').val(data.DocProofForIndustrialEstablishedOutsideGidaFileName);
+
+                    $('#btnStep5Skip').removeClass('hidden');
                 }
             },
             failure: function (response) {

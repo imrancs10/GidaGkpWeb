@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="35f28e0bb63c4f70960d7b91ebab279b" Name="Diagram1">
+      <Diagram DiagramId="95a6f9876c66424c9001bc9eb173be39" Name="Diagram1">
         <EntityTypeShape EntityType="GidaGKPModel.ApplicantApplicationDetail" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GidaGKPModel.ApplicantBankDetail" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GidaGKPModel.ApplicantDetail" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />

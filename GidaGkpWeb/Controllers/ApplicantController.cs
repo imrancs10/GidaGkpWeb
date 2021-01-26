@@ -132,7 +132,7 @@ namespace GidaGkpWeb.Controllers
             HttpPostedFileBase PanCard, HttpPostedFileBase AddressProof, HttpPostedFileBase BalanceSheet, HttpPostedFileBase IncomeTaxreturn,
             HttpPostedFileBase Experienceproof, HttpPostedFileBase educationalqualification, HttpPostedFileBase electricitybill,
             HttpPostedFileBase financialdetails, HttpPostedFileBase Otherproposedindustry, HttpPostedFileBase CasteCertificate,
-            HttpPostedFileBase IdentityProof, HttpPostedFileBase AllotmentLetter, HttpPostedFileBase LandAcquition,
+            HttpPostedFileBase IdentityProof, HttpPostedFileBase AllotmentLetter, HttpPostedFileBase BankVerifiedSignature,
             HttpPostedFileBase outsideGIDAElectricitybill, HttpPostedFileBase ApplicantPhoto, HttpPostedFileBase ApplicantSignature)
         {
             ApplicantUploadDoc documentDetail = new ApplicantUploadDoc();
@@ -140,105 +140,142 @@ namespace GidaGkpWeb.Controllers
             {
                 documentDetail.ProjectReport = new byte[ProjectReports.ContentLength];
                 ProjectReports.InputStream.Read(documentDetail.ProjectReport, 0, ProjectReports.ContentLength);
+                documentDetail.ProjectReportFileName = ProjectReports.FileName;
+                documentDetail.ProjectReportFileType = ProjectReports.ContentType;
             }
             if (Proposedplan != null && Proposedplan.ContentLength > 0)
             {
                 documentDetail.ProposedPlanLandUses = new byte[Proposedplan.ContentLength];
                 Proposedplan.InputStream.Read(documentDetail.ProposedPlanLandUses, 0, Proposedplan.ContentLength);
+                documentDetail.ProposedPlanLandUsesFileName = Proposedplan.FileName;
+                documentDetail.ProposedPlanLandUsesFileType = Proposedplan.ContentType;
             }
             if (PartnershipDeed != null && PartnershipDeed.ContentLength > 0)
             {
                 documentDetail.Memorendum = new byte[PartnershipDeed.ContentLength];
                 PartnershipDeed.InputStream.Read(documentDetail.Memorendum, 0, PartnershipDeed.ContentLength);
+                documentDetail.MemorendumFileName = PartnershipDeed.FileName;
+                documentDetail.MemorendumFileType = PartnershipDeed.ContentType;
             }
 
             if (PanCard != null && PanCard.ContentLength > 0)
             {
                 documentDetail.ScanPAN = new byte[PanCard.ContentLength];
                 PanCard.InputStream.Read(documentDetail.ScanPAN, 0, PanCard.ContentLength);
+                documentDetail.ScanPANFileName = PanCard.FileName;
+                documentDetail.ScanPANFileType = PanCard.ContentType;
             }
             if (AddressProof != null && AddressProof.ContentLength > 0)
             {
                 documentDetail.ScanAddressProof = new byte[AddressProof.ContentLength];
                 AddressProof.InputStream.Read(documentDetail.ScanAddressProof, 0, AddressProof.ContentLength);
+                documentDetail.ScanAddressProofFileName = AddressProof.FileName;
+                documentDetail.ScanAddressProofFileType = AddressProof.ContentType;
             }
 
             if (BalanceSheet != null && BalanceSheet.ContentLength > 0)
             {
                 documentDetail.BalanceSheet = new byte[BalanceSheet.ContentLength];
                 BalanceSheet.InputStream.Read(documentDetail.BalanceSheet, 0, BalanceSheet.ContentLength);
+                documentDetail.BalanceSheetFileName = BalanceSheet.FileName;
+                documentDetail.BalanceSheetFileType = BalanceSheet.ContentType;
             }
             if (IncomeTaxreturn != null && IncomeTaxreturn.ContentLength > 0)
             {
                 documentDetail.ITReturn = new byte[IncomeTaxreturn.ContentLength];
                 IncomeTaxreturn.InputStream.Read(documentDetail.ITReturn, 0, IncomeTaxreturn.ContentLength);
+                documentDetail.ITReturnFileName = IncomeTaxreturn.FileName;
+                documentDetail.ITReturnFileType = IncomeTaxreturn.ContentType;
             }
             if (Experienceproof != null && Experienceproof.ContentLength > 0)
             {
                 documentDetail.ExperienceProof = new byte[Experienceproof.ContentLength];
                 Experienceproof.InputStream.Read(documentDetail.ExperienceProof, 0, Experienceproof.ContentLength);
+                documentDetail.ExperienceProofFileName = Experienceproof.FileName;
+                documentDetail.ExperienceProofFileType = Experienceproof.ContentType;
             }
 
             if (educationalqualification != null && educationalqualification.ContentLength > 0)
             {
                 documentDetail.ApplicantEduTechQualification = new byte[educationalqualification.ContentLength];
                 educationalqualification.InputStream.Read(documentDetail.ApplicantEduTechQualification, 0, educationalqualification.ContentLength);
+                documentDetail.ApplicantEduTechQualificationFileName = educationalqualification.FileName;
+                documentDetail.ApplicantEduTechQualificationFileType = educationalqualification.ContentType;
             }
 
             if (electricitybill != null && electricitybill.ContentLength > 0)
             {
                 documentDetail.PreEstablishedIndustriesDoc = new byte[electricitybill.ContentLength];
                 electricitybill.InputStream.Read(documentDetail.PreEstablishedIndustriesDoc, 0, electricitybill.ContentLength);
+                documentDetail.PreEstablishedIndustriesDocFileName = electricitybill.FileName;
+                documentDetail.PreEstablishedIndustriesDocFileType = electricitybill.ContentType;
             }
 
             if (financialdetails != null && financialdetails.ContentLength > 0)
             {
                 documentDetail.FinDetailsEstablishedIndustries = new byte[financialdetails.ContentLength];
                 financialdetails.InputStream.Read(documentDetail.FinDetailsEstablishedIndustries, 0, financialdetails.ContentLength);
+                documentDetail.FinDetailsEstablishedIndustriesFileName = financialdetails.FileName;
+                documentDetail.FinDetailsEstablishedIndustriesFileType = financialdetails.ContentType;
             }
 
             if (Otherproposedindustry != null && Otherproposedindustry.ContentLength > 0)
             {
                 documentDetail.OtherDocForProposedIndustry = new byte[Otherproposedindustry.ContentLength];
                 Otherproposedindustry.InputStream.Read(documentDetail.OtherDocForProposedIndustry, 0, Otherproposedindustry.ContentLength);
+                documentDetail.OtherDocForProposedIndustryFileName = Otherproposedindustry.FileName;
+                documentDetail.OtherDocForProposedIndustryFileType = Otherproposedindustry.ContentType;
             }
 
             if (CasteCertificate != null && CasteCertificate.ContentLength > 0)
             {
                 documentDetail.ScanCastCert = new byte[CasteCertificate.ContentLength];
                 CasteCertificate.InputStream.Read(documentDetail.ScanCastCert, 0, CasteCertificate.ContentLength);
+                documentDetail.ScanCastCertFileName = CasteCertificate.FileName;
+                documentDetail.ScanCastCertFileType = CasteCertificate.ContentType;
             }
 
             if (IdentityProof != null && IdentityProof.ContentLength > 0)
             {
                 documentDetail.ScanID = new byte[IdentityProof.ContentLength];
                 IdentityProof.InputStream.Read(documentDetail.ScanID, 0, IdentityProof.ContentLength);
+                documentDetail.ScanIDFileName = IdentityProof.FileName;
+                documentDetail.ScanIDFileType = IdentityProof.ContentType;
             }
 
-            if (AllotmentLetter != null && AllotmentLetter.ContentLength > 0)
+
+            if (BankVerifiedSignature != null && BankVerifiedSignature.ContentLength > 0)
             {
-                documentDetail.AllotmentLetter = new byte[AllotmentLetter.ContentLength];
-                AllotmentLetter.InputStream.Read(documentDetail.AllotmentLetter, 0, AllotmentLetter.ContentLength);
-            }
-            if (LandAcquition != null && LandAcquition.ContentLength > 0)
-            {
-                documentDetail.LandEquitionDocProof = new byte[LandAcquition.ContentLength];
-                LandAcquition.InputStream.Read(documentDetail.LandEquitionDocProof, 0, LandAcquition.ContentLength);
+                documentDetail.BankVerifiedSignature = new byte[BankVerifiedSignature.ContentLength];
+                BankVerifiedSignature.InputStream.Read(documentDetail.BankVerifiedSignature, 0, BankVerifiedSignature.ContentLength);
+                documentDetail.BankVerifiedSignatureFileName = BankVerifiedSignature.FileName;
+                documentDetail.BankVerifiedSignatureFileType = BankVerifiedSignature.ContentType;
             }
 
-            //documentDetail.LandEquitionDocProof = new byte[outsideGIDAElectricitybill.ContentLength];
-            //outsideGIDAElectricitybill.InputStream.Read(documentDetail.LandEquitionDocProof, 0, outsideGIDAElectricitybill.ContentLength);
             if (ApplicantPhoto != null && ApplicantPhoto.ContentLength > 0)
             {
                 documentDetail.ApplicantPhoto = new byte[ApplicantPhoto.ContentLength];
                 ApplicantPhoto.InputStream.Read(documentDetail.ApplicantPhoto, 0, ApplicantPhoto.ContentLength);
+                documentDetail.ApplicantPhotoFileName = ApplicantPhoto.FileName;
+                documentDetail.ApplicantPhotoFileType = ApplicantPhoto.ContentType;
             }
 
             if (ApplicantSignature != null && ApplicantSignature.ContentLength > 0)
             {
                 documentDetail.ApplicantSignature = new byte[ApplicantSignature.ContentLength];
                 ApplicantSignature.InputStream.Read(documentDetail.ApplicantSignature, 0, ApplicantSignature.ContentLength);
+                documentDetail.ApplicantSignatureFileName = ApplicantSignature.FileName;
+                documentDetail.ApplicantSignatureFileType = ApplicantSignature.ContentType;
             }
+
+            if (outsideGIDAElectricitybill != null && outsideGIDAElectricitybill.ContentLength > 0)
+            {
+                documentDetail.DocProofForIndustrialEstablishedOutsideGida = new byte[outsideGIDAElectricitybill.ContentLength];
+                outsideGIDAElectricitybill.InputStream.Read(documentDetail.DocProofForIndustrialEstablishedOutsideGida, 0, outsideGIDAElectricitybill.ContentLength);
+                documentDetail.DocProofForIndustrialEstablishedOutsideGidaFileName = outsideGIDAElectricitybill.FileName;
+                documentDetail.DocProofForIndustrialEstablishedOutsideGidaFileType = outsideGIDAElectricitybill.ContentType;
+            }
+
             documentDetail.UserId = ((CustomPrincipal)User).Id;
             ApplicantDetails _details = new ApplicantDetails();
             var result = _details.SaveApplicantDocument(((CustomPrincipal)User).Id, documentDetail);
@@ -284,6 +321,13 @@ namespace GidaGkpWeb.Controllers
                 }
             }
 
+            UserData.UserId = Convert.ToInt32(Params["merchant_param1"]);
+            UserData.ApplicationId = Convert.ToInt32(Params["merchant_param2"]);
+            UserData.Username = Convert.ToString(Params["merchant_param3"]);
+            UserData.Email = Convert.ToString(Params["merchant_param4"]);
+            UserData.FullName = Convert.ToString(Params["merchant_param5"]);
+            setUserClaim();
+
             if (Params["order_status"] == "Success")
             {
                 ApplicantDetails _details = new ApplicantDetails();
@@ -304,12 +348,6 @@ namespace GidaGkpWeb.Controllers
                     ApplicationId = Convert.ToInt32(Params["merchant_param2"]),
                     trans_date = DateTime.Now,
                 };
-                UserData.UserId = Convert.ToInt32(Params["merchant_param1"]);
-                UserData.ApplicationId = Convert.ToInt32(Params["merchant_param2"]);
-                UserData.Username = Convert.ToString(Params["merchant_param3"]);
-                UserData.Email = Convert.ToString(Params["merchant_param4"]);
-                UserData.FullName = Convert.ToString(Params["merchant_param5"]);
-                setUserClaim();
                 _details.SaveApplicantTransactionDeatil(detail);
                 SetAlertMessage("Payment done successfully", "Payment Status");
                 return RedirectToAction("PaymentResponseSuccess");
@@ -395,6 +433,61 @@ namespace GidaGkpWeb.Controllers
             return null;
         }
 
+        [HttpPost]
+        public JsonResult GetApplicantDocumentDetail()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            if (UserData.ApplicationId > 0)
+            {
+               
+                var docDetail = _details.GetApplicantDocumentDetail(UserData.ApplicationId);
+                ApplicantUploadDocumentModel model = new ApplicantUploadDocumentModel()
+                {
+                    ApplicantEduTechQualificationURL = string.Format("data:" + docDetail.ApplicantEduTechQualificationFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ApplicantEduTechQualification)),
+                    ScanPANFileName = docDetail.ScanPANFileName,
+                    ScanIDFileName = docDetail.ScanIDFileName,
+                    ScanCastCertFileName = docDetail.ScanCastCertFileName,
+                    ApplicantEduTechQualificationFileName = docDetail.ApplicantEduTechQualificationFileName,
+                    ApplicantPhotoURL = string.Format("data:" + docDetail.ApplicantPhotoFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ApplicantPhoto)),
+                    ApplicantPhotoFileName = docDetail.ApplicantPhotoFileName,
+                    ApplicantSignatureURL = string.Format("data:" + docDetail.ApplicantSignatureFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ApplicantSignature)),
+                    ApplicantSignatureFileName = docDetail.ApplicantSignatureFileName,
+                    ApplicationId = docDetail.ApplicationId,
+                    BalanceSheetURL = string.Format("data:" + docDetail.BalanceSheetFileType + ";base64,{0}", Convert.ToBase64String(docDetail.BalanceSheet)),
+                    BalanceSheetFileName = docDetail.BalanceSheetFileName,
+                    BankVerifiedSignatureURL = string.Format("data:" + docDetail.BankVerifiedSignatureFileType + ";base64,{0}", Convert.ToBase64String(docDetail.BankVerifiedSignature)),
+                    BankVerifiedSignatureFileName = docDetail.BankVerifiedSignatureFileName,
+                    DocProofForIndustrialEstablishedOutsideGidaURL = string.Format("data:" + docDetail.DocProofForIndustrialEstablishedOutsideGidaFileType + ";base64,{0}", Convert.ToBase64String(docDetail.DocProofForIndustrialEstablishedOutsideGida)),
+                    DocProofForIndustrialEstablishedOutsideGidaFileName = docDetail.DocProofForIndustrialEstablishedOutsideGidaFileName,
+                    ExperienceProofURL = string.Format("data:" + docDetail.ExperienceProofFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ExperienceProof)),
+                    ExperienceProofFileName = docDetail.ExperienceProofFileName,
+                    FinDetailsEstablishedIndustriesURL = string.Format("data:" + docDetail.FinDetailsEstablishedIndustriesFileType + ";base64,{0}", Convert.ToBase64String(docDetail.FinDetailsEstablishedIndustries)),
+                    FinDetailsEstablishedIndustriesFileName = docDetail.FinDetailsEstablishedIndustriesFileName,
+                    ITReturnURL = string.Format("data:" + docDetail.ITReturnFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ITReturn)),
+                    ITReturnFileName = docDetail.ITReturnFileName,
+                    MemorendumURL = string.Format("data:" + docDetail.MemorendumFileType + ";base64,{0}", Convert.ToBase64String(docDetail.Memorendum)),
+                    MemorendumFileName = docDetail.MemorendumFileName,
+                    OtherDocForProposedIndustryURL = string.Format("data:" + docDetail.OtherDocForProposedIndustryFileType + ";base64,{0}", Convert.ToBase64String(docDetail.OtherDocForProposedIndustry)),
+                    OtherDocForProposedIndustryFileName = docDetail.OtherDocForProposedIndustryFileName,
+                    PreEstablishedIndustriesDocURL = string.Format("data:" + docDetail.PreEstablishedIndustriesDocFileType + ";base64,{0}", Convert.ToBase64String(docDetail.PreEstablishedIndustriesDoc)),
+                    ProjectReportURL = string.Format("data:" + docDetail.ProjectReportFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ProjectReport)),
+                    PreEstablishedIndustriesDocFileName = docDetail.PreEstablishedIndustriesDocFileName,
+                    ProjectReportFileName = docDetail.ProjectReportFileName,
+                    ProposedPlanLandUsesURL = string.Format("data:" + docDetail.ProposedPlanLandUsesFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ProposedPlanLandUses)),
+                    ProposedPlanLandUsesFileName = docDetail.ProposedPlanLandUsesFileName,
+                    ScanAddressProofURL = string.Format("data:" + docDetail.ScanAddressProofFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ScanAddressProof)),
+                    ScanAddressProofFileName = docDetail.ScanAddressProofFileName,
+                    ScanCastCertURL = string.Format("data:" + docDetail.ScanCastCertFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ScanCastCert)),
+                    ScanIDURL = string.Format("data:" + docDetail.ScanIDFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ScanID)),
+                    ScanPANURL = string.Format("data:" + docDetail.ScanPANFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ScanPAN))
+                };
+
+                return Json(model, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
+
+        
         //public FileContentResult GetFile(int id)
         //{
         //    byte[] fileContent = null;

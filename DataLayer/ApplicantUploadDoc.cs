@@ -31,11 +31,46 @@ namespace DataLayer
         public byte[] OtherDocForProposedIndustry { get; set; }
         public byte[] ScanCastCert { get; set; }
         public byte[] ScanID { get; set; }
-        public byte[] AllotmentLetter { get; set; }
-        public byte[] LandEquitionDocProof { get; set; }
+        public byte[] BankVerifiedSignature { get; set; }
         public byte[] DocProofForIndustrialEstablishedOutsideGida { get; set; }
         public byte[] ApplicantPhoto { get; set; }
         public byte[] ApplicantSignature { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
+        public string ProjectReportFileName { get; set; }
+        public string ProjectReportFileType { get; set; }
+        public string ProposedPlanLandUsesFileName { get; set; }
+        public string ProposedPlanLandUsesFileType { get; set; }
+        public string MemorendumFileName { get; set; }
+        public string MemorendumFileType { get; set; }
+        public string ScanPANFileName { get; set; }
+        public string ScanPANFileType { get; set; }
+        public string ScanAddressProofFileName { get; set; }
+        public string ScanAddressProofFileType { get; set; }
+        public string BalanceSheetFileName { get; set; }
+        public string BalanceSheetFileType { get; set; }
+        public string ITReturnFileName { get; set; }
+        public string ITReturnFileType { get; set; }
+        public string ExperienceProofFileName { get; set; }
+        public string ExperienceProofFileType { get; set; }
+        public string ApplicantEduTechQualificationFileName { get; set; }
+        public string ApplicantEduTechQualificationFileType { get; set; }
+        public string PreEstablishedIndustriesDocFileName { get; set; }
+        public string PreEstablishedIndustriesDocFileType { get; set; }
+        public string FinDetailsEstablishedIndustriesFileName { get; set; }
+        public string FinDetailsEstablishedIndustriesFileType { get; set; }
+        public string OtherDocForProposedIndustryFileName { get; set; }
+        public string OtherDocForProposedIndustryFileType { get; set; }
+        public string ScanCastCertFileName { get; set; }
+        public string ScanCastCertFileType { get; set; }
+        public string ScanIDFileName { get; set; }
+        public string ScanIDFileType { get; set; }
+        public string BankVerifiedSignatureFileName { get; set; }
+        public string BankVerifiedSignatureFileType { get; set; }
+        public string DocProofForIndustrialEstablishedOutsideGidaFileName { get; set; }
+        public string DocProofForIndustrialEstablishedOutsideGidaFileType { get; set; }
+        public string ApplicantPhotoFileName { get; set; }
+        public string ApplicantPhotoFileType { get; set; }
+        public string ApplicantSignatureFileName { get; set; }
+        public string ApplicantSignatureFileType { get; set; }
     }
 }

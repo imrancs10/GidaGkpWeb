@@ -152,13 +152,13 @@
       <DependentUpon>DbEntity.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>DbEntity.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="DbEntity.Designer.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>DbEntity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Lookup.cs">
@@ -188,8 +188,8 @@
     </Content>
     <Content Include="DbEntity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbEntity.edmx</DependentUpon>
       <LastGenOutput>DbEntity.cs</LastGenOutput>
+      <DependentUpon>DbEntity.edmx</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

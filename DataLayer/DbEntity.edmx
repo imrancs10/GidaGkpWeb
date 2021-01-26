@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GidaGKPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GidaGKPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ApplicantApplicationDetail">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -159,24 +159,59 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ApplicationId" Type="int" />
           <Property Name="ProjectReport" Type="varbinary(max)" />
+          <Property Name="ProjectReportFileName" Type="varchar" MaxLength="500" />
+          <Property Name="ProjectReportFileType" Type="varchar" MaxLength="50" />
           <Property Name="ProposedPlanLandUses" Type="varbinary(max)" />
+          <Property Name="ProposedPlanLandUsesFileName" Type="varchar" MaxLength="500" />
+          <Property Name="ProposedPlanLandUsesFileType" Type="varchar" MaxLength="50" />
           <Property Name="Memorendum" Type="varbinary(max)" />
+          <Property Name="MemorendumFileName" Type="varchar" MaxLength="500" />
+          <Property Name="MemorendumFileType" Type="varchar" MaxLength="50" />
           <Property Name="ScanPAN" Type="varbinary(max)" />
+          <Property Name="ScanPANFileName" Type="varchar" MaxLength="500" />
+          <Property Name="ScanPANFileType" Type="varchar" MaxLength="50" />
           <Property Name="ScanAddressProof" Type="varbinary(max)" />
+          <Property Name="ScanAddressProofFileName" Type="varchar" MaxLength="500" />
+          <Property Name="ScanAddressProofFileType" Type="varchar" MaxLength="50" />
           <Property Name="BalanceSheet" Type="varbinary(max)" />
+          <Property Name="BalanceSheetFileName" Type="varchar" MaxLength="500" />
+          <Property Name="BalanceSheetFileType" Type="varchar" MaxLength="50" />
           <Property Name="ITReturn" Type="varbinary(max)" />
+          <Property Name="ITReturnFileName" Type="varchar" MaxLength="500" />
+          <Property Name="ITReturnFileType" Type="varchar" MaxLength="50" />
           <Property Name="ExperienceProof" Type="varbinary(max)" />
+          <Property Name="ExperienceProofFileName" Type="varchar" MaxLength="500" />
+          <Property Name="ExperienceProofFileType" Type="varchar" MaxLength="50" />
           <Property Name="ApplicantEduTechQualification" Type="varbinary(max)" />
+          <Property Name="ApplicantEduTechQualificationFileName" Type="varchar" MaxLength="500" />
+          <Property Name="ApplicantEduTechQualificationFileType" Type="varchar" MaxLength="50" />
           <Property Name="PreEstablishedIndustriesDoc" Type="varbinary(max)" />
+          <Property Name="PreEstablishedIndustriesDocFileName" Type="varchar" MaxLength="500" />
+          <Property Name="PreEstablishedIndustriesDocFileType" Type="varchar" MaxLength="50" />
           <Property Name="FinDetailsEstablishedIndustries" Type="varbinary(max)" />
+          <Property Name="FinDetailsEstablishedIndustriesFileName" Type="varchar" MaxLength="500" />
+          <Property Name="FinDetailsEstablishedIndustriesFileType" Type="varchar" MaxLength="50" />
           <Property Name="OtherDocForProposedIndustry" Type="varbinary(max)" />
+          <Property Name="OtherDocForProposedIndustryFileName" Type="varchar" MaxLength="500" />
+          <Property Name="OtherDocForProposedIndustryFileType" Type="varchar" MaxLength="50" />
           <Property Name="ScanCastCert" Type="varbinary(max)" />
+          <Property Name="ScanCastCertFileName" Type="varchar" MaxLength="500" />
+          <Property Name="ScanCastCertFileType" Type="varchar" MaxLength="50" />
           <Property Name="ScanID" Type="varbinary(max)" />
-          <Property Name="AllotmentLetter" Type="varbinary(max)" />
-          <Property Name="LandEquitionDocProof" Type="varbinary(max)" />
+          <Property Name="ScanIDFileName" Type="varchar" MaxLength="500" />
+          <Property Name="ScanIDFileType" Type="varchar" MaxLength="50" />
+          <Property Name="BankVerifiedSignature" Type="varbinary(max)" />
+          <Property Name="BankVerifiedSignatureFileName" Type="varchar" MaxLength="500" />
+          <Property Name="BankVerifiedSignatureFileType" Type="varchar" MaxLength="50" />
           <Property Name="DocProofForIndustrialEstablishedOutsideGida" Type="varbinary(max)" />
+          <Property Name="DocProofForIndustrialEstablishedOutsideGidaFileName" Type="varchar" MaxLength="500" />
+          <Property Name="DocProofForIndustrialEstablishedOutsideGidaFileType" Type="varchar" MaxLength="50" />
           <Property Name="ApplicantPhoto" Type="varbinary(max)" />
+          <Property Name="ApplicantPhotoFileName" Type="varchar" MaxLength="500" />
+          <Property Name="ApplicantPhotoFileType" Type="varchar" MaxLength="50" />
           <Property Name="ApplicantSignature" Type="varbinary(max)" />
+          <Property Name="ApplicantSignatureFileName" Type="varchar" MaxLength="500" />
+          <Property Name="ApplicantSignatureFileType" Type="varchar" MaxLength="50" />
           <Property Name="CreationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="ApplicantUser">
@@ -219,8 +254,7 @@
           <EntitySet Name="ApplicantUser" EntityType="Self.ApplicantUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GidaGKPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -391,12 +425,47 @@
           <Property Name="OtherDocForProposedIndustry" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ScanCastCert" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ScanID" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="AllotmentLetter" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="LandEquitionDocProof" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BankVerifiedSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="DocProofForIndustrialEstablishedOutsideGida" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ApplicantPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ApplicantSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ProjectReportFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectReportFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProposedPlanLandUsesFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProposedPlanLandUsesFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MemorendumFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MemorendumFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScanPANFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ScanPANFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScanAddressProofFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ScanAddressProofFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BalanceSheetFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BalanceSheetFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ITReturnFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ITReturnFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExperienceProofFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ExperienceProofFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantEduTechQualificationFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantEduTechQualificationFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PreEstablishedIndustriesDocFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PreEstablishedIndustriesDocFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FinDetailsEstablishedIndustriesFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FinDetailsEstablishedIndustriesFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OtherDocForProposedIndustryFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OtherDocForProposedIndustryFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScanCastCertFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ScanCastCertFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScanIDFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ScanIDFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankVerifiedSignatureFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BankVerifiedSignatureFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocProofForIndustrialEstablishedOutsideGidaFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DocProofForIndustrialEstablishedOutsideGidaFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantPhotoFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantPhotoFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantSignatureFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantSignatureFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ApplicantUser">
           <Key>
@@ -600,6 +669,42 @@
           <EntitySetMapping Name="ApplicantUploadDocs">
             <EntityTypeMapping TypeName="GidaGKPModel.ApplicantUploadDoc">
               <MappingFragment StoreEntitySet="ApplicantUploadDoc">
+                <ScalarProperty Name="ApplicantSignatureFileType" ColumnName="ApplicantSignatureFileType" />
+                <ScalarProperty Name="ApplicantSignatureFileName" ColumnName="ApplicantSignatureFileName" />
+                <ScalarProperty Name="ApplicantPhotoFileType" ColumnName="ApplicantPhotoFileType" />
+                <ScalarProperty Name="ApplicantPhotoFileName" ColumnName="ApplicantPhotoFileName" />
+                <ScalarProperty Name="DocProofForIndustrialEstablishedOutsideGidaFileType" ColumnName="DocProofForIndustrialEstablishedOutsideGidaFileType" />
+                <ScalarProperty Name="DocProofForIndustrialEstablishedOutsideGidaFileName" ColumnName="DocProofForIndustrialEstablishedOutsideGidaFileName" />
+                <ScalarProperty Name="BankVerifiedSignatureFileType" ColumnName="BankVerifiedSignatureFileType" />
+                <ScalarProperty Name="BankVerifiedSignatureFileName" ColumnName="BankVerifiedSignatureFileName" />
+                <ScalarProperty Name="ScanIDFileType" ColumnName="ScanIDFileType" />
+                <ScalarProperty Name="ScanIDFileName" ColumnName="ScanIDFileName" />
+                <ScalarProperty Name="ScanCastCertFileType" ColumnName="ScanCastCertFileType" />
+                <ScalarProperty Name="ScanCastCertFileName" ColumnName="ScanCastCertFileName" />
+                <ScalarProperty Name="OtherDocForProposedIndustryFileType" ColumnName="OtherDocForProposedIndustryFileType" />
+                <ScalarProperty Name="OtherDocForProposedIndustryFileName" ColumnName="OtherDocForProposedIndustryFileName" />
+                <ScalarProperty Name="FinDetailsEstablishedIndustriesFileType" ColumnName="FinDetailsEstablishedIndustriesFileType" />
+                <ScalarProperty Name="FinDetailsEstablishedIndustriesFileName" ColumnName="FinDetailsEstablishedIndustriesFileName" />
+                <ScalarProperty Name="PreEstablishedIndustriesDocFileType" ColumnName="PreEstablishedIndustriesDocFileType" />
+                <ScalarProperty Name="PreEstablishedIndustriesDocFileName" ColumnName="PreEstablishedIndustriesDocFileName" />
+                <ScalarProperty Name="ApplicantEduTechQualificationFileType" ColumnName="ApplicantEduTechQualificationFileType" />
+                <ScalarProperty Name="ApplicantEduTechQualificationFileName" ColumnName="ApplicantEduTechQualificationFileName" />
+                <ScalarProperty Name="ExperienceProofFileType" ColumnName="ExperienceProofFileType" />
+                <ScalarProperty Name="ExperienceProofFileName" ColumnName="ExperienceProofFileName" />
+                <ScalarProperty Name="ITReturnFileType" ColumnName="ITReturnFileType" />
+                <ScalarProperty Name="ITReturnFileName" ColumnName="ITReturnFileName" />
+                <ScalarProperty Name="BalanceSheetFileType" ColumnName="BalanceSheetFileType" />
+                <ScalarProperty Name="BalanceSheetFileName" ColumnName="BalanceSheetFileName" />
+                <ScalarProperty Name="ScanAddressProofFileType" ColumnName="ScanAddressProofFileType" />
+                <ScalarProperty Name="ScanAddressProofFileName" ColumnName="ScanAddressProofFileName" />
+                <ScalarProperty Name="ScanPANFileType" ColumnName="ScanPANFileType" />
+                <ScalarProperty Name="ScanPANFileName" ColumnName="ScanPANFileName" />
+                <ScalarProperty Name="MemorendumFileType" ColumnName="MemorendumFileType" />
+                <ScalarProperty Name="MemorendumFileName" ColumnName="MemorendumFileName" />
+                <ScalarProperty Name="ProposedPlanLandUsesFileType" ColumnName="ProposedPlanLandUsesFileType" />
+                <ScalarProperty Name="ProposedPlanLandUsesFileName" ColumnName="ProposedPlanLandUsesFileName" />
+                <ScalarProperty Name="ProjectReportFileType" ColumnName="ProjectReportFileType" />
+                <ScalarProperty Name="ProjectReportFileName" ColumnName="ProjectReportFileName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
@@ -617,8 +722,7 @@
                 <ScalarProperty Name="OtherDocForProposedIndustry" ColumnName="OtherDocForProposedIndustry" />
                 <ScalarProperty Name="ScanCastCert" ColumnName="ScanCastCert" />
                 <ScalarProperty Name="ScanID" ColumnName="ScanID" />
-                <ScalarProperty Name="AllotmentLetter" ColumnName="AllotmentLetter" />
-                <ScalarProperty Name="LandEquitionDocProof" ColumnName="LandEquitionDocProof" />
+                <ScalarProperty Name="BankVerifiedSignature" ColumnName="BankVerifiedSignature" />
                 <ScalarProperty Name="DocProofForIndustrialEstablishedOutsideGida" ColumnName="DocProofForIndustrialEstablishedOutsideGida" />
                 <ScalarProperty Name="ApplicantPhoto" ColumnName="ApplicantPhoto" />
                 <ScalarProperty Name="ApplicantSignature" ColumnName="ApplicantSignature" />
