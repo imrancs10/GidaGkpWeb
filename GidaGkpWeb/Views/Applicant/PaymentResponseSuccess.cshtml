@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "PaymentResponseSuccess";
     Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
-    var UserData = ViewData["UserData"] as ApplicationDetailModel;
+    var ApplicationData = ViewData["ApplicationData"] as List<ApplicationDetailModel>;
 }
 
 <link href="~/styles/style.css" rel="stylesheet" />
@@ -11,7 +11,7 @@
     <!-- MultiStep Form -->
     <div class="container-fluid" id="grad1" style="min-height:350px">
         <div class="container">
-            <div class="row justify-content-center mt-0" style="padding:30px 30px">
+            <div class="row justify-content-center mt-0">
                 <div class="col-sm-12 col-xs-12">
                     <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                         <div class="col-sm-12 col-xs-12">
@@ -20,17 +20,97 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="padding-top:20px">
-                <div class="col-md-12 mx-0">
-                    <div class="col-sm-6 col-xs-12">
-                        <a name="next" href="/Applicant/PaymentReciept" target="_blank" class="btn btn-primary pull-right">Print Payment Reciept</a>
+            @if (ApplicationData != null && ApplicationData.Count > 0)
+            {
+                <div class="row justify-content-center mt-0" id="divExitingPlotRegistration">
+                    <div class="col-sm-12 col-xs-12">
+                        <h2 style="padding:20px 0;">Print Submitted Application Detail</h2>
+                        <table class="table table-bordered responsive">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Application Number</th>
+                                    <th>Applicant Name</th>
+                                    <th>Scheme Type</th>
+                                    <th>Scheme Name</th>
+                                    <th>Sector Type</th>
+                                    <th>Plot Area</th>
+                                    <th>Amount Paid</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var data in ApplicationData)
+                                {
+                                    <tr>
+                                        <th row-header="Table heading" scope="row">
+                                            <input type="radio" name="rdoApplication" id="rdoApplication" value="@data.ApplicationId" />
+                                        </th>
+                                        <td row-header="Table">@data.ApplicationNumber</td>
+                                        <td row-header="Table heading">@data.FullApplicantName</td>
+                                        <td row-header="heading">@data.SchemeType</td>
+                                        <td row-header="Table heading">@data.SchemeName</td>
+                                        <td row-header="Table heading">@data.SectorName</td>
+                                        <td row-header="Table heading">@data.PlotArea</td>
+                                        <td row-header="heading">@data.NetAmount</td>
+                                    </tr>
+                                }
 
-                    </div>
-                    <div class="col-sm-6 col-xs-12">
-                        <a name="next" href="/Applicant/PaymentAcknowledgement" target="_blank" class="btn btn-primary pull-left">Print Acknowledgement Form</a>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
+                <div class="row" style=" padding: 20px 20px; ">
+                    <div class="col-md-12 mx-0">
+                        <div class="col-sm-6 col-xs-12">
+                            <a name="next" id="printReciept" href="/Applicant/PaymentReciept" target="_blank" class="btn btn-primary pull-right disabledAnchor">Print Payment Reciept</a>
+
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <a name="next" id="printAcknowledge" href="/Applicant/PaymentAcknowledgement" target="_blank" class="btn btn-primary pull-left disabledAnchor">Print Acknowledgement Form</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row" style=" padding: 20px 20px; ">
+                    <div class="col-md-12 mx-0">
+                        <div class="col-sm-6 col-xs-12">
+                            <a name="next" id="printReciept" href="/Applicant/PaymentReciept" target="_blank" class="btn btn-primary pull-right">Print Payment Reciept</a>
+
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <a name="next" id="printAcknowledge" href="/Applicant/PaymentAcknowledgement" target="_blank" class="btn btn-primary pull-left">Print Acknowledgement Form</a>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[name*=rdoApplication]').change(function () {
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                data: '{applicationId: "' + $(this).val() + '"}',
+                url: '/Applicant/SetApplicantId',
+                success: function (data) {
+                    console.log('applicationId set');
+                    $('#printReciept').removeClass('disabledAnchor');
+                    $('#printAcknowledge').removeClass('disabledAnchor');
+                },
+                failure: function (response) {
+                    console.log(response);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            });
+        });
+    })
+
+</script>

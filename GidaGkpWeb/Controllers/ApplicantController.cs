@@ -366,6 +366,16 @@ namespace GidaGkpWeb.Controllers
 
         public ActionResult PaymentResponseSuccess()
         {
+            ApplicantDetails _details = new ApplicantDetails();
+            var data = _details.GetUserAppliedApplicationDetail(((CustomPrincipal)User).Id);
+            if (data.Count > 1)
+            {
+                ViewData["ApplicationData"] = data;
+            }
+            else if (data.Count == 1)
+            {
+                UserData.ApplicationId = data[0].ApplicationId;
+            }
             return View();
         }
 
@@ -439,47 +449,47 @@ namespace GidaGkpWeb.Controllers
             ApplicantDetails _details = new ApplicantDetails();
             if (UserData.ApplicationId > 0)
             {
-               
+
                 var docDetail = _details.GetApplicantDocumentDetail(UserData.ApplicationId);
                 ApplicantUploadDocumentModel model = new ApplicantUploadDocumentModel()
                 {
-                    ApplicantEduTechQualificationURL = string.Format("data:" + docDetail.ApplicantEduTechQualificationFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ApplicantEduTechQualification)),
+                    //ApplicantEduTechQualificationURL = string.Format("data:" + docDetail.ApplicantEduTechQualificationFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ApplicantEduTechQualification)),
+                    //ApplicantPhotoURL = string.Format("data:" + docDetail.ApplicantPhotoFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ApplicantPhoto)),
+                    //ApplicantSignatureURL = string.Format("data:" + docDetail.ApplicantSignatureFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ApplicantSignature)),
+                    //BalanceSheetURL = string.Format("data:" + docDetail.BalanceSheetFileType + ";base64,{0}", Convert.ToBase64String(docDetail.BalanceSheet)),
+                    //BankVerifiedSignatureURL = string.Format("data:" + docDetail.BankVerifiedSignatureFileType + ";base64,{0}", Convert.ToBase64String(docDetail.BankVerifiedSignature)),
+                    //DocProofForIndustrialEstablishedOutsideGidaURL = string.Format("data:" + docDetail.DocProofForIndustrialEstablishedOutsideGidaFileType + ";base64,{0}", Convert.ToBase64String(docDetail.DocProofForIndustrialEstablishedOutsideGida)),
+                    //ExperienceProofURL = string.Format("data:" + docDetail.ExperienceProofFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ExperienceProof)),
+                    //FinDetailsEstablishedIndustriesURL = string.Format("data:" + docDetail.FinDetailsEstablishedIndustriesFileType + ";base64,{0}", Convert.ToBase64String(docDetail.FinDetailsEstablishedIndustries)),
+                    //ITReturnURL = string.Format("data:" + docDetail.ITReturnFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ITReturn)),
+                    //MemorendumURL = string.Format("data:" + docDetail.MemorendumFileType + ";base64,{0}", Convert.ToBase64String(docDetail.Memorendum)),
+                    //OtherDocForProposedIndustryURL = string.Format("data:" + docDetail.OtherDocForProposedIndustryFileType + ";base64,{0}", Convert.ToBase64String(docDetail.OtherDocForProposedIndustry)),
+                    //PreEstablishedIndustriesDocURL = string.Format("data:" + docDetail.PreEstablishedIndustriesDocFileType + ";base64,{0}", Convert.ToBase64String(docDetail.PreEstablishedIndustriesDoc)),
+                    //ProjectReportURL = string.Format("data:" + docDetail.ProjectReportFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ProjectReport)),
+                    //ProposedPlanLandUsesURL = string.Format("data:" + docDetail.ProposedPlanLandUsesFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ProposedPlanLandUses)),
+                    //ScanAddressProofURL = string.Format("data:" + docDetail.ScanAddressProofFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ScanAddressProof)),
+                    //ScanCastCertURL = string.Format("data:" + docDetail.ScanCastCertFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ScanCastCert)),
+                    //ScanIDURL = string.Format("data:" + docDetail.ScanIDFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ScanID)),
+                    //ScanPANURL = string.Format("data:" + docDetail.ScanPANFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ScanPAN)),
                     ScanPANFileName = docDetail.ScanPANFileName,
                     ScanIDFileName = docDetail.ScanIDFileName,
                     ScanCastCertFileName = docDetail.ScanCastCertFileName,
                     ApplicantEduTechQualificationFileName = docDetail.ApplicantEduTechQualificationFileName,
-                    ApplicantPhotoURL = string.Format("data:" + docDetail.ApplicantPhotoFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ApplicantPhoto)),
                     ApplicantPhotoFileName = docDetail.ApplicantPhotoFileName,
-                    ApplicantSignatureURL = string.Format("data:" + docDetail.ApplicantSignatureFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ApplicantSignature)),
                     ApplicantSignatureFileName = docDetail.ApplicantSignatureFileName,
                     ApplicationId = docDetail.ApplicationId,
-                    BalanceSheetURL = string.Format("data:" + docDetail.BalanceSheetFileType + ";base64,{0}", Convert.ToBase64String(docDetail.BalanceSheet)),
                     BalanceSheetFileName = docDetail.BalanceSheetFileName,
-                    BankVerifiedSignatureURL = string.Format("data:" + docDetail.BankVerifiedSignatureFileType + ";base64,{0}", Convert.ToBase64String(docDetail.BankVerifiedSignature)),
                     BankVerifiedSignatureFileName = docDetail.BankVerifiedSignatureFileName,
-                    DocProofForIndustrialEstablishedOutsideGidaURL = string.Format("data:" + docDetail.DocProofForIndustrialEstablishedOutsideGidaFileType + ";base64,{0}", Convert.ToBase64String(docDetail.DocProofForIndustrialEstablishedOutsideGida)),
                     DocProofForIndustrialEstablishedOutsideGidaFileName = docDetail.DocProofForIndustrialEstablishedOutsideGidaFileName,
-                    ExperienceProofURL = string.Format("data:" + docDetail.ExperienceProofFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ExperienceProof)),
                     ExperienceProofFileName = docDetail.ExperienceProofFileName,
-                    FinDetailsEstablishedIndustriesURL = string.Format("data:" + docDetail.FinDetailsEstablishedIndustriesFileType + ";base64,{0}", Convert.ToBase64String(docDetail.FinDetailsEstablishedIndustries)),
                     FinDetailsEstablishedIndustriesFileName = docDetail.FinDetailsEstablishedIndustriesFileName,
-                    ITReturnURL = string.Format("data:" + docDetail.ITReturnFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ITReturn)),
                     ITReturnFileName = docDetail.ITReturnFileName,
-                    MemorendumURL = string.Format("data:" + docDetail.MemorendumFileType + ";base64,{0}", Convert.ToBase64String(docDetail.Memorendum)),
                     MemorendumFileName = docDetail.MemorendumFileName,
-                    OtherDocForProposedIndustryURL = string.Format("data:" + docDetail.OtherDocForProposedIndustryFileType + ";base64,{0}", Convert.ToBase64String(docDetail.OtherDocForProposedIndustry)),
                     OtherDocForProposedIndustryFileName = docDetail.OtherDocForProposedIndustryFileName,
-                    PreEstablishedIndustriesDocURL = string.Format("data:" + docDetail.PreEstablishedIndustriesDocFileType + ";base64,{0}", Convert.ToBase64String(docDetail.PreEstablishedIndustriesDoc)),
-                    ProjectReportURL = string.Format("data:" + docDetail.ProjectReportFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ProjectReport)),
                     PreEstablishedIndustriesDocFileName = docDetail.PreEstablishedIndustriesDocFileName,
                     ProjectReportFileName = docDetail.ProjectReportFileName,
-                    ProposedPlanLandUsesURL = string.Format("data:" + docDetail.ProposedPlanLandUsesFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ProposedPlanLandUses)),
                     ProposedPlanLandUsesFileName = docDetail.ProposedPlanLandUsesFileName,
-                    ScanAddressProofURL = string.Format("data:" + docDetail.ScanAddressProofFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ScanAddressProof)),
                     ScanAddressProofFileName = docDetail.ScanAddressProofFileName,
-                    ScanCastCertURL = string.Format("data:" + docDetail.ScanCastCertFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ScanCastCert)),
-                    ScanIDURL = string.Format("data:" + docDetail.ScanIDFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ScanID)),
-                    ScanPANURL = string.Format("data:" + docDetail.ScanPANFileType + ";base64,{0}", Convert.ToBase64String(docDetail.ScanPAN))
                 };
 
                 return Json(model, JsonRequestBehavior.AllowGet);
@@ -487,7 +497,13 @@ namespace GidaGkpWeb.Controllers
             return null;
         }
 
-        
+        [HttpPost]
+        public JsonResult SetApplicantId(int applicationId)
+        {
+            UserData.ApplicationId = applicationId;
+            return Json("application id set", JsonRequestBehavior.AllowGet);
+        }
+
         //public FileContentResult GetFile(int id)
         //{
         //    byte[] fileContent = null;

@@ -285,6 +285,7 @@ $(document).ready(function () {
                 });
                 if (selectedSectorId != null) {
                     dropdown.val(selectedSectorId);
+                    $('#SectorDescription').val($("#SectorName option:selected").text());
                 }
             },
             failure: function (response) {
@@ -409,7 +410,14 @@ $(document).ready(function () {
     }
 
     $('#btnPlotDetailSave').on('click', function (e) {
-        if ($('#ApplicationFee').val() != '' && $('#AppliedFor').val() != '' && $('#EarnestMoneyDeposite').val() != '' && $('#EstimatedRate').val() != '' && $('#GST').val() != '' && $('#IndustryOwnershipType').val() != '' && $('#NetAmount').val() != '' && $('#PaymemtSchedule').val() != '' && $('#plotArea').val() != '' && $('#PlotRange').val() != '' && $('#RelationshipStatus').val() != '' && $('#SchemeName').val() != '' && $('#SchemeType').val() != '' && $('#SectorName').val() != '' && $('#dob').val() != '' && $('#Name').val() != '' && $('#PermanentAddress').val() != '' && $('#PresentAddress').val() != '' && $('#TotalAmount').val() != '' && $('#TotalInvestment').val() != '' && $('#UnitName').val() != '' && $('#SectorDescription').val() != '' ) {
+        if ($('#ApplicationFee').val() != '' && $('#AppliedFor').val() != '' && $('#EarnestMoneyDeposite').val() != '' &&
+            $('#EstimatedRate').val() != '' && $('#GST').val() != '' && $('#IndustryOwnershipType').val() != '' &&
+            $('#NetAmount').val() != '' && $('#PaymemtSchedule').val() != '' && $('#plotArea').val() != '' &&
+            $('#PlotRange').val() != '' && $('#RelationshipStatus').val() != '' && $('#SchemeName').val() != '' &&
+            $('#SchemeType').val() != '' && $('#SectorName').val() != '' && $('#dob').val() != '' &&
+            $('#Name').val() != '' && $('#PermanentAddress').val() != '' && $('#PresentAddress').val() != '' &&
+            $('#TotalAmount').val() != '' && $('#TotalInvestment').val() != '' && $('#UnitName').val() != '' &&
+            $('#SectorDescription').val() != '') {
             var url = '/Applicant/SavePlotDetail';
             var inputData = {
                 ApplicationFee: $('#ApplicationFee').val(),
@@ -461,54 +469,57 @@ $(document).ready(function () {
     });
 
     $('#Step2NextButton').on('click', function (e) {
-        if ($('#FullName').val() != '' && $('#FName').val() != '' && $('#MName').val() != '' && $('#DOB').val() != '' && $('#Gender').val() != '' && $('#Category').val() != '' && $('#Nationality').val() != '' && $('#PAN').val() != '' && $('#MobileNo').val() != '' && $('#Email').val() != '' && $('#Religion').val() != '' && $('#CAddress').val() != '' && $('#PAddress').val() != '') {
-            var url = '/Applicant/SaveApplicantDetails';
-            var IdentityProof = '';
-            if ($('#c').prop('checked')) {
-                IdentityProof = $('#IDPAN').val();
-            }
-            else if ($('#IDPAN').prop('checked')) {
-                IdentityProof = $('#IDPAN').val();
-            }
-            else if ($('#IDvoterIDCard').prop('checked')) {
-                IdentityProof = $('#IDvoterIDCard').val();
-            }
-            else if ($('#IDDrivingLiecence').prop('checked')) {
-                IdentityProof = $('#IDDrivingLiecence').val();
-            }
-            else if ($('#IDAdhaarCard').prop('checked')) {
-                IdentityProof = $('#IDAdhaarCard').val();
-            }
-            else if ($('#IDCompanyIDCard').prop('checked')) {
-                IdentityProof = $('#IDCompanyIDCard').val();
-            }
+        var url = '/Applicant/SaveApplicantDetails';
+        var IdentityProof = '';
+        if ($('#c').prop('checked')) {
+            IdentityProof = $('#IDPAN').val();
+        }
+        else if ($('#IDPAN').prop('checked')) {
+            IdentityProof = $('#IDPAN').val();
+        }
+        else if ($('#IDvoterIDCard').prop('checked')) {
+            IdentityProof = $('#IDvoterIDCard').val();
+        }
+        else if ($('#IDDrivingLiecence').prop('checked')) {
+            IdentityProof = $('#IDDrivingLiecence').val();
+        }
+        else if ($('#IDAdhaarCard').prop('checked')) {
+            IdentityProof = $('#IDAdhaarCard').val();
+        }
+        else if ($('#IDCompanyIDCard').prop('checked')) {
+            IdentityProof = $('#IDCompanyIDCard').val();
+        }
 
-            var ResidentialProof = '';
-            if ($('#RPElectricBill').prop('checked')) {
-                ResidentialProof = $('#RPElectricBill').val();
-            }
-            else if ($('#RPITR').prop('checked')) {
-                ResidentialProof = $('#RPITR').val();
-            }
-            else if ($('#RPTelephoneBill').prop('checked')) {
-                ResidentialProof = $('#RPTelephoneBill').val();
-            }
-            else if ($('#RPBankPassbook').prop('checked')) {
-                ResidentialProof = $('#RPBankPassbook').val();
-            }
-            else if ($('#RPPassport').prop('checked')) {
-                ResidentialProof = $('#RPPassport').val();
-            }
-            else if ($('#RPVoterIDCard').prop('checked')) {
-                ResidentialProof = $('#RPVoterIDCard').val();
-            }
-            else if ($('#RPHRBill').prop('checked')) {
-                ResidentialProof = $('#RPHRBill').val();
-            }
-            else if ($('#RPDrivingLiecence').prop('checked')) {
-                ResidentialProof = $('#RPDrivingLiecence').val();
-            }
-
+        var ResidentialProof = '';
+        if ($('#RPElectricBill').prop('checked')) {
+            ResidentialProof = $('#RPElectricBill').val();
+        }
+        else if ($('#RPITR').prop('checked')) {
+            ResidentialProof = $('#RPITR').val();
+        }
+        else if ($('#RPTelephoneBill').prop('checked')) {
+            ResidentialProof = $('#RPTelephoneBill').val();
+        }
+        else if ($('#RPBankPassbook').prop('checked')) {
+            ResidentialProof = $('#RPBankPassbook').val();
+        }
+        else if ($('#RPPassport').prop('checked')) {
+            ResidentialProof = $('#RPPassport').val();
+        }
+        else if ($('#RPVoterIDCard').prop('checked')) {
+            ResidentialProof = $('#RPVoterIDCard').val();
+        }
+        else if ($('#RPHRBill').prop('checked')) {
+            ResidentialProof = $('#RPHRBill').val();
+        }
+        else if ($('#RPDrivingLiecence').prop('checked')) {
+            ResidentialProof = $('#RPDrivingLiecence').val();
+        }
+        if ($('#FullName').val() != '' && $('#FName').val() != '' && $('#MName').val() != '' &&
+            $('#DOB').val() != '' && $('#Gender').val() != '' && $('#Category').val() != '' &&
+            $('#Nationality').val() != '' && $('#PAN').val() != '' && $('#MobileNo').val() != '' &&
+            $('#Email').val() != '' && $('#Religion').val() != '' && $('#CAddress').val() != '' &&
+            $('#PAddress').val() != '' && IdentityProof != '' && ResidentialProof != '') {
             var inputData = {
                 FullName: $('#FullName').val(),
                 FName: $('#FName').val(),

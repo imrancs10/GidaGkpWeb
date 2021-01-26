@@ -553,6 +553,46 @@ namespace GidaGkpWeb.BAL
                     }).Distinct().ToList();
         }
 
+        public List<ApplicationDetailModel> GetUserAppliedApplicationDetail(int userId)
+        {
+            _db = new GidaGKPEntities();
+            return (from application in _db.ApplicantApplicationDetails
+                    join applicantDetail1 in _db.ApplicantDetails on application.ApplicationId equals applicantDetail1.ApplicationId into applicantDetail2
+                    from applicantDetail in applicantDetail2.DefaultIfEmpty()
+                    join plotDetail1 in _db.ApplicantPlotDetails on application.ApplicationId equals plotDetail1.ApplicationId into plotDetail2
+                    from plotDetail in plotDetail2.DefaultIfEmpty()
+                    join transaction1 in _db.ApplicantTransactionDetails on applicantDetail.ApplicationId equals transaction1.ApplicationId into transaction2
+                    from transaction in transaction2.DefaultIfEmpty()
+                    join lookupSchemeType1 in _db.Lookups on plotDetail.SchemeType equals lookupSchemeType1.LookupId into lookupSchemeType2
+                    from lookupSchemeType in lookupSchemeType2.DefaultIfEmpty()
+
+                    join lookupSchemeName1 in _db.Lookups on plotDetail.SchemeName equals lookupSchemeName1.LookupId into lookupSchemeName2
+                    from lookupSchemeName in lookupSchemeName2.DefaultIfEmpty()
+
+                    join lookupSectorName1 in _db.Lookups on plotDetail.SchemeName equals lookupSectorName1.LookupId into lookupSectorName2
+                    from lookupSectorName in lookupSectorName2.DefaultIfEmpty()
+
+                    where application.UserId == userId && transaction != null
+                    select new ApplicationDetailModel
+                    {
+                        ApplicationId = application.ApplicationId,
+                        ApplicationNumber = application.ApplicationNumber,
+                        FullApplicantName = applicantDetail.FullApplicantName,
+                        CAddress = applicantDetail.CAddress,
+                        Mobile = applicantDetail.Mobile,
+                        TotalAmount = plotDetail.TotalAmount,
+                        NetAmount = plotDetail.NetAmount,
+                        ApplicationFee = plotDetail.ApplicationFee,
+                        EarnestMoneyDeposit = plotDetail.EarnestMoney,
+                        GST = plotDetail.GST,
+                        PaymentDate = transaction != null ? transaction.trans_date : DateTime.Now,
+                        PlotArea = plotDetail.PlotArea,
+                        SchemeType = lookupSchemeType != null ? lookupSchemeType.LookupName : "",
+                        SchemeName = lookupSchemeName != null ? lookupSchemeName.LookupName : "",
+                        SectorName = lookupSectorName != null ? lookupSectorName.LookupName : ""
+                    }).Distinct().ToList();
+        }
+
         public int GetUserApplicationCount(int userId)
         {
             _db = new GidaGKPEntities();
