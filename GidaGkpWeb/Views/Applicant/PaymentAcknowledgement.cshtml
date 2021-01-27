@@ -49,7 +49,7 @@
                     <div class="profile__header">
                         <h4><small>सेवा में, <br>मुख्य कार्यपालक अधिकारी<br> गोरखपुर औद्योगिक विकास प्राधिकरण <br>गोरखपुर</small></h4>
                         <p class="text-muted">
-                            महोदय,<br>मैं प्राधिकरण के गीडा औद्योगिक सेक्टर में भूखंड के लिए आवेदन करता हूं | गीडा के किसी भी औद्योगिक सेक्टर में भूखंड के लिए मैं तैयार हूं/ नहीं हूं | <br> विस्तृत सूचनाएं नीचे दी गई हैं :-
+                            महोदय,<br>मैं प्राधिकरण के गीडा औद्योगिक सेक्टर में भूखंड के लिए आवेदन करता हूं | गीडा के किसी भी औद्योगिक सेक्टर में भूखंड के लिए मैं तैयार हूं| <br> विस्तृत सूचनाएं नीचे दी गई हैं :-
                         </p>
                         <!--<p>
                           <a href="#">bootdey.com</a>
@@ -65,7 +65,7 @@
                         <tbody>
                             <tr>
                                 <td><strong>सेक्टर संख्या जिसमें भूखंड की आवश्यकता है </strong></td>
-                                <td><strong>भूखंड का कुल क्षेत्रफल </strong></td>
+                                <td><strong>भूखंड का कुल क्षेत्रफल (वर्ग मीटर में) </strong></td>
                             </tr>
                             <tr>
                                 <td><strong>@UserData.SectorName </strong></td>
@@ -99,8 +99,7 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">3. आवेदन पत्र पर हस्ताक्षर करने वाले व्यक्ति का पूरा नाम व पता एवं उसकी प्रास्थिति / आवेदक से संबंध :- </h4>
                 </div>
-                <div class="panel-body">
-                    नाम आयु स्थाई पता एवं दूरभाष नंबर वर्तमान पता व दूरभाष नंबर प्रस्थिति ऑब्लिक संबंध
+                <div class="panel-body">                    
                     <table class="table profile__table table-bordered">
                         <tbody>
                             <tr>
@@ -123,7 +122,7 @@
                 </div>
 
                 <div class="panel-heading">
-                    <h4 class="panel-title">4. स्थापना के लिए प्रस्तावित उद्योग का प्रकार :-    xxxxxxx</h4>
+                    <h4 class="panel-title">4. स्थापना के लिए प्रस्तावित उद्योग का प्रकार :- @UserData.ProposedIndustryType</h4>
                 </div>
                 <div class="panel-heading">
                     <h4 class="panel-title">5. परियोजना का विवरण</h4>
@@ -132,7 +131,7 @@
                     <table class="table profile__table table-bordered">
                         <tbody>
                             <tr>
-                                <td><strong>परियोजना की आगणित लागत </strong></td>
+                                <td><strong>परियोजना की आगणित लागत (रुपए में)</strong></td>
                                 <td><strong>आगणित रोजगार सृजन</strong></td>
                             </tr>
                             <tr>
@@ -144,7 +143,7 @@
                 </div>
 
                 <div class="panel-heading">
-                    <h4 class="panel-title">6. मुख्यतः निम्न को दर्शाते हुए भूमि उपयोग अभिन्यास नक्शा </h4>
+                    <h4 class="panel-title">6. मुख्यतः निम्न को दर्शाते हुए भूमि उपयोग हेतु ले-आउट प्लान </h4>
                 </div>
                 <div class="panel-body">
                     <table class="table profile__table table-bordered">
@@ -162,7 +161,7 @@
                 </div>
 
                 <div class="panel-heading">
-                    <h4 class="panel-title">7. प्रस्तावित विनियोजन का विवरण निम्न पदों पर दिया जाए :- </h4>
+                    <h4 class="panel-title">7. प्रस्तावित विनियोजन का विवरण निम्न मदों पर दिया जाए :- </h4>
                 </div>
                 <div class="panel-body">
                     <table class="table profile__table table-bordered">
@@ -183,7 +182,7 @@
                 </div>
 
                 <div class="panel-heading">
-                    <h4 class="panel-title">8. उत्पादन प्रक्रिया के कारण क्या कोई दुएं उत्पन्न होंगे यदि हां तो उनकी प्रकृति एवं मात्रा :-</h4>
+                    <h4 class="panel-title">8. उत्पादन प्रक्रिया के कारण क्या कोई धुएं उत्पन्न होंगे यदि हां तो उनकी प्रकृति एवं मात्रा :-</h4>
                 </div>
                 <div class="panel-body">
                     <table class="table profile__table table-bordered">
@@ -197,7 +196,7 @@
                 </div>
 
                 <div class="panel-heading">
-                    <h4 class="panel-title">9. औधोगिक निस्न्रण / उच्छिष्ट   :- </h4>
+                    <h4 class="panel-title">9. औधोगिक निस्त्रण / उच्छिष्ट   :- </h4>
                 </div>
                 <div class="panel-body">
                     <table class="table profile__table table-bordered">
@@ -228,15 +227,15 @@
                 </div>
 
                 <div class="panel-heading">
-                    <h4 class="panel-title">10. प्रस्तावित निस्न्रण / उच्छिष्ट उपचार प्रक्रियाएं :-    @UserData.EffluentTreatmentMeasures</h4>
+                    <h4 class="panel-title">10. प्रस्तावित निस्त्रण / उच्छिष्ट उपचार प्रक्रियाएं :-    @UserData.EffluentTreatmentMeasures</h4>
                 </div>
 
                 <div class="panel-heading">
-                    <h4 class="panel-title">11.  विद्युत शब्द की आवश्यकता ( कि. वा. में) :-    @UserData.PowerRequirement</h4>
+                    <h4 class="panel-title">11.  विद्युत शक्ति की आवश्यकता ( कि. वा. में) :-    @UserData.PowerRequirement</h4>
                 </div>
 
                 <div class="panel-heading">
-                    <h4 class="panel-title">12. दूरभाष / फैक्स की आवश्यकता ( कि. वा. में) :-    @UserData.FirstYearNoOfTelephone</h4>
+                    <h4 class="panel-title">12. दूरभाष / फैक्स की आवश्यकता :-    @UserData.FirstYearNoOfTelephone</h4>
                 </div>
 
                 <div class="panel-heading">
@@ -273,7 +272,7 @@
                         <div class="profile-comments__item">
                             <div class="profile-comments__body">
                                 <div class="profile-comments__content">
-                                    उपरोक्त आवेदन पत्र में दी गई सूचनाएं मेरी जानकारी और विश्वास में सही हैं गीडा औद्योगिक सेक्टरो में भूखंड आवंटन तथा पट्टी पर भूमि देने के लिए इस आवेदन पत्र में वांछित सभी सामान्य शर्तें मेरे द्वारा ध्यान पूर्वक पढ़ वह समझ ली गई हैं एवं वह मुझे पूर्ण रूप से स्वीकार हैं | प्राधिकरण द्वारा समय-समय पर भविष्य में सामान्य शर्तो में किया गया कोई भी या सभी परिवर्तन बिना शर्त / आपत्ति मुझे स्वीकार होगा |<br>
+                                    उपरोक्त आवेदन पत्र में दी गई सूचनाएं मेरी जानकारी और विश्वास में सही हैं गीडा औद्योगिक सेक्टरो में भूखंड आवंटन तथा पट्टे पर भूमि देने के लिए इस आवेदन पत्र में वांछित सभी सामान्य शर्तें मेरे द्वारा ध्यान पूर्वक पढ़ वह समझ ली गई हैं एवं वह मुझे पूर्ण रूप से स्वीकार हैं | प्राधिकरण द्वारा समय-समय पर भविष्य में सामान्य शर्तो में किया गया कोई भी या सभी परिवर्तन बिना शर्त / आपत्ति मुझे स्वीकार होगा |<br>
                                     दिनांक:-			<br>
                                     स्थान :-
                                 </div>

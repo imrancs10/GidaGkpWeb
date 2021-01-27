@@ -23,7 +23,7 @@
                                 <div class="receipt-right">
                                     <h5>Gorakhpur Industrial Development Authority (GIDA)</h5>
                                     <h5>गोरखपुर औद्योगिक विकास प्राधिकरण  (गीडा)</h5>
-                                    <p>Sec.-7, GIDA, Gorakhpur, Uttar Pradesh 273212 <i class="fa fa-location-arrow"></i></p>
+                                    <p>Sec.-7, GIDA, Gorakhpur, Uttar Pradesh 273212</p>
                                     <p>0551-2580010,2580090 <i class="fa fa-phone"></i></p>
                                     <p>ceogida-up@up.gov.in <i class="fa fa-envelope-o"></i></p>
 
@@ -34,19 +34,22 @@
 
                     <div class="row">
                         <div class="receipt-header receipt-header-mid">
-                            <div class="col-xs-8 col-sm-8 col-md-8 text-left">
-                                <div class="receipt-right">
-                                    <h5>Name: @UserData.FullApplicantName <small>  |   Application Number : @UserData.ApplicationNumber</small></h5>
+                            <center><h2>Receipt</h2></center>
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                <div class="receipt-header">
+                                    <h5><b>Application Number :</b> @UserData.ApplicationNumber</h5>
+                                    <h5><b>Name :</b> @UserData.FullApplicantName</h5>
                                     <p><b>Mobile :</b> @UserData.Mobile</p>
                                     <p><b>Email :</b> @((User as CustomPrincipal).Email)</p>
                                     <p><b>Address :</b> @UserData.CAddress</p>
                                 </div>
                             </div>
-                            <div class="col-xs-4 col-sm-4 col-md-4">
+                            @*<div class="col-xs-4 col-sm-4 col-md-4">
                                 <div class="receipt-left">
-                                    <h2>Receipt</h2>
+                                    
+
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
 
@@ -109,7 +112,6 @@
                             <div class="col-xs-8 col-sm-8 col-md-8 text-left">
                                 <div class="receipt-right">
                                     <p><b>Date :</b> @DateTime.Now.ToShortDateString()</p>
-                                    <h5 style="color: rgb(140, 140, 140);">Thank you!</h5>
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4 text-right">
@@ -118,6 +120,7 @@
                                     <input type="submit" name="next" style="display:none" id="btnPrintDocument" class="btn btn-primary" value="Print Receipt" onclick="window.print();" />
                                 </div>
                             </div>
+                            <center><h5 style="color: rgb(140, 140, 140);">Thank you!</h5></center>
                         </div>
                     </div>
 
