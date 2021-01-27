@@ -25,8 +25,6 @@ namespace GidaGkpWeb.Models
     }
     public class AcknowledgementDetailModel : ApplicationDetailModel
     {
-        public string SectorName { get; set; }
-        public string PlotArea { get; set; }
         public string IndustryOwnership { get; set; }
         public string UnitName { get; set; }
         public string SignatryName { get; set; }

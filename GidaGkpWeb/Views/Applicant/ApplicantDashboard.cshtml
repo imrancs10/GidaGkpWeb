@@ -56,7 +56,7 @@
                                                             <select name="SchemeType" id="SchemeType" class="form-control"></select>
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Plot Range (In Sqr Mtr.)<span class="required-field"></span></label>
+                                                            <label for="usertype" class="text-uppercase">Plot Range (In Square Meter)<span class="required-field"></span></label>
                                                             <select name="PlotRange" id="PlotRange" class="form-control"></select>
 
                                                         </div>
@@ -65,7 +65,7 @@
                                                             <select name="SchemeName" id="SchemeName" class="form-control"></select>
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Plot Area (In Sqr Mtr.)<span class="required-field"></span></label>
+                                                            <label for="usertype" class="text-uppercase">Plot Area (In Square Meter)<span class="required-field"></span></label>
                                                             <input type="number" name="plotArea" id="plotArea" class="form-control">
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
@@ -143,7 +143,7 @@
                                                             <textarea name="PermanentAddress" id="PermanentAddress" class="form-control"></textarea>
                                                         </div>
 
-                                                        <div class="form-group col-sm-6 col-xs-12">
+                                                        <div class="form-group col-sm-6 col-xs-12 hidden">
                                                             <label for="usertype" class="text-uppercase">Relationship Status<span class="required-field"></span></label>
                                                             <select name="RelationshipStatus" id="RelationshipStatus" class="form-control"></select>
                                                         </div>
@@ -191,6 +191,7 @@
                                                                 <option value="">Select</option>
                                                                 <option value="Male">Male</option>
                                                                 <option value="Female">Female</option>
+                                                                <option value="Others">Others</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
@@ -201,14 +202,12 @@
                                                                 <option value="OBC">OBC</option>
                                                                 <option value="SC">SC</option>
                                                                 <option value="ST">ST</option>
-                                                                <option value="Others">others</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">Nationality<span class="required-field"></span></label>
                                                             <select name="Nationality" id="Nationality" class="form-control">
                                                                 <option value="Indian">Indian</option>
-                                                                <option value="Others">others</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
@@ -356,16 +355,16 @@
                                                 <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
                                                     <div class="row">
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Covered Area (In Sqr Mtr.)<span class="required-field"></span></label>
+                                                            <label for="usertype" class="text-uppercase">Covered Area (In Square Meter)<span class="required-field"></span></label>
                                                             <input type="number" name="CoveredArea" id="CoveredArea" class="form-control">
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Open Area (Sqr Mtr.)<span class="required-field"></span></label>
+                                                            <label for="usertype" class="text-uppercase">Open Area (In Square Meter)<span class="required-field"></span></label>
                                                             <input type="number" name="OpenArea" id="OpenArea" class="form-control">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Purpose for open area (In Sqr Mtr.)<span class="required-field"></span></label>
-                                                            <input type="number" name="Purposeforopenarea" id="Purposeforopenarea" class="form-control">
+                                                            <label for="usertype" class="text-uppercase">Purpose for open area<span class="required-field"></span></label>
+                                                            <input type="text" name="Purposeforopenarea" id="Purposeforopenarea" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -392,12 +391,15 @@
                                                 <div class="col-sm-12 col-xs-12" style="padding:20px 0px;">
                                                     <div class="row">
                                                         <div class="form-group col-sm-12 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Would any fumes be generated in the process of manufacture and if so,their nature and quantity<span class="required-field"></span></label>
+                                                            <label for="usertype" class="text-uppercase">
+                                                                Would any fumes be generated in the process of manufacture and if so,their nature and quantity (Yes/No)
+                                                                <span class="required-field"></span>
+                                                            </label>
                                                             <input name="processofmanufacture" id="processofmanufacture" class="form-control">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">Industrial Efflunets</label>
-                                                            <table class="table table-bordered responsive">
+                                                            <table class="table table-bordered responsive disabledAnchor" id="tableIndustrialEfflunets">
                                                                 <thead>
                                                                     <tr>
                                                                         <th>#</th>
@@ -444,7 +446,7 @@
                                                                 <thead>
                                                                     <tr>
                                                                         <th>#</th>
-                                                                        <th>#</th>
+                                                                        @*<th>#</th>*@
                                                                         <th>No of Telephonic Connection</th>
                                                                         <th>No of Fax Connection</th>
                                                                     </tr>
@@ -452,13 +454,13 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <th row-header="Table heading" scope="row">1</th>
-                                                                        <td row-header="Table">First Year</td>
+                                                                        @*<td row-header="Table">First Year</td>*@
                                                                         <td row-header="Table heading"><input type="number" name="FirstYearTelephonicConnection" id="FirstYearTelephonicConnection" class="form-control"></td>
                                                                         <td row-header="Table heading"><input type="number" name="FirstYearFaxConnection" id="FirstYearFaxConnection" class="form-control"></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th row-header="Table heading" scope="row">2</th>
-                                                                        <td row-header="Table heading">Ultimate Requirement</td>
+                                                                        @*<td row-header="Table heading">Ultimate Requirement</td>*@
                                                                         <td row-header="Table heading"><input type="number" name="UltimateRequirementTelephonicConnection" id="UltimateRequirementTelephonicConnection" class="form-control"></td>
                                                                         <td row-header="Table heading"><input type="number" name="UltimateRequirementFaxConnection" id="UltimateRequirementFaxConnection" class="form-control"></td>
                                                                     </tr>

@@ -15,7 +15,7 @@ namespace GidaGkpWeb.BAL
         public IEnumerable<object> GetLookupDetail(int? parentLookupId, string lookupTye)
         {
             _db = new GidaGKPEntities();
-            return (from lookup in _db.Lookups.Where(x => (x.ParentLookupId == parentLookupId) && x.LookupType == lookupTye)
+            return (from lookup in _db.Lookups.Where(x => (x.ParentLookupId == parentLookupId) && x.LookupType == lookupTye && x.IsActive == true)
                     select new
                     {
                         lookup.LookupId,

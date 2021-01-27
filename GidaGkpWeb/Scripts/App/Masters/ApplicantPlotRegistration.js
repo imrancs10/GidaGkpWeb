@@ -64,10 +64,10 @@ $(document).ready(function () {
                 }
             },
             failure: function (response) {
-                alert(response);
+                console.log(response);
             },
             error: function (response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     }
@@ -339,7 +339,7 @@ $(document).ready(function () {
             url: '/Masters/GetLookupDetail',
             success: function (data) {
                 $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
+                    dropdown.append($('<option selected="true"></option>').attr('value', entry.LookupId).text(entry.LookupName));
                 });
                 if (selectedPaymemtSchedule != null) {
                     dropdown.val(selectedPaymemtSchedule);
@@ -385,7 +385,7 @@ $(document).ready(function () {
     function FillRelationshipStatus(selectedRelationshipStatus = null) {
         let dropdown = $('#RelationshipStatus');
         dropdown.empty();
-        dropdown.append('<option value="">Select</option>');
+        dropdown.append('<option value="0">Select</option>');
         dropdown.prop('selectedIndex', 0);
         $.ajax({
             contentType: 'application/json; charset=utf-8',
@@ -414,7 +414,7 @@ $(document).ready(function () {
         if ($('#ApplicationFee').val() != '' && $('#AppliedFor').val() != '' && $('#EarnestMoneyDeposite').val() != '' &&
             $('#GST').val() != '' && $('#IndustryOwnershipType').val() != '' &&
             $('#NetAmount').val() != '' && $('#PaymemtSchedule').val() != '' && $('#plotArea').val() != '' &&
-            $('#PlotRange').val() != '' && $('#RelationshipStatus').val() != '' && $('#SchemeName').val() != '' &&
+            $('#PlotRange').val() != '' && $('#SchemeName').val() != '' &&
             $('#SchemeType').val() != '' && $('#SectorName').val() != '' && $('#dob').val() != '' &&
             $('#Name').val() != '' && $('#PermanentAddress').val() != '' && $('#PresentAddress').val() != '' &&
             $('#TotalAmount').val() != '' && $('#TotalInvestment').val() != '' && $('#UnitName').val() != '' &&
@@ -926,6 +926,15 @@ $(document).ready(function () {
             }
         });
     }
+
+    $('#processofmanufacture').change(function () {
+        if ($(this).val().toLowerCase() == 'n.a.' || $(this).val().toLowerCase() == 'na' || $(this).val().toLowerCase() == 'no') {
+            $('#tableIndustrialEfflunets').addClass('disabledAnchor');
+        }
+        else {
+            $('#tableIndustrialEfflunets').removeClass('disabledAnchor');
+        }
+    });
 
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1),

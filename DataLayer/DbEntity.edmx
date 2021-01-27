@@ -241,6 +241,7 @@
           <Property Name="LookupType" Type="varchar" MaxLength="500" />
           <Property Name="LookupName" Type="varchar" MaxLength="500" />
           <Property Name="ParentLookupId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityContainer Name="GidaGKPModelStoreContainer">
           <EntitySet Name="ApplicantApplicationDetail" EntityType="Self.ApplicantApplicationDetail" Schema="dbo" store:Type="Tables" />
@@ -494,6 +495,7 @@
           <Property Name="LookupType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="LookupName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ParentLookupId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         <EntityContainer Name="GidaGKPEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ApplicantApplicationDetails" EntityType="Self.ApplicantApplicationDetail" />
@@ -753,6 +755,7 @@
           <EntitySetMapping Name="Lookups">
             <EntityTypeMapping TypeName="GidaGKPModel.Lookup">
               <MappingFragment StoreEntitySet="Lookup">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="LookupId" ColumnName="LookupId" />
                 <ScalarProperty Name="LookupType" ColumnName="LookupType" />
                 <ScalarProperty Name="LookupName" ColumnName="LookupName" />
