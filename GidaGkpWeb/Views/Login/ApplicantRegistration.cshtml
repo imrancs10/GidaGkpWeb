@@ -16,6 +16,7 @@
     <script src="~/Scripts/App/Global/App.js"></script>
     <script src="~/Scripts/App/Global/Utility.js"></script>
     <script src="~/Scripts/App/Masters/ApplicantRegistration.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <style>
 
         .required-field::before {
@@ -74,7 +75,7 @@
             font-size: 13px;
             text-align: center;
         }
-       
+
         .login-sec h2 {
             margin-bottom: 0px;
             font-weight: 600;
@@ -360,13 +361,11 @@
                         </div>
                         <div class="form-group col-sm-6 col-xs-12">
                             <label for="usertype" class="text-uppercase">Scheme Name<span class="required-field"></span></label>
-                            <select name="SchemeName" id="SchemeName" class="form-control">
-                            </select>
+                            <select name="SchemeName" id="SchemeName" class="form-control"></select>
                         </div>
                         <div class="form-group col-sm-6 col-xs-12">
                             <label for="usertype" class="text-uppercase">Sector Name<span class="required-field"></span></label>
-                            <select name="SectorName" id="SectorName" class="form-control">
-                            </select>
+                            <select name="SectorName" id="SectorName" class="form-control"></select>
                         </div>
 
                         <div class="form-group col-sm-6 col-xs-12">
@@ -392,12 +391,12 @@
 
                     <div class="form-group col-sm-6 col-xs-12">
                         <label for="exampleInputEmail1" class="text-uppercase">Mobile Number<span class="required-field"></span></label>
-                        <input name="contactno" id="contact" class="form-control" placeholder="Contact No.">
+                        <input type="text" pattern="\d*" maxlength="10" name="contactno" id="contact" class="form-control" placeholder="Contact No.">
                     </div>
 
                     <div class="form-group col-sm-6 col-xs-12">
                         <label for="exampleInputEmail1" class="text-uppercase">Aadhar Number</label>
-                        <input name="Adhaar" id="Adhaar" class="form-control" placeholder="Adhaar No">
+                        <input type="text" data-type="adhaar-number" maxLength="19" name="Adhaar" id="Adhaar" class="form-control" placeholder="Adhaar No">
                     </div>
 
                     <div class="form-group col-sm-6 col-xs-12">
@@ -407,17 +406,17 @@
 
                     <div class="form-group col-sm-12 col-xs-12">
                         <label for="exampleInputEmail1" class="text-uppercase">Username<span class="required-field"></span></label>
-                        <input name="usrName" id="usrName" class="form-control" placeholder="Username">
+                        <input name="usrName" id="usrName" class="form-control" maxlength="20" placeholder="Username">
                     </div>
 
                     <div class="form-group col-sm-6 col-xs-12">
                         <label for="exampleInputPassword1" class="text-uppercase">Password<span class="required-field"></span></label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password" id="password" class="form-control" maxlength="20" placeholder="Password">
                     </div>
 
                     <div class="form-group col-sm-6 col-xs-12">
                         <label for="exampleInputPassword1" class="text-uppercase">Confirm Password<span class="required-field"></span></label>
-                        <input type="password" name="cpassword" id="cpassword" class="form-control" placeholder="Enter Password Again">
+                        <input type="password" name="cpassword" id="cpassword" class="form-control" maxlength="20" placeholder="Enter Password Again">
                     </div>
 
 
@@ -562,6 +561,20 @@
                 }
             });
         });
+    </script>
+    <script>
+        function aadhaarvalidation() {
+
+            var regexp = /^[2-9]{1}[0-9]{3}\s{1}[0-9]{4}\s{1}[0-9]{4}$/;
+
+            var x = document.getElementById("aadhaar").value;
+            if (regexp.test(x)) {
+                window.alert("Valid Aadhar no.");
+
+            }
+            else {
+                window.alert("Invalid Aadhar no.");
+            }
     </script>
     <script src="~/Scripts/jquery-ui.js"></script>
     <link href="~/styles/jquery-ui.css" rel="stylesheet" />
