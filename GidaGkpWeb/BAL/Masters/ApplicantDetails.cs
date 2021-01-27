@@ -636,7 +636,9 @@ namespace GidaGkpWeb.BAL
         {
             _db = new GidaGKPEntities();
             return (from application in _db.ApplicantApplicationDetails
-                    where application.UserId == userId
+                    join transaction1 in _db.ApplicantTransactionDetails on application.ApplicationId equals transaction1.ApplicationId into transaction2
+                    from transaction in transaction2.DefaultIfEmpty()
+                    where application.UserId == userId && transaction == null
                     select new ApplicationDetailModel
                     {
                         ApplicationId = application.ApplicationId,

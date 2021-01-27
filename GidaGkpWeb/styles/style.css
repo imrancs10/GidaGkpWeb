@@ -328,7 +328,7 @@ p {
     transition: all 300ms linear;
 }
 
-::selection {
+/*::selection {
     color: var(--white);
     background-color: var(--black);
 }
@@ -336,7 +336,7 @@ p {
 ::-moz-selection {
     color: var(--white);
     background-color: var(--black);
-}
+}*/
 
 mark {
     color: var(--white);

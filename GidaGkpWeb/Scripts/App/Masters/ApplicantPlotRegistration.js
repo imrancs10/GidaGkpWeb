@@ -1,13 +1,10 @@
-﻿/// <reference path="../../jquery-1.10.2.js" />
-/// <reference path="../Global/App.js" />
-/// <reference path="../Global/Utility.js" />
+﻿/// <reference path="../Global/Utility.js" />
 'use strict';
 
 
 $(document).ready(function () {
     var current_fs, next_fs, previous_fs; //fieldsets
     var opacity;
-
 
     var applicationId = getUrlParameter('applicationId');
     if (applicationId != null && applicationId != undefined && applicationId > 0) {
@@ -309,6 +306,10 @@ $(document).ready(function () {
             data: '{lookupTypeId: 0,lookupType: "PlotRange" }',
             url: '/Masters/GetLookupDetail',
             success: function (data) {
+                data = data.sort(function (a, b) {
+                    var x = a["LookupId"]; var y = b["LookupId"];
+                    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+                });
                 $.each(data, function (key, entry) {
                     dropdown.append($('<option></option>').attr('value', entry.LookupId).text(entry.LookupName));
                 });
@@ -411,7 +412,7 @@ $(document).ready(function () {
 
     $('#btnPlotDetailSave').on('click', function (e) {
         if ($('#ApplicationFee').val() != '' && $('#AppliedFor').val() != '' && $('#EarnestMoneyDeposite').val() != '' &&
-            $('#EstimatedRate').val() != '' && $('#GST').val() != '' && $('#IndustryOwnershipType').val() != '' &&
+            $('#GST').val() != '' && $('#IndustryOwnershipType').val() != '' &&
             $('#NetAmount').val() != '' && $('#PaymemtSchedule').val() != '' && $('#plotArea').val() != '' &&
             $('#PlotRange').val() != '' && $('#RelationshipStatus').val() != '' && $('#SchemeName').val() != '' &&
             $('#SchemeType').val() != '' && $('#SectorName').val() != '' && $('#dob').val() != '' &&
@@ -471,7 +472,7 @@ $(document).ready(function () {
     $('#Step2NextButton').on('click', function (e) {
         var url = '/Applicant/SaveApplicantDetails';
         var IdentityProof = '';
-        if ($('#c').prop('checked')) {
+        if ($('#IDPassport').prop('checked')) {
             IdentityProof = $('#IDPAN').val();
         }
         else if ($('#IDPAN').prop('checked')) {
@@ -566,7 +567,9 @@ $(document).ready(function () {
     });
 
     $('#Step3NextButton').on('click', function (e) {
-        if ($('#ProposedIndustryType').val() != '' && $('#ProjectEstimatedCost').val() != '' && $('#CoveredArea').val() != '') {
+        if ($('#ProposedIndustryType').val() != '' && $('#ProjectEstimatedCost').val() != '' && $('#CoveredArea').val() != '' &&
+            $('#OpenArea').val() != '' && $('#Purposeforopenarea').val() != '' && $('#Investmentland').val() != '' &&
+            $('#InvestmentBuilding').val() != '' && $('#InvestmentPlant').val() != '' && $('#processofmanufacture').val() != '') {
             var url = '/Applicant/SaveProjectDetails';
             var inputData = {
                 ProposedIndustryType: $('#ProposedIndustryType').val(),
@@ -617,7 +620,8 @@ $(document).ready(function () {
     });
 
     $('#Step4NextButton').on('click', function (e) {
-        if ($('#BankAccountName').val() != '' && $('#BankAccountNo').val() != '' && $('#BankName').val() != '') {
+        if ($('#BankAccountName').val() != '' && $('#BankAccountNo').val() != '' && $('#BankName').val() != '' &&
+            $('#BranchName').val() != '' && $('#BranchAddress').val() != '' && $('#IFSCCode').val() != '') {
             var url = '/Applicant/SaveBankDetail';
             var inputData = {
                 BankAccountName: $('#BankAccountName').val(),
@@ -700,6 +704,11 @@ $(document).ready(function () {
     });
 
     $("#PlotRange").change(function () {
+        //reset dependent input
+        $('#plotArea').val('');
+        $('#TotalInvestment').val('');
+        $('#EarnestMoneyDeposite').val('');
+        $('#NetAmount').val('');
         $.ajax({
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
@@ -721,7 +730,7 @@ $(document).ready(function () {
 
     $("#plotArea").change(function () {
         var plotRangeSelected = $("#PlotRange option:selected").text();
-        if (plotRangeSelected.indexOf('Above') > -1) {
+        if (plotRangeSelected.indexOf('Select') > -1) {
             var rangeArray = plotRangeSelected.split('-');
             if (parseInt($(this).val()) < parseInt(rangeArray[0])) {
                 $(this).val('')
@@ -735,9 +744,38 @@ $(document).ready(function () {
                 utility.alert.setAlert(utility.alert.alertType.info, 'Plot Area must in selected plot range');
             }
         }
-        if ($(this).val() != '' && $('#EstimatedRate').val() != '') {
-            $('#TotalInvestment').val($(this).val() * $('#EstimatedRate').val());
+
+        //change logic here
+        var plotArea = $(this).val();
+        var previousRange = $("#PlotRange option:selected").prev();
+        if (previousRange.text() != 'Select') {
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                data: '{lookupTypeId: "' + previousRange.val() + '",lookupType: "EstimatedRate" }',
+                url: '/Masters/GetLookupDetail',
+                success: function (data) {
+                    var lastEstimatedCast = data[0].LookupName;
+                    var rangeArray = previousRange.text().split('-');
+                    var firstCalculation = parseInt(rangeArray[1]) * parseInt(lastEstimatedCast);
+                    var secondCalculation = parseInt(plotArea - parseInt(rangeArray[1])) * parseInt($('#EstimatedRate').val());
+                    $('#TotalInvestment').val(firstCalculation + secondCalculation);
+                },
+                failure: function (response) {
+                    console.log(response);
+                },
+                error: function (response) {
+                    console.log(response.responseText);
+                }
+            });
         }
+        else {
+            if ($(this).val() != '' && $('#EstimatedRate').val() != '') {
+                $('#TotalInvestment').val($(this).val() * $('#EstimatedRate').val());
+            }
+        }
+
         var auxValue = (parseInt($(this).val()) + 1000).toString().slice(1, 4);
         var EMD = "";
         if (auxValue == "000") {
