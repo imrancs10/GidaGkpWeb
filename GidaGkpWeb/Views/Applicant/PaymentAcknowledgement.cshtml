@@ -38,7 +38,7 @@
                     <div class="" style="position: relative;top: -183px;left: 827px;">
                         <p style=" padding-bottom: 0px; margin-bottom: 0px;">Application Number :@UserData.ApplicationNumber</p>
                         <p>
-                            Date :@UserData.PaymentDate.Value.ToShortDateString()
+                            Date :@UserData.PaymentDate.Value.ToString("dd/MMM/yyyy")
                         </p>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                             </tr>
                             <tr>
                                 <td><strong>@UserData.SignatryName</strong></td>
-                                <td><strong>@UserData.SignatryDateOfBirth.Value.ToShortDateString()</strong></td>
+                                <td><strong>@UserData.SignatryDateOfBirth.Value.ToString("dd/MMM/yyyy")</strong></td>
                                 <td><strong>@UserData.SignatryPermanentAddress &nbsp;@UserData.SignatryPermanentPhoneNumber</strong></td>
                                 <td><strong>@UserData.SignatryPresentAddress &nbsp;@UserData.SignatryPresentPhoneNumber</strong></td>
                                 <td><strong>@UserData.RelationshipStatus</strong></td>
@@ -255,7 +255,7 @@
                             <tr>
                                 <td><strong>@UserData.NetAmount</strong></td>
                                 <td><strong>@UserData.ApplicationNumber</strong></td>
-                                <td><strong>@UserData.PaymentDate</strong></td>
+                                <td><strong>@UserData.PaymentDate.Value.ToString("dd/MMM/yyyy")</strong></td>
                                 <td><strong>@UserData.BankName</strong></td>
                             </tr>
                         </tbody>
