@@ -705,6 +705,12 @@ $(document).ready(function () {
 
     $("#PlotRange").change(function () {
         //reset dependent input
+        if ($("#PlotRange option:selected").text() == "0-4000") {
+            $('#labelPlotArea').text('Plot Area Not less than 3996.35 (Square Meter)');
+        }
+        else {
+            $('#labelPlotArea').text('Plot Area (Square Meter)');
+        }
         $('#plotArea').val('');
         $('#TotalInvestment').val('');
         $('#EarnestMoneyDeposite').val('');
@@ -728,8 +734,26 @@ $(document).ready(function () {
     });
 
 
+    $("#CoveredArea").change(function () {
+        if (parseFloat($(this).val()) > parseFloat($("#plotArea").val())) {
+            $(this).val('');
+            $('#OpenArea').val('');
+            utility.alert.setAlert(utility.alert.alertType.info, 'Covered Area must less than or equal to plot area');
+        }
+        if ($("#plotArea").val() != '') {
+            $('#OpenArea').val(parseFloat($("#plotArea").val()) - parseFloat($(this).val()));
+        }
+    });
+
     $("#plotArea").change(function () {
         var plotRangeSelected = $("#PlotRange option:selected").text();
+        if (plotRangeSelected == "0-4000") {
+            if ($(this).val() < 3996.35) {
+                $(this).val('');
+                utility.alert.setAlert(utility.alert.alertType.info, 'Plot Area must greater than 3996.35');
+                return false;
+            }
+        }
         if (plotRangeSelected.indexOf('Select') > -1) {
             var rangeArray = plotRangeSelected.split('-');
             if (parseInt($(this).val()) < parseInt(rangeArray[0])) {
