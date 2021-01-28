@@ -844,8 +844,9 @@ $(document).ready(function () {
                     $('[name*=Otherproposedindustryfilename]').val(data.OtherDocForProposedIndustryFileName);
                     $('[name*=CasteCertificatefilename]').val(data.ScanCastCertFileName);
                     $('[name*=outsideGIDAElectricitybillfilename]').val(data.DocProofForIndustrialEstablishedOutsideGidaFileName);
-
-                    $('#btnStep5Skip').removeClass('hidden');
+                    if (data.ApplicantPhotoFileName != '' && data.ApplicantPhotoFileName != null) {
+                        $('#btnStep5Skip').removeClass('hidden');
+                    }
                 }
             },
             failure: function (response) {
@@ -936,6 +937,15 @@ $(document).ready(function () {
         }
         else {
             $('#tableIndustrialEfflunets').addClass('disabledAnchor');
+        }
+    });
+
+    //binds to onchange event of your input field
+    $('[type="file"]').bind('change', function () {
+        if (this.files[0].size > 6291456) {  //allowed 6 MB Currently
+            utility.alert.setAlert(utility.alert.alertType.error, 'Please select file less than 6 MB');
+            $(this).val('');
+            $('[name*=' + $(this).attr('id') + 'filename]').val('');
         }
     });
 

@@ -20,7 +20,7 @@ namespace GidaGkpWeb.Infrastructure.Utility
             return new string(Enumerable.Repeat(Chars, LengthDeviceVerification)
               .Select(s => s[srRandom.Next(s.Length)]).ToArray());
         }
-        public static string GetSerialNumber()
+        public static string GetUniqueNumber()
         {
             string code = new string(Enumerable.Repeat(Chars, LengthSerialNumber)
               .Select(s => s[srRandom.Next(s.Length)]).ToArray());
