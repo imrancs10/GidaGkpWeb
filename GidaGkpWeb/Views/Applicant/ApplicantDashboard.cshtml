@@ -65,7 +65,7 @@
                                                             <select name="SchemeName" id="SchemeName" class="form-control"></select>
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Plot Area (In Square Meter)<span class="required-field"></span></label>
+                                                            <label for="usertype" class="text-uppercase">Plot Area Not less than 3996.35 (Square Meter)<span class="required-field"></span></label>
                                                             <input type="number" name="plotArea" id="plotArea" class="form-control">
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
@@ -82,7 +82,7 @@
                                                             <select name="PaymemtSchedule" id="PaymemtSchedule" class="form-control"></select>
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Total Investment (In Rs.)</label>
+                                                            <label for="usertype" class="text-uppercase">Estimated Cost of Plot (In Rs.)</label>
                                                             <input type="number" step="0.01" name="TotalInvestment" id="TotalInvestment" class="form-control" readonly>
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
@@ -212,7 +212,7 @@
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">Adhaar Number</label>
-                                                            <input type="number" name="AdhaarNo" id="AdhaarNo" class="form-control">
+                                                            <input type="number" name="AdhaarNo" maxlength="12" id="AdhaarNo" class="form-control">
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">PAN Number<span class="required-field"></span></label>
@@ -224,14 +224,14 @@
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">Phone Number</label>
-                                                            <input type="number" name="Phone" id="Phone" maxlength="10" class="form-control">
+                                                            <input type="text" name="Phone" id="Phone" maxlength="10" class="form-control">
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">Email ID<span class="required-field"></span></label>
                                                             <input type="email" name="Email" id="Email" class="form-control">
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Religion<span class="required-field"></span></label>
+                                                            <label for="usertype" class="text-uppercase">Religion</label>
                                                             <select name="Religion" id="Religion" class="form-control">
                                                                 <option value="">Select</option>
                                                                 <option value="Hinduism">Hinduism</option>
@@ -320,7 +320,7 @@
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <input type="radio" id="RPHRBill" name="ResidentialProof" value="HR Bill">
-                                                            <label for="HRBill">HR Bill</label>
+                                                            <label for="HRBill">House Rent Bill/House Rent Aggreement</label>
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <input type="radio" id="RPDrivingLiecence" name="ResidentialProof" value="Driving Liecence">
@@ -414,19 +414,19 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <th row-header="Table heading" scope="row">1</th>
-                                                                        <td row-header="Table">Liquid</td>
+                                                                        <td row-header="Table">Liquid (Litres)</td>
                                                                         <td row-header="Table heading"><input type="text" name="LiquidQuantity" id="LiquidQuantity" class="form-control"></td>
                                                                         <td row-header="heading"><input name="LiquidChemicalComposition" id="LiquidChemicalComposition" class="form-control"></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th row-header="Table heading" scope="row">2</th>
-                                                                        <td row-header="Table heading">Solid</td>
+                                                                        <td row-header="Table heading">Solid (kg/Quintal/Tons)</td>
                                                                         <td row-header="Table heading"><input type="text" name="SolidQuantity" id="SolidQuantity" class="form-control"></td>
                                                                         <td row-header="Table heading"><input name="SolidChemicalComposition" id="SolidChemicalComposition" class="form-control"></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th row-header="Table heading" scope="row">3</th>
-                                                                        <td row-header="Table heading">Gas</td>
+                                                                        <td row-header="Table heading">Gas (Quibic Meters)</td>
                                                                         <td row-header="Table heading"><input type="text" name="GasQuantity" id="GasQuantity" class="form-control"></td>
                                                                         <td row-header="Table heading"><input name="GasChemicalComposition" id="GasChemicalComposition" class="form-control"></td>
                                                                     </tr>
@@ -629,7 +629,7 @@
                                                     <div class="row">
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="file" class="sr-only">
-                                                                As per IT Act past three financial years (AYs 2019-20, 2018-19, 2017-18) Income Tax Return  and computation of income
+                                                                As per IT Act past three financial years (AYs 2019-20, 2018-19, 2017-18) Income Tax Return  and computation of income or Any document supporting Networth of the applicant
                                                                 <span class="required-field"></span>
                                                             </label>
                                                             <div class="input-group">
