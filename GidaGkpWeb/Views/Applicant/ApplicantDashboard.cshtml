@@ -234,10 +234,13 @@
                                                             <label for="usertype" class="text-uppercase">Religion<span class="required-field"></span></label>
                                                             <select name="Religion" id="Religion" class="form-control">
                                                                 <option value="">Select</option>
-                                                                <option value="Hindu">Hindu</option>
-                                                                <option value="Muslim">Muslim</option>
-                                                                <option value="Sikh">Sikh</option>
-                                                                <option value="Others">others</option>
+                                                                <option value="Hinduism">Hinduism</option>
+                                                                <option value="Buddhism">Buddhism</option>
+                                                                <option value="Islam">Islam</option>
+                                                                <option value="Sikhism">Sikhism</option>
+                                                                <option value="Christianity">Christianity</option>
+                                                                <option value="Jainism">Jainism</option>
+                                                                <option value="Other">Other</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
@@ -412,19 +415,19 @@
                                                                     <tr>
                                                                         <th row-header="Table heading" scope="row">1</th>
                                                                         <td row-header="Table">Liquid</td>
-                                                                        <td row-header="Table heading"><input type="number" step="0.01" name="LiquidQuantity" id="LiquidQuantity" class="form-control"></td>
+                                                                        <td row-header="Table heading"><input type="text" name="LiquidQuantity" id="LiquidQuantity" class="form-control"></td>
                                                                         <td row-header="heading"><input name="LiquidChemicalComposition" id="LiquidChemicalComposition" class="form-control"></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th row-header="Table heading" scope="row">2</th>
                                                                         <td row-header="Table heading">Solid</td>
-                                                                        <td row-header="Table heading"><input type="number" step="0.01" name="SolidQuantity" id="SolidQuantity" class="form-control"></td>
+                                                                        <td row-header="Table heading"><input type="text" name="SolidQuantity" id="SolidQuantity" class="form-control"></td>
                                                                         <td row-header="Table heading"><input name="SolidChemicalComposition" id="SolidChemicalComposition" class="form-control"></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <th row-header="Table heading" scope="row">3</th>
                                                                         <td row-header="Table heading">Gas</td>
-                                                                        <td row-header="Table heading"><input type="number" step="0.01" name="GasQuantity" id="GasQuantity" class="form-control"></td>
+                                                                        <td row-header="Table heading"><input type="text" name="GasQuantity" id="GasQuantity" class="form-control"></td>
                                                                         <td row-header="Table heading"><input name="GasChemicalComposition" id="GasChemicalComposition" class="form-control"></td>
                                                                     </tr>
                                                                 </tbody>
@@ -441,26 +444,20 @@
                                                             <input type="number" name="PowerRequirement" id="PowerRequirement" class="form-control">
                                                         </div>
                                                         <div class="form-group col-sm-12 col-xs-12">
-                                                            <label for="usertype" class="text-uppercase">Industrial Efflunets</label>
+                                                            <label for="usertype" class="text-uppercase hidden">Industrial Efflunets</label>
                                                             <table class="table table-bordered responsive">
                                                                 <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        @*<th>#</th>*@
+                                                                    <tr>                                                                        
                                                                         <th>No of Telephonic Connection</th>
                                                                         <th>No of Fax Connection</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <th row-header="Table heading" scope="row">1</th>
-                                                                        @*<td row-header="Table">First Year</td>*@
+                                                                    <tr>                                                                        
                                                                         <td row-header="Table heading"><input type="number" name="FirstYearTelephonicConnection" id="FirstYearTelephonicConnection" class="form-control"></td>
                                                                         <td row-header="Table heading"><input type="number" name="FirstYearFaxConnection" id="FirstYearFaxConnection" class="form-control"></td>
                                                                     </tr>
-                                                                    <tr>
-                                                                        <th row-header="Table heading" scope="row">2</th>
-                                                                        @*<td row-header="Table heading">Ultimate Requirement</td>*@
+                                                                    <tr class="hidden">                                                                        
                                                                         <td row-header="Table heading"><input type="number" name="UltimateRequirementTelephonicConnection" id="UltimateRequirementTelephonicConnection" class="form-control"></td>
                                                                         <td row-header="Table heading"><input type="number" name="UltimateRequirementFaxConnection" id="UltimateRequirementFaxConnection" class="form-control"></td>
                                                                     </tr>
@@ -475,11 +472,11 @@
                                                     <div class="row">
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">Skilled</label>
-                                                            <input name="Skilled" id="Skilled" class="form-control">
+                                                            <input type="number" name="Skilled" id="Skilled" class="form-control">
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">Unskilled</label>
-                                                            <input name="Unskilled" id="Unskilled" class="form-control">
+                                                            <input type="number" name="Unskilled" id="Unskilled" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
