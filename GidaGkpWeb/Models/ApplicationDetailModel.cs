@@ -58,6 +58,8 @@ namespace GidaGkpWeb.Models
         public string BankName { get; set; }
         public byte[] ApplicantPhoto { get; set; }
         public byte[] ApplicantSignature { get; set; }
+        public string Skilled { get; set; }
+        public string UnSkilled { get; set; }
     }
 
     public class ApplicantPlotDetailModel

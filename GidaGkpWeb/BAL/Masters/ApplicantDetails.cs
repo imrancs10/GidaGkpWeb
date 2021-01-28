@@ -548,7 +548,9 @@ namespace GidaGkpWeb.BAL
                         SolidQuantity = projectDetail.SolidQuantity,
                         UltimateNoOfFax = projectDetail.UltimateNoOfFax,
                         UltimateNoOfTelephone = projectDetail.UltimateNoOfTelephone,
-                        UnitName = plotDetail.UnitName
+                        UnitName = plotDetail.UnitName,
+                        Skilled = projectDetail.Skilled,
+                        UnSkilled = projectDetail.UnSkilled
                     }).FirstOrDefault();
         }
 
