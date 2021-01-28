@@ -88,44 +88,44 @@ $(document).ready(function () {
                     else if (data.IdentiyProof == 'PAN') {
                         $('#IDPAN').prop('checked', true);
                     }
-                    else if (data.IdentiyProof == 'voterIDCard') {
+                    else if (data.IdentiyProof == 'Voter ID Card') {
                         $('#IDvoterIDCard').prop('checked', true);
                     }
-                    else if (data.IdentiyProof == 'DrivingLiecence') {
+                    else if (data.IdentiyProof == 'Driving Liecence') {
                         $('#IDDrivingLiecence').prop('checked', true);
                     }
                     else if (data.IdentiyProof == 'AdhaarCard') {
                         $('#IDAdhaarCard').prop('checked', true);
                     }
-                    else if (data.IdentiyProof == 'CompanyIDCard') {
+                    else if (data.IdentiyProof == 'Company ID Card') {
                         $('#IDCompanyIDCard').prop('checked', true);
                     }
 
                     //ResidentialProof
-                    if (data.ResidentialProof == 'ElectricBill') {
+                    if (data.ResidentialProof == 'Electric Bill') {
                         $('#RPElectricBill').prop('checked', true);
                     }
                     else if (data.ResidentialProof == 'ITR') {
                         $('#RPITR').prop('checked', true);
                     }
-                    else if (data.ResidentialProof == 'TelephoneBill') {
+                    else if (data.ResidentialProof == 'Telephone Bill') {
                         $('#RPTelephoneBill').prop('checked', true);
                     }
 
-                    else if (data.ResidentialProof == 'BankPassbook') {
+                    else if (data.ResidentialProof == 'Bank Passbook Account Detail') {
                         $('#RPBankPassbook').prop('checked', true);
                     }
                     else if (data.ResidentialProof == 'Passport') {
                         $('#RPPassport').prop('checked', true);
                     }
-                    else if (data.ResidentialProof == 'VoterIDCard') {
+                    else if (data.ResidentialProof == 'Voter ID Card') {
                         $('#RPVoterIDCard').prop('checked', true);
                     }
 
-                    else if (data.ResidentialProof == 'HRBill') {
+                    else if (data.ResidentialProof == 'HR Bill') {
                         $('#RPHRBill').prop('checked', true);
                     }
-                    else if (data.ResidentialProof == 'DrivingLiecence') {
+                    else if (data.ResidentialProof == 'Driving Liecence') {
                         $('#RPDrivingLiecence').prop('checked', true);
                     }
 
@@ -473,7 +473,7 @@ $(document).ready(function () {
         var url = '/Applicant/SaveApplicantDetails';
         var IdentityProof = '';
         if ($('#IDPassport').prop('checked')) {
-            IdentityProof = $('#IDPAN').val();
+            IdentityProof = $('#IDPassport').val();
         }
         else if ($('#IDPAN').prop('checked')) {
             IdentityProof = $('#IDPAN').val();
@@ -931,8 +931,11 @@ $(document).ready(function () {
         if ($(this).val().toLowerCase() == 'n.a.' || $(this).val().toLowerCase() == 'na' || $(this).val().toLowerCase() == 'no') {
             $('#tableIndustrialEfflunets').addClass('disabledAnchor');
         }
-        else {
+        else if ($(this).val().toLowerCase() == 'yes') {
             $('#tableIndustrialEfflunets').removeClass('disabledAnchor');
+        }
+        else {
+            $('#tableIndustrialEfflunets').addClass('disabledAnchor');
         }
     });
 

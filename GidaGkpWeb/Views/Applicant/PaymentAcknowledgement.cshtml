@@ -5,7 +5,7 @@
     ViewBag.Title = "PaymentAcknowledgement";
     Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
     var UserData = ViewData["UserData"] as AcknowledgementDetailModel;
-
+    int intSkilled, intUnSkilled;
     string imgPhotosrc = "https://image.freepik.com/free-vector/businessman-character-avatar-icon-vector-illustration-design_24877-18271.jpg";
     if (UserData != null && UserData.ApplicantPhoto != null)
     {
@@ -136,7 +136,7 @@
                             </tr>
                             <tr>
                                 <td><strong>@UserData.ProjectEstimatedCost </strong></td>
-                                <td><strong>@UserData.Skilled &nbsp; @UserData.UnSkilled</strong></td>
+                                <td><strong>@((int.TryParse(UserData.Skilled, out intSkilled)?intSkilled:0)  + (int.TryParse(UserData.UnSkilled, out intUnSkilled)? intUnSkilled : 0))</strong></td>
                             </tr>
                         </tbody>
                     </table>
