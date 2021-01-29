@@ -610,7 +610,6 @@ namespace GidaGkpWeb.BAL
                         join projectDetail in _db.ApplicantProjectDetails on applicantDetail.ApplicationId equals projectDetail.ApplicationId
                         join documentDetail in _db.ApplicantUploadDocs on applicantDetail.ApplicationId equals documentDetail.ApplicationId
                         join IndustryOwnership in _db.Lookups on plotDetail.IndustryOwnership equals IndustryOwnership.LookupId
-                        join RelationshipStatus in _db.Lookups on plotDetail.RelationshipStatus equals RelationshipStatus.LookupId
                         join lookupSectorName in _db.Lookups on plotDetail.SectorName equals lookupSectorName.LookupId
                         where applicationDetail.ApplicationId == appID
                         select new AcknowledgementDetailModel
@@ -647,7 +646,6 @@ namespace GidaGkpWeb.BAL
                             ProposedInvestmentPlant = projectDetail.ProposedInvestmentPlant,
                             ProposedOpenArea = projectDetail.ProposedOpenArea,
                             PurpuseOpenArea = projectDetail.PurpuseOpenArea,
-                            RelationshipStatus = RelationshipStatus.LookupName,
                             SectorName = lookupSectorName.LookupName,
                             SignatryDateOfBirth = plotDetail.SignatryDateOfBirth,
                             SignatryName = plotDetail.SignatryName,
