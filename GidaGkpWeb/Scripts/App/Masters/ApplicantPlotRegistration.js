@@ -852,7 +852,7 @@ $(document).ready(function () {
                     $('[name*=ProjectReportsfilename]').val(data.ProjectReportFileName);
                     $('[name*=Proposedplanfilename]').val(data.ProposedPlanLandUsesFileName);
                     $('[name*=PartnershipDeedfilename]').val(data.MemorendumFileName);
-                    $('[name*=PanCardfilename]').val(data.ScanPANFileNameFileName);
+                    $('[name*=PanCardfilename]').val(data.ScanPANFileName);
                     $('[name*=AddressProoffilename]').val(data.ScanAddressProofFileName);
                     $('[name*=IncomeTaxreturnfilename]').val(data.ITReturnFileName);
                     $('[name*=Experienceprooffilename]').val(data.ExperienceProofFileName);
