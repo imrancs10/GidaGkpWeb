@@ -574,6 +574,7 @@ namespace GidaGkpWeb.BAL
                         {
                             ApplicationNumber = application.ApplicationNumber,
                             FullApplicantName = applicantDetail.FullApplicantName,
+                            Emaild= applicantDetail.EmailId,
                             CAddress = applicantDetail.CAddress,
                             Mobile = applicantDetail.Mobile,
                             TotalAmount = plotDetail.TotalAmount,
@@ -581,7 +582,8 @@ namespace GidaGkpWeb.BAL
                             ApplicationFee = plotDetail.ApplicationFee,
                             EarnestMoneyDeposit = plotDetail.EarnestMoney,
                             GST = plotDetail.GST,
-                            PaymentDate = transaction != null ? transaction.trans_date : DateTime.Now
+                            PaymentDate = transaction != null ? transaction.trans_date : DateTime.Now,
+                            PaymentReferenceNumber = transaction != null ? transaction.bank_ref_no : string.Empty
                         }).FirstOrDefault();
             }
             catch (DbEntityValidationException e)
@@ -625,6 +627,7 @@ namespace GidaGkpWeb.BAL
                             GST = plotDetail.GST,
                             PaymentDate = transactionDetail.trans_date,
                             BankName = transactionDetail.payment_mode,
+                            PaymentReferenceNumber = transactionDetail.bank_ref_no,
                             ApplicantPhoto = documentDetail.ApplicantPhoto,
                             ApplicantSignature = documentDetail.ApplicantSignature,
                             EffluentTreatmentMeasures = projectDetail.EffluentTreatmentMeasures,

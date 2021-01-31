@@ -10,6 +10,7 @@ namespace GidaGkpWeb.Models
         public int ApplicationId { get; set; }
         public string ApplicationNumber { get; set; }
         public string FullApplicantName { get; set; }
+        public string Emaild { get; set; }
         public string CAddress { get; set; }
         public string Mobile { get; set; }
         public decimal? TotalAmount { get; set; }
@@ -18,6 +19,7 @@ namespace GidaGkpWeb.Models
         public decimal? GST { get; set; }
         public decimal? EarnestMoneyDeposit { get; set; }
         public DateTime? PaymentDate { get; set; }
+        public string PaymentReferenceNumber { get; set; }
         public string SchemeType { get; set; }
         public string SchemeName { get; set; }
         public string SectorName { get; set; }

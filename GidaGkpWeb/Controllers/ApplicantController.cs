@@ -656,12 +656,12 @@ namespace GidaGkpWeb.Controllers
             var result = _details.SaveApplicantChalanDocument(((CustomPrincipal)User).Id, documentDetail);
             if (result == Enums.CrudStatus.Saved)
             {
-                SetAlertMessage("chalan detail saved", "Chalan Entry");
+                SetAlertMessage("Payment detail saved", "Chalan Entry");
                 return RedirectToAction("PaymentResponseSuccess");
             }
             else
             {
-                SetAlertMessage("chalan detail not saved, Please Attach all reqired feilds", "Chalan Entry");
+                SetAlertMessage("Payment detail not saved, Please enter all reqired feilds", "Chalan Entry");
                 return RedirectToAction("ApplicantUploadTransactionDetail");
             }
         }

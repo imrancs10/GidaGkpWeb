@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Payment Reciept";
     Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
-    var UserData = ViewData["UserData"] as ApplicationDetailModel;
+    var applicationData = ViewData["UserData"] as ApplicationDetailModel;
 }
 <link href="~/styles/style.css" rel="stylesheet" />
 <section class="form" id="sectionPrint">
@@ -31,25 +31,18 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="receipt-header receipt-header-mid">
                             <center><h2>Receipt</h2></center>
                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                 <div class="receipt-header">
-                                    <h5><b>Application Number :</b> @UserData.ApplicationNumber</h5>
-                                    <h5><b>Name :</b> @UserData.FullApplicantName</h5>
-                                    <p><b>Mobile :</b> @UserData.Mobile</p>
-                                    <p><b>Email :</b> @((User as CustomPrincipal).Email)</p>
-                                    <p><b>Address :</b> @UserData.CAddress</p>
+                                    <h5><b>Application Number :</b> @applicationData.ApplicationNumber</h5>
+                                    <h5><b>Name :</b> @applicationData.FullApplicantName</h5>
+                                    <p><b>Mobile :</b> @applicationData.Mobile</p>
+                                    <p><b>Email :</b> @applicationData.Emaild</p>
+                                    <p><b>Address :</b> @applicationData.CAddress</p>
                                 </div>
                             </div>
-                            @*<div class="col-xs-4 col-sm-4 col-md-4">
-                                <div class="receipt-left">
-                                    
-
-                                </div>
-                            </div>*@
                         </div>
                     </div>
 
@@ -64,15 +57,15 @@
                             <tbody>
                                 <tr>
                                     <td class="col-md-9">Application Fee</td>
-                                    <td class="col-md-3"><i class="fa fa-inr"></i> @UserData.ApplicationFee</td>
+                                    <td class="col-md-3"><i class="fa fa-inr"></i> @applicationData.ApplicationFee</td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-9">GST Amount (Applicable as per govt. rule)</td>
-                                    <td class="col-md-3"><i class="fa fa-inr"></i> @UserData.GST</td>
+                                    <td class="col-md-3"><i class="fa fa-inr"></i> @applicationData.GST</td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-9">Earnest Money Deposit (EMD)</td>
-                                    <td class="col-md-3"><i class="fa fa-inr"></i> @UserData.EarnestMoneyDeposit</td>
+                                    <td class="col-md-3"><i class="fa fa-inr"></i> @applicationData.EarnestMoneyDeposit</td>
                                 </tr>
                                 <tr>
                                     <td class="text-right">
@@ -88,20 +81,20 @@
                                     </td>
                                     <td>
                                         <p>
-                                            <strong><i class="fa fa-inr"></i>@UserData.TotalAmount</strong>
+                                            <strong><i class="fa fa-inr"></i>@applicationData.TotalAmount</strong>
                                         </p>
                                         <p>
                                             <strong><i class="fa fa-inr"></i> 0.00</strong>
                                         </p>
                                         <p>
-                                            <strong><i class="fa fa-inr"></i> @UserData.NetAmount</strong>
+                                            <strong><i class="fa fa-inr"></i> @applicationData.NetAmount</strong>
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
 
                                     <td class="text-right"><h2><strong>Total: </strong></h2></td>
-                                    <td class="text-left text-danger"><h2><strong><i class="fa fa-inr"></i> @UserData.NetAmount</strong></h2></td>
+                                    <td class="text-left text-danger"><h2><strong><i class="fa fa-inr"></i> @applicationData.NetAmount</strong></h2></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -111,7 +104,8 @@
                         <div class="receipt-header receipt-header-mid receipt-footer">
                             <div class="col-xs-8 col-sm-8 col-md-8 text-left">
                                 <div class="receipt-right">
-                                    <p><b>Date :</b> @UserData.PaymentDate.Value.ToString("dd/MM/yyyy")</p>
+                                    <p><b>Date :</b> @applicationData.PaymentDate.Value.ToString("dd/MM/yyyy")</p>
+                                    <p><b>Bank UTR/Reference No :</b> @applicationData.PaymentReferenceNumber</p>
                                 </div>
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4 text-right">

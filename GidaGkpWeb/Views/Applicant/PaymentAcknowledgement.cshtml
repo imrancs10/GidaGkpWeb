@@ -4,19 +4,19 @@
 @{
     ViewBag.Title = "PaymentAcknowledgement";
     Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
-    var UserData = ViewData["UserData"] as AcknowledgementDetailModel;
+    var pData = ViewData["UserData"] as AcknowledgementDetailModel;
     int intSkilled, intUnSkilled;
     string imgPhotosrc = "https://image.freepik.com/free-vector/businessman-character-avatar-icon-vector-illustration-design_24877-18271.jpg";
-    if (UserData != null && UserData.ApplicantPhoto != null)
+    if (pData != null && pData.ApplicantPhoto != null)
     {
-        var base64 = Convert.ToBase64String(UserData.ApplicantPhoto);
+        var base64 = Convert.ToBase64String(pData.ApplicantPhoto);
         imgPhotosrc = string.Format("data:image/jpg;base64,{0}", base64);
     }
 
     string imgSignaturesrc = "https://www.docsketch.com/assets/vip-signatures/barack-obama-signature-b8614607575251b55f9386853536ef918f439600ccbda927b11aca9bf1d1842e.png";
-    if (UserData != null && UserData.ApplicantSignature != null)
+    if (pData != null && pData.ApplicantSignature != null)
     {
-        var base64 = Convert.ToBase64String(UserData.ApplicantSignature);
+        var base64 = Convert.ToBase64String(pData.ApplicantSignature);
         imgSignaturesrc = string.Format("data:image/jpg;base64,{0}", base64);
     }
 }
@@ -36,9 +36,9 @@
                     </h4>
                     <h4 class="panel-title text-center main_cla_profile">गीडा औद्योगिक परिक्षेत्र में भूखंड के आवंटन हेतु आवेदन पत्र</h4>
                     <div class="" style="position: relative;top: -183px;left: 827px;">
-                        <p style=" padding-bottom: 0px; margin-bottom: 0px;">Application Number :@UserData.ApplicationNumber</p>
+                        <p style=" padding-bottom: 0px; margin-bottom: 0px;">Application Number :@pData.ApplicationNumber</p>
                         <p>
-                            Date :@UserData.PaymentDate.Value.ToString("dd/MM/yyyy")
+                            Date :@pData.PaymentDate.Value.ToString("dd/MM/yyyy")
                         </p>
                     </div>
                 </div>
@@ -68,8 +68,8 @@
                                 <td><strong>भूखंड का कुल क्षेत्रफल (वर्ग मीटर में) </strong></td>
                             </tr>
                             <tr>
-                                <td><strong>@UserData.SectorName </strong></td>
-                                <td><strong>@UserData.PlotArea</strong></td>
+                                <td><strong>@pData.SectorName </strong></td>
+                                <td><strong>@pData.PlotArea</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -88,9 +88,9 @@
                                 <td><strong>इकाई का नाम</strong></td>
                             </tr>
                             <tr>
-                                <td><strong>@UserData.IndustryOwnership</strong></td>
-                                <td><strong>@UserData.IndustryOwnership</strong></td>
-                                <td><strong>@UserData.UnitName</strong></td>
+                                <td><strong>@pData.IndustryOwnership</strong></td>
+                                <td><strong>@pData.IndustryOwnership</strong></td>
+                                <td><strong>@pData.UnitName</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -111,18 +111,18 @@
                                 <td><strong>प्रास्थिति / संबंध</strong></td>
                             </tr>
                             <tr>
-                                <td><strong>@UserData.SignatryName</strong></td>
-                                <td><strong>@UserData.SignatryDateOfBirth.Value.ToString("dd/MM/yyyy")</strong></td>
-                                <td><strong>@UserData.SignatryPermanentAddress &nbsp;@UserData.SignatryPermanentPhoneNumber</strong></td>
-                                <td><strong>@UserData.SignatryPresentAddress &nbsp;@UserData.SignatryPresentPhoneNumber</strong></td>
-                                <td><strong>@UserData.RelationshipStatus</strong></td>
+                                <td><strong>@pData.SignatryName</strong></td>
+                                <td><strong>@pData.SignatryDateOfBirth.Value.ToString("dd/MM/yyyy")</strong></td>
+                                <td><strong>@pData.SignatryPermanentAddress &nbsp;@pData.SignatryPermanentPhoneNumber</strong></td>
+                                <td><strong>@pData.SignatryPresentAddress &nbsp;@pData.SignatryPresentPhoneNumber</strong></td>
+                                <td><strong>@pData.RelationshipStatus</strong></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="panel-heading">
-                    <h4 class="panel-title">4. स्थापना के लिए प्रस्तावित उद्योग का प्रकार :- @UserData.ProposedIndustryType</h4>
+                    <h4 class="panel-title">4. स्थापना के लिए प्रस्तावित उद्योग का प्रकार :- @pData.ProposedIndustryType</h4>
                 </div>
                 <div class="panel-heading">
                     <h4 class="panel-title">5. परियोजना का विवरण</h4>
@@ -135,8 +135,8 @@
                                 <td><strong>आगणित रोजगार सृजन</strong></td>
                             </tr>
                             <tr>
-                                <td><strong>@UserData.ProjectEstimatedCost </strong></td>
-                                <td><strong>@((int.TryParse(UserData.Skilled, out intSkilled)?intSkilled:0)  + (int.TryParse(UserData.UnSkilled, out intUnSkilled)? intUnSkilled : 0))</strong></td>
+                                <td><strong>@pData.ProjectEstimatedCost </strong></td>
+                                <td><strong>@((int.TryParse(pData.Skilled, out intSkilled)?intSkilled:0)  + (int.TryParse(pData.UnSkilled, out intUnSkilled)? intUnSkilled : 0))</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -153,8 +153,8 @@
                                 <td><strong>प्रयोजनीय अनाच्छादित क्षेत्रफल एवं उसका उद्देश्य</strong></td>
                             </tr>
                             <tr>
-                                <td><strong>@UserData.ProposedCoveredArea </strong></td>
-                                <td><strong>@UserData.ProposedOpenArea &nbsp; @UserData.PurpuseOpenArea</strong></td>
+                                <td><strong>@pData.ProposedCoveredArea </strong></td>
+                                <td><strong>@pData.ProposedOpenArea &nbsp; @pData.PurpuseOpenArea</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -173,9 +173,9 @@
                                 <td><strong>यंत्र एवं यांत्रिक सामग्री</strong></td>
                             </tr>
                             <tr>
-                                <td><strong>@UserData.ProposedInvestmentLand</strong></td>
-                                <td><strong>@UserData.ProposedInvestmentBuilding</strong></td>
-                                <td><strong>@UserData.ProposedInvestmentPlant</strong></td>
+                                <td><strong>@pData.ProposedInvestmentLand</strong></td>
+                                <td><strong>@pData.ProposedInvestmentBuilding</strong></td>
+                                <td><strong>@pData.ProposedInvestmentPlant</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -188,7 +188,7 @@
                     <table class="table profile__table table-bordered">
                         <tbody>
                             <tr>
-                                <td><strong>@UserData.FumesNatureQuantity </strong></td>
+                                <td><strong>@pData.FumesNatureQuantity </strong></td>
 
                             </tr>
                         </tbody>
@@ -209,33 +209,33 @@
                             </tr>
                             <tr>
                                 <td><strong>(i) द्रव</strong></td>
-                                <td><strong>@UserData.LiquidQuantity</strong></td>
-                                <td><strong>@UserData.LiquidChemicalComposition</strong></td>
+                                <td><strong>@pData.LiquidQuantity</strong></td>
+                                <td><strong>@pData.LiquidChemicalComposition</strong></td>
                             </tr>
                             <tr>
                                 <td><strong>(ii) ठोस </strong></td>
-                                <td><strong>@UserData.SolidQuantity</strong></td>
-                                <td><strong>@UserData.SolidChemicalComposition</strong></td>
+                                <td><strong>@pData.SolidQuantity</strong></td>
+                                <td><strong>@pData.SolidChemicalComposition</strong></td>
                             </tr>
                             <tr>
                                 <td><strong>(iii) वाष्पीय</strong></td>
-                                <td><strong>@UserData.GasQuantity</strong></td>
-                                <td><strong>@UserData.GasChemicalComposition</strong></td>
+                                <td><strong>@pData.GasQuantity</strong></td>
+                                <td><strong>@pData.GasChemicalComposition</strong></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="panel-heading">
-                    <h4 class="panel-title">10. प्रस्तावित निस्त्रण / उच्छिष्ट उपचार प्रक्रियाएं :-    @UserData.EffluentTreatmentMeasures</h4>
+                    <h4 class="panel-title">10. प्रस्तावित निस्त्रण / उच्छिष्ट उपचार प्रक्रियाएं :-    @pData.EffluentTreatmentMeasures</h4>
                 </div>
 
                 <div class="panel-heading">
-                    <h4 class="panel-title">11.  विद्युत शक्ति की आवश्यकता ( कि. वा. में) :-    @UserData.PowerRequirement</h4>
+                    <h4 class="panel-title">11.  विद्युत शक्ति की आवश्यकता ( कि. वा. में) :-    @pData.PowerRequirement</h4>
                 </div>
 
                 <div class="panel-heading">
-                    <h4 class="panel-title">12. दूरभाष / फैक्स की आवश्यकता :-    @UserData.FirstYearNoOfTelephone</h4>
+                    <h4 class="panel-title">12. दूरभाष / फैक्स की आवश्यकता :-    @pData.FirstYearNoOfTelephone</h4>
                 </div>
 
                 <div class="panel-heading">
@@ -253,10 +253,10 @@
                                 <td><strong> बैंक का नाम जहां चालान जमा किया गया</strong></td>
                             </tr>
                             <tr>
-                                <td><strong>@UserData.NetAmount</strong></td>
-                                <td><strong>@UserData.ApplicationNumber</strong></td>
-                                <td><strong>@UserData.PaymentDate.Value.ToString("dd/MM/yyyy")</strong></td>
-                                <td><strong>@UserData.BankName</strong></td>
+                                <td><strong>@pData.NetAmount</strong></td>
+                                <td><strong>@pData.PaymentReferenceNumber</strong></td>
+                                <td><strong>@pData.PaymentDate.Value.ToString("dd/MM/yyyy")</strong></td>
+                                <td><strong>@pData.BankName</strong></td>
                             </tr>
                         </tbody>
                     </table>

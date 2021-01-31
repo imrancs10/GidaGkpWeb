@@ -2183,7 +2183,7 @@
                 <div class="pull-right" style="margin-right:1em;">
                     <div class="region region-social">
                         <div id="block-block-97" class="block block-block">
-                            @if (Convert.ToBoolean(ConfigurationManager.AppSettings["isProductionServer"]) == false)
+                            @if (Convert.ToBoolean(ConfigurationManager.AppSettings["isApplicantLogin"]) == true)
                             {
                                 <a target="_blank" href="/Login/ApplicantLogin"><img height="2%" style="margin-top:5px;" src="~/Content/files/app_login.png"></a>
                             }

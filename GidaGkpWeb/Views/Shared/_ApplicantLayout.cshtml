@@ -2,8 +2,8 @@
 @using GidaGkpWeb.Infrastructure.Authentication;
 @using GidaGkpWeb.Infrastructure.Utility;
 @{
-    var EnablePaymentLink = GetEnablePaymentLink();
-    var EnablePrintReciptLink = GetEnablePrintReciptLink();
+    var EnablePaymentLink = Convert.ToInt32(Session["EnablePaymentLink"]);
+    var EnablePrintReciptLink = Convert.ToInt32(Session["EnablePrintReciptLink"]);
 }
 <!DOCTYPE html>
 <html class="no-js">

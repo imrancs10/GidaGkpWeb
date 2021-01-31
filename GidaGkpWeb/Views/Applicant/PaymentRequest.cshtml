@@ -1,7 +1,6 @@
 ﻿@using GidaGkpWeb.Infrastructure.Authentication;
 @using GidaGkpWeb.Models;
 @using GidaGkpWeb.Global;
-s
 @{
     ViewBag.Title = "PaymentRequest";
     Layout = "~/Views/Shared/_ApplicantLayout.cshtml";
@@ -53,19 +52,20 @@ s
             {
                 <div class="row" id="sectionPrint">
                     <div class="col-md-12 mx-0">
-                        <div class="form-group col-sm-12 col-xs-12 col-md-offset-5">
+                        <div class="form-group col-sm-6 col-xs-6" style=" text-align: right;">
                             <label for="usertype" class="text-uppercase">Application Number</label>
-                            <label for="usertype" class="text-uppercase">@Convert.ToString(UserAppData.ApplicationNumber)</label>
+                            <label for="usertype" class="text-uppercase"><b>@Convert.ToString(UserAppData.ApplicationNumber)</b></label>
                         </div>
-                        <div class="form-group col-sm-12 col-xs-12 col-md-offset-5">
+                        <div class="form-group col-sm-6 col-xs-6ss">
                             <label for="usertype" class="text-uppercase">Net Payble Total Amount (In Rs.)</label>
-                            <label for="usertype" class="text-uppercase">@Convert.ToString(UserAppData.NetAmount)</label>
+                            <label for="usertype" class="text-uppercase"><b>@Convert.ToString(UserAppData.NetAmount)</b></label>
                         </div>
-                        <div class="form-group col-sm-12 col-xs-12 col-md-offset-5">
+                        <div class="form-group col-sm-12 col-xs-12 col-md-offset-4">
                             <ul>
                                 <li>
-                                    <p><b>Do Net Banking to pay Net Payable total amount on below mention account detail</b></p>
-                                    <p>Pay through <b>NEFT/RTGS/IMPS</b> only</p>
+                                    Do Net Banking to pay Net Payable total amount on below mention account detail
+                                    <hr />
+                                    Pay through <b>NEFT/RTGS/IMPS</b> only
                                     <ul>
                                         <li>Account Name : <b>Gorakhpur Industrial Development Authority</b></li>
                                         <li> Bank Name : <b>ICICI BANK</b></li>
@@ -81,7 +81,7 @@ s
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 mx-0 col-md-offset-5">
+                    <div class="col-md-12 mx-0 col-md-offset-4">
                         <input type="submit" name="next" id="btnPrint" class="btn btn-primary" value="Print Account Information" />
                         <input type="submit" name="next" style="display:none" id="btnPrintDocument" class="btn btn-primary" value="Print Account Information" onclick="window.print();" />
                     </div>

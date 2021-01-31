@@ -17,6 +17,8 @@ using GidaGkpWeb.Infrastructure.Utility;
 using System.Collections.Specialized;
 using CCA.Util;
 using System.IO;
+using GidaGkpWeb.BAL;
+using GidaGkpWeb.Infrastructure.Authentication;
 
 namespace GidaGkpWeb.Controllers
 {
@@ -97,6 +99,8 @@ namespace GidaGkpWeb.Controllers
             if (message == Enums.LoginMessage.Authenticated)
             {
                 setUserClaim();
+                GetEnablePaymentLink();
+                GetEnablePrintReciptLink();
                 return RedirectToAction("Dashboard", "Applicant");
             }
             else
@@ -104,6 +108,18 @@ namespace GidaGkpWeb.Controllers
                 SetAlertMessage(_response, "Login Response");
                 return View("ApplicantLogin");
             }
+        }
+
+        public void GetEnablePaymentLink()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            Session["EnablePaymentLink"] = _details.GetEnablePaymentLink(((CustomPrincipal)User).Id);
+        }
+
+        public void GetEnablePrintReciptLink()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            Session["EnablePrintReciptLink"] = _details.GetEnablePrintReciptLink(((CustomPrincipal)User).Id);
         }
 
         public ActionResult ApplicantRegistration(string actionName = "")
