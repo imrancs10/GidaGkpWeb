@@ -603,6 +603,8 @@
     <Content Include="Views\Applicant\ApplicantViewApplication.cshtml" />
     <Content Include="Views\Applicant\ApplyForPlot.cshtml" />
     <Content Include="Views\Applicant\ViewAdvertisement.cshtml" />
+    <Content Include="Views\Applicant\ApplicantUploadTransactionDetail.cshtml" />
+    <Content Include="Views\Applicant\ApplicantUploadTransactionInDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

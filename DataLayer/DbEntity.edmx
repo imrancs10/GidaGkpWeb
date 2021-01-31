@@ -51,8 +51,8 @@
           <Property Name="EmailId" Type="varchar" MaxLength="50" />
           <Property Name="Religion" Type="varchar" MaxLength="50" />
           <Property Name="SubCategory" Type="varchar" MaxLength="50" />
-          <Property Name="CAddress" Type="varchar" MaxLength="50" />
-          <Property Name="PAddress" Type="varchar" MaxLength="50" />
+          <Property Name="CAddress" Type="varchar" MaxLength="500" />
+          <Property Name="PAddress" Type="varchar" MaxLength="500" />
           <Property Name="IdentiyProof" Type="varchar" MaxLength="50" />
           <Property Name="ResidentialProof" Type="varchar" MaxLength="50" />
           <Property Name="CreationDate" Type="datetime" />
@@ -137,6 +137,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" />
+          <Property Name="ChalanDocument" Type="varbinary(max)" />
           <Property Name="ApplicationId" Type="int" />
           <Property Name="order_id" Type="bigint" />
           <Property Name="tracking_id" Type="bigint" />
@@ -150,6 +151,9 @@
           <Property Name="billing_address" Type="varchar" MaxLength="50" />
           <Property Name="trans_date" Type="datetime" />
           <Property Name="created_date" Type="datetime" />
+          <Property Name="ChalanDocumentFileName" Type="varchar" MaxLength="500" />
+          <Property Name="ChalanDocumentFileType" Type="varchar" MaxLength="50" />
+          <Property Name="TransactionType" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ApplicantUploadDoc">
           <Key>
@@ -232,6 +236,7 @@
           <Property Name="SchemeName" Type="varchar" MaxLength="500" />
           <Property Name="SectorName" Type="varchar" MaxLength="500" />
           <Property Name="AllotmentNumber" Type="varchar" MaxLength="50" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Lookup">
           <Key>
@@ -305,8 +310,8 @@
           <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SubCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="IdentiyProof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ResidentialProof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
@@ -404,6 +409,10 @@
           <Property Name="billing_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="trans_date" Type="DateTime" Precision="3" />
           <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="ChalanDocument" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ChalanDocumentFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ChalanDocumentFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ApplicantUploadDoc">
           <Key>
@@ -486,6 +495,7 @@
           <Property Name="SchemeName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="SectorName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="AllotmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Lookup">
           <Key>
@@ -650,6 +660,10 @@
           <EntitySetMapping Name="ApplicantTransactionDetails">
             <EntityTypeMapping TypeName="GidaGKPModel.ApplicantTransactionDetail">
               <MappingFragment StoreEntitySet="ApplicantTransactionDetail">
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="ChalanDocumentFileType" ColumnName="ChalanDocumentFileType" />
+                <ScalarProperty Name="ChalanDocumentFileName" ColumnName="ChalanDocumentFileName" />
+                <ScalarProperty Name="ChalanDocument" ColumnName="ChalanDocument" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
@@ -735,6 +749,7 @@
           <EntitySetMapping Name="ApplicantUsers">
             <EntityTypeMapping TypeName="GidaGKPModel.ApplicantUser">
               <MappingFragment StoreEntitySet="ApplicantUser">
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

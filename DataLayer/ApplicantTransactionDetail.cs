@@ -29,5 +29,9 @@ namespace DataLayer
         public string billing_address { get; set; }
         public Nullable<System.DateTime> trans_date { get; set; }
         public Nullable<System.DateTime> created_date { get; set; }
+        public byte[] ChalanDocument { get; set; }
+        public string ChalanDocumentFileName { get; set; }
+        public string ChalanDocumentFileType { get; set; }
+        public string TransactionType { get; set; }
     }
 }

@@ -31,6 +31,7 @@ namespace GidaGkpWeb.BAL.Login
                 UserData.Username = _userRow.UserName;
                 UserData.FullName = _userRow.FullName;
                 UserData.Email = _userRow.Email;
+                UserData.UserType = _userRow.UserType;
                 return Enums.LoginMessage.Authenticated;
             }
             else
@@ -59,7 +60,8 @@ namespace GidaGkpWeb.BAL.Login
                     SchemeName = SchemeName,
                     SchemeType = SchemeType,
                     SectorName = SectorName,
-                    CreationDate = DateTime.Now
+                    CreationDate = DateTime.Now,
+                    UserType = "Applicant"
                 };
                 _db.Entry(_newRecord).State = EntityState.Added;
                 _effectRow = _db.SaveChanges();

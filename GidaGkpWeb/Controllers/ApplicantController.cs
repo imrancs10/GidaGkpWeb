@@ -303,7 +303,7 @@ namespace GidaGkpWeb.Controllers
 
             string baseURL = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
             string amountToBePaid = data.NetAmount.ToString();
-            string ccaRequest = "tid=" + VerificationCodeGeneration.GetUniqueNumber() + "&merchant_id=" + strMerchantId + "&order_id=" + VerificationCodeGeneration.GetUniqueNumber() + "&amount=" + amountToBePaid + "&currency=INR&redirect_url=" + baseURL + "Applicant/PaymentResponse&cancel_url=" + baseURL + "Applicant/PaymentResponse&language=EN&billing_name=" + data.FullApplicantName + "&billing_address=" + data.CAddress + "&billing_city=&billing_state=&billing_zip=&billing_country=&billing_tel=&billing_email=&delivery_name=" + data.FullApplicantName + "&delivery_address=" + data.CAddress + "&delivery_city=&delivery_state=&delivery_zip=&delivery_country=&delivery_tel=&merchant_param1=" + UserData.UserId + "&merchant_param2=" + UserData.ApplicationId + "&merchant_param3=" + UserData.Username + "&merchant_param4=" + UserData.Email + "&merchant_param5=" + UserData.FullName + "&payment_option=OPTCRDC&emi_plan_id=&emi_tenure_id=&card_type=CRDC&card_name=&data_accept=N&card_number=4111+1111+1111+1111&expiry_month=12&expiry_year=2022&cvv_number=123&issuing_bank=&mobile_number=&mm_id=&otp=&promo_code=&";
+            string ccaRequest = "tid=" + VerificationCodeGeneration.GetUniqueNumber() + "&merchant_id=" + strMerchantId + "&order_id=" + VerificationCodeGeneration.GetUniqueNumber() + "&amount=" + amountToBePaid + "&currency=INR&redirect_url=" + baseURL + "Applicant/PaymentResponse&cancel_url=" + baseURL + "Applicant/PaymentResponse&language=EN&billing_name=" + data.FullApplicantName + "&billing_address=" + data.CAddress + "&billing_city=&billing_state=&billing_zip=&billing_country=&billing_tel=&billing_email=&delivery_name=" + data.FullApplicantName + "&delivery_address=" + data.CAddress + "&delivery_city=&delivery_state=&delivery_zip=&delivery_country=&delivery_tel=&merchant_param1=" + UserData.UserId + "&merchant_param2=" + UserData.ApplicationId + "&merchant_param3=" + UserData.Username + "&merchant_param4=" + UserData.UserType + "&merchant_param5=" + UserData.FullName + "&payment_option=OPTCRDC&emi_plan_id=&emi_tenure_id=&card_type=CRDC&card_name=&data_accept=N&card_number=4111+1111+1111+1111&expiry_month=12&expiry_year=2022&cvv_number=123&issuing_bank=&mobile_number=&mm_id=&otp=&promo_code=&";
             //string ccaRequest = "tid=" + VerificationCodeGeneration.GetUniqueNumber() + "&merchant_id=" + strMerchantId + "&order_id=" + VerificationCodeGeneration.GetUniqueNumber() + "&amount=" + amountToBePaid + "&currency=INR&redirect_url=" + baseURL + "Applicant/PaymentResponse&cancel_url=" + baseURL + "Applicant/PaymentResponse&language=EN&billing_name=" + data.FullApplicantName + "&billing_address=" + data.CAddress + "&billing_city=&billing_state=&billing_zip=&billing_country=&billing_tel=&billing_email=&delivery_name=" + data.FullApplicantName + "&delivery_address=" + data.CAddress + "&delivery_city=&delivery_state=&delivery_zip=&delivery_country=&delivery_tel=&merchant_param1=" + UserData.UserId + "&merchant_param2=" + UserData.ApplicationId + "&merchant_param3=" + UserData.Username + "&merchant_param4=" + UserData.Email + "&merchant_param5=" + UserData.FullName + "&";
             Session["strEncRequest"] = ccaCrypto.Encrypt(ccaRequest, workingKey);
             Session["strAccessCode"] = strAccessCode;
@@ -330,7 +330,7 @@ namespace GidaGkpWeb.Controllers
             UserData.UserId = Convert.ToInt32(Params["merchant_param1"]);
             UserData.ApplicationId = Convert.ToInt32(Params["merchant_param2"]);
             UserData.Username = Convert.ToString(Params["merchant_param3"]);
-            UserData.Email = Convert.ToString(Params["merchant_param4"]);
+            UserData.UserType = Convert.ToString(Params["merchant_param4"]);
             UserData.FullName = Convert.ToString(Params["merchant_param5"]);
             setUserClaim();
 
@@ -434,6 +434,7 @@ namespace GidaGkpWeb.Controllers
                     tracking_id = Convert.ToInt64(Params["tracking_id"]),
                     ApplicationId = Convert.ToInt32(Params["merchant_param2"]),
                     trans_date = DateTime.Now,
+                    TransactionType = "Online"
                 };
                 _details.SaveApplicantTransactionDeatil(detail);
                 SetAlertMessage("Payment done successfully", "Payment Status");
@@ -610,6 +611,61 @@ namespace GidaGkpWeb.Controllers
 
         //    return File(fileContent, mimeType, fileName);
         //}
+
+        public ActionResult ApplicantUploadTransactionDetail()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            ViewData["ApplicationData"] = _details.GetUserApplicationForOfflinePayment(((CustomPrincipal)User).Id);
+            return View();
+        }
+
+        public ActionResult ApplicantUploadTransactionInDetail(int? applicationId = null)
+        {
+            if (applicationId != null && applicationId > 0)
+            {
+                UserData.ApplicationId = applicationId.Value;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("ApplicantUploadTransactionDetail");
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult SaveApplicantChalanDocument(HttpPostedFileBase bankSlip, string BankReferenceNo, string PaymentMode, string AmountPaid, string TransactionDate)
+        {
+            ApplicantTransactionDetail documentDetail = new ApplicantTransactionDetail();
+            if (bankSlip != null && bankSlip.ContentLength > 0)
+            {
+                documentDetail.ChalanDocument = new byte[bankSlip.ContentLength];
+                bankSlip.InputStream.Read(documentDetail.ChalanDocument, 0, bankSlip.ContentLength);
+                documentDetail.ChalanDocumentFileName = bankSlip.FileName;
+                documentDetail.ChalanDocumentFileType = bankSlip.ContentType;
+            }
+
+            documentDetail.UserId = ((CustomPrincipal)User).Id;
+            documentDetail.bank_ref_no = BankReferenceNo;
+            documentDetail.payment_mode = PaymentMode;
+            documentDetail.amount = AmountPaid;
+            documentDetail.TransactionType = "Offline";
+            documentDetail.trans_date = Convert.ToDateTime(TransactionDate);
+
+            ApplicantDetails _details = new ApplicantDetails();
+            var result = _details.SaveApplicantChalanDocument(((CustomPrincipal)User).Id, documentDetail);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("chalan detail saved", "Chalan Entry");
+                return RedirectToAction("PaymentResponseSuccess");
+            }
+            else
+            {
+                SetAlertMessage("chalan detail not saved, Please Attach all reqired feilds", "Chalan Entry");
+                return RedirectToAction("ApplicantUploadTransactionDetail");
+            }
+        }
+
 
         public ActionResult Logout()
         {

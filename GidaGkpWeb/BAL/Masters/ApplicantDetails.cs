@@ -145,7 +145,7 @@ namespace GidaGkpWeb.BAL
                 return "Error";
             }
 
-            
+
         }
 
         public Enums.CrudStatus SaveApplicantDetail(int userId, string FullName, string FName, string MName, string SName, string DOB, string Gender, string Category, string Nationality, string AdhaarNo, string PAN, string MobileNo, string Phone, string Email, string Religion, string SubCategory, string CAddress, string PAddress, string IdentityProof, string ResidentialProof)
@@ -237,7 +237,7 @@ namespace GidaGkpWeb.BAL
                 return Enums.CrudStatus.InternalError;
             }
 
-           
+
         }
 
         public Enums.CrudStatus SaveProjectDetail(int userId, string ProposedIndustryType, string ProjectEstimatedCost, string ProposedCoveredArea, string ProposedOpenArea, string PurpuseOpenArea, string ProposedInvestmentLand, string ProposedInvestmentBuilding, string ProposedInvestmentPlant, string FumesNatureQuantity, string LiquidQuantity, string LiquidChemicalComposition, string SolidQuantity, string SolidChemicalComposition, string GasQuantity, string GasChemicalComposition, string PowerRequirement, string FirstYearNoOfTelephone, string FirstYearNoOfFax, string UltimateNoOfTelephone, string UltimateNoOfFax, string Skilled, string UnSkilled)
@@ -336,7 +336,7 @@ namespace GidaGkpWeb.BAL
                 return Enums.CrudStatus.InternalError;
             }
 
-           
+
         }
 
         public Enums.CrudStatus SaveBankDetail(int userId, string BankAccountName, string BankAccountNo, string BankName, string BranchName, string BranchAddress, string IFSCCode)
@@ -400,7 +400,7 @@ namespace GidaGkpWeb.BAL
                 return Enums.CrudStatus.InternalError;
             }
 
-           
+
         }
 
         public Enums.CrudStatus SaveApplicantDocument(int userId, ApplicantUploadDoc docDetail)
@@ -556,7 +556,7 @@ namespace GidaGkpWeb.BAL
                 return Enums.CrudStatus.InternalError;
             }
 
-           
+
         }
 
         public ApplicationDetailModel GetUserPlotDetail(int appID)
@@ -595,7 +595,7 @@ namespace GidaGkpWeb.BAL
                 }
                 return null;
             }
-           
+
         }
 
         public AcknowledgementDetailModel GetAcknowledgementDetail(int appID)
@@ -673,7 +673,7 @@ namespace GidaGkpWeb.BAL
                 }
                 return null;
             }
-           
+
         }
 
         public List<ApplicationDetailModel> GetUserApplicationDetail(int userId)
@@ -728,7 +728,7 @@ namespace GidaGkpWeb.BAL
                 }
                 return new List<ApplicationDetailModel>();
             }
-           
+
         }
 
         public List<ApplicationDetailModel> GetUserAppliedApplicationDetail(int userId)
@@ -783,7 +783,7 @@ namespace GidaGkpWeb.BAL
                 }
                 return new List<ApplicationDetailModel>();
             }
-           
+
         }
 
         public int GetUserApplicationCount(int userId)
@@ -866,7 +866,7 @@ namespace GidaGkpWeb.BAL
                 return null;
             }
 
-           
+
         }
 
         public ApplicantDetailModel GetApplicantPersonalDetail(int applicationId)
@@ -914,7 +914,7 @@ namespace GidaGkpWeb.BAL
                 }
                 return null;
             }
-            
+
         }
 
         public ApplicantProjectDetailModel GetApplicantProjectDetail(int applicationId)
@@ -966,9 +966,9 @@ namespace GidaGkpWeb.BAL
                         Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
                     }
                 }
-                return null ;
+                return null;
             }
-            
+
         }
 
         public ApplicantBankDetailModel GetApplicantBankDetail(int applicationId)
@@ -1004,7 +1004,7 @@ namespace GidaGkpWeb.BAL
                 }
                 return null;
             }
-           
+
         }
 
         public ApplicantUploadDocumentModel GetApplicantDocumentDetail(int applicationId)
@@ -1106,7 +1106,106 @@ namespace GidaGkpWeb.BAL
                 }
                 return null;
             }
-           
+
+        }
+
+        public List<ApplicationDetailModel> GetUserApplicationForOfflinePayment(int userId)
+        {
+            try
+            {
+                _db = new GidaGKPEntities();
+                return (from application in _db.ApplicantApplicationDetails
+                        join applicantDetail1 in _db.ApplicantDetails on application.ApplicationId equals applicantDetail1.ApplicationId into applicantDetail2
+                        from applicantDetail in applicantDetail2.DefaultIfEmpty()
+                        join plotDetail1 in _db.ApplicantPlotDetails on application.ApplicationId equals plotDetail1.ApplicationId into plotDetail2
+                        from plotDetail in plotDetail2.DefaultIfEmpty()
+                        join projectDetail1 in _db.ApplicantProjectDetails on application.ApplicationId equals projectDetail1.ApplicationId into projectDetail2
+                        from projectDetail in projectDetail2.DefaultIfEmpty()
+                        join bankDetail1 in _db.ApplicantBankDetails on application.ApplicationId equals bankDetail1.ApplicationId into bankDetail2
+                        from bankDetail in bankDetail2.DefaultIfEmpty()
+                        join documentDetail1 in _db.ApplicantBankDetails on application.ApplicationId equals documentDetail1.ApplicationId into documentDetail2
+                        from documentDetail in documentDetail2.DefaultIfEmpty()
+                        join transaction1 in _db.ApplicantTransactionDetails on applicantDetail.ApplicationId equals transaction1.ApplicationId into transaction2
+                        from transaction in transaction2.DefaultIfEmpty()
+                        join lookupSchemeType1 in _db.Lookups on plotDetail.SchemeType equals lookupSchemeType1.LookupId into lookupSchemeType2
+                        from lookupSchemeType in lookupSchemeType2.DefaultIfEmpty()
+
+                        join lookupSchemeName1 in _db.Lookups on plotDetail.SchemeName equals lookupSchemeName1.LookupId into lookupSchemeName2
+                        from lookupSchemeName in lookupSchemeName2.DefaultIfEmpty()
+
+                        join lookupSectorName1 in _db.Lookups on plotDetail.SchemeName equals lookupSectorName1.LookupId into lookupSectorName2
+                        from lookupSectorName in lookupSectorName2.DefaultIfEmpty()
+
+                        where application.UserId == userId &&
+                        transaction == null &&
+                        applicantDetail != null &&
+                        plotDetail != null &&
+                        projectDetail != null
+                        && bankDetail != null &&
+                        documentDetail != null
+                        select new ApplicationDetailModel
+                        {
+                            ApplicationId = application.ApplicationId,
+                            ApplicationNumber = application.ApplicationNumber,
+                            FullApplicantName = applicantDetail.FullApplicantName,
+                            CAddress = applicantDetail.CAddress,
+                            Mobile = applicantDetail.Mobile,
+                            TotalAmount = plotDetail.TotalAmount,
+                            NetAmount = plotDetail.NetAmount,
+                            ApplicationFee = plotDetail.ApplicationFee,
+                            EarnestMoneyDeposit = plotDetail.EarnestMoney,
+                            GST = plotDetail.GST,
+                            PaymentDate = transaction != null ? transaction.trans_date : DateTime.Now,
+                            PlotArea = plotDetail.PlotArea,
+                            SchemeType = lookupSchemeType != null ? lookupSchemeType.LookupName : "",
+                            SchemeName = lookupSchemeName != null ? lookupSchemeName.LookupName : "",
+                            SectorName = lookupSectorName != null ? lookupSectorName.LookupName : ""
+                        }).Distinct().ToList();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return new List<ApplicationDetailModel>();
+            }
+
+        }
+
+        public Enums.CrudStatus SaveApplicantChalanDocument(int userId, ApplicantTransactionDetail docDetail)
+        {
+            try
+            {
+                _db = new GidaGKPEntities();
+
+                int _effectRow = 0;
+
+                var extingDocumentDetail = _db.ApplicantTransactionDetails.Where(x => x.ApplicationId == UserData.ApplicationId).FirstOrDefault();
+                if (extingDocumentDetail == null)  
+                {
+                    docDetail.ApplicationId = UserData.ApplicationId;
+                    _db.Entry(docDetail).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                }
+                return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return Enums.CrudStatus.InternalError;
+            }
+
+
         }
     }
 }
