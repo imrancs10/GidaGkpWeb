@@ -519,7 +519,7 @@ $(document).ready(function () {
         if ($('#FullName').val() != '' && $('#FName').val() != '' && $('#MName').val() != '' &&
             $('#DOB').val() != '' && $('#Gender').val() != '' && $('#Category').val() != '' &&
             $('#Nationality').val() != '' && $('#PAN').val() != '' && $('#MobileNo').val() != '' &&
-            $('#Email').val() != '' && $('#Religion').val() != '' && $('#CAddress').val() != '' &&
+            $('#Email').val() != '' && $('#CAddress').val() != '' &&
             $('#PAddress').val() != '' && IdentityProof != '' && ResidentialProof != '') {
             var inputData = {
                 FullName: $('#FullName').val(),
@@ -684,9 +684,9 @@ $(document).ready(function () {
         var BankVerifiedSignaturefilename = $('[name*=BankVerifiedSignaturefilename]').val();
         var ApplicantPhotofilename = $('[name*=ApplicantPhotofilename]').val();
         var ApplicantSignaturefilename = $('[name*=ApplicantSignaturefilename]').val();
-        if (ProjectReportsfilename == "" || Proposedplanfilename == "" || PartnershipDeedfilename == "" || PanCardfilename == "" ||
-            AddressProoffilename == "" || IncomeTaxreturnfilename == "" || Experienceprooffilename == "" || educationalqualificationfilename == "" ||
-            electricitybillfilename == "" || financialdetailsfilename == "" || IdentityProoffilename == "" || BankVerifiedSignaturefilename == "" ||
+        if (ProjectReportsfilename == "" || Proposedplanfilename == "" || PanCardfilename == "" ||
+            AddressProoffilename == "" || IncomeTaxreturnfilename == "" || educationalqualificationfilename == "" ||
+            IdentityProoffilename == "" || BankVerifiedSignaturefilename == "" ||
             ApplicantPhotofilename == "" || ApplicantSignaturefilename == "") {
             utility.alert.setAlert(utility.alert.alertType.error, 'Please select required file.');
             return false;
@@ -776,8 +776,15 @@ $(document).ready(function () {
         var calculation = 0, index = 0;
         while (plotArea > 0) {
             if (index == 0) {
-                calculation += 4000 * 6000;
-                plotArea -= 4000;
+                if (plotArea >= 4000) {
+                    calculation += 4000 * 6000;
+                    plotArea -= 4000;
+                }
+                else {
+                    calculation += plotArea * 6000;
+                    plotArea -= plotArea;
+                }
+                
                 index++;
             }
             else if (index == 1) {

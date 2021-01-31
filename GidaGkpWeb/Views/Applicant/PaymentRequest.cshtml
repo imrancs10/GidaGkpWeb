@@ -12,8 +12,8 @@ s
 <section class="form">
     <!-- MultiStep Form -->
     <div class="container-fluid" id="grad1">
-        <div class="container" id="printContainer">
-            <div class="row justify-content-center mt-0" style="padding:30px 20px">
+        <div class="container" id="printContainer" style="margin-top: -70px">
+            <div class="row justify-content-center mt-0">
                 <div class="col-sm-12 col-xs-12">
                     <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                         <div class="col-sm-12 col-xs-12">
@@ -64,17 +64,17 @@ s
                         <div class="form-group col-sm-12 col-xs-12 col-md-offset-5">
                             <ul>
                                 <li>
-                                    Please find below account detail for the payment of Net amount payable.
+                                    <p><b>Do Net Banking to pay Net Payable total amount on below mention account detail</b></p>
+                                    <p>Pay through <b>NEFT/RTGS/IMPS</b> only</p>
                                     <ul>
-                                        <li>Account Name : Gorakhpur Industrial Development Authority</li>
-                                        <li> Bank Name : ICICI BANK</li>
-                                        <li> Account Number : 740901000088</li>
-                                        <li> IFSC Code : ICIC0003201</li>
+                                        <li>Account Name : <b>Gorakhpur Industrial Development Authority</b></li>
+                                        <li> Bank Name : <b>ICICI BANK</b></li>
+                                        <li> Account Number : <b>740901000088</b></li>
+                                        <li> IFSC Code : <b>ICIC0003201</b></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    Please pay Net Payble amount to your nearest bank and upload transaction information on
-                                    <a href="/Applicant/ApplicantUploadTransactionDetail">Upload Offline Payment Detail Page</a>
+                                    After Payment, Please go to <a href="/Applicant/ApplicantUploadTransactionDetail"><b>Enter Payment Detail(After NEFT/RTGS/IMPS)</b></a> Link to enter payment related information.
                                 </li>
                             </ul>
                         </div>
@@ -112,5 +112,12 @@ s
         $('#btnPrintDocument').css('display', 'none');
         //win.close();
         return false;
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar-nav li.active').removeClass('active');
+        $('[href="/Applicant/PaymentRequest"]').parent().addClass('active')
     });
 </script>

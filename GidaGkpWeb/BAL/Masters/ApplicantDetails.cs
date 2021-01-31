@@ -1123,7 +1123,7 @@ namespace GidaGkpWeb.BAL
                         from projectDetail in projectDetail2.DefaultIfEmpty()
                         join bankDetail1 in _db.ApplicantBankDetails on application.ApplicationId equals bankDetail1.ApplicationId into bankDetail2
                         from bankDetail in bankDetail2.DefaultIfEmpty()
-                        join documentDetail1 in _db.ApplicantBankDetails on application.ApplicationId equals documentDetail1.ApplicationId into documentDetail2
+                        join documentDetail1 in _db.ApplicantUploadDocs on application.ApplicationId equals documentDetail1.ApplicationId into documentDetail2
                         from documentDetail in documentDetail2.DefaultIfEmpty()
                         join transaction1 in _db.ApplicantTransactionDetails on applicantDetail.ApplicationId equals transaction1.ApplicationId into transaction2
                         from transaction in transaction2.DefaultIfEmpty()
@@ -1185,7 +1185,7 @@ namespace GidaGkpWeb.BAL
                 int _effectRow = 0;
 
                 var extingDocumentDetail = _db.ApplicantTransactionDetails.Where(x => x.ApplicationId == UserData.ApplicationId).FirstOrDefault();
-                if (extingDocumentDetail == null)  
+                if (extingDocumentDetail == null)
                 {
                     docDetail.ApplicationId = UserData.ApplicationId;
                     _db.Entry(docDetail).State = EntityState.Added;
@@ -1204,8 +1204,64 @@ namespace GidaGkpWeb.BAL
                 }
                 return Enums.CrudStatus.InternalError;
             }
+        }
 
+        public int GetEnablePaymentLink(int userId)
+        {
+            try
+            {
+                _db = new GidaGKPEntities();
+                return (from application in _db.ApplicantApplicationDetails
+                        join documentDetail1 in _db.ApplicantUploadDocs on application.ApplicationId equals documentDetail1.ApplicationId into documentDetail2
+                        from documentDetail in documentDetail2.DefaultIfEmpty()
+                        join transaction1 in _db.ApplicantTransactionDetails on application.ApplicationId equals transaction1.ApplicationId into transaction2
+                        from transaction in transaction2.DefaultIfEmpty()
+                        where application.UserId == userId && transaction == null && documentDetail != null
+                        select new ApplicationDetailModel
+                        {
+                            ApplicationId = application.ApplicationId,
+                            ApplicationNumber = application.ApplicationNumber,
+                        }).Distinct().ToList().Count;
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return 0;
+            }
+        }
 
+        public int GetEnablePrintReciptLink(int userId)
+        {
+            try
+            {
+                _db = new GidaGKPEntities();
+                return (from application in _db.ApplicantApplicationDetails
+                        join transaction1 in _db.ApplicantTransactionDetails on application.ApplicationId equals transaction1.ApplicationId into transaction2
+                        from transaction in transaction2.DefaultIfEmpty()
+                        where application.UserId == userId && transaction != null
+                        select new ApplicationDetailModel
+                        {
+                            ApplicationId = application.ApplicationId,
+                            ApplicationNumber = application.ApplicationNumber,
+                        }).Distinct().ToList().Count;
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return 0;
+            }
         }
     }
 }

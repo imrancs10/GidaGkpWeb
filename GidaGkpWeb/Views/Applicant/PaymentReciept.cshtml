@@ -152,3 +152,9 @@
         return false;
     });
 </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar-nav li.active').removeClass('active');
+        $('[href="/Applicant/PaymentResponseSuccess"]').parent().addClass('active')
+    });
+</script>

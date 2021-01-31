@@ -1,5 +1,10 @@
 ﻿@using GidaGkpWeb.Global
 @using GidaGkpWeb.Infrastructure.Authentication;
+@using GidaGkpWeb.Infrastructure.Utility;
+@{
+    var EnablePaymentLink = GetEnablePaymentLink();
+    var EnablePrintReciptLink = GetEnablePrintReciptLink();
+}
 <!DOCTYPE html>
 <html class="no-js">
 <head>
@@ -95,84 +100,96 @@
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="/Applicant/Dashboard" title="Home">Home</a></li>
                             <li><a href="/Applicant/ApplyForPlot" title="PlotDetail">Apply For Plots</a></li>
-                            <li><a href="/Applicant/PaymentResponseSuccess" title="PrintDocument">Print Document</a></li>
-                            @*<li><a href="/Applicant/ApplicantUploadTransactionDetail" title="PrintDocument">Upload Offline Payment</a></li>*@
+                            @if (EnablePaymentLink > 0)
+                            {
+                                <li><a href="/Applicant/ApplicantUploadTransactionDetail" title="">Enter Payment Detail(After NEFT/RTGS/IMPS)</a></li>
+                            }
+                            @if (EnablePrintReciptLink > 0)
+                            {
+                                <li><a href="/Applicant/PaymentResponseSuccess" title="PrintDocument">Print Registration Document</a></li>
+                            }
+
                             @*<li><a href="#">Link</a></li>*@
                             <!--<li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li class="kopie"><a href="#">Dropdown</a></li>
-            <li><a href="#">Dropdown Link 1</a></li>
-            <li class="active"><a href="#">Dropdown Link 2</a></li>
-            <li><a href="#">Dropdown Link 3</a></li>
-            <li class="dropdown dropdown-submenu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Link 4</a>
-                <ul class="dropdown-menu">
-                    <li class="kopie"><a href="#">Dropdown Link 4</a></li>
-                    <li><a href="#">Dropdown Submenu Link 4.1</a></li>
-                    <li><a href="#">Dropdown Submenu Link 4.2</a></li>
-                    <li><a href="#">Dropdown Submenu Link 4.3</a></li>
-                    <li><a href="#">Dropdown Submenu Link 4.4</a></li>
-                </ul>
-            </li>
-            <li class="dropdown dropdown-submenu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Link 5</a>
-                <ul class="dropdown-menu">
-                    <li class="kopie"><a href="#">Dropdown Link 5</a></li>
-                    <li><a href="#">Dropdown Submenu Link 5.1</a></li>
-                    <li><a href="#">Dropdown Submenu Link 5.2</a></li>
-                    <li><a href="#">Dropdown Submenu Link 5.3</a></li>
-                    <li class="dropdown dropdown-submenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Submenu Link 5.4</a>
-                        <ul class="dropdown-menu">
-                            <li class="kopie"><a href="#">Dropdown Submenu Link 5.4</a></li>
-                            <li><a href="#">Dropdown Submenu Link 5.4.1</a></li>
-                            <li><a href="#">Dropdown Submenu Link 5.4.2</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li class="kopie"><a href="#">Dropdown2</a></li>
-            <li><a href="#">Dropdown2 Link 1</a></li>
-            <li><a href="#">Dropdown2 Link 2</a></li>
-            <li><a href="#">Dropdown2 Link 3</a></li>
-            <li class="dropdown dropdown-submenu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 Link 4</a>
-                <ul class="dropdown-menu">
-                    <li class="kopie"><a href="#">Dropdown2 Link 4</a></li>
-                    <li><a href="#">Dropdown2 Submenu Link 4.1</a></li>
-                    <li><a href="#">Dropdown2 Submenu Link 4.2</a></li>
-                    <li><a href="#">Dropdown2 Submenu Link 4.3</a></li>
-                    <li><a href="#">Dropdown2 Submenu Link 4.4</a></li>
-                </ul>
-            </li>
-            <li class="dropdown dropdown-submenu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 Link 5</a>
-                <ul class="dropdown-menu">
-                    <li class="kopie"><a href="#">Dropdown Link 5</a></li>
-                    <li><a href="#">Dropdown2 Submenu Link 5.1</a></li>
-                    <li><a href="#">Dropdown2 Submenu Link 5.2</a></li>
-                    <li><a href="#">Dropdown2 Submenu Link 5.3</a></li>
-                    <li class="dropdown dropdown-submenu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Submenu Link 5.4</a>
-                        <ul class="dropdown-menu">
-                            <li class="kopie"><a href="#">Dropdown2 Submenu Link 5.4</a></li>
-                            <li><a href="#">Dropdown2 Submenu Link 5.4.1</a></li>
-                            <li><a href="#">Dropdown2 Submenu Link 5.4.2</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>-->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li class="kopie"><a href="#">Dropdown</a></li>
+                                    <li><a href="#">Dropdown Link 1</a></li>
+                                    <li class="active"><a href="#">Dropdown Link 2</a></li>
+                                    <li><a href="#">Dropdown Link 3</a></li>
+                                    <li class="dropdown dropdown-submenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Link 4</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="kopie"><a href="#">Dropdown Link 4</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 4.1</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 4.2</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 4.3</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 4.4</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown dropdown-submenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Link 5</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="kopie"><a href="#">Dropdown Link 5</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 5.1</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 5.2</a></li>
+                                            <li><a href="#">Dropdown Submenu Link 5.3</a></li>
+                                            <li class="dropdown dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Submenu Link 5.4</a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="kopie"><a href="#">Dropdown Submenu Link 5.4</a></li>
+                                                    <li><a href="#">Dropdown Submenu Link 5.4.1</a></li>
+                                                    <li><a href="#">Dropdown Submenu Link 5.4.2</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li class="kopie"><a href="#">Dropdown2</a></li>
+                                    <li><a href="#">Dropdown2 Link 1</a></li>
+                                    <li><a href="#">Dropdown2 Link 2</a></li>
+                                    <li><a href="#">Dropdown2 Link 3</a></li>
+                                    <li class="dropdown dropdown-submenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 Link 4</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="kopie"><a href="#">Dropdown2 Link 4</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 4.1</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 4.2</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 4.3</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 4.4</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown dropdown-submenu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown2 Link 5</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="kopie"><a href="#">Dropdown Link 5</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 5.1</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 5.2</a></li>
+                                            <li><a href="#">Dropdown2 Submenu Link 5.3</a></li>
+                                            <li class="dropdown dropdown-submenu">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown Submenu Link 5.4</a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="kopie"><a href="#">Dropdown2 Submenu Link 5.4</a></li>
+                                                    <li><a href="#">Dropdown2 Submenu Link 5.4.1</a></li>
+                                                    <li><a href="#">Dropdown2 Submenu Link 5.4.2</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>-->
                         </ul>
 
                         <ul class="nav navbar-nav pull-right">
+                            <li class="apply_btn_cl" style="background-color: transparent;">
+                                <a>
+                                    <i class="fa fa-user" aria-hidden="true" style="padding-right: 6px;"></i>Welcome @UserData.FullName
+                                </a>
+                            </li>
                             <li class="apply_btn_cl" style="background: #1b5d95;"><a href="/Applicant/Logout" title="Logout"><i class="fa fa-chevron-right" aria-hidden="true"></i> &nbsp; Logout</a></li>
 
                         </ul>

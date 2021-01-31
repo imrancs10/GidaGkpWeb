@@ -82,7 +82,7 @@
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">Paymemt Schedule<span class="required-field"></span></label>
-                                                            <select name="PaymemtSchedule" id="PaymemtSchedule" class="form-control" readonly></select>
+                                                            <select name="PaymemtSchedule" id="PaymemtSchedule" class="form-control" disabled="disabled"></select>
                                                         </div>
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="usertype" class="text-uppercase">Estimated Cost of Plot (In Rs.)</label>
@@ -570,7 +570,7 @@
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="file" class="sr-only">
                                                                 Partnership Deed/Memorandum & Articles of Association/ Certificate of Incorporation of the Company, as applicable
-                                                                
+
                                                             </label>
                                                             <div class="input-group">
                                                                 <input type="text" name="PartnershipDeedfilename" class="form-control" placeholder="No file selected" readonly>
@@ -650,7 +650,7 @@
                                                         <div class="form-group col-sm-6 col-xs-12">
                                                             <label for="file" class="sr-only">
                                                                 Experience proof for industry establishment.(GST Return-if Applicable, ITR, Electricity Bill, Sales/Purchase Vouchers)
-                                                                
+
                                                             </label>
                                                             <div class="input-group">
                                                                 <input type="text" name="Experienceprooffilename" class="form-control" placeholder="No file selected" readonly>
@@ -853,3 +853,11 @@
         </div>
     </div>
 </section>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar-nav li.active').removeClass('active');
+        $('[href="/Applicant/ApplicantDashboard"]').parent().addClass('active')
+    });
+</script>

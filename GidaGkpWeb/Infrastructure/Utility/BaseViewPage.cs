@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using static GidaGkpWeb.Global.Enums;
 using GidaGkpWeb.Infrastructure.Authentication;
+using GidaGkpWeb.BAL;
 
 namespace GidaGkpWeb.Infrastructure.Utility
 {
@@ -19,6 +20,18 @@ namespace GidaGkpWeb.Infrastructure.Utility
         public virtual new CustomPrincipal User
         {
             get { return base.User as CustomPrincipal; }
+        }
+
+        public virtual int GetEnablePaymentLink()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            return _details.GetEnablePaymentLink(((CustomPrincipal)User).Id);
+        }
+
+        public virtual int GetEnablePrintReciptLink()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            return _details.GetEnablePrintReciptLink(((CustomPrincipal)User).Id);
         }
     }
 }
