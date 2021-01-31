@@ -706,10 +706,10 @@ $(document).ready(function () {
     $("#PlotRange").change(function () {
         //reset dependent input
         if ($("#PlotRange option:selected").text() == "0-4000") {
-            $('#labelPlotArea').text('Plot Area Not less than 3996.35 (Square Meter)');
+            $('#labelPlotArea').html('Plot Area Not less than 3996.35 (Square Meter) <span class="required-field"></span>');
         }
         else {
-            $('#labelPlotArea').text('Plot Area (Square Meter)');
+            $('#labelPlotArea').html('Plot Area (Square Meter) <span class="required-field"></span>');
         }
         $('#plotArea').val('');
         $('#TotalInvestment').val('');
@@ -759,6 +759,7 @@ $(document).ready(function () {
             if (parseInt($(this).val()) < parseInt(rangeArray[0])) {
                 $(this).val('')
                 utility.alert.setAlert(utility.alert.alertType.info, 'Plot Area must in selected plot range');
+                return false;
             }
         }
         else {
@@ -766,39 +767,79 @@ $(document).ready(function () {
             if (parseInt($(this).val()) < parseInt(rangeArray[0]) || parseInt($(this).val()) > parseInt(rangeArray[1])) {
                 $(this).val('')
                 utility.alert.setAlert(utility.alert.alertType.info, 'Plot Area must in selected plot range');
+                return false;
             }
         }
 
         //change logic here
-        var plotArea = $(this).val();
-        var previousRange = $("#PlotRange option:selected").prev();
-        if (previousRange.text() != 'Select') {
-            $.ajax({
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                type: 'POST',
-                data: '{lookupTypeId: "' + previousRange.val() + '",lookupType: "EstimatedRate" }',
-                url: '/Masters/GetLookupDetail',
-                success: function (data) {
-                    var lastEstimatedCast = data[0].LookupName;
-                    var rangeArray = previousRange.text().split('-');
-                    var firstCalculation = parseInt(rangeArray[1]) * parseInt(lastEstimatedCast);
-                    var secondCalculation = parseInt(plotArea - parseInt(rangeArray[1])) * parseInt($('#EstimatedRate').val());
-                    $('#TotalInvestment').val(firstCalculation + secondCalculation);
-                },
-                failure: function (response) {
-                    console.log(response);
-                },
-                error: function (response) {
-                    console.log(response.responseText);
+        var plotArea = parseFloat($(this).val());
+        var calculation = 0, index = 0;
+        while (plotArea > 0) {
+            if (index == 0) {
+                calculation += 4000 * 6000;
+                plotArea -= 4000;
+                index++;
+            }
+            else if (index == 1) {
+                if (plotArea >= 16000) {
+                    calculation += 16000 * 5600;
+                    plotArea -= 16000;
                 }
-            });
-        }
-        else {
-            if ($(this).val() != '' && $('#EstimatedRate').val() != '') {
-                $('#TotalInvestment').val($(this).val() * $('#EstimatedRate').val());
+                else {
+                    calculation += plotArea * 5600;
+                    plotArea -= plotArea;
+                }
+
+                index++;
+            }
+            else if (index == 2) {
+                if (plotArea >= 60000) {
+                    calculation += 60000 * 5200;
+                    plotArea -= 60000;
+                }
+                else {
+                    calculation += plotArea * 5200;
+                    plotArea -= plotArea;
+                }
+                index++;
+            }
+            else if (plotArea >= 0 && index == 3) {
+                calculation += plotArea * 4800;
+                plotArea -= plotArea;
+                index++;
             }
         }
+
+        $('#TotalInvestment').val(calculation);
+
+        //var previousRange = $("#PlotRange option:selected").prev();
+        //if (previousRange.text() != 'Select') {
+        //    $.ajax({
+        //        contentType: 'application/json; charset=utf-8',
+        //        dataType: 'json',
+        //        type: 'POST',
+        //        data: '{lookupTypeId: "' + previousRange.val() + '",lookupType: "EstimatedRate" }',
+        //        url: '/Masters/GetLookupDetail',
+        //        success: function (data) {
+        //            var lastEstimatedCast = data[0].LookupName;
+        //            var rangeArray = previousRange.text().split('-');
+        //            var firstCalculation = parseInt(rangeArray[1]) * parseInt(lastEstimatedCast);
+        //            var secondCalculation = parseInt(plotArea - parseInt(rangeArray[1])) * parseInt($('#EstimatedRate').val());
+        //            $('#TotalInvestment').val(firstCalculation + secondCalculation);
+        //        },
+        //        failure: function (response) {
+        //            console.log(response);
+        //        },
+        //        error: function (response) {
+        //            console.log(response.responseText);
+        //        }
+        //    });
+        //}
+        //else {
+        //    if ($(this).val() != '' && $('#EstimatedRate').val() != '') {
+        //        $('#TotalInvestment').val($(this).val() * $('#EstimatedRate').val());
+        //    }
+        //}
 
         var auxValue = (parseInt($(this).val()) + 1000).toString().slice(1, 4);
         var EMD = "";
