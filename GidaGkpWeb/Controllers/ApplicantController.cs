@@ -19,6 +19,7 @@ using System.Web.Security;
 using System.Net.Http;
 using System.Net;
 using System.Text;
+using System.IO;
 
 namespace GidaGkpWeb.Controllers
 {
@@ -335,72 +336,108 @@ namespace GidaGkpWeb.Controllers
 
             if (Params["order_status"] == "Success")
             {
-                var input = new
+                #region API to check order status
+                //var input = new
+                //{
+                //    access_code = strAccessCode,
+                //    command = "orderStatusTracker",
+                //    request_type = "STRING",
+                //    response_type = "STRING",
+                //    order_no = Convert.ToString(Params["order_id"]),
+                //    enc_request = ccaCrypto.Encrypt("|" + Convert.ToString(Params["order_id"]) + "|", workingKey)
+                //};
+                //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                //string inputJson = (new JavaScriptSerializer()).Serialize(input);
+                //HttpWebRequest httpRequest = (HttpWebRequest)WebRequest.Create(new Uri(apiUrl + "?access_code=" + input.access_code + "&command=orderStatusTracker&request_type=STRING&response_type=STRING&order_no=" + input.order_no + "&enc_request=" + input.enc_request + ""));
+                //httpRequest.ContentType = "application/json";
+                //httpRequest.Method = "POST";
+
+                //byte[] bytes = Encoding.UTF8.GetBytes(inputJson);
+                //using (Stream stream = httpRequest.GetRequestStream())
+                //{
+                //    stream.Write(bytes, 0, bytes.Length);
+                //    stream.Close();
+                //}
+
+                //using (HttpWebResponse httpResponse = (HttpWebResponse)httpRequest.GetResponse())
+                //{
+                //    using (Stream stream = httpResponse.GetResponseStream())
+                //    {
+                //        string json = (new StreamReader(stream)).ReadToEnd();
+
+                //        var responseData = json.Split('&');
+                //        if (responseData.Length > 0)
+                //        {
+                //            var statusData = responseData[1].Split('=');
+                //            if (statusData.Length > 1)
+                //            {
+                //                var responsePayload = ccaCrypto.Decrypt(statusData[1].Replace("\r", "").Replace("\n", "").Replace("\t", ""), workingKey);
+                //                if (Convert.ToInt32(responsePayload.Split('|')[0]) == 0) //0 means successfull 
+                //                {
+                //                    ApplicantDetails _details = new ApplicantDetails();
+                //                    ApplicantTransactionDetail detail = new ApplicantTransactionDetail()
+                //                    {
+                //                        UserId = Convert.ToInt32(Params["merchant_param1"]),
+                //                        amount = Params["amount"],
+                //                        bank_ref_no = Params["bank_ref_no"],
+                //                        billing_address = Params["billing_address"],
+                //                        billing_name = Params["billing_name"],
+                //                        card_name = Params["card_name"],
+                //                        created_date = DateTime.Now,
+                //                        order_id = Convert.ToInt64(Params["order_id"]),
+                //                        order_status = Params["order_status"],
+                //                        payment_mode = Params["payment_mode"],
+                //                        status_message = Params["status_message"],
+                //                        tracking_id = Convert.ToInt64(Params["tracking_id"]),
+                //                        ApplicationId = Convert.ToInt32(Params["merchant_param2"]),
+                //                        trans_date = DateTime.Now,
+                //                    };
+                //                    _details.SaveApplicantTransactionDeatil(detail);
+                //                    SetAlertMessage("Payment done successfully", "Payment Status");
+                //                    return RedirectToAction("PaymentResponseSuccess");
+                //                }
+                //                else
+                //                {
+                //                    SetAlertMessage("Payment Failed", "Error");
+                //                    return RedirectToAction("PaymentRequest");
+                //                }
+                //            }
+                //            else
+                //            {
+                //                SetAlertMessage("Payment Failed", "Error");
+                //                return RedirectToAction("PaymentRequest");
+                //            }
+                //        }
+                //        else
+                //        {
+                //            SetAlertMessage("Payment Failed", "Error");
+                //            return RedirectToAction("PaymentRequest");
+                //        }
+                //    }
+                //}
+                #endregion
+
+                ApplicantDetails _details = new ApplicantDetails();
+                ApplicantTransactionDetail detail = new ApplicantTransactionDetail()
                 {
-                    access_code = strAccessCode,
-                    command = "orderStatusTracker",
-                    request_type = "STRING",
-                    response_type = "STRING",
-                    order_no = Convert.ToString(Params["order_id"]),
-                    enc_request = ccaCrypto.Encrypt("|" + Convert.ToString(Params["order_id"]) + "|", workingKey)
+                    UserId = Convert.ToInt32(Params["merchant_param1"]),
+                    amount = Params["amount"],
+                    bank_ref_no = Params["bank_ref_no"],
+                    billing_address = Params["billing_address"],
+                    billing_name = Params["billing_name"],
+                    card_name = Params["card_name"],
+                    created_date = DateTime.Now,
+                    order_id = Convert.ToInt64(Params["order_id"]),
+                    order_status = Params["order_status"],
+                    payment_mode = Params["payment_mode"],
+                    status_message = Params["status_message"],
+                    tracking_id = Convert.ToInt64(Params["tracking_id"]),
+                    ApplicationId = Convert.ToInt32(Params["merchant_param2"]),
+                    trans_date = DateTime.Now,
                 };
-                string inputJson = (new JavaScriptSerializer()).Serialize(input);
-                WebClient client = new WebClient();
-                client.Headers["Content-type"] = "application/json";
-                client.Encoding = Encoding.UTF8;
-                ServicePointManager.Expect100Continue = true;
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                string json = client.UploadString(apiUrl + "?access_code=" + input.access_code + "&command=orderStatusTracker&request_type=STRING&response_type=STRING&order_no=" + input.order_no + "&enc_request=" + input.enc_request + "", inputJson);
-
-                var responseData = json.Split('&');
-                if (responseData.Length > 0)
-                {
-                    var statusData = responseData[1].Split('=');
-                    if (statusData.Length > 1)
-                    {
-                        var responsePayload = ccaCrypto.Decrypt(statusData[1].Replace("\r", "").Replace("\n", "").Replace("\t", ""), workingKey);
-                        if (Convert.ToInt32(responsePayload.Split('|')[0]) == 0) //0 means successfull 
-                        {
-                            ApplicantDetails _details = new ApplicantDetails();
-                            ApplicantTransactionDetail detail = new ApplicantTransactionDetail()
-                            {
-                                UserId = Convert.ToInt32(Params["merchant_param1"]),
-                                amount = Params["amount"],
-                                bank_ref_no = Params["bank_ref_no"],
-                                billing_address = Params["billing_address"],
-                                billing_name = Params["billing_name"],
-                                card_name = Params["card_name"],
-                                created_date = DateTime.Now,
-                                order_id = Convert.ToInt64(Params["order_id"]),
-                                order_status = Params["order_status"],
-                                payment_mode = Params["payment_mode"],
-                                status_message = Params["status_message"],
-                                tracking_id = Convert.ToInt64(Params["tracking_id"]),
-                                ApplicationId = Convert.ToInt32(Params["merchant_param2"]),
-                                trans_date = DateTime.Now,
-                            };
-                            _details.SaveApplicantTransactionDeatil(detail);
-                            SetAlertMessage("Payment done successfully", "Payment Status");
-                            return RedirectToAction("PaymentResponseSuccess");
-                        }
-                        else
-                        {
-                            SetAlertMessage("Payment Failed", "Error");
-                            return RedirectToAction("PaymentRequest");
-                        }
-                    }
-                    else
-                    {
-                        SetAlertMessage("Payment Failed", "Error");
-                        return RedirectToAction("PaymentRequest");
-                    }
-                }
-                else
-                {
-                    SetAlertMessage("Payment Failed", "Error");
-                    return RedirectToAction("PaymentRequest");
-                }
-
+                _details.SaveApplicantTransactionDeatil(detail);
+                SetAlertMessage("Payment done successfully", "Payment Status");
+                return RedirectToAction("PaymentResponseSuccess");
             }
             else if (Params["order_status"] == "Aborted")
             {
