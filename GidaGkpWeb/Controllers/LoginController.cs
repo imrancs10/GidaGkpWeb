@@ -99,8 +99,6 @@ namespace GidaGkpWeb.Controllers
             if (message == Enums.LoginMessage.Authenticated)
             {
                 setUserClaim();
-                GetEnablePaymentLink();
-                GetEnablePrintReciptLink();
                 return RedirectToAction("Dashboard", "Applicant");
             }
             else
@@ -108,18 +106,6 @@ namespace GidaGkpWeb.Controllers
                 SetAlertMessage(_response, "Login Response");
                 return View("ApplicantLogin");
             }
-        }
-
-        public void GetEnablePaymentLink()
-        {
-            ApplicantDetails _details = new ApplicantDetails();
-            Session["EnablePaymentLink"] = _details.GetEnablePaymentLink(((CustomPrincipal)User).Id);
-        }
-
-        public void GetEnablePrintReciptLink()
-        {
-            ApplicantDetails _details = new ApplicantDetails();
-            Session["EnablePrintReciptLink"] = _details.GetEnablePrintReciptLink(((CustomPrincipal)User).Id);
         }
 
         public ActionResult ApplicantRegistration(string actionName = "")
@@ -253,7 +239,7 @@ namespace GidaGkpWeb.Controllers
                      1,
                      UserData.Email,
                      DateTime.Now,
-                     DateTime.Now.AddMinutes(15),
+                     DateTime.Now.AddMinutes(30),
                      false,
                      userData);
 

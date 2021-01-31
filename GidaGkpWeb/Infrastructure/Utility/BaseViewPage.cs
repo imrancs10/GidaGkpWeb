@@ -21,5 +21,17 @@ namespace GidaGkpWeb.Infrastructure.Utility
         {
             get { return base.User as CustomPrincipal; }
         }
+
+        public virtual int GetEnablePaymentLink()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            return _details.GetEnablePaymentLink(((CustomPrincipal)User).Id);
+        }
+
+        public virtual int GetEnablePrintReciptLink()
+        {
+            ApplicantDetails _details = new ApplicantDetails();
+            return _details.GetEnablePrintReciptLink(((CustomPrincipal)User).Id);
+        }
     }
 }
