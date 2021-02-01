@@ -353,6 +353,7 @@ namespace GidaGkpWeb.Controllers
 
             UserData.UserId = Convert.ToInt32(Params["merchant_param1"]);
             UserData.ApplicationId = Convert.ToInt32(Params["merchant_param2"]);
+            UserData.Username = Convert.ToString(Params["merchant_param3"]);
             LoginDetails _logindetails = new LoginDetails();
             string _response = string.Empty;
             Enums.LoginMessage message = _logindetails.GetLoginByUsrrname(UserData.Username);
