@@ -38,6 +38,26 @@ namespace GidaGkpWeb.BAL.Login
                 return Enums.LoginMessage.InvalidCreadential;
         }
 
+        public Enums.LoginMessage GetLoginByUsrrname(string UserName)
+        {
+            //string _passwordHash = Utility.GetHashString(Password);
+            _db = new GidaGKPEntities();
+
+            var _userRow = _db.ApplicantUsers.Where(x => x.UserName.Equals(UserName)).FirstOrDefault();
+
+            if (_userRow != null)
+            {
+                UserData.UserId = _userRow.Id;
+                UserData.Username = _userRow.UserName;
+                UserData.FullName = _userRow.FullName;
+                UserData.Email = _userRow.Email;
+                UserData.UserType = _userRow.UserType;
+                return Enums.LoginMessage.Authenticated;
+            }
+            else
+                return Enums.LoginMessage.InvalidCreadential;
+        }
+
         public Enums.CrudStatus RegisterApplicant(string fullName, string email, string contactno, string FName, string Adhaar, DateTime dob, string usrName, string password, string SchemeType, string SchemeName, string SectorName, string AllotmentNumber)
         {
             _db = new GidaGKPEntities();

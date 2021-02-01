@@ -574,7 +574,7 @@ namespace GidaGkpWeb.BAL
                         {
                             ApplicationNumber = application.ApplicationNumber,
                             FullApplicantName = applicantDetail.FullApplicantName,
-                            Emaild= applicantDetail.EmailId,
+                            Emaild = applicantDetail.EmailId,
                             CAddress = applicantDetail.CAddress,
                             Mobile = applicantDetail.Mobile,
                             TotalAmount = plotDetail.TotalAmount,
@@ -1264,6 +1264,129 @@ namespace GidaGkpWeb.BAL
                     }
                 }
                 return 0;
+            }
+        }
+
+        public ApplicantTransactionDetail ChecktransactionId(long transactionId)
+        {
+            try
+            {
+                _db = new GidaGKPEntities();
+                return _db.ApplicantTransactionDetails.Where(x => x.tracking_id == transactionId).FirstOrDefault(); ;
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return null;
+            }
+        }
+
+        public ApplicantTransactionDetail CheckorderId(long orderId)
+        {
+            try
+            {
+                _db = new GidaGKPEntities();
+                return _db.ApplicantTransactionDetails.Where(x => x.order_id == orderId).FirstOrDefault();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return null;
+            }
+        }
+
+        public PGTransactionInformation GetPGTransactionInformation(string OrderId, string TransactionId)
+        {
+            try
+            {
+                _db = new GidaGKPEntities();
+                return _db.PGTransactionInformations.Where(x => x.OrderId == OrderId).FirstOrDefault(); ;
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return null;
+            }
+        }
+
+        public ApplicantTransactionDetail GetApplicationTransactionInformation(int userid, int applicationId)
+        {
+            try
+            {
+                _db = new GidaGKPEntities();
+                return _db.ApplicantTransactionDetails.Where(x => x.UserId == userid && x.ApplicationId == applicationId).FirstOrDefault(); ;
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return null;
+            }
+        }
+        public Enums.CrudStatus SavePGTransactionInformation(int userId, int applicationId, string OrderId, string TransactionId)
+        {
+            try
+            {
+                _db = new GidaGKPEntities();
+                int _effectRow = 0;
+
+                //var extingPGInfo = _db.PGTransactionInformations.Where(x => x.ApplicationId == applicationId && x.UserId == userId).FirstOrDefault();
+                //if (extingPGInfo != null)  // update detail
+                //{
+                //    extingPGInfo.OrderId = OrderId;
+                //    extingPGInfo.TransactionId = TransactionId;
+                //    _db.Entry(extingPGInfo).State = EntityState.Modified;
+                //    _effectRow = _db.SaveChanges();
+                //}
+
+                //else
+                //{
+                PGTransactionInformation _newRecord = new PGTransactionInformation()
+                {
+                    UserId = userId,
+                    ApplicationId = UserData.ApplicationId,
+                    OrderId = OrderId,
+                    TransactionId = TransactionId
+                };
+                _db.Entry(_newRecord).State = EntityState.Added;
+                _effectRow = _db.SaveChanges();
+                //}
+
+                return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return Enums.CrudStatus.InternalError;
             }
         }
     }

@@ -300,10 +300,33 @@ namespace GidaGkpWeb.Controllers
         {
             ApplicantDetails _details = new ApplicantDetails();
             var data = _details.GetUserPlotDetail(UserData.ApplicationId);
+            string transactionId = VerificationCodeGeneration.GetUniqueNumber(), orderId = VerificationCodeGeneration.GetUniqueNumber();
+            while (_details.ChecktransactionId(Convert.ToInt64(transactionId)) != null)
+            {
+                transactionId = VerificationCodeGeneration.GetUniqueNumber();
+            }
+            while (_details.CheckorderId(Convert.ToInt64(orderId)) != null)
+            {
+                orderId = VerificationCodeGeneration.GetUniqueNumber();
+            }
+            if (UserData.UserId > 0 && UserData.ApplicationId > 0)
+            {
+                var _effectRow = _details.SavePGTransactionInformation(UserData.UserId, UserData.ApplicationId, orderId, transactionId);
+                if (_effectRow <= 0)
+                {
+                    SetAlertMessage("Session Timeout", "Error");
+                    return View();
+                }
+            }
+            else
+            {
+                SetAlertMessage("Session Timeout", "Error");
+                return RedirectToAction("ApplicantLogin", "Login");
+            }
 
             string baseURL = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
             string amountToBePaid = data.NetAmount.ToString();
-            string ccaRequest = "tid=" + VerificationCodeGeneration.GetUniqueNumber() + "&merchant_id=" + strMerchantId + "&order_id=" + VerificationCodeGeneration.GetUniqueNumber() + "&amount=" + amountToBePaid + "&currency=INR&redirect_url=" + baseURL + "Applicant/PaymentResponse&cancel_url=" + baseURL + "Applicant/PaymentResponse&language=EN&billing_name=" + data.FullApplicantName + "&billing_address=" + data.CAddress + "&billing_city=&billing_state=&billing_zip=&billing_country=&billing_tel=&billing_email=&delivery_name=" + data.FullApplicantName + "&delivery_address=" + data.CAddress + "&delivery_city=&delivery_state=&delivery_zip=&delivery_country=&delivery_tel=&merchant_param1=" + UserData.UserId + "&merchant_param2=" + UserData.ApplicationId + "&merchant_param3=" + UserData.Username + "&merchant_param4=" + UserData.UserType + "&merchant_param5=" + UserData.FullName + "&payment_option=OPTCRDC&emi_plan_id=&emi_tenure_id=&card_type=CRDC&card_name=&data_accept=N&card_number=4111+1111+1111+1111&expiry_month=12&expiry_year=2022&cvv_number=123&issuing_bank=&mobile_number=&mm_id=&otp=&promo_code=&";
+            string ccaRequest = "tid=" + transactionId + "&merchant_id=" + strMerchantId + "&order_id=" + orderId + "&amount=" + amountToBePaid + "&currency=INR&redirect_url=" + baseURL + "Applicant/PaymentResponse&cancel_url=" + baseURL + "Applicant/PaymentResponse&language=EN&billing_name=" + data.FullApplicantName + "&billing_address=" + data.CAddress + "&billing_city=&billing_state=&billing_zip=&billing_country=&billing_tel=&billing_email=&delivery_name=" + data.FullApplicantName + "&delivery_address=" + data.CAddress + "&delivery_city=&delivery_state=&delivery_zip=&delivery_country=&delivery_tel=&merchant_param1=" + UserData.UserId + "&merchant_param2=" + UserData.ApplicationId + "&merchant_param3=" + UserData.Username + "&merchant_param4=" + UserData.UserType + "&merchant_param5=" + orderId + "&payment_option=OPTCRDC&emi_plan_id=&emi_tenure_id=&card_type=CRDC&card_name=&data_accept=N&card_number=4111+1111+1111+1111&expiry_month=12&expiry_year=2022&cvv_number=123&issuing_bank=&mobile_number=&mm_id=&otp=&promo_code=&";
             //string ccaRequest = "tid=" + VerificationCodeGeneration.GetUniqueNumber() + "&merchant_id=" + strMerchantId + "&order_id=" + VerificationCodeGeneration.GetUniqueNumber() + "&amount=" + amountToBePaid + "&currency=INR&redirect_url=" + baseURL + "Applicant/PaymentResponse&cancel_url=" + baseURL + "Applicant/PaymentResponse&language=EN&billing_name=" + data.FullApplicantName + "&billing_address=" + data.CAddress + "&billing_city=&billing_state=&billing_zip=&billing_country=&billing_tel=&billing_email=&delivery_name=" + data.FullApplicantName + "&delivery_address=" + data.CAddress + "&delivery_city=&delivery_state=&delivery_zip=&delivery_country=&delivery_tel=&merchant_param1=" + UserData.UserId + "&merchant_param2=" + UserData.ApplicationId + "&merchant_param3=" + UserData.Username + "&merchant_param4=" + UserData.Email + "&merchant_param5=" + UserData.FullName + "&";
             Session["strEncRequest"] = ccaCrypto.Encrypt(ccaRequest, workingKey);
             Session["strAccessCode"] = strAccessCode;
@@ -312,6 +335,7 @@ namespace GidaGkpWeb.Controllers
         }
         public ActionResult PaymentResponse()
         {
+            ApplicantDetails _details = new ApplicantDetails();
             CCACrypto ccaCrypto = new CCACrypto();
             string encResponse = ccaCrypto.Decrypt(Request.Form["encResp"], workingKey);
             NameValueCollection Params = new NameValueCollection();
@@ -329,10 +353,34 @@ namespace GidaGkpWeb.Controllers
 
             UserData.UserId = Convert.ToInt32(Params["merchant_param1"]);
             UserData.ApplicationId = Convert.ToInt32(Params["merchant_param2"]);
-            UserData.Username = Convert.ToString(Params["merchant_param3"]);
-            UserData.UserType = Convert.ToString(Params["merchant_param4"]);
-            UserData.FullName = Convert.ToString(Params["merchant_param5"]);
+            LoginDetails _logindetails = new LoginDetails();
+            string _response = string.Empty;
+            Enums.LoginMessage message = _logindetails.GetLoginByUsrrname(UserData.Username);
+            _response = LoginResponse(message);
+            if (message != Enums.LoginMessage.Authenticated)
+            {
+                SetAlertMessage("Session Timeout", "Error");
+                return RedirectToAction("ApplicantLogin", "Login");
+            }
+
             setUserClaim();
+
+            var pdinfo = _details.GetPGTransactionInformation(Convert.ToString(Params["merchant_param5"]), Convert.ToString(Params["tracking_id"]));
+
+            if (pdinfo != null)
+            {
+                if (Convert.ToInt64(pdinfo.OrderId) != Convert.ToInt64(Params["order_id"]))
+                {
+                    SetAlertMessage("Payment Not Done", "Error");
+                    return RedirectToAction("PaymentRequest");
+                }
+
+            }
+            else
+            {
+                SetAlertMessage("Payment Not Done", "Error");
+                return RedirectToAction("PaymentRequest");
+            }
 
             if (Params["order_status"] == "Success")
             {
@@ -416,29 +464,36 @@ namespace GidaGkpWeb.Controllers
                 //    }
                 //}
                 #endregion
-
-                ApplicantDetails _details = new ApplicantDetails();
-                ApplicantTransactionDetail detail = new ApplicantTransactionDetail()
+                var payData = _details.GetApplicationTransactionInformation(UserData.UserId, UserData.ApplicationId);
+                if (payData == null)
                 {
-                    UserId = Convert.ToInt32(Params["merchant_param1"]),
-                    amount = Params["amount"],
-                    bank_ref_no = Params["bank_ref_no"],
-                    billing_address = Params["billing_address"],
-                    billing_name = Params["billing_name"],
-                    card_name = Params["card_name"],
-                    created_date = DateTime.Now,
-                    order_id = Convert.ToInt64(Params["order_id"]),
-                    order_status = Params["order_status"],
-                    payment_mode = Params["payment_mode"],
-                    status_message = Params["status_message"],
-                    tracking_id = Convert.ToInt64(Params["tracking_id"]),
-                    ApplicationId = Convert.ToInt32(Params["merchant_param2"]),
-                    trans_date = DateTime.Now,
-                    TransactionType = "Online"
-                };
-                _details.SaveApplicantTransactionDeatil(detail);
-                SetAlertMessage("Payment done successfully", "Payment Status");
-                return RedirectToAction("PaymentResponseSuccess");
+                    ApplicantTransactionDetail detail = new ApplicantTransactionDetail()
+                    {
+                        UserId = Convert.ToInt32(Params["merchant_param1"]),
+                        amount = Params["amount"],
+                        bank_ref_no = Params["bank_ref_no"],
+                        billing_address = Params["billing_address"],
+                        billing_name = Params["billing_name"],
+                        card_name = Params["card_name"],
+                        created_date = DateTime.Now,
+                        order_id = Convert.ToInt64(Params["order_id"]),
+                        order_status = Params["order_status"],
+                        payment_mode = Params["payment_mode"],
+                        status_message = Params["status_message"],
+                        tracking_id = Convert.ToInt64(Params["tracking_id"]),
+                        ApplicationId = Convert.ToInt32(Params["merchant_param2"]),
+                        trans_date = DateTime.Now,
+                        TransactionType = "Online"
+                    };
+                    _details.SaveApplicantTransactionDeatil(detail);
+                    SetAlertMessage("Payment done successfully", "Payment Status");
+                    return RedirectToAction("PaymentResponseSuccess");
+                }
+                else
+                {
+                    SetAlertMessage("Payment already made for current Application", "Payment Error");
+                    return RedirectToAction("PaymentRequest");
+                }
             }
             else if (Params["order_status"] == "Aborted")
             {

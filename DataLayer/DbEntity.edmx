@@ -248,6 +248,16 @@
           <Property Name="ParentLookupId" Type="int" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <EntityType Name="PGTransactionInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ApplicationId" Type="int" />
+          <Property Name="OrderId" Type="varchar" MaxLength="50" />
+          <Property Name="TransactionId" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityContainer Name="GidaGKPModelStoreContainer">
           <EntitySet Name="ApplicantApplicationDetail" EntityType="Self.ApplicantApplicationDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantBankDetails" EntityType="Self.ApplicantBankDetails" Schema="dbo" store:Type="Tables" />
@@ -259,6 +269,7 @@
           <EntitySet Name="ApplicantUploadDoc" EntityType="Self.ApplicantUploadDoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantUser" EntityType="Self.ApplicantUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PGTransactionInformation" EntityType="Self.PGTransactionInformation" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -518,7 +529,18 @@
           <EntitySet Name="ApplicantUploadDocs" EntityType="Self.ApplicantUploadDoc" />
           <EntitySet Name="ApplicantUsers" EntityType="Self.ApplicantUser" />
           <EntitySet Name="Lookups" EntityType="Self.Lookup" />
+          <EntitySet Name="PGTransactionInformations" EntityType="GidaGKPModel.PGTransactionInformation" />
         </EntityContainer>
+        <EntityType Name="PGTransactionInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ApplicationId" Type="Int32" />
+          <Property Name="OrderId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -775,6 +797,17 @@
                 <ScalarProperty Name="LookupType" ColumnName="LookupType" />
                 <ScalarProperty Name="LookupName" ColumnName="LookupName" />
                 <ScalarProperty Name="ParentLookupId" ColumnName="ParentLookupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PGTransactionInformations">
+            <EntityTypeMapping TypeName="GidaGKPModel.PGTransactionInformation">
+              <MappingFragment StoreEntitySet="PGTransactionInformation">
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
