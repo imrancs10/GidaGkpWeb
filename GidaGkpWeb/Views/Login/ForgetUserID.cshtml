@@ -311,66 +311,47 @@
 </head>
 <body>
     <section class="login-block banner-sec">
+
         <div class="login-sec" style="padding:50px">
-            <fieldset>
-                <legend style="background-color:lightgoldenrodyellow;text-align:center;">
-                    <font style="font-size:18px"> Forget User Name</font><br />
-                </legend>
-                <form id="form" class="form-horizontal" action="ForgetUserID" method="post" autocomplete="off">
-                    <div class="col-sm-offset-2">
-                        @if (!string.IsNullOrEmpty(Convert.ToString(ViewData["msg"])))
-                        {
-                            <div class="col-sm-offset-2">
-                                <div class="form-group">
-                                    <label>@Convert.ToString(ViewData["msg"])</label>
-                                </div>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="ccol-sm-offset-2">
-                                <div class="form-group">
-                                    <label>Enter Mobile Number/Email Id</label>
-                                    <div>
-                                        <input type="text" value="" name="emailmobile" required data-valid="required" class="form-control"
-                                               id="emailmobile" placeholder="Mobile Number/Email" autocomplete="off" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label></label>
-                                    <div>
-                                        <div>
-                                            <input type="submit" name="Submit" class="btn btn-warning pull-left" value="Submit">
-                                            <a href="/Login/ApplicantLogin" class="btn btn-warning pull-left" style="margin:0 20px;">Cancel</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </form>
-            </fieldset>
-        </div>
 
-    </section>
-
-
-    <section class="login-block banner-sec">
-        <div class="login-sec" style="padding:50px">
-            <div class="" style="margin-top:0px;padding-top:20px;">
-                <div class="col-sm-12 col-lg-12">
-                    <div class="panel panel-primary" style="width:50%;margin:0 auto">
-                        <div class="panel-heading">
-                            Forget User Id
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-sm-12 col-xs-12" style="padding:0 15px 20px 15px;">
+                <h2 class="text-left">Forget User Name</h2>
             </div>
+
+            <form id="form" class="form-horizontal" action="ForgetUserID" method="post" autocomplete="off">
+                <div>
+                    @if (!string.IsNullOrEmpty(Convert.ToString(ViewData["msg"])))
+                    {
+                        <div class="form-group">
+                            <label>@Convert.ToString(ViewData["msg"])</label>
+                        </div>
+                        <div class="form-group">
+                            <a href="/Login/ApplicantLogin" class="btn btn-warning pull-right" style="margin:0 20px;">Go To Login</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <div class="form-group">
+                                <label>Enter Mobile Number/Email Id</label>
+                                <div>
+                                    <input type="text" value="" name="emailmobile" required data-valid="required" class="form-control"
+                                           id="emailmobile" placeholder="Mobile Number/Email" autocomplete="off" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label></label>
+                                <div>
+                                    <div>
+                                        <input type="submit" name="Submit" class="btn btn-warning pull-left" value="Submit">
+                                        <a href="/Login/ApplicantLogin" class="btn btn-warning pull-left" style="margin:0 20px;">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </form>
         </div>
 
     </section>
