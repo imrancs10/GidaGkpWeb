@@ -605,6 +605,9 @@
     <Content Include="Views\Applicant\ViewAdvertisement.cshtml" />
     <Content Include="Views\Applicant\ApplicantUploadTransactionDetail.cshtml" />
     <Content Include="Views\Applicant\ApplicantUploadTransactionInDetail.cshtml" />
+    <Content Include="Views\Login\ForgetPassword.cshtml" />
+    <Content Include="Views\Login\ResetPassword.cshtml" />
+    <Content Include="Views\Login\ForgetUserID.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

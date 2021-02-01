@@ -224,6 +224,148 @@ namespace GidaGkpWeb.Controllers
             Enums.CrudStatus message = _details.RegisterApplicant(fullName, email, contactno, FName, Adhaar, dob, usrName, password, SchemeType, SchemeName, SectorName, AllotmentNumber);
         }
 
+        public ActionResult ForgetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ForgetPassword(string emailId, string mobilenumber)
+        {
+            LoginDetails _detail = new LoginDetails();
+            var applicant = _detail.GetApplicantDetailByEmailAndMobileNumber(emailId, mobilenumber);
+            if (applicant == null)
+            {
+                SetAlertMessage("Email Id or Mobile number is not found.", "Forget Password");
+                return View();
+            }
+            else
+            {
+                string resetCode = VerificationCodeGeneration.GetGeneratedResetCode();
+                //udpate Patient with reset code
+                applicant.ResetCode = resetCode;
+                _detail.UpdateApplicantDetail(applicant);
+                string baseUrl = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
+                SendMailForgetPassword(applicant, resetCode, baseUrl);
+                ViewData["msg"] = "We have Sent you an Email for reset password link.kindly check your email";
+                return View();
+            }
+        }
+
+        private async Task SendMailForgetPassword(ApplicantUser patient, string resetCode, string baseUrl)
+        {
+            await Task.Run(() =>
+            {
+                string passwordCreateURL = "Login/ResetPassword?resetCode=" + resetCode;
+                Message msg = new Message()
+                {
+                    MessageTo = patient.Email,
+                    MessageNameTo = patient.FullName,
+                    Subject = "Forget Password",
+                    Body = EmailHelper.GetForgetPasswordEmail(patient.FullName, baseUrl + passwordCreateURL)
+                };
+
+                ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
+                sendMessageStrategy.SendMessages();
+            });
+        }
+
+        [HttpGet]
+        public ActionResult ResetPassword(string resetCode)
+        {
+            ViewData["resetCode"] = resetCode;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ResetPassword(string password, string confirmpassword, string resetCode)
+        {
+            if (password.Trim() != confirmpassword.Trim())
+            {
+                SetAlertMessage("Password and Confirm Password are not match", "password Create");
+                return View();
+            }
+            else if (password.Trim().Length < 8)
+            {
+                SetAlertMessage("password must be at least 8 characters long.", "password Create");
+                return View();
+            }
+            else if (!password.Trim().Any(ch => char.IsUpper(ch)))
+            {
+                SetAlertMessage("password must be at least 1 Upper Case characters.", "password Create");
+                return View();
+            }
+            else if (!password.Trim().Any(ch => char.IsNumber(ch)))
+            {
+                SetAlertMessage("password must be at least 1 Numeric characters.", "password Create");
+                return View();
+            }
+            else if (!password.Trim().Any(ch => !char.IsLetterOrDigit(ch)))
+            {
+                SetAlertMessage("password must be at least 1 Special characters.", "password Create");
+                return View();
+            }
+            else
+            {
+                LoginDetails _details = new LoginDetails();
+                var result = _details.GetApplicantDetailByresetCode(resetCode);
+                if (result != null)
+                {
+                    result.Password = password.Trim();
+                    result.ResetCode = "";
+                    _details.UpdateApplicantDetail(result);
+                    SetAlertMessage("Password Created Successfully, please login.", "Password Create");
+                    return RedirectToAction("ApplicantLogin");
+                }
+                else
+                {
+                    SetAlertMessage("Your reset password link is already used,Kindly initiate another request for Forget Password.", "password Create");
+                    return View();
+                }
+            }
+        }
+
+        public ActionResult ForgetUserID()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ForgetUserID(string emailmobile)
+        {
+            LoginDetails _details = new LoginDetails();
+            var applicant = _details.GetApplicantDetailByMobileNumberOrEmail(emailmobile);
+            if (applicant == null)
+            {
+                SetAlertMessage("Mobile number Or Email is not Correct.", "Forget User Name");
+                return View();
+            }
+            else
+            {
+                SendMailForgetUserId(applicant);
+                ViewData["msg"] = "We have Sent you an Email that refering your user name.kindly check your email";
+                return View();
+            }
+        }
+
+        private async Task SendMailForgetUserId(ApplicantUser applicant)
+        {
+            await Task.Run(() =>
+            {
+                string userName = applicant.UserName;
+                Message msg = new Message()
+                {
+                    MessageTo = applicant.Email,
+                    MessageNameTo = applicant.FullName,
+                    Subject = "Forget UserID",
+                    Body = EmailHelper.GetForgetUserIdEmail(applicant.FullName, userName)
+                };
+
+                ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
+                sendMessageStrategy.SendMessages();
+            });
+        }
+
         private void setUserClaim()
         {
             CustomPrincipalSerializeModel serializeModel = new CustomPrincipalSerializeModel();

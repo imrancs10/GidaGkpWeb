@@ -90,5 +90,37 @@ namespace GidaGkpWeb.BAL.Login
             else
                 return Enums.CrudStatus.DataAlreadyExist;
         }
+
+        public ApplicantUser GetApplicantDetailByEmailAndMobileNumber(string emailId, string mobilenumber)
+        {
+            _db = new GidaGKPEntities();
+            return _db.ApplicantUsers.Where(x => x.Email == emailId.Trim() && x.ContactNo == mobilenumber.Trim()).FirstOrDefault();
+        }
+
+        public ApplicantUser UpdateApplicantDetail(ApplicantUser info)
+        {
+            _db = new GidaGKPEntities();
+            var _applicantRow = _db.ApplicantUsers.Where(x => x.Id.Equals(info.Id)).FirstOrDefault();
+            if (_applicantRow != null)
+            {
+                _applicantRow.ResetCode = info.ResetCode;
+                _applicantRow.Password = !string.IsNullOrEmpty(info.Password) ? info.Password : _applicantRow.Password;
+                _db.Entry(_applicantRow).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+            return _applicantRow;
+        }
+
+        public ApplicantUser GetApplicantDetailByresetCode(string resetCode)
+        {
+            _db = new GidaGKPEntities();
+            return _db.ApplicantUsers.Where(x => x.ResetCode == resetCode).FirstOrDefault();
+        }
+
+        public ApplicantUser GetApplicantDetailByMobileNumberOrEmail(string UserId)
+        {
+            _db = new GidaGKPEntities();
+            return _db.ApplicantUsers.Where(x => x.ContactNo == UserId.Trim() || x.Email == UserId.Trim()).FirstOrDefault();
+        }
     }
 }

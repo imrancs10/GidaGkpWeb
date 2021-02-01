@@ -237,6 +237,7 @@
           <Property Name="SectorName" Type="varchar" MaxLength="500" />
           <Property Name="AllotmentNumber" Type="varchar" MaxLength="50" />
           <Property Name="UserType" Type="varchar" MaxLength="50" />
+          <Property Name="ResetCode" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Lookup">
           <Key>
@@ -507,6 +508,7 @@
           <Property Name="SectorName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="AllotmentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ResetCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Lookup">
           <Key>
@@ -771,6 +773,7 @@
           <EntitySetMapping Name="ApplicantUsers">
             <EntityTypeMapping TypeName="GidaGKPModel.ApplicantUser">
               <MappingFragment StoreEntitySet="ApplicantUser">
+                <ScalarProperty Name="ResetCode" ColumnName="ResetCode" />
                 <ScalarProperty Name="UserType" ColumnName="UserType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />

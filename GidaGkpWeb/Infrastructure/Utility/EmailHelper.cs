@@ -56,22 +56,22 @@ namespace GidaGkpWeb.Infrastructure.Utility
             return body;
         }
 
-        public static string GetForgetPasswordEmail(string firstname, string middlename, string lastname, string registrationnumber, string link)
+        public static string GetForgetPasswordEmail(string name, string link)
         {
-            string body = string.Format("Hi {0} {1} {2}<br/><br/>", firstname, middlename, lastname);
+            string body = string.Format("Hi {0}<br/><br/>", name);
             body += "As you requested, you can use to create your Password by clicking on below URL.<br/>";
             body += "<br/><b></b>" + link + "<br/><br/>";
             body += "Thank You,<br/>";
-            body += "Patient Portal Information System Customer Support";
+            body += "GIDA Gorakhpur Customer Support";
             return body;
         }
 
-        public static string GetForgetUserIdEmail(string firstname, string middlename, string lastname, string registrationnumber)
+        public static string GetForgetUserIdEmail(string Name, string userName)
         {
-            string body = string.Format("Hi {0} {1} {2}<br/><br/>", firstname, middlename, lastname);
-            body += "As you requested, your registration number is : <b>" + registrationnumber + "</b>.<br/><br/>";
+            string body = string.Format("Hi {0}<br/><br/>", Name);
+            body += "As you requested, your user name is : <b>" + userName + "</b>.<br/><br/>";
             body += "Thank You,<br/>";
-            body += "Patient Portal Information System Customer Support";
+            body += "GIDA Gorakhpur Customer Support";
             return body;
         }
     }

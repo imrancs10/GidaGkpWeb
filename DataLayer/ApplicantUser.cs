@@ -29,5 +29,6 @@ namespace DataLayer
         public string SectorName { get; set; }
         public string AllotmentNumber { get; set; }
         public string UserType { get; set; }
+        public string ResetCode { get; set; }
     }
 }
