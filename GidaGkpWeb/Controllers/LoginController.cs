@@ -135,26 +135,26 @@ namespace GidaGkpWeb.Controllers
                 SetAlertMessage("Password and Confirm Password not matched", "Register Response");
                 return View("ApplicantRegistration");
             }
-            else if (password.Trim().Length < 8)
-            {
-                SetAlertMessage("password must be at least 8 characters long.", "Register Response");
-                return RedirectToAction("ApplicantRegistration");
-            }
-            else if (!password.Trim().Any(ch => char.IsUpper(ch)))
-            {
-                SetAlertMessage("password must be at least 1 Upper Case characters.", "Register Response");
-                return RedirectToAction("ApplicantRegistration");
-            }
-            else if (!password.Trim().Any(ch => char.IsNumber(ch)))
-            {
-                SetAlertMessage("password must be at least 1 Numeric characters.", "Register Response");
-                return RedirectToAction("ApplicantRegistration");
-            }
-            else if (!password.Trim().Any(ch => !char.IsLetterOrDigit(ch)))
-            {
-                SetAlertMessage("password must be at least 1 Special characters.", "Register Response");
-                return RedirectToAction("ApplicantRegistration");
-            }
+            //else if (password.Trim().Length < 8)
+            //{
+            //    SetAlertMessage("password must be at least 8 characters long.", "Register Response");
+            //    return RedirectToAction("ApplicantRegistration");
+            //}
+            //else if (!password.Trim().Any(ch => char.IsUpper(ch)))
+            //{
+            //    SetAlertMessage("password must be at least 1 Upper Case characters.", "Register Response");
+            //    return RedirectToAction("ApplicantRegistration");
+            //}
+            //else if (!password.Trim().Any(ch => char.IsNumber(ch)))
+            //{
+            //    SetAlertMessage("password must be at least 1 Numeric characters.", "Register Response");
+            //    return RedirectToAction("ApplicantRegistration");
+            //}
+            //else if (!password.Trim().Any(ch => !char.IsLetterOrDigit(ch)))
+            //{
+            //    SetAlertMessage("password must be at least 1 Special characters.", "Register Response");
+            //    return RedirectToAction("ApplicantRegistration");
+            //}
             else
             {
                 LoginDetails _details = new LoginDetails();
@@ -305,26 +305,26 @@ namespace GidaGkpWeb.Controllers
                 SetAlertMessage("Password and Confirm Password are not match", "password Create");
                 return View();
             }
-            else if (password.Trim().Length < 8)
-            {
-                SetAlertMessage("password must be at least 8 characters long.", "password Create");
-                return View();
-            }
-            else if (!password.Trim().Any(ch => char.IsUpper(ch)))
-            {
-                SetAlertMessage("password must be at least 1 Upper Case characters.", "password Create");
-                return View();
-            }
-            else if (!password.Trim().Any(ch => char.IsNumber(ch)))
-            {
-                SetAlertMessage("password must be at least 1 Numeric characters.", "password Create");
-                return View();
-            }
-            else if (!password.Trim().Any(ch => !char.IsLetterOrDigit(ch)))
-            {
-                SetAlertMessage("password must be at least 1 Special characters.", "password Create");
-                return View();
-            }
+            //else if (password.Trim().Length < 8)
+            //{
+            //    SetAlertMessage("password must be at least 8 characters long.", "password Create");
+            //    return View();
+            //}
+            //else if (!password.Trim().Any(ch => char.IsUpper(ch)))
+            //{
+            //    SetAlertMessage("password must be at least 1 Upper Case characters.", "password Create");
+            //    return View();
+            //}
+            //else if (!password.Trim().Any(ch => char.IsNumber(ch)))
+            //{
+            //    SetAlertMessage("password must be at least 1 Numeric characters.", "password Create");
+            //    return View();
+            //}
+            //else if (!password.Trim().Any(ch => !char.IsLetterOrDigit(ch)))
+            //{
+            //    SetAlertMessage("password must be at least 1 Special characters.", "password Create");
+            //    return View();
+            //}
             else
             {
                 LoginDetails _details = new LoginDetails();
