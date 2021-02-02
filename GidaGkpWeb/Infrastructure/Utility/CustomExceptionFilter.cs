@@ -22,8 +22,4 @@ namespace PatientPortal.Infrastructure.Utility
         }
     }
 
-    //public interface IExceptionFilter
-    //{
-    //    void OnException(ExceptionContext filterContext);
-    //}
 }
