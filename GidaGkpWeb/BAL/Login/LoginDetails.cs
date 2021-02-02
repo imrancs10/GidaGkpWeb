@@ -81,7 +81,7 @@ namespace GidaGkpWeb.BAL.Login
                     SchemeType = SchemeType,
                     SectorName = SectorName,
                     CreationDate = DateTime.Now,
-                    UserType = "Applicant"
+                    UserType = "Bank"
                 };
                 _db.Entry(_newRecord).State = EntityState.Added;
                 _effectRow = _db.SaveChanges();
