@@ -1,24 +1,22 @@
-﻿using log4net;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PatientPortal.Infrastructure.Utility
+namespace GidaGkpWeb.Infrastructure.Utility
 {
-    public class CustomExceptionFilter : ActionFilterAttribute, IExceptionFilter
+    public class SessionTimeoutAttribute : ActionFilterAttribute
     {
-        ILog logger = LogManager.GetLogger(typeof(CustomExceptionFilter));
-        public void OnException(ExceptionContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            Exception e = filterContext.Exception;
-            //filterContext.ExceptionHandled = true;
-            //filterContext.Result = new ViewResult()
-            //{
-            //    ViewName = "ExceptionPage"
-            //};
-            logger.Error(e.InnerException);
+            HttpContext ctx = HttpContext.Current;
+            if (HttpContext.Current.Session["userid"] == null)
+            {
+                filterContext.Result = new RedirectResult("~/Login/ApplicantLogin");
+                return;
+            }
+            base.OnActionExecuting(filterContext);
         }
     }
 

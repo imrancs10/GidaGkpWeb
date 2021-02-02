@@ -23,6 +23,7 @@ using System.IO;
 
 namespace GidaGkpWeb.Controllers
 {
+    [SessionTimeout]
     public class ApplicantController : CommonController
     {
         CCACrypto ccaCrypto = new CCACrypto();
@@ -31,7 +32,7 @@ namespace GidaGkpWeb.Controllers
         public string strMerchantId = "310096";
         public string strEncRequest = "";
         public string strAccessCode = "AVHE00IA10BD01EHDB";// put the access key in the quotes provided here.
-        string apiUrl = "https://apitest.ccavenue.com/apis/servlet/DoWebTrans";
+        //string apiUrl = "https://apitest.ccavenue.com/apis/servlet/DoWebTrans";
         public ActionResult Dashboard()
         {
             //show gida logo and info
