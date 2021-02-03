@@ -854,7 +854,7 @@ $(document).ready(function () {
         //    }
         //}
 
-        var auxValue = (parseInt($(this).val()) + 1000).toString().slice(1, 4);
+        var auxValue = (parseInt($(this).val()) + 1000).toString().slice($(this).val().length - 3, $(this).val().length);
         var EMD = "";
         if (auxValue == "000") {
             EMD = (parseInt($(this).val())).toString().slice(0, -3) + "0000";
