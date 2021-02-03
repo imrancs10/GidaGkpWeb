@@ -11,7 +11,7 @@ namespace GidaGkpWeb.Infrastructure.Utility
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             HttpContext ctx = HttpContext.Current;
-            if (HttpContext.Current.Session["userid"] == null)
+            if (HttpContext.Current.Session["userid"] == null && filterContext.ActionDescriptor.ActionName != "PaymentResponse")
             {
                 filterContext.Result = new RedirectResult("~/Login/ApplicantLogin");
                 return;
