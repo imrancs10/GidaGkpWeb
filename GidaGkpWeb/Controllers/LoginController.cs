@@ -125,6 +125,11 @@ namespace GidaGkpWeb.Controllers
                 SetAlertMessage("Please Enter correct Mobile Number", "Register");
                 return RedirectToAction("ApplicantRegistration");
             }
+            else if (Adhaar.Trim().Length != 12)
+            {
+                SetAlertMessage("Please Enter Correct Aadhar Number", "Register");
+                return RedirectToAction("ApplicantRegistration");
+            }
             else if (!Regex.IsMatch(email, emailRegEx, RegexOptions.IgnoreCase))
             {
                 SetAlertMessage("Please Enter correct Email Address", "Register");

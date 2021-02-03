@@ -516,10 +516,16 @@ $(document).ready(function () {
         else if ($('#RPDrivingLiecence').prop('checked')) {
             ResidentialProof = $('#RPDrivingLiecence').val();
         }
+
+        if ($('#AdhaarNo').val().trim().length != 12) {
+            utility.alert.setAlert(utility.alert.alertType.error, 'Please enter 12 digit Aadhar Number.');
+            return false;
+        }
+
         if ($('#FullName').val() != '' && $('#FName').val() != '' && $('#MName').val() != '' &&
             $('#DOB').val() != '' && $('#Gender').val() != '' && $('#Category').val() != '' &&
             $('#Nationality').val() != '' && $('#PAN').val() != '' && $('#MobileNo').val() != '' &&
-            $('#Email').val() != '' && $('#CAddress').val() != '' &&
+            $('#Email').val() != '' && $('#CAddress').val() != '' && $('#AdhaarNo').val() != '' &&
             $('#PAddress').val() != '' && IdentityProof != '' && ResidentialProof != '') {
             var inputData = {
                 FullName: $('#FullName').val(),
@@ -784,7 +790,7 @@ $(document).ready(function () {
                     calculation += plotArea * 6000;
                     plotArea -= plotArea;
                 }
-                
+
                 index++;
             }
             else if (index == 1) {
