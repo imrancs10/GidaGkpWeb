@@ -258,6 +258,7 @@
           <Property Name="ApplicationId" Type="int" />
           <Property Name="OrderId" Type="varchar" MaxLength="50" />
           <Property Name="TransactionId" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
         <EntityContainer Name="GidaGKPModelStoreContainer">
           <EntitySet Name="ApplicantApplicationDetail" EntityType="Self.ApplicantApplicationDetail" Schema="dbo" store:Type="Tables" />
@@ -542,6 +543,7 @@
           <Property Name="ApplicationId" Type="Int32" />
           <Property Name="OrderId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TransactionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -806,6 +808,7 @@
           <EntitySetMapping Name="PGTransactionInformations">
             <EntityTypeMapping TypeName="GidaGKPModel.PGTransactionInformation">
               <MappingFragment StoreEntitySet="PGTransactionInformation">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />

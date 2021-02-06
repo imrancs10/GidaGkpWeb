@@ -1369,7 +1369,8 @@ namespace GidaGkpWeb.BAL
                     UserId = userId,
                     ApplicationId = UserData.ApplicationId,
                     OrderId = OrderId,
-                    TransactionId = TransactionId
+                    TransactionId = TransactionId,
+                    CreatedDate = DateTime.Now
                 };
                 _db.Entry(_newRecord).State = EntityState.Added;
                 _effectRow = _db.SaveChanges();

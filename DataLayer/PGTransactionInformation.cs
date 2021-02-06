@@ -19,5 +19,6 @@ namespace DataLayer
         public Nullable<int> ApplicationId { get; set; }
         public string OrderId { get; set; }
         public string TransactionId { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
     }
 }
