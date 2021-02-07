@@ -319,6 +319,10 @@
     <Content Include="Content\ajax.googleapis.com\ajax\libs\jquery\1.8\jquery.min.js" />
     <Content Include="Content\cdn.jsdelivr.net\jquery.marquee\1.4.0\jquery.marquee.min.js" />
     <Content Include="Content\cdnjs.cloudflare.com\ajax\libs\font-awesome\4.4.0\css\font-awesome.min.css" />
+    <Content Include="Content\files\Apple_here.jpeg" />
+    <Content Include="Content\files\Applicant_Login.gif" />
+    <Content Include="Content\files\Apply_here_industrial_plot.gif" />
+    <Content Include="Content\files\Apply_here_industrial_plot.jpeg" />
     <Content Include="Content\files\app_login.png" />
     <Content Include="Content\files\assets\ad.gif" />
     <Content Include="Content\files\assets\adityayogi.jpg" />
@@ -369,6 +373,7 @@
     <Content Include="Content\files\assets\updpfic.png" />
     <Content Include="Content\files\assets\ynew.png" />
     <Content Include="Content\files\assets\znew.gif" />
+    <Content Include="Content\files\button.gif" />
     <Content Include="Content\files\clock-icon.gif" />
     <Content Include="Content\files\favicon.ico" />
     <Content Include="Content\files\fb.png" />
@@ -582,6 +587,7 @@
     <Content Include="Content\files\pdf\CitizenCharter.pdf" />
     <Content Include="Content\files\pdf\GIDA_Ad.pdf" />
     <Content Include="Content\files\pdf\terms_and_condition.pdf" />
+    <Content Include="Content\files\pdf\CHECKLIST_INDUSTRIAL_ALLOTMENT2021.pdf" />
     <None Include="Project_Readme.html" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
