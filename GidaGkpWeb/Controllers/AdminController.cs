@@ -33,8 +33,25 @@ namespace GidaGkpWeb.Controllers
 
         public ActionResult ApplicantUser()
         {
+            AdminDetails _details = new AdminDetails();
+            ViewData["ApplicantData"] = _details.GetApplicantUserDetail();
             return View();
         }
+        public ActionResult ActivateDeActivateUser(int userId)
+        {
+            if (userId > 0)
+            {
+                AdminDetails _details = new AdminDetails();
+                var result = _details.ActivateDeActivateUser(userId);
+                if (result == Enums.CrudStatus.Saved)
+                    SetAlertMessage("User has been Activated/DeActivated", "User Action");
+                else
+                    SetAlertMessage("User has not been Activated/DeActivated", "User Action");
+                return RedirectToAction("ApplicantUser");
+            }
+            return RedirectToAction("ApplicantUser");
+        }
+
         public ActionResult ApplicantFormSubmitted()
         {
             return View();
@@ -43,6 +60,6 @@ namespace GidaGkpWeb.Controllers
         {
             return View();
         }
-        
+
     }
 }

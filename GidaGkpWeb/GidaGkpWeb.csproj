@@ -264,6 +264,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BAL\Login\LoginDetails.cs" />
+    <Compile Include="BAL\Masters\AdminDetails.cs" />
     <Compile Include="BAL\Masters\MasterDetails.cs" />
     <Compile Include="BAL\Masters\ApplicantDetails.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -371,6 +372,7 @@
     <Content Include="Content\files\assets\satishmahana.jpg" />
     <Content Include="Content\files\assets\sharda.jpg" />
     <Content Include="Content\files\assets\Shri Alok Tandon.jpg" />
+    <Content Include="Content\files\assets\Shri_ Rajendra_Tiwari.png" />
     <Content Include="Content\files\assets\special-offer-Recovered_gif1.gif" />
     <Content Include="Content\files\assets\udhyog.png" />
     <Content Include="Content\files\assets\udyog.jpg" />

@@ -1,10 +1,102 @@
-﻿
+﻿@using GidaGkpWeb.Infrastructure.Authentication;
+@using GidaGkpWeb.Models;
+
 @{
     ViewBag.Title = "ApplicantUser";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var ApplicantData = ViewData["ApplicantData"] as List<ApplicationUserModel>;
+    int index = 1;
 }
 
-<h2>ApplicantUser</h2>
+<link href="~/styles/style.css" rel="stylesheet" />
+<section class="form">
+    <!-- MultiStep Form -->
+    <div class="container-fluid" id="grad1" style="min-height:350px">
+        <div class="container">
+            @if (ApplicantData != null && ApplicantData.Count > 0)
+            {
+                <div class="row justify-content-center mt-0" style="padding:30px 20px" id="divExitingPlotRegistration">
+                    <div class="col-sm-12 col-xs-12">
+                        <h2 style="padding:20px 0;">Total Active Applicant User on Portal</h2>
+                        <table class="table table-bordered responsive">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>User Name</th>
+                                    <th>Applicant Name</th>
+                                    <th>Father Name</th>
+                                    <th>Contact Number</th>
+                                    <th>Email</th>
+                                    <th>Aadhar Number</th>
+                                    <th>User Type</th>
+                                    <th>DOB</th>
+                                    <th>Scheme Type</th>
+                                    <th>Scheme Name</th>
+                                    <th>Sector Type</th>
+                                    <th>Is Active</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var data in ApplicantData)
+                                {
+                                    <tr>
+                                        <th row-header="Table heading" scope="row">@index</th>
+                                        <td row-header="Table heading">@data.UserName</td>
+                                        <td row-header="Table">@data.FullName</td>
+                                        <td row-header="Table heading">@data.FatherName</td>
+                                        <td row-header="Table heading">@data.ContactNo</td>
+                                        <td row-header="heading">@data.Email</td>
+                                        <td row-header="heading">@data.AadharNumber</td>
+                                        <td row-header="heading">@data.UserType</td>
+                                        @if (data.DOB != null)
+                                        {
+                                            <td row-header="heading">@data.DOB.Value.ToString("dd/MM/yyyy")</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        <td row-header="heading">@data.SchemeType</td>
+                                        <td row-header="Table heading">@data.SchemeName</td>
+                                        <td row-header="Table heading">@data.SectorName</td>
+                                        <td row-header="heading">@data.IsActive</td>
+                                        <td row-header="Table heading">
+                                            @*<a class="previous action-button-previous pull-right" data-toggle="modal" data-target="#myModal"href="/Applicant/ApplicantDashboard?applicationId=@data.Id">Activate/DeActivate User</a>*@
+                                            <a class="previous action-button-previous pull-right" href="/Admin/ActivateDeActivateUser?userId=@data.Id">Activate/DeActivate User</a>
+                                        </td>
+                                    </tr>
+                                    index++;
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+@*<div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Activate/DeActivate User</h4>
+                </div>
+                <div class="modal-body">
+                    Are you sure want to Activate/DeActivate this User
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
 
 <script type="text/javascript">
     $(document).ready(function () {

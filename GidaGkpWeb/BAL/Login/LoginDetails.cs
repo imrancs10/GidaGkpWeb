@@ -23,7 +23,7 @@ namespace GidaGkpWeb.BAL.Login
             //string _passwordHash = Utility.GetHashString(Password);
             _db = new GidaGKPEntities();
 
-            var _userRow = _db.ApplicantUsers.Where(x => x.UserName.Equals(UserName) && x.Password.Equals(Password)).FirstOrDefault();
+            var _userRow = _db.ApplicantUsers.Where(x => x.UserName.Equals(UserName) && x.Password.Equals(Password) && x.IsActive == true).FirstOrDefault();
 
             if (_userRow != null)
             {
@@ -43,7 +43,7 @@ namespace GidaGkpWeb.BAL.Login
             //string _passwordHash = Utility.GetHashString(Password);
             _db = new GidaGKPEntities();
 
-            var _userRow = _db.AdminUsers.Where(x => x.UserName.Equals(UserName) && x.Password.Equals(Password)).FirstOrDefault();
+            var _userRow = _db.AdminUsers.Where(x => x.UserName.Equals(UserName) && x.Password.Equals(Password) && x.IsActive == true).FirstOrDefault();
 
             if (_userRow != null)
             {

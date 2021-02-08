@@ -5,6 +5,27 @@ using System.Web;
 
 namespace GidaGkpWeb.Models
 {
+    public class ApplicationUserModel
+    {
+        public int Id { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public Nullable<System.DateTime> CreationDate { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string ContactNo { get; set; }
+        public Nullable<System.DateTime> DOB { get; set; }
+        public string FatherName { get; set; }
+        public string AadharNumber { get; set; }
+        public string SchemeType { get; set; }
+        public string SchemeName { get; set; }
+        public string SectorName { get; set; }
+        public string AllotmentNumber { get; set; }
+        public string UserType { get; set; }
+        public string ResetCode { get; set; }
+        public bool? IsActive { get; set; }
+    }
+
     public class ApplicationDetailModel
     {
         public int ApplicationId { get; set; }

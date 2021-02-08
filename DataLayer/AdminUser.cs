@@ -19,5 +19,6 @@ namespace DataLayer
         public string Password { get; set; }
         public string UserType { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     }
 }

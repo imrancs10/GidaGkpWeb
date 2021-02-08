@@ -30,5 +30,6 @@ namespace DataLayer
         public string AllotmentNumber { get; set; }
         public string UserType { get; set; }
         public string ResetCode { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     }
 }
