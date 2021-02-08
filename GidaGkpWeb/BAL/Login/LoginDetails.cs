@@ -38,6 +38,24 @@ namespace GidaGkpWeb.BAL.Login
                 return Enums.LoginMessage.InvalidCreadential;
         }
 
+        public Enums.LoginMessage GetAdminLogin(string UserName, string Password)
+        {
+            //string _passwordHash = Utility.GetHashString(Password);
+            _db = new GidaGKPEntities();
+
+            var _userRow = _db.AdminUsers.Where(x => x.UserName.Equals(UserName) && x.Password.Equals(Password)).FirstOrDefault();
+
+            if (_userRow != null)
+            {
+                UserData.UserId = _userRow.Id;
+                UserData.Username = _userRow.UserName;
+                UserData.UserType = _userRow.UserType;
+                return Enums.LoginMessage.Authenticated;
+            }
+            else
+                return Enums.LoginMessage.InvalidCreadential;
+        }
+
         public Enums.LoginMessage GetLoginByUsrrname(string UserName)
         {
             //string _passwordHash = Utility.GetHashString(Password);

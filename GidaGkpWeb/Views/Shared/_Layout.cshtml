@@ -158,7 +158,16 @@
                 <h5 class="pull-right top-link text-info">
                     <!--<span style="font-size:1em;" class="glyphicon glyphicon-home"></span>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <!--<span style="font-size:1em;" class="glyphicon glyphicon-cloud-download"></span>&nbsp;<a target="_blank" href="https://dev.greaternoidaauthority.in/" target="_blank">Allottee Accounts</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
-                    <span style="font-size:1em;" class="glyphicon glyphicon-user"></span>&nbsp;<a href="javascript:void(0);">User Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="font-size:1em;" class="glyphicon glyphicon-user"></span>
+                    @if (Convert.ToBoolean(ConfigurationManager.AppSettings["isAdminLogin"]) == true)
+                    {
+                        <a href="/Login/AdminLogin">User Login</a>
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0);">User Login</a>
+                    }
+
                     <span style="font-size:1em;" class="glyphicon glyphicon-user"></span>&nbsp;<a href="javascript:void(0);">Subscriber Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 </h5>
             </div>
@@ -2180,21 +2189,21 @@
             </div>
 
             @*<div class="col-md-2 col-sm-2 col-xs-2" style="background:#EEF6F5">
-                <div class="pull-right" style="margin-right:1em;">
-                    <div class="region region-social">
-                        <div id="block-block-97" class="block block-block">
-                            @if (Convert.ToBoolean(ConfigurationManager.AppSettings["isApplicantLogin"]) == true)
-                            {
-                                <a target="_blank" href="/Login/ApplicantLogin"><img height="2%" style="margin-top:5px;" src="~/Content/files/app_login.png"></a>
-                            }
-                            else
-                            {
-                                <a target="_blank" href="#"><img height="2%" style="margin-top:5px;" src="~/Content/files/app_login.png"></a>
-                            }
+                    <div class="pull-right" style="margin-right:1em;">
+                        <div class="region region-social">
+                            <div id="block-block-97" class="block block-block">
+                                @if (Convert.ToBoolean(ConfigurationManager.AppSettings["isApplicantLogin"]) == true)
+                                {
+                                    <a target="_blank" href="/Login/ApplicantLogin"><img height="2%" style="margin-top:5px;" src="~/Content/files/app_login.png"></a>
+                                }
+                                else
+                                {
+                                    <a target="_blank" href="#"><img height="2%" style="margin-top:5px;" src="~/Content/files/app_login.png"></a>
+                                }
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>*@
+                </div>*@
 
         </div>
     </div>
@@ -2251,12 +2260,12 @@
             </div>
             <div class="row" style="background:#EEF6F5">
                 <div class="form-group col-sm-8 col-xs-12" style="margin-top:1em;margin-bottom:1em;">
-                     <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" scrollamount="5">
+                    <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" scrollamount="5">
                         <em> </em><a target="_blank" href="~/Content/files/pdf/CHECKLIST_INDUSTRIAL_ALLOTMENT2021.pdf"><strong>CHECKLIST -INDUSTRIAL ALLOTMENT 2021</a></strong>&nbsp;
                         <em> </em><a target="_blank" href="~/Content/files/assets/BHITI_RAWAT_LAY_OUT.jpg"><strong>Industrial Plot Scheme 2021 Layout Plan</a></strong>&nbsp;
                         <em> </em><a target="_blank" href="~/Content/files/pdf/terms_and_condition.pdf"><strong>Terms and Conditions for Industrial Plot Scheme 2021</a></strong>
-                     </marquee>
-                </div>                
+                    </marquee>
+                </div>
                 <div class="form-group col-sm-2 col-xs-12">
                     <a target="_blank" href="~/Content/files/pdf/GIDA_Ad.pdf"><em> </em><img alt="advertise" class="img-responsive img-thumbnail" src="~/Content/files/assets/ad.gif" width="165px" height="25px" /></a>
                 </div>
@@ -2274,31 +2283,31 @@
                 </div>
             </div>
             @*<div class="ticker_to" style="background:#EEF6F5" height="57px">
-                <div class="col-md-4 scroll-left" style="background:#EEF6F5" style="margin-top:1em;margin-bottom:1em;">
-                    <!--<marquee behavior="scroll" direction="left" scrollamount="5">-->
-                    <em> </em><a target="_blank" href="~/Content/files/pdf/CHECKLIST_INDUSTRIAL_ALLOTMENT2021.pdf"><strong>CHECKLIST -INDUSTRIAL ALLOTMENT 2021</a></strong><br />
-                    <em> </em><a target="_blank" href="~/Content/files/assets/BHITI_RAWAT_LAY_OUT.jpg"><strong>Industrial Plot Scheme 2021 Layout Plan</a></strong><br />                    
-                </div>
-                <div class="col-md-4 scroll-left" style="background:#EEF6F5" style="margin-top:1em;margin-bottom:1em;">
-                    <!--<marquee behavior="scroll" direction="left" scrollamount="5">-->
-                    <em> </em><a target="_blank" href="~/Content/files/pdf/terms_and_condition.pdf"><strong>Terms and Conditions for Industrial Plot Scheme 2021</a></strong>                    
-                </div>
-                <div class="col-md-2" style="background:#EEF6F5">                   
-                        <a target="_blank" href="~/Content/files/pdf/GIDA_Ad.pdf"><em> </em><img alt="advertise" class="img-responsive img-thumbnail" src="~/Content/files/assets/ad.gif" width="165px" height="25px" /></a>                    
-                </div>
-                <div class="col-md-2" style="background:#EEF6F5">
-                    <div id="block-block-97" class="block block-block">
-                        @if (Convert.ToBoolean(ConfigurationManager.AppSettings["isApplicantLogin"]) == true)
-                        {
-                            <a target="_blank" href="/Login/ApplicantLogin"><img width="165px" height="25px" style="margin-top:1px;" src="~/Content/files/app_login.png"></a>
-                        }
-                        else
-                        {
-                            <a target="_blank" href="#"><img width="165px" height="25px" style="margin-top:1px;" src="~/Content/files/app_login.png"></a>
-                        }
+                    <div class="col-md-4 scroll-left" style="background:#EEF6F5" style="margin-top:1em;margin-bottom:1em;">
+                        <!--<marquee behavior="scroll" direction="left" scrollamount="5">-->
+                        <em> </em><a target="_blank" href="~/Content/files/pdf/CHECKLIST_INDUSTRIAL_ALLOTMENT2021.pdf"><strong>CHECKLIST -INDUSTRIAL ALLOTMENT 2021</a></strong><br />
+                        <em> </em><a target="_blank" href="~/Content/files/assets/BHITI_RAWAT_LAY_OUT.jpg"><strong>Industrial Plot Scheme 2021 Layout Plan</a></strong><br />
                     </div>
-                </div>
-            </div>*@            
+                    <div class="col-md-4 scroll-left" style="background:#EEF6F5" style="margin-top:1em;margin-bottom:1em;">
+                        <!--<marquee behavior="scroll" direction="left" scrollamount="5">-->
+                        <em> </em><a target="_blank" href="~/Content/files/pdf/terms_and_condition.pdf"><strong>Terms and Conditions for Industrial Plot Scheme 2021</a></strong>
+                    </div>
+                    <div class="col-md-2" style="background:#EEF6F5">
+                            <a target="_blank" href="~/Content/files/pdf/GIDA_Ad.pdf"><em> </em><img alt="advertise" class="img-responsive img-thumbnail" src="~/Content/files/assets/ad.gif" width="165px" height="25px" /></a>
+                    </div>
+                    <div class="col-md-2" style="background:#EEF6F5">
+                        <div id="block-block-97" class="block block-block">
+                            @if (Convert.ToBoolean(ConfigurationManager.AppSettings["isApplicantLogin"]) == true)
+                            {
+                                <a target="_blank" href="/Login/ApplicantLogin"><img width="165px" height="25px" style="margin-top:1px;" src="~/Content/files/app_login.png"></a>
+                            }
+                            else
+                            {
+                                <a target="_blank" href="#"><img width="165px" height="25px" style="margin-top:1px;" src="~/Content/files/app_login.png"></a>
+                            }
+                        </div>
+                    </div>
+                </div>*@
         </div>
     </div>
     <!-- ============================================

@@ -36,5 +36,6 @@ namespace DataLayer
         public virtual DbSet<ApplicantUser> ApplicantUsers { get; set; }
         public virtual DbSet<Lookup> Lookups { get; set; }
         public virtual DbSet<PGTransactionInformation> PGTransactionInformations { get; set; }
+        public virtual DbSet<AdminUser> AdminUsers { get; set; }
     }
 }

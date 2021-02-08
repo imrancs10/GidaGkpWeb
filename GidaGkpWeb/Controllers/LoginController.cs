@@ -19,6 +19,7 @@ using CCA.Util;
 using System.IO;
 using GidaGkpWeb.BAL;
 using GidaGkpWeb.Infrastructure.Authentication;
+using reCAPTCHA.MVC;
 
 namespace GidaGkpWeb.Controllers
 {
@@ -86,8 +87,40 @@ namespace GidaGkpWeb.Controllers
 
         public ActionResult ApplicantLogin()
         {
-            ViewData["LoginPage"] = true;
             return View();
+        }
+
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
+
+        [CaptchaValidator]
+        public ActionResult GetAdminlogin(string username, string password)
+        {
+            if (username.Trim() != "" && password.Trim() != "")
+            {
+                LoginDetails _details = new LoginDetails();
+                string _response = string.Empty;
+                Enums.LoginMessage message = _details.GetAdminLogin(username, password);
+                _response = LoginResponse(message);
+                if (message == Enums.LoginMessage.Authenticated)
+                {
+                    setUserClaim();
+                    return RedirectToAction("Dashboard", "Admin");
+                }
+                else
+                {
+                    SetAlertMessage(_response, "Login Response");
+                    return View("AdminLogin");
+                }
+            }
+            else
+            {
+                SetAlertMessage("Please Provide User Name and Password", "Login Response");
+                return View("AdminLogin");
+            }
+
         }
 
         public ActionResult GetLogin(string username, string password)

@@ -16,6 +16,7 @@
         <EntityTypeShape EntityType="GidaGKPModel.ApplicantUser" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GidaGKPModel.Lookup" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GidaGKPModel.PGTransactionInformation" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="GidaGKPModel.AdminUser" Width="1.5" PointX="9.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
