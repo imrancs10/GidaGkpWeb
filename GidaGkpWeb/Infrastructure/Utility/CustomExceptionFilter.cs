@@ -20,4 +20,17 @@ namespace GidaGkpWeb.Infrastructure.Utility
         }
     }
 
+    public class AdminSessionTimeoutAttribute : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            HttpContext ctx = HttpContext.Current;
+            if (HttpContext.Current.Session["userid"] == null)
+            {
+                filterContext.Result = new RedirectResult("~/Login/AdminLogin");
+                return;
+            }
+            base.OnActionExecuting(filterContext);
+        }
+    }
 }

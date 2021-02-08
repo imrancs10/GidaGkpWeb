@@ -23,13 +23,26 @@ using System.IO;
 
 namespace GidaGkpWeb.Controllers
 {
-    [SessionTimeout]
+    [AdminSessionTimeout]
     public class AdminController : CommonController
     {
         public ActionResult Dashboard()
         {
-            //show gida logo and info
             return View();
         }
+
+        public ActionResult ApplicantUser()
+        {
+            return View();
+        }
+        public ActionResult ApplicantFormSubmitted()
+        {
+            return View();
+        }
+        public ActionResult ApplicantTransactionCompleted()
+        {
+            return View();
+        }
+        
     }
 }

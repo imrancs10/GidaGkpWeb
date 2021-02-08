@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "ApplicantUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ApplicantUser</h2>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.navbar-nav li.active').removeClass('active');
+        $('[href="/Admin/ApplicantUser"]').parent().parent().parent().addClass('active')
+    });
+</script>
