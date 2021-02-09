@@ -13,7 +13,41 @@ namespace GidaGkpWeb.BAL
     public class AdminDetails
     {
         GidaGKPEntities _db = null;
-
+        public List<ApplicationUserModel> GetApplicantUser()
+        {
+            try
+            {
+                _db = new GidaGKPEntities();
+                return (from user in _db.ApplicantUsers
+                        select new ApplicationUserModel
+                        {
+                            AadharNumber = user.AadharNumber,
+                            ContactNo = user.ContactNo,
+                            CreationDate = user.CreationDate,
+                            Email = user.Email,
+                            FatherName = user.FatherName,
+                            FullName = user.FullName,
+                            Id = user.Id,
+                            SchemeName = user.SchemeName,
+                            SchemeType = user.SchemeType,
+                            SectorName = user.SectorName,
+                            UserType = user.UserType,
+                            UserName = user.UserName,
+                            IsActive = user.IsActive
+                        }).Distinct().ToList();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return new List<ApplicationUserModel>();
+            }
+        }
         public List<ApplicationUserModel> GetApplicantUserDetail()
         {
             try

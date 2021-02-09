@@ -34,7 +34,7 @@ namespace GidaGkpWeb.Controllers
         public ActionResult ApplicantUser()
         {
             AdminDetails _details = new AdminDetails();
-            ViewData["ApplicantData"] = _details.GetApplicantUserDetail();
+            ViewData["ApplicantData"] = _details.GetApplicantUser();
             return View();
         }
         public ActionResult ActivateDeActivateUser(int userId)
