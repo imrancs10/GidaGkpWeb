@@ -54,10 +54,14 @@ namespace GidaGkpWeb.Controllers
 
         public ActionResult ApplicantFormSubmitted()
         {
+            AdminDetails _details = new AdminDetails();
+            ViewData["ApplicantData"] = _details.GetApplicantUserDetail().Where(x => x.ApplicationNumber != "" && x.PaidAmount == "").ToList();
             return View();
         }
         public ActionResult ApplicantTransactionCompleted()
         {
+            AdminDetails _details = new AdminDetails();
+            ViewData["ApplicantData"] = _details.GetApplicantUserDetail().Where(x => x.PaidAmount != "").ToList();
             return View();
         }
 

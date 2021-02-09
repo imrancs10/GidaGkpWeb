@@ -8,6 +8,8 @@ namespace GidaGkpWeb.Models
     public class ApplicationUserModel
     {
         public int Id { get; set; }
+        public string ApplicationNumber { get; set; }
+        public string PaidAmount { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }

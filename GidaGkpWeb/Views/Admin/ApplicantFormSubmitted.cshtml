@@ -1,10 +1,77 @@
 ﻿
+@using GidaGkpWeb.Infrastructure.Authentication;
+@using GidaGkpWeb.Models;
+
 @{
     ViewBag.Title = "ApplicantFormSubmitted";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var ApplicantData = ViewData["ApplicantData"] as List<ApplicationUserModel>;
+    int index = 1;
 }
 
-<h2>ApplicantFormSubmitted</h2>
+<link href="~/styles/style.css" rel="stylesheet" />
+<section class="form">
+    <!-- MultiStep Form -->
+    <div class="container-fluid" id="grad1" style="min-height:350px">
+        <div class="container">
+            @if (ApplicantData != null && ApplicantData.Count > 0)
+            {
+                <div class="row justify-content-center mt-0" style="padding:30px 20px" id="divExitingPlotRegistration">
+                    <div class="col-sm-12 col-xs-12">
+                        <h2 style="padding:20px 0;">Plot Register Only but not Paid</h2>
+                        <table class="table table-bordered responsive">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>User Name</th>
+                                    <th>Applicant Name</th>
+                                    <th>Application Number</th>
+                                    <th>Father Name</th>
+                                    <th>Contact Number</th>
+                                    <th>Email</th>
+                                    <th>Aadhar Number</th>
+                                    <th>User Type</th>
+                                    <th>DOB</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var data in ApplicantData)
+                                {
+                                    <tr>
+                                        <th row-header="Table heading" scope="row">@index</th>
+                                        <td row-header="Table heading">@data.UserName</td>
+                                        <td row-header="Table">@data.FullName</td>
+                                        <td row-header="Table">@data.ApplicationNumber</td>
+                                        <td row-header="Table heading">@data.FatherName</td>
+                                        <td row-header="Table heading">@data.ContactNo</td>
+                                        <td row-header="heading">@data.Email</td>
+                                        <td row-header="heading">@data.AadharNumber</td>
+                                        <td row-header="heading">@data.UserType</td>
+                                        @if (data.DOB != null)
+                                        {
+                                            <td row-header="heading">@data.DOB.Value.ToString("dd/MM/yyyy")</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                    </tr>
+                                    index++;
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <span>No Record Found.</span>
+            }
+        </div>
+    </div>
+</section>
 
 <script type="text/javascript">
     $(document).ready(function () {

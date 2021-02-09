@@ -20,8 +20,16 @@ namespace GidaGkpWeb.BAL
             {
                 _db = new GidaGKPEntities();
                 return (from user in _db.ApplicantUsers
+                        join application1 in _db.ApplicantApplicationDetails on user.Id equals application1.UserId into application2
+                        from application in application2.DefaultIfEmpty()
+                        join doc1 in _db.ApplicantUploadDocs on user.Id equals doc1.UserId into doc2
+                        from doc in doc2.DefaultIfEmpty()
+                        join transaction1 in _db.ApplicantTransactionDetails on application.ApplicationId equals transaction1.ApplicationId into transaction2
+                        from transaction in transaction2.DefaultIfEmpty()
                         select new ApplicationUserModel
                         {
+                            ApplicationNumber = doc != null ? application.ApplicationNumber : "",
+                            PaidAmount = transaction != null ? transaction.amount : "",
                             AadharNumber = user.AadharNumber,
                             ContactNo = user.ContactNo,
                             CreationDate = user.CreationDate,
@@ -35,7 +43,7 @@ namespace GidaGkpWeb.BAL
                             UserType = user.UserType,
                             UserName = user.UserName,
                             IsActive = user.IsActive
-                        }).ToList();
+                        }).Distinct().ToList();
             }
             catch (DbEntityValidationException e)
             {
