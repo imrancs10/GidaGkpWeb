@@ -629,6 +629,8 @@
     <Content Include="Views\Admin\ApplicantUser.cshtml" />
     <Content Include="Views\Admin\ApplicantFormSubmitted.cshtml" />
     <Content Include="Views\Admin\ApplicantTransactionCompleted.cshtml" />
+    <Content Include="Views\Admin\PropertyDashboard.cshtml" />
+    <Content Include="Views\Admin\GrievancesDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

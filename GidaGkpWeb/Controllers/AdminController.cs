@@ -65,5 +65,20 @@ namespace GidaGkpWeb.Controllers
             return View();
         }
 
+        public ActionResult PropertyDashboard()
+        {
+            return View();
+        }
+        public ActionResult GrievancesDashboard()
+        {
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            Session.Clear();
+            return RedirectToAction("AdminLogin", "Login");
+        }
     }
 }
