@@ -334,6 +334,7 @@
     <Content Include="Content\files\assets\Advertise_With_Us_GIF_for_Web.gif" />
     <Content Include="Content\files\assets\BHITI_RAWAT_LAY_OUT.jpg" />
     <Content Include="Content\files\assets\ceo_sanjeev ranjan.jpg" />
+    <Content Include="Content\files\assets\Extended_Date.jpg" />
     <Content Include="Content\files\assets\Gida_1.jpg" />
     <Content Include="Content\files\assets\Gida_2.jpg" />
     <Content Include="Content\files\assets\Gida_3.jpg" />
@@ -430,6 +431,7 @@
     <Content Include="Global.asax" />
     <Content Include="images\banner.jpg" />
     <Content Include="images\bg.jpg" />
+    <Content Include="images\blink.gif" />
     <Content Include="images\dummy\unknown-profile.jpg" />
     <Content Include="images\id.jpg" />
     <Content Include="images\jcrop\Jcrop.gif" />
