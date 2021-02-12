@@ -16,6 +16,8 @@
     <script src="~/Scripts/lib/jquery-1.10.2.js"></script>
     <script src="~/Scripts/App/Global/Utility.js"></script>
     <script src="~/Scripts/App/Masters/ApplicantRegistration.js"></script>
+    <link href="~/styles/style.css" rel="stylesheet" />
+
     <style>
 
         .required-field::before {
@@ -36,23 +38,23 @@
             background: url(../../images/id.jpg);
             background-size: cover;
             height: 100%;
-            position: fixed;
-            background-attachment: fixed;
-            background-position: left;
+            /*position: fixed;*/
+            background-attachment: inherit;
+            background-position: -15px 0;
             display: flex;
             min-height: 658px;
         }
 
         .login-sec {
-            padding: 10px 10px;
-            position: relative;
+            padding: 30px 50px;
+            position: absolute;
             background: #f9f9f9;
             width: 40%;
-            margin-left: 60%;
+            /*margin-left: 60%;*/
             right: 0;
             float: right;
             overflow: auto;
-            height: auto;
+            height: 100%;
         }
 
         .text-uppercase {
