@@ -81,6 +81,19 @@ namespace GidaGkpWeb.Controllers
             return File(Encoding.ASCII.GetBytes(GridHtml), "application/vnd.ms-excel", "Total Active Applicant User.xls");
         }
 
+        [HttpPost]
+        [ValidateInput(false)]
+        public FileResult ExportFormSubmitted(string GridHtml)
+        {
+            return File(Encoding.ASCII.GetBytes(GridHtml), "application/vnd.ms-excel", "Plot Registered Only.xls");
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public FileResult ExportFormCompleted(string GridHtml)
+        {
+            return File(Encoding.ASCII.GetBytes(GridHtml), "application/vnd.ms-excel", "Payment Completed.xls");
+        }
         public ActionResult Logout()
         {
             Session.Abandon();
