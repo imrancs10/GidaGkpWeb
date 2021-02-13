@@ -19,6 +19,7 @@ namespace GidaGkpWeb.BAL
             {
                 _db = new GidaGkpEntities();
                 return (from user in _db.ApplicantUsers
+                        where user.UserType != "Test"
                         select new ApplicationUserModel
                         {
                             AadharNumber = user.AadharNumber,
@@ -60,6 +61,7 @@ namespace GidaGkpWeb.BAL
                         from doc in doc2.DefaultIfEmpty()
                         join transaction1 in _db.ApplicantTransactionDetails on application.ApplicationId equals transaction1.ApplicationId into transaction2
                         from transaction in transaction2.DefaultIfEmpty()
+                        where user.UserType != "Test"
                         select new ApplicationUserModel
                         {
                             ApplicationNumber = doc != null ? application.ApplicationNumber : "",
