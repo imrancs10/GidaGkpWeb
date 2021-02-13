@@ -16,10 +16,15 @@
         <div class="container">
             @if (ApplicantData != null && ApplicantData.Count > 0)
             {
-                <div class="row justify-content-center mt-0" style="padding:30px 20px" id="divExitingPlotRegistration">
+                <div class="row justify-content-center mt-0" style="padding:30px 20px">
                     <div class="col-sm-12 col-xs-12">
-                        <h2 style="padding:20px 0;">Total Active Applicant User on Portal</h2>
-                        <div class="table-responsive">
+                        <h2 style="padding:20px 0;">Total Active Applicant User</h2>
+                        @using (Html.BeginForm("ExportApplicantUser", "Admin", FormMethod.Post))
+                        {
+                            <input type="hidden" name="GridHtml" />
+                            <input type="submit" id="btnSubmit" class="btn btn-primary" value="Export to Excel" style=" float: right; position: relative; top: -50px; left: -98px;"/>
+                        }
+                        <div class="table-responsive" id="divExport">
                             <table class="table table-bordered ">
                                 <thead>
                                     <tr>
@@ -36,7 +41,7 @@
                                         <th>Scheme Name</th>
                                         <th>Sector Type</th>
                                         <th>Is Active</th>
-                                        <th>Action</th>
+                                        @*<th>Action</th>*@
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,10 +68,9 @@
                                             <td row-header="Table heading">@data.SchemeName</td>
                                             <td row-header="Table heading">@data.SectorName</td>
                                             <td row-header="heading">@data.IsActive</td>
-                                            <td row-header="Table heading">
-                                                @*<a class="previous action-button-previous pull-right" data-toggle="modal" data-target="#myModal"href="/Applicant/ApplicantDashboard?applicationId=@data.Id">Activate/DeActivate User</a>*@
-                                                <a class="previous action-button-previous pull-right" href="/Admin/ActivateDeActivateUser?userId=@data.Id">Activate/DeActivate User</a>
-                                            </td>
+                                            @*<td row-header="Table heading">
+                                                    <a class="previous action-button-previous pull-right" href="/Admin/ActivateDeActivateUser?userId=@data.Id">Activate/DeActivate User</a>
+                                                </td>*@
                                         </tr>
                                         index++;
                                     }
@@ -85,27 +89,18 @@
     </div>
 </section>
 
-@*<div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Confirm Activate/DeActivate User</h4>
-                </div>
-                <div class="modal-body">
-                    Are you sure want to Activate/DeActivate this User
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Close</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>*@
 
 <script type="text/javascript">
     $(document).ready(function () {
         $('.navbar-nav li.active').removeClass('active');
         $('[href="/Admin/ApplicantUser"]').parent().parent().parent().addClass('active')
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {
+            $("input[name='GridHtml']").val($("#divExport").html());
+        });
     });
 </script>

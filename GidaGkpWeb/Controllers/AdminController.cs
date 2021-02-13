@@ -74,6 +74,13 @@ namespace GidaGkpWeb.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateInput(false)]
+        public FileResult ExportApplicantUser(string GridHtml)
+        {
+            return File(Encoding.ASCII.GetBytes(GridHtml), "application/vnd.ms-excel", "Total Active Applicant User.xls");
+        }
+
         public ActionResult Logout()
         {
             Session.Abandon();
