@@ -13,10 +13,10 @@ namespace DataLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GidaGKPEntities : DbContext
+    public partial class GidaGkpEntities : DbContext
     {
-        public GidaGKPEntities()
-            : base("name=GidaGKPEntities")
+        public GidaGkpEntities()
+            : base("name=GidaGkpEntities")
         {
         }
     
@@ -25,6 +25,8 @@ namespace DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AdminNotice> AdminNotices { get; set; }
+        public virtual DbSet<AdminUser> AdminUsers { get; set; }
         public virtual DbSet<ApplicantApplicationDetail> ApplicantApplicationDetails { get; set; }
         public virtual DbSet<ApplicantBankDetail> ApplicantBankDetails { get; set; }
         public virtual DbSet<ApplicantDetail> ApplicantDetails { get; set; }
@@ -36,6 +38,5 @@ namespace DataLayer
         public virtual DbSet<ApplicantUser> ApplicantUsers { get; set; }
         public virtual DbSet<Lookup> Lookups { get; set; }
         public virtual DbSet<PGTransactionInformation> PGTransactionInformations { get; set; }
-        public virtual DbSet<AdminUser> AdminUsers { get; set; }
     }
 }

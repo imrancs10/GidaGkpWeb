@@ -12,12 +12,12 @@ namespace GidaGkpWeb.BAL
 {
     public class AdminDetails
     {
-        GidaGKPEntities _db = null;
+        GidaGkpEntities _db = null;
         public List<ApplicationUserModel> GetApplicantUser()
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from user in _db.ApplicantUsers
                         select new ApplicationUserModel
                         {
@@ -52,7 +52,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from user in _db.ApplicantUsers
                         join application1 in _db.ApplicantApplicationDetails on user.Id equals application1.UserId into application2
                         from application in application2.DefaultIfEmpty()
@@ -96,7 +96,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 int _effectRow = 0;
                 var applicantUser = _db.ApplicantUsers.Where(x => x.Id == userId).FirstOrDefault();
                 if (applicantUser != null)

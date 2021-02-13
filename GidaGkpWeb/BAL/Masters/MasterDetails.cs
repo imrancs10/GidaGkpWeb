@@ -10,11 +10,11 @@ namespace GidaGkpWeb.BAL
 {
     public class MasterDetails
     {
-        GidaGKPEntities _db = null;
+        GidaGkpEntities _db = null;
 
         public IEnumerable<object> GetLookupDetail(int? parentLookupId, string lookupTye)
         {
-            _db = new GidaGKPEntities();
+            _db = new GidaGkpEntities();
             return (from lookup in _db.Lookups.Where(x => (x.ParentLookupId == parentLookupId) && x.LookupType == lookupTye && x.IsActive == true)
                     select new
                     {

@@ -4,19 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="95a6f9876c66424c9001bc9eb173be39" Name="Diagram1">
-        <EntityTypeShape EntityType="GidaGKPModel.ApplicantApplicationDetail" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GidaGKPModel.ApplicantBankDetail" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GidaGKPModel.ApplicantDetail" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GidaGKPModel.ApplicantFormStep" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GidaGKPModel.ApplicantPlotDetail" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GidaGKPModel.ApplicantProjectDetail" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GidaGKPModel.ApplicantTransactionDetail" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GidaGKPModel.ApplicantUploadDoc" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GidaGKPModel.ApplicantUser" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GidaGKPModel.Lookup" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GidaGKPModel.PGTransactionInformation" Width="1.5" PointX="9.375" PointY="3.75" />
-        <EntityTypeShape EntityType="GidaGKPModel.AdminUser" Width="1.5" PointX="9.375" PointY="6.75" />
+      <Diagram DiagramId="75aef817f21d4ffb8f59cf728e06f93c" Name="Diagram1">
+        <EntityTypeShape EntityType="GidaGkpModel.AdminNotice" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GidaGkpModel.AdminUser" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GidaGkpModel.ApplicantApplicationDetail" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GidaGkpModel.ApplicantBankDetail" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GidaGkpModel.ApplicantDetail" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GidaGkpModel.ApplicantFormStep" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GidaGkpModel.ApplicantPlotDetail" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GidaGkpModel.ApplicantProjectDetail" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GidaGkpModel.ApplicantTransactionDetail" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GidaGkpModel.ApplicantUploadDoc" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GidaGkpModel.ApplicantUser" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GidaGkpModel.Lookup" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GidaGkpModel.PGTransactionInformation" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

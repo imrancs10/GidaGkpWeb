@@ -487,8 +487,16 @@ namespace GidaGkpWeb.Controllers
                         trans_date = DateTime.Now,
                         TransactionType = "Online"
                     };
-                    _details.SaveApplicantTransactionDeatil(detail);
-                    SetAlertMessage("Payment done successfully", "Payment Status");
+                    var rowEffected = _details.SaveApplicantTransactionDeatil(detail);
+                    if (rowEffected > 0)
+                    {
+                        SetAlertMessage("Payment done successfully", "Payment Status");
+                    }
+                    else
+                    {
+                        SetAlertMessage("Some Error occured in the System but payment done successfully, Please contact system administrator", "Payment Status");
+                    }
+
                     return RedirectToAction("PaymentResponseSuccess");
                 }
                 else

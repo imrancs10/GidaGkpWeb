@@ -10,7 +10,7 @@ namespace GidaGkpWeb.BAL.Login
 {
     public class LoginDetails
     {
-        GidaGKPEntities _db = null;
+        GidaGkpEntities _db = null;
 
         /// <summary>
         /// Get Authenticate User credentials
@@ -21,7 +21,7 @@ namespace GidaGkpWeb.BAL.Login
         public Enums.LoginMessage GetLogin(string UserName, string Password)
         {
             //string _passwordHash = Utility.GetHashString(Password);
-            _db = new GidaGKPEntities();
+            _db = new GidaGkpEntities();
 
             var _userRow = _db.ApplicantUsers.Where(x => x.UserName.Equals(UserName) && x.Password.Equals(Password) && x.IsActive == true).FirstOrDefault();
 
@@ -41,7 +41,7 @@ namespace GidaGkpWeb.BAL.Login
         public Enums.LoginMessage GetAdminLogin(string UserName, string Password)
         {
             //string _passwordHash = Utility.GetHashString(Password);
-            _db = new GidaGKPEntities();
+            _db = new GidaGkpEntities();
 
             var _userRow = _db.AdminUsers.Where(x => x.UserName.Equals(UserName) && x.Password.Equals(Password) && x.IsActive == true).FirstOrDefault();
 
@@ -59,7 +59,7 @@ namespace GidaGkpWeb.BAL.Login
         public Enums.LoginMessage GetLoginByUsrrname(string UserName)
         {
             //string _passwordHash = Utility.GetHashString(Password);
-            _db = new GidaGKPEntities();
+            _db = new GidaGkpEntities();
 
             var _userRow = _db.ApplicantUsers.Where(x => x.UserName.Equals(UserName)).FirstOrDefault();
 
@@ -78,7 +78,7 @@ namespace GidaGkpWeb.BAL.Login
 
         public Enums.CrudStatus RegisterApplicant(string fullName, string email, string contactno, string FName, string Adhaar, DateTime dob, string usrName, string password, string SchemeType, string SchemeName, string SectorName, string AllotmentNumber)
         {
-            _db = new GidaGKPEntities();
+            _db = new GidaGkpEntities();
             var _userRow = _db.ApplicantUsers.Where(x => x.UserName.Equals(usrName)).FirstOrDefault();
 
             int _effectRow = 0;
@@ -111,13 +111,13 @@ namespace GidaGkpWeb.BAL.Login
 
         public ApplicantUser GetApplicantDetailByEmailAndMobileNumber(string emailId, string mobilenumber)
         {
-            _db = new GidaGKPEntities();
+            _db = new GidaGkpEntities();
             return _db.ApplicantUsers.Where(x => x.Email == emailId.Trim() && x.ContactNo == mobilenumber.Trim()).FirstOrDefault();
         }
 
         public ApplicantUser UpdateApplicantDetail(ApplicantUser info)
         {
-            _db = new GidaGKPEntities();
+            _db = new GidaGkpEntities();
             var _applicantRow = _db.ApplicantUsers.Where(x => x.Id.Equals(info.Id)).FirstOrDefault();
             if (_applicantRow != null)
             {
@@ -131,13 +131,13 @@ namespace GidaGkpWeb.BAL.Login
 
         public ApplicantUser GetApplicantDetailByresetCode(string resetCode)
         {
-            _db = new GidaGKPEntities();
+            _db = new GidaGkpEntities();
             return _db.ApplicantUsers.Where(x => x.ResetCode == resetCode).FirstOrDefault();
         }
 
         public ApplicantUser GetApplicantDetailByMobileNumberOrEmail(string UserId)
         {
-            _db = new GidaGKPEntities();
+            _db = new GidaGkpEntities();
             return _db.ApplicantUsers.Where(x => x.ContactNo == UserId.Trim() || x.Email == UserId.Trim()).FirstOrDefault();
         }
     }

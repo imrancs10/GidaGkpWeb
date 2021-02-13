@@ -4,7 +4,24 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GidaGKPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GidaGkpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminNotice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Notice_SrNo" Type="varchar" MaxLength="50" />
+          <Property Name="Notice_Title" Type="varchar" MaxLength="500" />
+          <Property Name="Notice_Description" Type="varchar(max)" />
+          <Property Name="Notice_Date" Type="datetime" />
+          <Property Name="Department" Type="varchar" MaxLength="50" />
+          <Property Name="Notice_Type" Type="varchar" MaxLength="50" />
+          <Property Name="Notice_Status" Type="varchar" MaxLength="50" />
+          <Property Name="NoticeFile_Upload" Type="varbinary" MaxLength="50" />
+          <Property Name="Notice_New" Type="bit" />
+          <Property Name="CreationDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="AdminUser">
           <Key>
             <PropertyRef Name="Id" />
@@ -32,11 +49,11 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ApplicationId" Type="int" />
-          <Property Name="BankName" Type="varchar" MaxLength="50" />
-          <Property Name="BBName" Type="varchar" MaxLength="50" />
-          <Property Name="BBAddress" Type="varchar" MaxLength="500" />
+          <Property Name="BankName" Type="varchar" MaxLength="500" />
+          <Property Name="BBName" Type="varchar" MaxLength="500" />
+          <Property Name="BBAddress" Type="varchar(max)" />
           <Property Name="IFSC_Code" Type="varchar" MaxLength="50" />
-          <Property Name="AccountHolderName" Type="varchar" MaxLength="50" />
+          <Property Name="AccountHolderName" Type="varchar" MaxLength="500" />
           <Property Name="BankAccountNo" Type="nvarchar" MaxLength="50" />
           <Property Name="CreationDate" Type="datetime" />
         </EntityType>
@@ -47,10 +64,10 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ApplicationId" Type="int" />
-          <Property Name="FullApplicantName" Type="varchar" MaxLength="50" />
-          <Property Name="FName" Type="varchar" MaxLength="50" />
-          <Property Name="MName" Type="varchar" MaxLength="50" />
-          <Property Name="SName" Type="varchar" MaxLength="50" />
+          <Property Name="FullApplicantName" Type="varchar" MaxLength="500" />
+          <Property Name="FName" Type="varchar" MaxLength="500" />
+          <Property Name="MName" Type="varchar" MaxLength="500" />
+          <Property Name="SName" Type="varchar" MaxLength="500" />
           <Property Name="ApplicantDOB" Type="datetime" />
           <Property Name="Gender" Type="varchar" MaxLength="50" />
           <Property Name="Category" Type="varchar" MaxLength="50" />
@@ -62,8 +79,8 @@
           <Property Name="EmailId" Type="varchar" MaxLength="50" />
           <Property Name="Religion" Type="varchar" MaxLength="50" />
           <Property Name="SubCategory" Type="varchar" MaxLength="50" />
-          <Property Name="CAddress" Type="varchar" MaxLength="500" />
-          <Property Name="PAddress" Type="varchar" MaxLength="500" />
+          <Property Name="CAddress" Type="varchar(max)" />
+          <Property Name="PAddress" Type="varchar(max)" />
           <Property Name="IdentiyProof" Type="varchar" MaxLength="50" />
           <Property Name="ResidentialProof" Type="varchar" MaxLength="50" />
           <Property Name="CreationDate" Type="datetime" />
@@ -99,12 +116,12 @@
           <Property Name="EarnestMoney" Type="decimal" Precision="18" Scale="0" />
           <Property Name="NetAmount" Type="decimal" Precision="18" Scale="0" />
           <Property Name="IndustryOwnership" Type="int" />
-          <Property Name="UnitName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UnitName" Type="varchar(max)" />
           <Property Name="SignatryName" Type="varchar" MaxLength="50" />
           <Property Name="SignatryDateOfBirth" Type="datetime" />
-          <Property Name="SignatryPresentAddress" Type="varchar" MaxLength="500" />
+          <Property Name="SignatryPresentAddress" Type="varchar(max)" />
           <Property Name="SignatryPresentPhoneNumber" Type="varchar" MaxLength="50" />
-          <Property Name="SignatryPermanentAddress" Type="varchar" MaxLength="500" />
+          <Property Name="SignatryPermanentAddress" Type="varchar(max)" />
           <Property Name="SignatryPermanentPhoneNumber" Type="varchar" MaxLength="50" />
           <Property Name="RelationshipStatus" Type="int" />
           <Property Name="CreationDate" Type="datetime" />
@@ -117,11 +134,11 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ApplicationId" Type="int" />
           <Property Name="FullApplicantName" Type="varchar" MaxLength="50" />
-          <Property Name="ProposedIndustryType" Type="varchar" MaxLength="50" />
+          <Property Name="ProposedIndustryType" Type="varchar(max)" />
           <Property Name="ProjectEstimatedCost" Type="varchar" MaxLength="50" />
           <Property Name="ProposedCoveredArea" Type="varchar" MaxLength="50" />
           <Property Name="ProposedOpenArea" Type="varchar" MaxLength="50" />
-          <Property Name="PurpuseOpenArea" Type="varchar" MaxLength="50" />
+          <Property Name="PurpuseOpenArea" Type="varchar(max)" />
           <Property Name="ProposedInvestmentLand" Type="varchar" MaxLength="50" />
           <Property Name="ProposedInvestmentBuilding" Type="varchar" MaxLength="50" />
           <Property Name="ProposedInvestmentPlant" Type="varchar" MaxLength="50" />
@@ -148,7 +165,6 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" />
-          <Property Name="ChalanDocument" Type="varbinary(max)" />
           <Property Name="ApplicationId" Type="int" />
           <Property Name="order_id" Type="bigint" />
           <Property Name="tracking_id" Type="bigint" />
@@ -158,10 +174,11 @@
           <Property Name="card_name" Type="varchar" MaxLength="50" />
           <Property Name="status_message" Type="varchar" MaxLength="500" />
           <Property Name="amount" Type="varchar" MaxLength="50" />
-          <Property Name="billing_name" Type="varchar" MaxLength="50" />
-          <Property Name="billing_address" Type="varchar" MaxLength="50" />
+          <Property Name="billing_name" Type="varchar" MaxLength="500" />
+          <Property Name="billing_address" Type="varchar(max)" />
           <Property Name="trans_date" Type="datetime" />
           <Property Name="created_date" Type="datetime" />
+          <Property Name="ChalanDocument" Type="varbinary(max)" />
           <Property Name="ChalanDocumentFileName" Type="varchar" MaxLength="500" />
           <Property Name="ChalanDocumentFileType" Type="varchar" MaxLength="50" />
           <Property Name="TransactionType" Type="varchar" MaxLength="50" />
@@ -272,7 +289,8 @@
           <Property Name="TransactionId" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
-        <EntityContainer Name="GidaGKPModelStoreContainer">
+        <EntityContainer Name="GidaGkpModelStoreContainer">
+          <EntitySet Name="AdminNotice" EntityType="Self.AdminNotice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdminUser" EntityType="Self.AdminUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantApplicationDetail" EntityType="Self.ApplicantApplicationDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApplicantBankDetails" EntityType="Self.ApplicantBankDetails" Schema="dbo" store:Type="Tables" />
@@ -286,10 +304,39 @@
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PGTransactionInformation" EntityType="Self.PGTransactionInformation" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="GidaGKPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="GidaGkpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminNotice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Notice_SrNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Notice_Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Notice_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Notice_Date" Type="DateTime" Precision="3" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Notice_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Notice_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoticeFile_Upload" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="Notice_New" Type="Boolean" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
         <EntityType Name="ApplicantApplicationDetail">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -306,11 +353,11 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="ApplicationId" Type="Int32" />
-          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BBName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BBAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BankName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BBName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BBAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IFSC_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AccountHolderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountHolderName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="BankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
         </EntityType>
@@ -321,10 +368,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="ApplicationId" Type="Int32" />
-          <Property Name="FullApplicantName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FullApplicantName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ApplicantDOB" Type="DateTime" Precision="3" />
           <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -336,8 +383,8 @@
           <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SubCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="PAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IdentiyProof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ResidentialProof" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
@@ -373,12 +420,12 @@
           <Property Name="EarnestMoney" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="NetAmount" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="IndustryOwnership" Type="Int32" />
-          <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SignatryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SignatryDateOfBirth" Type="DateTime" Precision="3" />
-          <Property Name="SignatryPresentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SignatryPresentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SignatryPresentPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SignatryPermanentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SignatryPermanentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SignatryPermanentPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="RelationshipStatus" Type="Int32" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
@@ -391,11 +438,11 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="ApplicationId" Type="Int32" />
           <Property Name="FullApplicantName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProposedIndustryType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProposedIndustryType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ProjectEstimatedCost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProposedCoveredArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProposedOpenArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PurpuseOpenArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PurpuseOpenArea" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ProposedInvestmentLand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProposedInvestmentBuilding" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProposedInvestmentPlant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -431,8 +478,8 @@
           <Property Name="card_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="status_message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="billing_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="billing_address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="billing_name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="billing_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="trans_date" Type="DateTime" Precision="3" />
           <Property Name="created_date" Type="DateTime" Precision="3" />
           <Property Name="ChalanDocument" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -448,60 +495,60 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="ApplicationId" Type="Int32" />
           <Property Name="ProjectReport" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="ProposedPlanLandUses" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Memorendum" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="ScanPAN" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="ScanAddressProof" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="BalanceSheet" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="ITReturn" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="ExperienceProof" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="ApplicantEduTechQualification" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="PreEstablishedIndustriesDoc" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="FinDetailsEstablishedIndustries" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="OtherDocForProposedIndustry" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="ScanCastCert" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="ScanID" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="BankVerifiedSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="DocProofForIndustrialEstablishedOutsideGida" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="ApplicantPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="ApplicantSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="CreationDate" Type="DateTime" Precision="3" />
           <Property Name="ProjectReportFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ProjectReportFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProposedPlanLandUses" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ProposedPlanLandUsesFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ProposedPlanLandUsesFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Memorendum" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="MemorendumFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="MemorendumFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScanPAN" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ScanPANFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ScanPANFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScanAddressProof" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ScanAddressProofFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ScanAddressProofFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BalanceSheet" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="BalanceSheetFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="BalanceSheetFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ITReturn" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ITReturnFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ITReturnFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExperienceProof" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ExperienceProofFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ExperienceProofFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantEduTechQualification" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ApplicantEduTechQualificationFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ApplicantEduTechQualificationFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PreEstablishedIndustriesDoc" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="PreEstablishedIndustriesDocFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="PreEstablishedIndustriesDocFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FinDetailsEstablishedIndustries" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="FinDetailsEstablishedIndustriesFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="FinDetailsEstablishedIndustriesFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OtherDocForProposedIndustry" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="OtherDocForProposedIndustryFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="OtherDocForProposedIndustryFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScanCastCert" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ScanCastCertFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ScanCastCertFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScanID" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ScanIDFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ScanIDFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankVerifiedSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="BankVerifiedSignatureFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="BankVerifiedSignatureFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocProofForIndustrialEstablishedOutsideGida" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="DocProofForIndustrialEstablishedOutsideGidaFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="DocProofForIndustrialEstablishedOutsideGidaFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ApplicantPhotoFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ApplicantPhotoFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicantSignature" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ApplicantSignatureFileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ApplicantSignatureFileType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ApplicantUser">
           <Key>
@@ -535,20 +582,6 @@
           <Property Name="ParentLookupId" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" />
         </EntityType>
-        <EntityContainer Name="GidaGKPEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ApplicantApplicationDetails" EntityType="Self.ApplicantApplicationDetail" />
-          <EntitySet Name="ApplicantBankDetails" EntityType="Self.ApplicantBankDetail" />
-          <EntitySet Name="ApplicantDetails" EntityType="Self.ApplicantDetail" />
-          <EntitySet Name="ApplicantFormSteps" EntityType="Self.ApplicantFormStep" />
-          <EntitySet Name="ApplicantPlotDetails" EntityType="Self.ApplicantPlotDetail" />
-          <EntitySet Name="ApplicantProjectDetails" EntityType="Self.ApplicantProjectDetail" />
-          <EntitySet Name="ApplicantTransactionDetails" EntityType="Self.ApplicantTransactionDetail" />
-          <EntitySet Name="ApplicantUploadDocs" EntityType="Self.ApplicantUploadDoc" />
-          <EntitySet Name="ApplicantUsers" EntityType="Self.ApplicantUser" />
-          <EntitySet Name="Lookups" EntityType="Self.Lookup" />
-          <EntitySet Name="PGTransactionInformations" EntityType="GidaGKPModel.PGTransactionInformation" />
-          <EntitySet Name="AdminUsers" EntityType="GidaGKPModel.AdminUser" />
-        </EntityContainer>
         <EntityType Name="PGTransactionInformation">
           <Key>
             <PropertyRef Name="Id" />
@@ -560,25 +593,59 @@
           <Property Name="TransactionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="AdminUser">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="IsActive" Type="Boolean" />
-        </EntityType>
+        <EntityContainer Name="GidaGkpEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminNotices" EntityType="Self.AdminNotice" />
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
+          <EntitySet Name="ApplicantApplicationDetails" EntityType="Self.ApplicantApplicationDetail" />
+          <EntitySet Name="ApplicantBankDetails" EntityType="Self.ApplicantBankDetail" />
+          <EntitySet Name="ApplicantDetails" EntityType="Self.ApplicantDetail" />
+          <EntitySet Name="ApplicantFormSteps" EntityType="Self.ApplicantFormStep" />
+          <EntitySet Name="ApplicantPlotDetails" EntityType="Self.ApplicantPlotDetail" />
+          <EntitySet Name="ApplicantProjectDetails" EntityType="Self.ApplicantProjectDetail" />
+          <EntitySet Name="ApplicantTransactionDetails" EntityType="Self.ApplicantTransactionDetail" />
+          <EntitySet Name="ApplicantUploadDocs" EntityType="Self.ApplicantUploadDoc" />
+          <EntitySet Name="ApplicantUsers" EntityType="Self.ApplicantUser" />
+          <EntitySet Name="Lookups" EntityType="Self.Lookup" />
+          <EntitySet Name="PGTransactionInformations" EntityType="Self.PGTransactionInformation" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GidaGKPModelStoreContainer" CdmEntityContainer="GidaGKPEntities">
+        <EntityContainerMapping StorageEntityContainer="GidaGkpModelStoreContainer" CdmEntityContainer="GidaGkpEntities">
+          <EntitySetMapping Name="AdminNotices">
+            <EntityTypeMapping TypeName="GidaGkpModel.AdminNotice">
+              <MappingFragment StoreEntitySet="AdminNotice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Notice_SrNo" ColumnName="Notice_SrNo" />
+                <ScalarProperty Name="Notice_Title" ColumnName="Notice_Title" />
+                <ScalarProperty Name="Notice_Description" ColumnName="Notice_Description" />
+                <ScalarProperty Name="Notice_Date" ColumnName="Notice_Date" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Notice_Type" ColumnName="Notice_Type" />
+                <ScalarProperty Name="Notice_Status" ColumnName="Notice_Status" />
+                <ScalarProperty Name="NoticeFile_Upload" ColumnName="NoticeFile_Upload" />
+                <ScalarProperty Name="Notice_New" ColumnName="Notice_New" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminUsers">
+            <EntityTypeMapping TypeName="GidaGkpModel.AdminUser">
+              <MappingFragment StoreEntitySet="AdminUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ApplicantApplicationDetails">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantApplicationDetail">
+            <EntityTypeMapping TypeName="GidaGkpModel.ApplicantApplicationDetail">
               <MappingFragment StoreEntitySet="ApplicantApplicationDetail">
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="ApplicationNumber" ColumnName="ApplicationNumber" />
@@ -588,7 +655,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicantBankDetails">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantBankDetail">
+            <EntityTypeMapping TypeName="GidaGkpModel.ApplicantBankDetail">
               <MappingFragment StoreEntitySet="ApplicantBankDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -604,7 +671,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicantDetails">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantDetail">
+            <EntityTypeMapping TypeName="GidaGkpModel.ApplicantDetail">
               <MappingFragment StoreEntitySet="ApplicantDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -633,7 +700,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicantFormSteps">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantFormStep">
+            <EntityTypeMapping TypeName="GidaGkpModel.ApplicantFormStep">
               <MappingFragment StoreEntitySet="ApplicantFormStep">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -643,7 +710,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicantPlotDetails">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantPlotDetail">
+            <EntityTypeMapping TypeName="GidaGkpModel.ApplicantPlotDetail">
               <MappingFragment StoreEntitySet="ApplicantPlotDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -676,7 +743,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicantProjectDetails">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantProjectDetail">
+            <EntityTypeMapping TypeName="GidaGkpModel.ApplicantProjectDetail">
               <MappingFragment StoreEntitySet="ApplicantProjectDetails">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -710,12 +777,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicantTransactionDetails">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantTransactionDetail">
+            <EntityTypeMapping TypeName="GidaGkpModel.ApplicantTransactionDetail">
               <MappingFragment StoreEntitySet="ApplicantTransactionDetail">
-                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
-                <ScalarProperty Name="ChalanDocumentFileType" ColumnName="ChalanDocumentFileType" />
-                <ScalarProperty Name="ChalanDocumentFileName" ColumnName="ChalanDocumentFileName" />
-                <ScalarProperty Name="ChalanDocument" ColumnName="ChalanDocument" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
@@ -731,79 +794,80 @@
                 <ScalarProperty Name="billing_address" ColumnName="billing_address" />
                 <ScalarProperty Name="trans_date" ColumnName="trans_date" />
                 <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="ChalanDocument" ColumnName="ChalanDocument" />
+                <ScalarProperty Name="ChalanDocumentFileName" ColumnName="ChalanDocumentFileName" />
+                <ScalarProperty Name="ChalanDocumentFileType" ColumnName="ChalanDocumentFileType" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicantUploadDocs">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantUploadDoc">
+            <EntityTypeMapping TypeName="GidaGkpModel.ApplicantUploadDoc">
               <MappingFragment StoreEntitySet="ApplicantUploadDoc">
-                <ScalarProperty Name="ApplicantSignatureFileType" ColumnName="ApplicantSignatureFileType" />
-                <ScalarProperty Name="ApplicantSignatureFileName" ColumnName="ApplicantSignatureFileName" />
-                <ScalarProperty Name="ApplicantPhotoFileType" ColumnName="ApplicantPhotoFileType" />
-                <ScalarProperty Name="ApplicantPhotoFileName" ColumnName="ApplicantPhotoFileName" />
-                <ScalarProperty Name="DocProofForIndustrialEstablishedOutsideGidaFileType" ColumnName="DocProofForIndustrialEstablishedOutsideGidaFileType" />
-                <ScalarProperty Name="DocProofForIndustrialEstablishedOutsideGidaFileName" ColumnName="DocProofForIndustrialEstablishedOutsideGidaFileName" />
-                <ScalarProperty Name="BankVerifiedSignatureFileType" ColumnName="BankVerifiedSignatureFileType" />
-                <ScalarProperty Name="BankVerifiedSignatureFileName" ColumnName="BankVerifiedSignatureFileName" />
-                <ScalarProperty Name="ScanIDFileType" ColumnName="ScanIDFileType" />
-                <ScalarProperty Name="ScanIDFileName" ColumnName="ScanIDFileName" />
-                <ScalarProperty Name="ScanCastCertFileType" ColumnName="ScanCastCertFileType" />
-                <ScalarProperty Name="ScanCastCertFileName" ColumnName="ScanCastCertFileName" />
-                <ScalarProperty Name="OtherDocForProposedIndustryFileType" ColumnName="OtherDocForProposedIndustryFileType" />
-                <ScalarProperty Name="OtherDocForProposedIndustryFileName" ColumnName="OtherDocForProposedIndustryFileName" />
-                <ScalarProperty Name="FinDetailsEstablishedIndustriesFileType" ColumnName="FinDetailsEstablishedIndustriesFileType" />
-                <ScalarProperty Name="FinDetailsEstablishedIndustriesFileName" ColumnName="FinDetailsEstablishedIndustriesFileName" />
-                <ScalarProperty Name="PreEstablishedIndustriesDocFileType" ColumnName="PreEstablishedIndustriesDocFileType" />
-                <ScalarProperty Name="PreEstablishedIndustriesDocFileName" ColumnName="PreEstablishedIndustriesDocFileName" />
-                <ScalarProperty Name="ApplicantEduTechQualificationFileType" ColumnName="ApplicantEduTechQualificationFileType" />
-                <ScalarProperty Name="ApplicantEduTechQualificationFileName" ColumnName="ApplicantEduTechQualificationFileName" />
-                <ScalarProperty Name="ExperienceProofFileType" ColumnName="ExperienceProofFileType" />
-                <ScalarProperty Name="ExperienceProofFileName" ColumnName="ExperienceProofFileName" />
-                <ScalarProperty Name="ITReturnFileType" ColumnName="ITReturnFileType" />
-                <ScalarProperty Name="ITReturnFileName" ColumnName="ITReturnFileName" />
-                <ScalarProperty Name="BalanceSheetFileType" ColumnName="BalanceSheetFileType" />
-                <ScalarProperty Name="BalanceSheetFileName" ColumnName="BalanceSheetFileName" />
-                <ScalarProperty Name="ScanAddressProofFileType" ColumnName="ScanAddressProofFileType" />
-                <ScalarProperty Name="ScanAddressProofFileName" ColumnName="ScanAddressProofFileName" />
-                <ScalarProperty Name="ScanPANFileType" ColumnName="ScanPANFileType" />
-                <ScalarProperty Name="ScanPANFileName" ColumnName="ScanPANFileName" />
-                <ScalarProperty Name="MemorendumFileType" ColumnName="MemorendumFileType" />
-                <ScalarProperty Name="MemorendumFileName" ColumnName="MemorendumFileName" />
-                <ScalarProperty Name="ProposedPlanLandUsesFileType" ColumnName="ProposedPlanLandUsesFileType" />
-                <ScalarProperty Name="ProposedPlanLandUsesFileName" ColumnName="ProposedPlanLandUsesFileName" />
-                <ScalarProperty Name="ProjectReportFileType" ColumnName="ProjectReportFileType" />
-                <ScalarProperty Name="ProjectReportFileName" ColumnName="ProjectReportFileName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
                 <ScalarProperty Name="ProjectReport" ColumnName="ProjectReport" />
+                <ScalarProperty Name="ProjectReportFileName" ColumnName="ProjectReportFileName" />
+                <ScalarProperty Name="ProjectReportFileType" ColumnName="ProjectReportFileType" />
                 <ScalarProperty Name="ProposedPlanLandUses" ColumnName="ProposedPlanLandUses" />
+                <ScalarProperty Name="ProposedPlanLandUsesFileName" ColumnName="ProposedPlanLandUsesFileName" />
+                <ScalarProperty Name="ProposedPlanLandUsesFileType" ColumnName="ProposedPlanLandUsesFileType" />
                 <ScalarProperty Name="Memorendum" ColumnName="Memorendum" />
+                <ScalarProperty Name="MemorendumFileName" ColumnName="MemorendumFileName" />
+                <ScalarProperty Name="MemorendumFileType" ColumnName="MemorendumFileType" />
                 <ScalarProperty Name="ScanPAN" ColumnName="ScanPAN" />
+                <ScalarProperty Name="ScanPANFileName" ColumnName="ScanPANFileName" />
+                <ScalarProperty Name="ScanPANFileType" ColumnName="ScanPANFileType" />
                 <ScalarProperty Name="ScanAddressProof" ColumnName="ScanAddressProof" />
+                <ScalarProperty Name="ScanAddressProofFileName" ColumnName="ScanAddressProofFileName" />
+                <ScalarProperty Name="ScanAddressProofFileType" ColumnName="ScanAddressProofFileType" />
                 <ScalarProperty Name="BalanceSheet" ColumnName="BalanceSheet" />
+                <ScalarProperty Name="BalanceSheetFileName" ColumnName="BalanceSheetFileName" />
+                <ScalarProperty Name="BalanceSheetFileType" ColumnName="BalanceSheetFileType" />
                 <ScalarProperty Name="ITReturn" ColumnName="ITReturn" />
+                <ScalarProperty Name="ITReturnFileName" ColumnName="ITReturnFileName" />
+                <ScalarProperty Name="ITReturnFileType" ColumnName="ITReturnFileType" />
                 <ScalarProperty Name="ExperienceProof" ColumnName="ExperienceProof" />
+                <ScalarProperty Name="ExperienceProofFileName" ColumnName="ExperienceProofFileName" />
+                <ScalarProperty Name="ExperienceProofFileType" ColumnName="ExperienceProofFileType" />
                 <ScalarProperty Name="ApplicantEduTechQualification" ColumnName="ApplicantEduTechQualification" />
+                <ScalarProperty Name="ApplicantEduTechQualificationFileName" ColumnName="ApplicantEduTechQualificationFileName" />
+                <ScalarProperty Name="ApplicantEduTechQualificationFileType" ColumnName="ApplicantEduTechQualificationFileType" />
                 <ScalarProperty Name="PreEstablishedIndustriesDoc" ColumnName="PreEstablishedIndustriesDoc" />
+                <ScalarProperty Name="PreEstablishedIndustriesDocFileName" ColumnName="PreEstablishedIndustriesDocFileName" />
+                <ScalarProperty Name="PreEstablishedIndustriesDocFileType" ColumnName="PreEstablishedIndustriesDocFileType" />
                 <ScalarProperty Name="FinDetailsEstablishedIndustries" ColumnName="FinDetailsEstablishedIndustries" />
+                <ScalarProperty Name="FinDetailsEstablishedIndustriesFileName" ColumnName="FinDetailsEstablishedIndustriesFileName" />
+                <ScalarProperty Name="FinDetailsEstablishedIndustriesFileType" ColumnName="FinDetailsEstablishedIndustriesFileType" />
                 <ScalarProperty Name="OtherDocForProposedIndustry" ColumnName="OtherDocForProposedIndustry" />
+                <ScalarProperty Name="OtherDocForProposedIndustryFileName" ColumnName="OtherDocForProposedIndustryFileName" />
+                <ScalarProperty Name="OtherDocForProposedIndustryFileType" ColumnName="OtherDocForProposedIndustryFileType" />
                 <ScalarProperty Name="ScanCastCert" ColumnName="ScanCastCert" />
+                <ScalarProperty Name="ScanCastCertFileName" ColumnName="ScanCastCertFileName" />
+                <ScalarProperty Name="ScanCastCertFileType" ColumnName="ScanCastCertFileType" />
                 <ScalarProperty Name="ScanID" ColumnName="ScanID" />
+                <ScalarProperty Name="ScanIDFileName" ColumnName="ScanIDFileName" />
+                <ScalarProperty Name="ScanIDFileType" ColumnName="ScanIDFileType" />
                 <ScalarProperty Name="BankVerifiedSignature" ColumnName="BankVerifiedSignature" />
+                <ScalarProperty Name="BankVerifiedSignatureFileName" ColumnName="BankVerifiedSignatureFileName" />
+                <ScalarProperty Name="BankVerifiedSignatureFileType" ColumnName="BankVerifiedSignatureFileType" />
                 <ScalarProperty Name="DocProofForIndustrialEstablishedOutsideGida" ColumnName="DocProofForIndustrialEstablishedOutsideGida" />
+                <ScalarProperty Name="DocProofForIndustrialEstablishedOutsideGidaFileName" ColumnName="DocProofForIndustrialEstablishedOutsideGidaFileName" />
+                <ScalarProperty Name="DocProofForIndustrialEstablishedOutsideGidaFileType" ColumnName="DocProofForIndustrialEstablishedOutsideGidaFileType" />
                 <ScalarProperty Name="ApplicantPhoto" ColumnName="ApplicantPhoto" />
+                <ScalarProperty Name="ApplicantPhotoFileName" ColumnName="ApplicantPhotoFileName" />
+                <ScalarProperty Name="ApplicantPhotoFileType" ColumnName="ApplicantPhotoFileType" />
                 <ScalarProperty Name="ApplicantSignature" ColumnName="ApplicantSignature" />
+                <ScalarProperty Name="ApplicantSignatureFileName" ColumnName="ApplicantSignatureFileName" />
+                <ScalarProperty Name="ApplicantSignatureFileType" ColumnName="ApplicantSignatureFileType" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ApplicantUsers">
-            <EntityTypeMapping TypeName="GidaGKPModel.ApplicantUser">
+            <EntityTypeMapping TypeName="GidaGkpModel.ApplicantUser">
               <MappingFragment StoreEntitySet="ApplicantUser">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ResetCode" ColumnName="ResetCode" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
@@ -818,41 +882,32 @@
                 <ScalarProperty Name="SchemeName" ColumnName="SchemeName" />
                 <ScalarProperty Name="SectorName" ColumnName="SectorName" />
                 <ScalarProperty Name="AllotmentNumber" ColumnName="AllotmentNumber" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="ResetCode" ColumnName="ResetCode" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Lookups">
-            <EntityTypeMapping TypeName="GidaGKPModel.Lookup">
+            <EntityTypeMapping TypeName="GidaGkpModel.Lookup">
               <MappingFragment StoreEntitySet="Lookup">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="LookupId" ColumnName="LookupId" />
                 <ScalarProperty Name="LookupType" ColumnName="LookupType" />
                 <ScalarProperty Name="LookupName" ColumnName="LookupName" />
                 <ScalarProperty Name="ParentLookupId" ColumnName="ParentLookupId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PGTransactionInformations">
-            <EntityTypeMapping TypeName="GidaGKPModel.PGTransactionInformation">
+            <EntityTypeMapping TypeName="GidaGkpModel.PGTransactionInformation">
               <MappingFragment StoreEntitySet="PGTransactionInformation">
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AdminUsers">
-            <EntityTypeMapping TypeName="GidaGKPModel.AdminUser">
-              <MappingFragment StoreEntitySet="AdminUser">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

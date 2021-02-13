@@ -12,13 +12,13 @@ namespace GidaGkpWeb.BAL
 {
     public class ApplicantDetails
     {
-        GidaGKPEntities _db = null;
+        GidaGkpEntities _db = null;
 
         public int SaveApplicantTransactionDeatil(ApplicantTransactionDetail detail)
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 _db.Entry(detail).State = EntityState.Added;
                 return _db.SaveChanges();
             }
@@ -38,7 +38,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 int _effectRow = 0;
                 ApplicantApplicationDetail app = new ApplicantApplicationDetail();
 
@@ -152,7 +152,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
 
                 ApplicantFormStep step = new ApplicantFormStep()
                 {
@@ -244,7 +244,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
 
                 ApplicantFormStep step = new ApplicantFormStep()
                 {
@@ -343,7 +343,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
 
                 ApplicantFormStep step = new ApplicantFormStep()
                 {
@@ -407,7 +407,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
 
                 ApplicantFormStep step = new ApplicantFormStep()
                 {
@@ -563,7 +563,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from application in _db.ApplicantApplicationDetails
                         join applicantDetail in _db.ApplicantDetails on application.ApplicationId equals applicantDetail.ApplicationId
                         join plotDetail in _db.ApplicantPlotDetails on application.ApplicationId equals plotDetail.ApplicationId
@@ -604,7 +604,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from applicationDetail in _db.ApplicantApplicationDetails
                         join applicantDetail in _db.ApplicantDetails on applicationDetail.ApplicationId equals applicantDetail.ApplicationId
                         join plotDetail in _db.ApplicantPlotDetails on applicationDetail.ApplicationId equals plotDetail.ApplicationId
@@ -683,7 +683,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from application in _db.ApplicantApplicationDetails
                         join applicantDetail1 in _db.ApplicantDetails on application.ApplicationId equals applicantDetail1.ApplicationId into applicantDetail2
                         from applicantDetail in applicantDetail2.DefaultIfEmpty()
@@ -738,7 +738,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from application in _db.ApplicantApplicationDetails
                         join applicantDetail1 in _db.ApplicantDetails on application.ApplicationId equals applicantDetail1.ApplicationId into applicantDetail2
                         from applicantDetail in applicantDetail2.DefaultIfEmpty()
@@ -793,7 +793,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from application in _db.ApplicantApplicationDetails
                         join transaction1 in _db.ApplicantTransactionDetails on application.ApplicationId equals transaction1.ApplicationId into transaction2
                         from transaction in transaction2.DefaultIfEmpty()
@@ -821,7 +821,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from plotDetail in _db.ApplicantPlotDetails
                         join app in _db.ApplicantApplicationDetails on plotDetail.ApplicationId equals app.ApplicationId
                         where app.ApplicationId == applicationId
@@ -876,7 +876,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from applicantDetail in _db.ApplicantDetails
                         join app in _db.ApplicantApplicationDetails on applicantDetail.ApplicationId equals app.ApplicationId
                         where app.ApplicationId == applicationId
@@ -924,7 +924,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from applicantDetail in _db.ApplicantProjectDetails
                         join app in _db.ApplicantApplicationDetails on applicantDetail.ApplicationId equals app.ApplicationId
                         where app.ApplicationId == applicationId
@@ -978,7 +978,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from bankDetail in _db.ApplicantBankDetails
                         join app in _db.ApplicantApplicationDetails on bankDetail.ApplicationId equals app.ApplicationId
                         where app.ApplicationId == applicationId
@@ -1014,7 +1014,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from docDetail in _db.ApplicantUploadDocs
                         join app in _db.ApplicantApplicationDetails on docDetail.ApplicationId equals app.ApplicationId
                         where app.ApplicationId == applicationId
@@ -1116,7 +1116,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from application in _db.ApplicantApplicationDetails
                         join applicantDetail1 in _db.ApplicantDetails on application.ApplicationId equals applicantDetail1.ApplicationId into applicantDetail2
                         from applicantDetail in applicantDetail2.DefaultIfEmpty()
@@ -1183,7 +1183,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
 
                 int _effectRow = 0;
 
@@ -1213,7 +1213,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from application in _db.ApplicantApplicationDetails
                         join documentDetail1 in _db.ApplicantUploadDocs on application.ApplicationId equals documentDetail1.ApplicationId into documentDetail2
                         from documentDetail in documentDetail2.DefaultIfEmpty()
@@ -1243,7 +1243,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return (from application in _db.ApplicantApplicationDetails
                         join transaction1 in _db.ApplicantTransactionDetails on application.ApplicationId equals transaction1.ApplicationId into transaction2
                         from transaction in transaction2.DefaultIfEmpty()
@@ -1271,7 +1271,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return _db.ApplicantTransactionDetails.Where(x => x.tracking_id == transactionId).FirstOrDefault(); ;
             }
             catch (DbEntityValidationException e)
@@ -1291,7 +1291,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return _db.ApplicantTransactionDetails.Where(x => x.order_id == orderId).FirstOrDefault();
             }
             catch (DbEntityValidationException e)
@@ -1311,7 +1311,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return _db.PGTransactionInformations.Where(x => x.OrderId == OrderId).FirstOrDefault(); ;
             }
             catch (DbEntityValidationException e)
@@ -1331,7 +1331,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 return _db.ApplicantTransactionDetails.Where(x => x.UserId == userid && x.ApplicationId == applicationId).FirstOrDefault(); ;
             }
             catch (DbEntityValidationException e)
@@ -1350,7 +1350,7 @@ namespace GidaGkpWeb.BAL
         {
             try
             {
-                _db = new GidaGKPEntities();
+                _db = new GidaGkpEntities();
                 int _effectRow = 0;
 
                 //var extingPGInfo = _db.PGTransactionInformations.Where(x => x.ApplicationId == applicationId && x.UserId == userId).FirstOrDefault();

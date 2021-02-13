@@ -119,6 +119,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminNotice.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="AdminUser.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
@@ -155,13 +158,13 @@
       <DependentUpon>DbEntity.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="DbEntity.Designer.cs">
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>DbEntity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Lookup.cs">
@@ -194,8 +197,8 @@
     </Content>
     <Content Include="DbEntity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DbEntity.cs</LastGenOutput>
       <DependentUpon>DbEntity.edmx</DependentUpon>
+      <LastGenOutput>DbEntity.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
