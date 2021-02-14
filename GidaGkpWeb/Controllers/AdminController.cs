@@ -120,7 +120,7 @@ namespace GidaGkpWeb.Controllers
             return null;
         }
         [HttpPost]
-        public ActionResult SaveNotice(HttpPostedFileBase Document, string NoticeType, string Title, string DepartmentNotice, string NoticeDate, string NewTag, string Publish, int NoticeId)
+        public ActionResult SaveNotice(HttpPostedFileBase Document, string NoticeType, string Title, string DepartmentNotice, string NoticeDate, string NewTag, string Publish, int? NoticeId)
         {
             AdminNotice notice = new AdminNotice();
             if (Document != null && Document.ContentLength > 0)
@@ -143,20 +143,24 @@ namespace GidaGkpWeb.Controllers
                 notice.IsActive = true;
             else
                 notice.IsActive = false;
-            if (NoticeId <= 0)
+
+            if (NoticeId <= 0 || NoticeId == null)
             {
                 notice.CreatedBy = UserData.UserId;
                 notice.CreationDate = DateTime.Now;
             }
+            else
+            {
+                notice.Id = NoticeId.Value;
+            }
 
-            notice.Id = NoticeId;
             AdminDetails _details = new AdminDetails();
             var result = _details.SaveNotice(notice);
             if (result == Enums.CrudStatus.Saved)
                 SetAlertMessage("Notice has been Saved", "Notice Save");
             else
                 SetAlertMessage("Notice Saving failed", "Notice Save");
-            if (NoticeId > 0)
+            if (NoticeId != null && NoticeId > 0)
             {
                 return RedirectToAction("NoticeList");
             }
