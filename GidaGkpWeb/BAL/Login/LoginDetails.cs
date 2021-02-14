@@ -99,7 +99,8 @@ namespace GidaGkpWeb.BAL.Login
                     SchemeType = SchemeType,
                     SectorName = SectorName,
                     CreationDate = DateTime.Now,
-                    UserType = "GIDA"
+                    UserType = "GIDA",
+                    IsActive = true
                 };
                 _db.Entry(_newRecord).State = EntityState.Added;
                 _effectRow = _db.SaveChanges();
