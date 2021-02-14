@@ -110,10 +110,15 @@ select.list-dt {
     text-align: left
 }
 
+.table-responsive {
+    width:100%;
+}
+
 #progressbar {
     margin-bottom: 30px;
     overflow: hidden;
-    color: lightgrey
+    color: lightgrey;
+    width: 100%
 }
 
     #progressbar .active {
