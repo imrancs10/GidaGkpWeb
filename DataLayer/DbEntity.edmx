@@ -10,17 +10,17 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="Notice_SrNo" Type="varchar" MaxLength="50" />
-          <Property Name="Notice_Title" Type="varchar" MaxLength="500" />
-          <Property Name="Notice_Description" Type="varchar(max)" />
+          <Property Name="NoticeTypeId" Type="int" />
+          <Property Name="Notice_title" Type="varchar(max)" />
           <Property Name="Notice_Date" Type="datetime" />
-          <Property Name="Department" Type="varchar" MaxLength="50" />
-          <Property Name="Notice_Type" Type="varchar" MaxLength="50" />
-          <Property Name="Notice_Status" Type="varchar" MaxLength="50" />
-          <Property Name="NoticeFile_Upload" Type="varbinary" MaxLength="50" />
-          <Property Name="Notice_New" Type="bit" />
+          <Property Name="Department" Type="varchar" MaxLength="500" />
+          <Property Name="NoticeDocumentFile" Type="varbinary(max)" />
+          <Property Name="NoticeDocumentName" Type="varchar" MaxLength="500" />
+          <Property Name="NoticeDocumentFileType" Type="varchar" MaxLength="500" />
+          <Property Name="NoticeNewTag" Type="bit" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="CreationDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="AdminUser">
           <Key>
@@ -314,17 +314,17 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="Notice_SrNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Notice_Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Notice_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NoticeTypeId" Type="Int32" />
+          <Property Name="Notice_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Notice_Date" Type="DateTime" Precision="3" />
-          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Notice_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Notice_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NoticeFile_Upload" Type="Binary" MaxLength="50" FixedLength="false" />
-          <Property Name="Notice_New" Type="Boolean" />
+          <Property Name="Department" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NoticeDocumentFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="NoticeDocumentName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NoticeDocumentFileType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NoticeNewTag" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="AdminUser">
           <Key>
@@ -618,17 +618,17 @@
             <EntityTypeMapping TypeName="GidaGkpModel.AdminNotice">
               <MappingFragment StoreEntitySet="AdminNotice">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Notice_SrNo" ColumnName="Notice_SrNo" />
-                <ScalarProperty Name="Notice_Title" ColumnName="Notice_Title" />
-                <ScalarProperty Name="Notice_Description" ColumnName="Notice_Description" />
+                <ScalarProperty Name="NoticeTypeId" ColumnName="NoticeTypeId" />
+                <ScalarProperty Name="Notice_title" ColumnName="Notice_title" />
                 <ScalarProperty Name="Notice_Date" ColumnName="Notice_Date" />
                 <ScalarProperty Name="Department" ColumnName="Department" />
-                <ScalarProperty Name="Notice_Type" ColumnName="Notice_Type" />
-                <ScalarProperty Name="Notice_Status" ColumnName="Notice_Status" />
-                <ScalarProperty Name="NoticeFile_Upload" ColumnName="NoticeFile_Upload" />
-                <ScalarProperty Name="Notice_New" ColumnName="Notice_New" />
+                <ScalarProperty Name="NoticeDocumentFile" ColumnName="NoticeDocumentFile" />
+                <ScalarProperty Name="NoticeDocumentName" ColumnName="NoticeDocumentName" />
+                <ScalarProperty Name="NoticeDocumentFileType" ColumnName="NoticeDocumentFileType" />
+                <ScalarProperty Name="NoticeNewTag" ColumnName="NoticeNewTag" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

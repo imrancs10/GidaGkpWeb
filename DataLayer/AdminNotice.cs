@@ -15,16 +15,16 @@ namespace DataLayer
     public partial class AdminNotice
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public string Notice_SrNo { get; set; }
-        public string Notice_Title { get; set; }
-        public string Notice_Description { get; set; }
+        public Nullable<int> NoticeTypeId { get; set; }
+        public string Notice_title { get; set; }
         public Nullable<System.DateTime> Notice_Date { get; set; }
         public string Department { get; set; }
-        public string Notice_Type { get; set; }
-        public string Notice_Status { get; set; }
-        public byte[] NoticeFile_Upload { get; set; }
-        public Nullable<bool> Notice_New { get; set; }
+        public byte[] NoticeDocumentFile { get; set; }
+        public string NoticeDocumentName { get; set; }
+        public string NoticeDocumentFileType { get; set; }
+        public Nullable<bool> NoticeNewTag { get; set; }
+        public int CreatedBy { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     }
 }

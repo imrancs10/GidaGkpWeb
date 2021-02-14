@@ -72,7 +72,7 @@ namespace GidaGkpWeb.Controllers
         public ActionResult GrievancesDashboard()
         {
             return View();
-        } 
+        }
         [HttpPost]
         [ValidateInput(false)]
         public FileResult ExportApplicantUser(string GridHtml)
@@ -96,6 +96,40 @@ namespace GidaGkpWeb.Controllers
         public ActionResult Notice()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult SaveNotice(HttpPostedFileBase Document, string NoticeType, string Title, string DepartmentNotice, string NoticeDate, string NewTag, string Publish)
+        {
+            AdminNotice notice = new AdminNotice();
+            if (Document != null && Document.ContentLength > 0)
+            {
+                notice.NoticeDocumentFile = new byte[Document.ContentLength];
+                Document.InputStream.Read(notice.NoticeDocumentFile, 0, Document.ContentLength);
+                notice.NoticeDocumentName = Document.FileName;
+                notice.NoticeDocumentFileType = Document.ContentType;
+            }
+            notice.NoticeTypeId = Convert.ToInt32(NoticeType);
+            notice.Notice_title = Title;
+            notice.Department = DepartmentNotice;
+            if (NoticeDate != "")
+                notice.Notice_Date = Convert.ToDateTime(NoticeDate);
+            if (NewTag == "on")
+                notice.NoticeNewTag = true;
+            else
+                notice.NoticeNewTag = false;
+            if (Publish == "on")
+                notice.IsActive = true;
+            else
+                notice.IsActive = false;
+            notice.CreatedBy = UserData.UserId;
+            notice.CreationDate = DateTime.Now;
+            AdminDetails _details = new AdminDetails();
+            var result = _details.SaveNotice(notice);
+            if (result == Enums.CrudStatus.Saved)
+                SetAlertMessage("Notice has been Saved", "Notice Save");
+            else
+                SetAlertMessage("Notice Saving failed", "Notice Save");
+            return RedirectToAction("Notice");
         }
         public ActionResult Logout()
         {

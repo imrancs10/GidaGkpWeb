@@ -125,5 +125,30 @@ namespace GidaGkpWeb.BAL
 
 
         }
+
+        public Enums.CrudStatus SaveNotice(AdminNotice notice)
+        {
+            try
+            {
+                _db = new GidaGkpEntities();
+                int _effectRow = 0;
+                _db.Entry(notice).State = EntityState.Added;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return Enums.CrudStatus.InternalError;
+            }
+
+
+        }
     }
 }
