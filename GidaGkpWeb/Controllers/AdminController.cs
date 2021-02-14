@@ -72,8 +72,7 @@ namespace GidaGkpWeb.Controllers
         public ActionResult GrievancesDashboard()
         {
             return View();
-        }
-
+        } 
         [HttpPost]
         [ValidateInput(false)]
         public FileResult ExportApplicantUser(string GridHtml)
@@ -93,6 +92,10 @@ namespace GidaGkpWeb.Controllers
         public FileResult ExportFormCompleted(string GridHtml)
         {
             return File(Encoding.ASCII.GetBytes(GridHtml), "application/vnd.ms-excel", "Payment Completed.xls");
+        }
+        public ActionResult Notice()
+        {
+            return View();
         }
         public ActionResult Logout()
         {
