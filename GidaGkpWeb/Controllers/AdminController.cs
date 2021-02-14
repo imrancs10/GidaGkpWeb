@@ -93,12 +93,34 @@ namespace GidaGkpWeb.Controllers
         {
             return File(Encoding.ASCII.GetBytes(GridHtml), "application/vnd.ms-excel", "Payment Completed.xls");
         }
-        public ActionResult Notice()
+        public ActionResult Notice(int? NoticeId = null)
         {
+            if (NoticeId != null)
+            {
+                AdminDetails _details = new AdminDetails();
+                ViewData["ApplicantData"] = _details.GetNoticeById(NoticeId.Value);
+            }
+            return View();
+        }
+        public ActionResult NoticeList()
+        {
+            AdminDetails _details = new AdminDetails();
+            ViewData["ApplicantData"] = _details.GetNoticeList();
             return View();
         }
         [HttpPost]
-        public ActionResult SaveNotice(HttpPostedFileBase Document, string NoticeType, string Title, string DepartmentNotice, string NoticeDate, string NewTag, string Publish)
+        public JsonResult GetNoticeDetail(int NoticeId)
+        {
+            AdminDetails _details = new AdminDetails();
+            if (NoticeId > 0)
+            {
+                var data = _details.GetNoticeById(NoticeId);
+                return Json(data, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
+        [HttpPost]
+        public ActionResult SaveNotice(HttpPostedFileBase Document, string NoticeType, string Title, string DepartmentNotice, string NoticeDate, string NewTag, string Publish, int NoticeId)
         {
             AdminNotice notice = new AdminNotice();
             if (Document != null && Document.ContentLength > 0)
@@ -110,7 +132,7 @@ namespace GidaGkpWeb.Controllers
             }
             notice.NoticeTypeId = Convert.ToInt32(NoticeType);
             notice.Notice_title = Title;
-            notice.Department = DepartmentNotice;
+            notice.Department = !string.IsNullOrEmpty(DepartmentNotice) ? Convert.ToInt32(DepartmentNotice) : 0;
             if (NoticeDate != "")
                 notice.Notice_Date = Convert.ToDateTime(NoticeDate);
             if (NewTag == "on")
@@ -121,15 +143,28 @@ namespace GidaGkpWeb.Controllers
                 notice.IsActive = true;
             else
                 notice.IsActive = false;
-            notice.CreatedBy = UserData.UserId;
-            notice.CreationDate = DateTime.Now;
+            if (NoticeId <= 0)
+            {
+                notice.CreatedBy = UserData.UserId;
+                notice.CreationDate = DateTime.Now;
+            }
+
+            notice.Id = NoticeId;
             AdminDetails _details = new AdminDetails();
             var result = _details.SaveNotice(notice);
             if (result == Enums.CrudStatus.Saved)
                 SetAlertMessage("Notice has been Saved", "Notice Save");
             else
                 SetAlertMessage("Notice Saving failed", "Notice Save");
-            return RedirectToAction("Notice");
+            if (NoticeId > 0)
+            {
+                return RedirectToAction("NoticeList");
+            }
+            else
+            {
+                return RedirectToAction("Notice");
+            }
+
         }
         public ActionResult Logout()
         {

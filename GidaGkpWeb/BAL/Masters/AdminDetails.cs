@@ -132,8 +132,33 @@ namespace GidaGkpWeb.BAL
             {
                 _db = new GidaGkpEntities();
                 int _effectRow = 0;
-                _db.Entry(notice).State = EntityState.Added;
-                _effectRow = _db.SaveChanges();
+                if (notice.Id > 0)
+                {
+                    var adminNotice = _db.AdminNotices.Where(x => x.Id == notice.Id).FirstOrDefault();
+                    if (adminNotice != null)
+                    {
+                        adminNotice.IsActive = notice.IsActive;
+                        adminNotice.Department = notice.Department;
+                        if (notice.NoticeDocumentFile != null)
+                        {
+                            adminNotice.NoticeDocumentFile = notice.NoticeDocumentFile;
+                            adminNotice.NoticeDocumentFileType = notice.NoticeDocumentFileType;
+                            adminNotice.NoticeDocumentName = notice.NoticeDocumentName;
+                        }
+                        adminNotice.NoticeNewTag = notice.NoticeNewTag;
+                        adminNotice.Notice_Date = notice.Notice_Date;
+                        adminNotice.Notice_title = notice.Notice_title;
+                        adminNotice.NoticeTypeId = notice.NoticeTypeId;
+                        _db.Entry(adminNotice).State = EntityState.Modified;
+                        _effectRow = _db.SaveChanges();
+                    }
+                }
+                else
+                {
+                    _db.Entry(notice).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                }
+
                 return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
             }
             catch (DbEntityValidationException e)
@@ -147,8 +172,84 @@ namespace GidaGkpWeb.BAL
                 }
                 return Enums.CrudStatus.InternalError;
             }
+        }
 
+        public List<AdminNoticeModel> GetNoticeList()
+        {
+            try
+            {
+                _db = new GidaGkpEntities();
+                return (from notice in _db.AdminNotices
+                        join departmentLookup1 in _db.Lookups on notice.Department equals departmentLookup1.LookupId into departmentLookup2
+                        from departmentLookup in departmentLookup2.DefaultIfEmpty()
+                        join noticeTypeLookup1 in _db.Lookups on notice.NoticeTypeId equals noticeTypeLookup1.LookupId into noticeTypeLookup2
+                        from noticeTypeLookup in noticeTypeLookup2.DefaultIfEmpty()
+                        select new AdminNoticeModel
+                        {
+                            NoticeTypeId = notice.NoticeTypeId,
+                            DepartmentName = departmentLookup.LookupName,
+                            Id = notice.Id,
+                            IsActive = notice.IsActive,
+                            NoticeDocumentFile = notice.NoticeDocumentFile,
+                            NoticeDocumentFileType = notice.NoticeDocumentFileType,
+                            NoticeDocumentName = notice.NoticeDocumentName,
+                            NoticeNewTag = notice.NoticeNewTag,
+                            Notice_Date = notice.Notice_Date,
+                            Notice_title = notice.Notice_title,
+                            Notice_Type = noticeTypeLookup.LookupName,
+                            CreationDate = notice.CreationDate
+                        }).Distinct().ToList();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return new List<AdminNoticeModel>();
+            }
+        }
 
+        public AdminNoticeModel GetNoticeById(int noticeId)
+        {
+            try
+            {
+                _db = new GidaGkpEntities();
+                return (from notice in _db.AdminNotices
+                        join departmentLookup1 in _db.Lookups on notice.Department equals departmentLookup1.LookupId into departmentLookup2
+                        from departmentLookup in departmentLookup2.DefaultIfEmpty()
+                        join noticeTypeLookup1 in _db.Lookups on notice.NoticeTypeId equals noticeTypeLookup1.LookupId into noticeTypeLookup2
+                        from noticeTypeLookup in noticeTypeLookup2.DefaultIfEmpty()
+                        where notice.Id == noticeId
+                        select new AdminNoticeModel
+                        {
+                            NoticeTypeId = notice.NoticeTypeId,
+                            DepartmentName = departmentLookup.LookupName,
+                            Department = notice.Department,
+                            Id = notice.Id,
+                            IsActive = notice.IsActive,
+                            NoticeDocumentFileType = notice.NoticeDocumentFileType,
+                            NoticeDocumentName = notice.NoticeDocumentName,
+                            NoticeNewTag = notice.NoticeNewTag,
+                            Notice_Date = notice.Notice_Date,
+                            Notice_title = notice.Notice_title,
+                            Notice_Type = noticeTypeLookup.LookupName
+                        }).FirstOrDefault();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return new AdminNoticeModel();
+            }
         }
     }
 }

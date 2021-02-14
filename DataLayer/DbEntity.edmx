@@ -13,12 +13,12 @@
           <Property Name="NoticeTypeId" Type="int" />
           <Property Name="Notice_title" Type="varchar(max)" />
           <Property Name="Notice_Date" Type="datetime" />
-          <Property Name="Department" Type="varchar" MaxLength="500" />
+          <Property Name="Department" Type="int" />
           <Property Name="NoticeDocumentFile" Type="varbinary(max)" />
           <Property Name="NoticeDocumentName" Type="varchar" MaxLength="500" />
           <Property Name="NoticeDocumentFileType" Type="varchar" MaxLength="500" />
           <Property Name="NoticeNewTag" Type="bit" />
-          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
           <Property Name="CreationDate" Type="datetime" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
@@ -317,12 +317,12 @@
           <Property Name="NoticeTypeId" Type="Int32" />
           <Property Name="Notice_title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Notice_Date" Type="DateTime" Precision="3" />
-          <Property Name="Department" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="Int32" />
           <Property Name="NoticeDocumentFile" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="NoticeDocumentName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="NoticeDocumentFileType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="NoticeNewTag" Type="Boolean" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
           <Property Name="IsActive" Type="Boolean" />
         </EntityType>

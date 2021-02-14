@@ -18,12 +18,12 @@ namespace DataLayer
         public Nullable<int> NoticeTypeId { get; set; }
         public string Notice_title { get; set; }
         public Nullable<System.DateTime> Notice_Date { get; set; }
-        public string Department { get; set; }
+        public Nullable<int> Department { get; set; }
         public byte[] NoticeDocumentFile { get; set; }
         public string NoticeDocumentName { get; set; }
         public string NoticeDocumentFileType { get; set; }
         public Nullable<bool> NoticeNewTag { get; set; }
-        public int CreatedBy { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
         public Nullable<bool> IsActive { get; set; }
     }

@@ -1,4 +1,7 @@
-﻿@{
+﻿@using GidaGkpWeb.Infrastructure.Authentication;
+@using GidaGkpWeb.Models;
+
+@{
     ViewBag.Title = "Notice";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -40,7 +43,7 @@
                                                 <div class="form-group col-sm-6 col-xs-12">
                                                     <label for="file" class="sr-only">Document<span class="required-field"></span></label>
                                                     <div class="input-group">
-                                                        <input type="text" name="Documentfilename" class="form-control" placeholder="No file selected" readonly>
+                                                        <input type="text" name="Documentfilename" id="Documentfilename" class="form-control" placeholder="No file selected" readonly>
                                                         <span class="input-group-btn">
                                                             <div class="btn btn-default upload_btn_cl custom-file-uploader">
                                                                 <input type="file" name="Document" id="Document" onchange="this.form.Documentfilename.value = this.files.length ? this.files[0].name : ''" />
@@ -61,7 +64,8 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-xs-12">
-                                        <input type="submit" id="btnSave" name="next" class="next action-button pull-right" value="Save" />
+                                        <input type="hidden" name="NoticeId" id="NoticeId" />
+                                        <input type="submit" id="btnSave" name="next" class=" btn btn-primary next action-button pull-right" value="Save" />
                                     </div>
 
                                 </form>
