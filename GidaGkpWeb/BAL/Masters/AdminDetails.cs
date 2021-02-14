@@ -33,6 +33,7 @@ namespace GidaGkpWeb.BAL
                             SchemeType = user.SchemeType,
                             SectorName = user.SectorName,
                             UserType = user.UserType,
+                            DOB = user.DOB,
                             UserName = user.UserName,
                             IsActive = user.IsActive
                         }).Distinct().ToList();
@@ -77,6 +78,7 @@ namespace GidaGkpWeb.BAL
                             SchemeType = user.SchemeType,
                             SectorName = user.SectorName,
                             UserType = user.UserType,
+                            DOB = user.DOB,
                             UserName = user.UserName,
                             IsActive = user.IsActive
                         }).Distinct().ToList();
