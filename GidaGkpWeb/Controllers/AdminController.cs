@@ -98,7 +98,9 @@ namespace GidaGkpWeb.Controllers
             if (NoticeId != null)
             {
                 AdminDetails _details = new AdminDetails();
-                ViewData["ApplicantData"] = _details.GetNoticeById(NoticeId.Value);
+                var result = _details.GetNoticeById(NoticeId.Value);
+                result.NoticeDocumentFile = null;
+                ViewData["ApplicantData"] = result;
             }
             return View();
         }
@@ -115,6 +117,7 @@ namespace GidaGkpWeb.Controllers
             if (NoticeId > 0)
             {
                 var data = _details.GetNoticeById(NoticeId);
+                data.NoticeDocumentFile = null;
                 return Json(data, JsonRequestBehavior.AllowGet);
             }
             return null;

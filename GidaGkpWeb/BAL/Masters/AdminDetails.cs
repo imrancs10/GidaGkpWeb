@@ -231,6 +231,7 @@ namespace GidaGkpWeb.BAL
                             Department = notice.Department,
                             Id = notice.Id,
                             IsActive = notice.IsActive,
+                            NoticeDocumentFile = notice.NoticeDocumentFile,
                             NoticeDocumentFileType = notice.NoticeDocumentFileType,
                             NoticeDocumentName = notice.NoticeDocumentName,
                             NoticeNewTag = notice.NoticeNewTag,
@@ -249,6 +250,45 @@ namespace GidaGkpWeb.BAL
                     }
                 }
                 return new AdminNoticeModel();
+            }
+        }
+
+        public List<AdminNoticeModel> GetNoticeByType(string NoticeType)
+        {
+            try
+            {
+                _db = new GidaGkpEntities();
+                return (from notice in _db.AdminNotices
+                        join noticeTypeLookup in _db.Lookups on notice.NoticeTypeId equals noticeTypeLookup.LookupId
+                        join departmentLookup1 in _db.Lookups on notice.Department equals departmentLookup1.LookupId into departmentLookup2
+                        from departmentLookup in departmentLookup2.DefaultIfEmpty()
+                        where noticeTypeLookup.LookupName == NoticeType
+                        select new AdminNoticeModel
+                        {
+                            NoticeTypeId = notice.NoticeTypeId,
+                            DepartmentName = departmentLookup.LookupName,
+                            Department = notice.Department,
+                            Id = notice.Id,
+                            IsActive = notice.IsActive,
+                            NoticeDocumentFile = notice.NoticeDocumentFile,
+                            NoticeDocumentFileType = notice.NoticeDocumentFileType,
+                            NoticeDocumentName = notice.NoticeDocumentName,
+                            NoticeNewTag = notice.NoticeNewTag,
+                            Notice_Date = notice.Notice_Date,
+                            Notice_title = notice.Notice_title,
+                            Notice_Type = noticeTypeLookup.LookupName
+                        }).ToList();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return new List<AdminNoticeModel>();
             }
         }
     }

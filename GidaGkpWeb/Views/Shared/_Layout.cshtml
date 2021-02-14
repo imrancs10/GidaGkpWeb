@@ -1,5 +1,8 @@
 ﻿@using System.Configuration;
 @using GidaGkpWeb.Global
+@{
+    var highlightNotice = GetNoticeByType("Highlight Notice");
+}
 <!DOCTYPE html>
 <html class="no-js">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -2261,9 +2264,17 @@
             <div class="row" style="background:#EEF6F5">
                 <div class="form-group col-sm-8 col-xs-12" style="margin-top:1em;margin-bottom:1em;">
                     <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" scrollamount="5">
-                        <em> </em><a target="_blank" href="~/Content/files/pdf/CHECKLIST_INDUSTRIAL_ALLOTMENT2021.pdf"><strong>CHECKLIST -INDUSTRIAL ALLOTMENT 2021</a></strong>&nbsp;
-                        <em> </em><a target="_blank" href="~/Content/files/assets/BHITI_RAWAT_LAY_OUT.jpg"><strong>Industrial Plot Scheme 2021 Layout Plan</a></strong>&nbsp;
-                        <em> </em><a target="_blank" href="~/Content/files/pdf/terms_and_condition.pdf"><strong>Terms and Conditions for Industrial Plot Scheme 2021</a></strong>
+                        @if (highlightNotice.Count > 0)
+                        {
+                            foreach (var data in highlightNotice)
+                            {
+                                if (data.NoticeNewTag.HasValue && data.NoticeNewTag.Value)
+                                {
+                                    <em> </em>
+                                }
+                                <a target="_blank" href="/Home/GetNoticeFile?noticeId=@data.Id"><strong>@data.Notice_title</strong></a>
+                            }
+                        }
                     </marquee>
                 </div>
                 <div class="form-group col-sm-2 col-xs-12">
