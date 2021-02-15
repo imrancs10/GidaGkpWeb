@@ -36,15 +36,15 @@
                                 @foreach (var data in UserData)
                                 {
                                     <tr>
-                                        <th row-header="Table heading" scope="row">@index</th>
-                                        <td row-header="Table">@data.ApplicationNumber</td>
-                                        <td row-header="Table heading">@data.FullApplicantName</td>
-                                        <td row-header="heading">@data.SchemeType</td>
-                                        <td row-header="Table heading">@data.SchemeName</td>
-                                        <td row-header="Table heading">@data.SectorName</td>
-                                        <td row-header="Table heading">@data.PlotArea</td>
-                                        <td row-header="heading">@data.NetAmount</td>
-                                        <td row-header="Table heading">
+                                        <th scope="row">@index</th>
+                                        <td>@data.ApplicationNumber</td>
+                                        <td>@data.FullApplicantName</td>
+                                        <td>@data.SchemeType</td>
+                                        <td>@data.SchemeName</td>
+                                        <td>@data.SectorName</td>
+                                        <td>@data.PlotArea</td>
+                                        <td>@data.NetAmount</td>
+                                        <td>
                                             <a class="previous action-button-previous pull-right" href="/Applicant/ApplicantUploadTransactionInDetail?applicationId=@data.ApplicationId">Enter Payment Information</a>
                                         </td>
                                     </tr>
