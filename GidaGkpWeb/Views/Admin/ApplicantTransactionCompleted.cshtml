@@ -18,60 +18,64 @@
             {
                 <div class="row justify-content-center mt-0" style="padding:30px 20px">
                     <div class="col-sm-12 col-xs-12">
-                        <h2 style="padding:20px 0;">Plot Registered and Paid</h2>
-                        @using (Html.BeginForm("ExportFormCompleted", "Admin", FormMethod.Post))
-                        {
-                            <input type="hidden" name="GridHtml" />
-                            <input type="submit" id="btnSubmit" class="btn btn-primary" value="Export to Excel" style=" float: right; position: relative; top: -50px; left: -98px;" />
-                        }
-                        <div class="table-responsive" id="divExport">
-                            <table class="table table-bordered responsive">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>User Name</th>
-                                        <th>Applicant Name</th>
-                                        <th>Application Number</th>
-                                        <th>Amount Paid(In Rs.)</th>
-                                        <th>Father Name</th>
-                                        <th>Contact Number</th>
-                                        <th>Email</th>
-                                        <th>Aadhar Number</th>
-                                        <th>User Type</th>
-                                        <th>DOB</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var data in ApplicantData)
-                                    {
+                        <div class="row">
+                        <h2 class="col-sm-6 col-xs-12" style="padding:0 15px 20px 15px;">Plot Registered and Paid</h2>
+                        <div class="col-sm-6 col-xs-12">
+                            @using (Html.BeginForm("ExportFormCompleted", "Admin", FormMethod.Post))
+                            {
+                                <input type="hidden" name="GridHtml" />
+                                <input type="submit" id="btnSubmit" class="btn btn-primary" value="Export to Excel" style=" float: right; position: relative; margin:20px 0;" />
+                            }
+                        </div>
+                            <div class="table-responsive" id="divExport" style="width:100%">
+                                <table class="table table-bordered">
+                                    <thead>
                                         <tr>
-                                            <th scope="row">@index</th>
-                                            <td>@data.UserName</td>
-                                            <td>@data.FullName</td>
-                                            <td>@data.ApplicationNumber</td>
-                                            <td>@data.PaidAmount</td>
-                                            <td>@data.FatherName</td>
-                                            <td>@data.ContactNo</td>
-                                            <td>@data.Email</td>
-                                            <td>@data.AadharNumber</td>
-                                            <td>@data.UserType</td>
-                                            @if (data.DOB != null)
-                                            {
-                                                <td>@data.DOB.Value.ToString("dd/MM/yyyy")</td>
-                                            }
-                                            else
-                                            {
-                                                <td></td>
-                                            }
+                                            <th>#</th>
+                                            <th>User Name</th>
+                                            <th>Applicant Name</th>
+                                            <th>Application Number</th>
+                                            <th>Amount Paid(In Rs.)</th>
+                                            <th>Father Name</th>
+                                            <th>Contact Number</th>
+                                            <th>Email</th>
+                                            <th>Aadhar Number</th>
+                                            <th>User Type</th>
+                                            <th>DOB</th>
                                         </tr>
-                                        index++;
-                                    }
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var data in ApplicantData)
+                                        {
+                                            <tr>
+                                                <th scope="row">@index</th>
+                                                <td>@data.UserName</td>
+                                                <td>@data.FullName</td>
+                                                <td>@data.ApplicationNumber</td>
+                                                <td>@data.PaidAmount</td>
+                                                <td>@data.FatherName</td>
+                                                <td>@data.ContactNo</td>
+                                                <td>@data.Email</td>
+                                                <td>@data.AadharNumber</td>
+                                                <td>@data.UserType</td>
+                                                @if (data.DOB != null)
+                                                {
+                                                    <td>@data.DOB.Value.ToString("dd/MM/yyyy")</td>
+                                                }
+                                                else
+                                                {
+                                                    <td></td>
+                                                }
+                                            </tr>
+                                            index++;
+                                        }
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
+                 </div>
             }
             else
             {
