@@ -1,4 +1,5 @@
 ﻿using GidaGkpWeb.BAL;
+using GidaGkpWeb.Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,20 +45,12 @@ namespace GidaGkpWeb.Controllers
         }
 
         [HttpGet]
-        public FileResult GetNoticeFile(int noticeId)
+        public FileResult GetNoticeFile(string noticeId)
         {
             AdminDetails detail = new AdminDetails();
-            var noticeData = detail.GetNoticeById(noticeId);
+            var noticeData = detail.GetNoticeById(Convert.ToInt32(CryptoEngine.Decrypt(noticeId)));
             byte[] bytes = noticeData.NoticeDocumentFile;
-            //var response = new FileContentResult(bytes, "text/csv");
-            //response.FileDownloadName = noticeData.DepartmentName;
-            //Response.Clear();
-            //Response.AddHeader("content-disposition", "inline; filename=" + noticeData.DepartmentName);
-            //Response.ContentType = noticeData.NoticeDocumentFileType;
-            //Response.OutputStream.Write(bytes, 0, bytes.Length);
-            //Response.End();
-
-            return File(bytes, noticeData.NoticeDocumentFileType, noticeData.DepartmentName);
+            return File(bytes, System.Net.Mime.MediaTypeNames.Application.Octet, noticeData.NoticeDocumentName);
         }
 
     }

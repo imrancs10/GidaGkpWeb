@@ -2272,7 +2272,7 @@
                                 {
                                     <em> </em>
                                 }
-                                <a target="_blank" href="/Home/GetNoticeFile?noticeId=@data.Id"><strong>@data.Notice_title</strong></a>
+                                <a target="_blank" href="/Home/GetNoticeFile?noticeId=@CryptoEngine.Encrypt(data.Id.ToString())"><strong>@data.Notice_title</strong></a>
                             }
                         }
                     </marquee>

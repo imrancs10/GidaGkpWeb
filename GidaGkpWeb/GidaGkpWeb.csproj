@@ -277,6 +277,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Global\CryptoEngine.cs" />
     <Compile Include="Global\Enums.cs" />
     <Compile Include="Global\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -635,6 +636,7 @@
     <Content Include="Views\Admin\GrievancesDashboard.cshtml" />
     <Content Include="Views\Admin\Notice.cshtml" />
     <Content Include="Views\Admin\NoticeList.cshtml" />
+    <Content Include="Views\Shared\_LatestNotice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
