@@ -1,20 +1,10 @@
-﻿@{
+﻿@using GidaGkpWeb.Global
 
+@{
     ViewBag.Title = "Dashboard";
-
     Layout = "~/Views/Shared/_Layout.cshtml";
-
+    var publicNotice = GetNoticeByType("Public Notice");
 }
-
-
-@*<div class="container">
-    <div class="row">
-        <p style="text-align:center; margin-top:0.0em;">
-            <a target="_blank" href="~/Content/files/pdf/GIDA_Ad.pdf"><em> </em><img alt="advertise" class="img-responsive img-thumbnail" src="~/Content/files/assets/ad.gif" width="165px" /></a>
-        </p>
-
-    </div>
-</div>*@
 
 <div id="main" class="container" style="background:#eee;">
     <div class="row">
@@ -255,208 +245,27 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            20/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">Corrigendum No.1 &amp; Reply to Queries - RFP for Hiring a Consultant for Preparation of Master Plan 2041 for Gorakhpur</a><em> </em>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Tenders
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            19/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">Jal Adalat Roster</a><em> </em>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Urban Services
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            17/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">ID and Password Information for Zoom Meeting</a><em> </em>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Industries
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            13/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">Control Drawings for Commercial Plot No. 1, 2, 3 &amp; 4, Sector: Knowledge Park II (These documents are for reference only and are subject to approval)</a><em> </em>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Commercial
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            13/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">Expression of Interest (EOI) for Installation, Commissioning and Operations &amp; Management of Smart Water Meters in Greater Noida</a><em> </em>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Tenders
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            12/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">Corrigendum / Addendum Notice - 02 - Commercial Scheme</a><em> </em>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Commercial
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            10/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">Scheme Code ONLIND2020-01 - Scheme Document for Allotment Of Industrial Plots In Gorakhpur 2020</a><em> </em>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Industries
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            10/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">Proposed schedule for larvicide spray for month of November 2020</a><em> </em>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Health
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            06/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">Jal Adalat matters disposal list</a><em> </em>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Urban Services
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            04/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">Staff for Jal Adalat</a><em> </em>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Urban Services
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            04/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">Industry Draw Notice</a>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Industries
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            04/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">Jal Adalat Schedule</a>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Urban Services
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            04/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">RFP for License Space for Nurseries in GIDA (Term - 5 years with provision of renewal for additional 3 years based on performance in 1-year increments) </a>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Tenders
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="distri_column10">
-                                                            03/11/2020
-                                                        </td>
-                                                        <td class="distri_column65">
-                                                            <a href="javascript:void(0);">Pre-bid joining details - RFP for Hiring a Consultant for Preparation of Master Plan 2041 for Gorakhpur</a>
-                                                        </td>
-                                                        <td class="distri_column25">
-                                                            Public Notices, Planning
-                                                        </td>
-                                                    </tr>
-                                                    <!--<tr >
-                                                            <td  class="distri_column10">
-                                                      28/10/2020          </td>
-                                                            <td  class="distri_column65">
-                                                      <a href="press_note_28102020.html">Press Note dtd. 28.10.2020 regarding Jal Adalat etc.</a>          </td>
-                                                            <td  class="distri_column25">
-                                                      Public Notices, Urban Services          </td>
-                                                        </tr>
-                                                    <tr >
-                                                            <td  class="distri_column10">
-                                                      28/10/2020          </td>
-                                                            <td  class="distri_column65">
-                                                      <a href="comm_sch_28102020.html">New Commercial Scheme: Brochure and List of Vacant Plots</a>          </td>
-                                                            <td  class="distri_column25">
-                                                      Public Notices, Commercial          </td>
-                                                        </tr>
-                                                    <tr >
-                                                            <td  class="distri_column10">
-                                                      28/10/2020          </td>
-                                                            <td  class="distri_column65">
-                                                      <a href="ja_28102020.html">Regarding Jal Adalat meeting on 29.10.2020</a>          </td>
-                                                            <td  class="distri_column25">
-                                                      Public Notices, Urban Services          </td>
-                                                        </tr>
-                                                    <tr >
-                                                            <td  class="distri_column10">
-                                                      28/10/2020          </td>
-                                                            <td  class="distri_column65">
-                                                      <a href="zoom_ind_28102020.html">Industry Progress ZOOM Meeting on 18-11-2020 at 3.00 pm</a>          </td>
-                                                            <td  class="distri_column25">
-                                                      Public Notices, Industries          </td>
-                                                        </tr>
-                                                    <tr >
-                                                            <td  class="distri_column10">
-                                                      26/10/2020          </td>
-                                                            <td  class="distri_column65">
-                                                      <a href="cor_4_fsp_26102020.html">Corrigendium /Addendum Notice No-04 E-Auction of Scheme for Fuel/Petrol/Diesel, CNG) </a>          </td>
-                                                            <td  class="distri_column25">
-                                                      Public Notices, Commercial          </td>
-                                                        </tr>
-                                                    <tr >
-                                                            <td  class="distri_column10">
-                                                      21/10/2020          </td>
-                                                            <td  class="distri_column65">
-                                                      <a href="jal_21102020.html">Notice regarding Jal Adalat on 22.10.2020</a>          </td>
-                                                            <td  class="distri_column25">
-                                                      Public Notices, Urban Services          </td>
-                                                        </tr>-->
+                                                    @if (publicNotice.Count > 0)
+                                                    {
+                                                        foreach (var data in publicNotice)
+                                                        {
+                                                            <tr>
+                                                                <td class="distri_column10">
+                                                                    @data.Notice_Date.Value.ToString("dd/MM/yyyy")
+                                                                </td>
+                                                                <td class="distri_column65">
+                                                                    <a target="_blank" href="/Home/GetNoticeFile?noticeId=@CryptoEngine.Encrypt(data.Id.ToString())">@data.Notice_title</a>
+                                                                    @if (data.NoticeNewTag.HasValue && data.NoticeNewTag.Value)
+                                                                    {
+                                                                        <em></em>
+                                                                    }
+                                                                </td>
+                                                                <td class="distri_column25">
+                                                                    @data.DepartmentName
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    }
                                                 </tbody>
                                             </table>
                                         </div>
@@ -531,7 +340,7 @@
                                 <p align="center" id="linkcolor"><a class="btn btn-block btn-online" href="javascript:void(0);" target="_blank">GIDA INDUSTRIAL GIS <em> </em></a></p>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                     <div id="block-block-96" class="block block-block">
 
 
