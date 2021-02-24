@@ -2,6 +2,7 @@
 @using GidaGkpWeb.Global
 @{
     var highlightNotice = GetNoticeByType("Highlight Notice");
+    var mappApprovalUrl = Convert.ToString(ConfigurationManager.AppSettings["MapApprovalUrl"]);
 }
 <!DOCTYPE html>
 <html class="no-js">
@@ -1933,7 +1934,7 @@
                                                             <div class="tb-megamenu-column-inner mega-inner clearfix">
                                                                 <ul class="tb-megamenu-subnav mega-nav level-1 items-12">
                                                                     <li data-id="825" data-level="2" data-type="menu_item" data-class="" data-xicon="" data-caption="" data-alignsub="" data-group="0" data-hidewcol="0" data-hidesub="0" class="tb-megamenu-item level-2 mega">
-                                                                        <a target="_blank" href="http://gidaup.org/Main.aspx" title="Online Map Approval">
+                                                                        <a target="_blank" href="@mappApprovalUrl" title="Online Map Approval">
 
                                                                             Online Map Approval <em> </em>
                                                                         </a>
