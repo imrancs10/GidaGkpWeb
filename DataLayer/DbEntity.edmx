@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GidaGkpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GidaGkpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdminNotice">
           <Key>
             <PropertyRef Name="Id" />
@@ -117,7 +117,7 @@
           <Property Name="NetAmount" Type="decimal" Precision="18" Scale="0" />
           <Property Name="IndustryOwnership" Type="int" />
           <Property Name="UnitName" Type="varchar(max)" />
-          <Property Name="SignatryName" Type="varchar" MaxLength="50" />
+          <Property Name="SignatryName" Type="varchar" MaxLength="500" />
           <Property Name="SignatryDateOfBirth" Type="datetime" />
           <Property Name="SignatryPresentAddress" Type="varchar(max)" />
           <Property Name="SignatryPresentPhoneNumber" Type="varchar" MaxLength="50" />
@@ -133,30 +133,30 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ApplicationId" Type="int" />
-          <Property Name="FullApplicantName" Type="varchar" MaxLength="50" />
+          <Property Name="FullApplicantName" Type="varchar" MaxLength="500" />
           <Property Name="ProposedIndustryType" Type="varchar(max)" />
-          <Property Name="ProjectEstimatedCost" Type="varchar" MaxLength="50" />
-          <Property Name="ProposedCoveredArea" Type="varchar" MaxLength="50" />
-          <Property Name="ProposedOpenArea" Type="varchar" MaxLength="50" />
+          <Property Name="ProjectEstimatedCost" Type="varchar" MaxLength="500" />
+          <Property Name="ProposedCoveredArea" Type="varchar" MaxLength="500" />
+          <Property Name="ProposedOpenArea" Type="varchar" MaxLength="500" />
           <Property Name="PurpuseOpenArea" Type="varchar(max)" />
-          <Property Name="ProposedInvestmentLand" Type="varchar" MaxLength="50" />
-          <Property Name="ProposedInvestmentBuilding" Type="varchar" MaxLength="50" />
-          <Property Name="ProposedInvestmentPlant" Type="varchar" MaxLength="50" />
-          <Property Name="FumesNatureQuantity" Type="varchar" MaxLength="50" />
-          <Property Name="LiquidQuantity" Type="varchar" MaxLength="50" />
-          <Property Name="LiquidChemicalComposition" Type="varchar" MaxLength="50" />
-          <Property Name="SolidQuantity" Type="varchar" MaxLength="50" />
-          <Property Name="SolidChemicalComposition" Type="varchar" MaxLength="50" />
-          <Property Name="GasQuantity" Type="varchar" MaxLength="50" />
-          <Property Name="GasChemicalComposition" Type="varchar" MaxLength="50" />
-          <Property Name="EffluentTreatmentMeasures" Type="varchar" MaxLength="50" />
-          <Property Name="PowerRequirement" Type="varchar" MaxLength="50" />
-          <Property Name="FirstYearNoOfTelephone" Type="varchar" MaxLength="50" />
-          <Property Name="FirstYearNoOfFax" Type="varchar" MaxLength="50" />
-          <Property Name="UltimateNoOfTelephone" Type="varchar" MaxLength="50" />
-          <Property Name="UltimateNoOfFax" Type="varchar" MaxLength="50" />
-          <Property Name="Skilled" Type="varchar" MaxLength="50" />
-          <Property Name="UnSkilled" Type="varchar" MaxLength="50" />
+          <Property Name="ProposedInvestmentLand" Type="varchar" MaxLength="500" />
+          <Property Name="ProposedInvestmentBuilding" Type="varchar" MaxLength="500" />
+          <Property Name="ProposedInvestmentPlant" Type="varchar" MaxLength="500" />
+          <Property Name="FumesNatureQuantity" Type="varchar" MaxLength="500" />
+          <Property Name="LiquidQuantity" Type="varchar" MaxLength="500" />
+          <Property Name="LiquidChemicalComposition" Type="varchar" MaxLength="500" />
+          <Property Name="SolidQuantity" Type="varchar" MaxLength="500" />
+          <Property Name="SolidChemicalComposition" Type="varchar" MaxLength="500" />
+          <Property Name="GasQuantity" Type="varchar" MaxLength="500" />
+          <Property Name="GasChemicalComposition" Type="varchar" MaxLength="500" />
+          <Property Name="EffluentTreatmentMeasures" Type="varchar" MaxLength="500" />
+          <Property Name="PowerRequirement" Type="varchar" MaxLength="500" />
+          <Property Name="FirstYearNoOfTelephone" Type="varchar" MaxLength="500" />
+          <Property Name="FirstYearNoOfFax" Type="varchar" MaxLength="500" />
+          <Property Name="UltimateNoOfTelephone" Type="varchar" MaxLength="500" />
+          <Property Name="UltimateNoOfFax" Type="varchar" MaxLength="500" />
+          <Property Name="Skilled" Type="varchar" MaxLength="500" />
+          <Property Name="UnSkilled" Type="varchar" MaxLength="500" />
           <Property Name="CreationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="ApplicantTransactionDetail">
@@ -304,8 +304,7 @@
           <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PGTransactionInformation" EntityType="Self.PGTransactionInformation" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GidaGkpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -421,7 +420,7 @@
           <Property Name="NetAmount" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="IndustryOwnership" Type="Int32" />
           <Property Name="UnitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SignatryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SignatryName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="SignatryDateOfBirth" Type="DateTime" Precision="3" />
           <Property Name="SignatryPresentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SignatryPresentPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -437,30 +436,30 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="ApplicationId" Type="Int32" />
-          <Property Name="FullApplicantName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FullApplicantName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="ProposedIndustryType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ProjectEstimatedCost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProposedCoveredArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProposedOpenArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectEstimatedCost" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProposedCoveredArea" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProposedOpenArea" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="PurpuseOpenArea" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ProposedInvestmentLand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProposedInvestmentBuilding" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProposedInvestmentPlant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FumesNatureQuantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LiquidQuantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LiquidChemicalComposition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SolidQuantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SolidChemicalComposition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="GasQuantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="GasChemicalComposition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EffluentTreatmentMeasures" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PowerRequirement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FirstYearNoOfTelephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FirstYearNoOfFax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UltimateNoOfTelephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UltimateNoOfFax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Skilled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UnSkilled" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProposedInvestmentLand" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProposedInvestmentBuilding" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProposedInvestmentPlant" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FumesNatureQuantity" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LiquidQuantity" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LiquidChemicalComposition" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SolidQuantity" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SolidChemicalComposition" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="GasQuantity" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="GasChemicalComposition" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EffluentTreatmentMeasures" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PowerRequirement" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FirstYearNoOfTelephone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FirstYearNoOfFax" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UltimateNoOfTelephone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UltimateNoOfFax" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Skilled" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UnSkilled" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ApplicantTransactionDetail">
