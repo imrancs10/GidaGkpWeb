@@ -27,55 +27,57 @@
                                     <input type="hidden" name="GridHtml" />
                                     <input type="submit" id="btnSubmit" class="btn btn-primary" value="Export to Excel" style=" float: right; position: relative; margin:20px 0;" />
                                 }
-                        </div>
-                                <div class="table-responsive" id="divExport" style="width:100%">
-                                    <table class="table table-bordered">
-                                        <thead>
+                            </div>
+                            <div class="table-responsive" id="divExport" style="width:100%">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>User Name</th>
+                                            <th>Applicant Name</th>
+                                            <th>Application Number</th>
+                                            <th>Plot Area</th>
+                                            <th>Father Name</th>
+                                            <th>Contact Number</th>
+                                            <th>Email</th>
+                                            <th>Aadhar Number</th>
+                                            <th>User Type</th>
+                                            <th>DOB</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var data in ApplicantData)
+                                        {
                                             <tr>
-                                                <th>#</th>
-                                                <th>User Name</th>
-                                                <th>Applicant Name</th>
-                                                <th>Application Number</th>
-                                                <th>Father Name</th>
-                                                <th>Contact Number</th>
-                                                <th>Email</th>
-                                                <th>Aadhar Number</th>
-                                                <th>User Type</th>
-                                                <th>DOB</th>
+                                                <th scope="row">@index</th>
+                                                <td>@data.UserName</td>
+                                                <td>@data.FullName</td>
+                                                <td>@data.ApplicationNumber</td>
+                                                <td>@data.PlotArea</td>
+                                                <td>@data.FatherName</td>
+                                                <td>@data.ContactNo</td>
+                                                <td>@data.Email</td>
+                                                <td>@data.AadharNumber</td>
+                                                <td>@data.UserType</td>
+                                                @if (data.DOB != null)
+                                                {
+                                                    <td>@data.DOB.Value.ToString("dd/MM/yyyy")</td>
+                                                }
+                                                else
+                                                {
+                                                    <td></td>
+                                                }
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var data in ApplicantData)
-                                            {
-                                                <tr>
-                                                    <th scope="row">@index</th>
-                                                    <td>@data.UserName</td>
-                                                    <td>@data.FullName</td>
-                                                    <td>@data.ApplicationNumber</td>
-                                                    <td>@data.FatherName</td>
-                                                    <td>@data.ContactNo</td>
-                                                    <td>@data.Email</td>
-                                                    <td>@data.AadharNumber</td>
-                                                    <td>@data.UserType</td>
-                                                    @if (data.DOB != null)
-                                                    {
-                                                        <td>@data.DOB.Value.ToString("dd/MM/yyyy")</td>
-                                                    }
-                                                    else
-                                                    {
-                                                        <td></td>
-                                                    }
-                                                </tr>
-                                                index++;
-                                            }
+                                            index++;
+                                        }
 
-                                        </tbody>
-                                    </table>
+                                    </tbody>
+                                </table>
 
-                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
             }
             else
             {

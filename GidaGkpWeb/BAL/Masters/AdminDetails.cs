@@ -58,6 +58,8 @@ namespace GidaGkpWeb.BAL
                 return (from user in _db.ApplicantUsers
                         join application1 in _db.ApplicantApplicationDetails on user.Id equals application1.UserId into application2
                         from application in application2.DefaultIfEmpty()
+                        join plotDetail1 in _db.ApplicantPlotDetails on user.Id equals plotDetail1.UserId into plotDetail2
+                        from plotDetail in plotDetail2.DefaultIfEmpty()
                         join doc1 in _db.ApplicantUploadDocs on user.Id equals doc1.UserId into doc2
                         from doc in doc2.DefaultIfEmpty()
                         join transaction1 in _db.ApplicantTransactionDetails on application.ApplicationId equals transaction1.ApplicationId into transaction2
@@ -67,6 +69,7 @@ namespace GidaGkpWeb.BAL
                         {
                             ApplicationNumber = doc != null ? application.ApplicationNumber : "",
                             PaidAmount = transaction != null ? transaction.amount : "",
+                            PlotArea = plotDetail != null ? plotDetail.PlotArea : "",
                             AadharNumber = user.AadharNumber,
                             ContactNo = user.ContactNo,
                             CreationDate = user.CreationDate,
