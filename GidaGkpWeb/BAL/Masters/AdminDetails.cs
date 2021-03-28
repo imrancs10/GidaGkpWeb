@@ -278,7 +278,7 @@ namespace GidaGkpWeb.BAL
                             NoticeDocumentName = notice.NoticeDocumentName,
                             NoticeNewTag = notice.NoticeNewTag,
                             Notice_Date = notice.Notice_Date,
-                            Notice_title = NoticeType == "Latest Notice" && notice.Notice_title.Length > 25 ? notice.Notice_title.Substring(0, 25) : notice.Notice_title,
+                            Notice_title = NoticeType == "Latest Notice" && notice.Notice_title.Length > 95 ? notice.Notice_title.Substring(0, 95) : notice.Notice_title,
                             Notice_Type = noticeTypeLookup.LookupName
                         }).ToList();
             }
