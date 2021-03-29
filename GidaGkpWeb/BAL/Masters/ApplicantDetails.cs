@@ -559,7 +559,7 @@ namespace GidaGkpWeb.BAL
 
         }
 
-        public ApplicationDetailModel GetUserPlotDetail(int appID)
+        public ApplicationDetailModel GetUserPlotDetail(int? appID)
         {
             try
             {
@@ -600,7 +600,7 @@ namespace GidaGkpWeb.BAL
 
         }
 
-        public AcknowledgementDetailModel GetAcknowledgementDetail(int appID)
+        public AcknowledgementDetailModel GetAcknowledgementDetail(int? appID)
         {
             try
             {

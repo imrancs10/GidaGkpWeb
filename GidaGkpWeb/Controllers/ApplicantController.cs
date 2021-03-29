@@ -533,18 +533,18 @@ namespace GidaGkpWeb.Controllers
             return View();
         }
 
-        public ActionResult PaymentReciept()
+        public ActionResult PaymentReciept(int? applicationId = null)
         {
             ApplicantDetails _details = new ApplicantDetails();
-            var data = _details.GetUserPlotDetail(UserData.ApplicationId);
+            var data = _details.GetUserPlotDetail(applicationId != null ? applicationId : UserData.ApplicationId);
             ViewData["UserData"] = data;
             return View();
         }
 
-        public ActionResult PaymentAcknowledgement()
+        public ActionResult PaymentAcknowledgement(int? applicationId = null)
         {
             ApplicantDetails _details = new ApplicantDetails();
-            var data = _details.GetAcknowledgementDetail(UserData.ApplicationId);
+            var data = _details.GetAcknowledgementDetail(applicationId != null ? applicationId : UserData.ApplicationId);
             ViewData["UserData"] = data;
             return View();
         }

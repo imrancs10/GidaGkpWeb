@@ -8,6 +8,7 @@ namespace GidaGkpWeb.Models
     public class ApplicationUserModel
     {
         public int Id { get; set; }
+        public int ApplicationId { get; set; }
         public string ApplicationNumber { get; set; }
         public string PlotArea { get; set; }
         public string PaidAmount { get; set; }

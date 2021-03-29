@@ -69,6 +69,7 @@ namespace GidaGkpWeb.BAL
                         {
                             ApplicationNumber = doc != null ? application.ApplicationNumber : "",
                             PaidAmount = transaction != null ? transaction.amount : "",
+                            ApplicationId = transaction != null ? application.ApplicationId : 0,
                             PlotArea = plotDetail != null ? plotDetail.PlotArea : "",
                             AadharNumber = user.AadharNumber,
                             ContactNo = user.ContactNo,
