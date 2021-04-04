@@ -64,6 +64,8 @@ namespace GidaGkpWeb.BAL
                         from doc in doc2.DefaultIfEmpty()
                         join transaction1 in _db.ApplicantTransactionDetails on application.ApplicationId equals transaction1.ApplicationId into transaction2
                         from transaction in transaction2.DefaultIfEmpty()
+                        join ProjectDetail1 in _db.ApplicantProjectDetails on application.ApplicationId equals ProjectDetail1.ApplicationId into projectDetail2
+                        from ProjectDetail in projectDetail2.DefaultIfEmpty()
                         where user.UserType != "Test"
                         select new ApplicationUserModel
                         {
@@ -71,6 +73,9 @@ namespace GidaGkpWeb.BAL
                             PaidAmount = transaction != null ? transaction.amount : "",
                             ApplicationId = transaction != null ? application.ApplicationId : 0,
                             PlotArea = plotDetail != null ? plotDetail.PlotArea : "",
+                            UnitName = plotDetail != null ? plotDetail.UnitName : "",
+                            TotalInvestment = plotDetail != null ? plotDetail.TotalInvestment : 0,
+                            Skilled = ProjectDetail != null ? ProjectDetail.Skilled : "",
                             AadharNumber = user.AadharNumber,
                             ContactNo = user.ContactNo,
                             CreationDate = user.CreationDate,

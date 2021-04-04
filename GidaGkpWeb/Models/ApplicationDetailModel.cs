@@ -28,6 +28,9 @@ namespace GidaGkpWeb.Models
         public string UserType { get; set; }
         public string ResetCode { get; set; }
         public bool? IsActive { get; set; }
+        public string UnitName { get; set; }
+        public decimal? TotalInvestment { get; set; }
+        public string Skilled { get; set; }
     }
 
     public class ApplicationDetailModel
