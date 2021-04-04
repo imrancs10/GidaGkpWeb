@@ -20,6 +20,7 @@ using System.Net.Http;
 using System.Net;
 using System.Text;
 using System.IO;
+using ICSharpCode.SharpZipLib.Zip;
 
 namespace GidaGkpWeb.Controllers
 {
@@ -172,6 +173,204 @@ namespace GidaGkpWeb.Controllers
                 return RedirectToAction("Notice");
             }
 
+        }
+
+        [HttpGet]
+        public FileResult DownloadAttachment(string applicationId)
+        {
+            ApplicantDetails detail = new ApplicantDetails();
+            var documentData = detail.GetApplicantUploadDocDetail(Convert.ToInt32(applicationId));
+            if (documentData == null)
+            {
+                SetAlertMessage("Something went wrong in downloading the attchment, try again later", "Downlaod Attachment");
+                return null;
+            }
+            //byte[] bytes = noticeData.NoticeDocumentFile;
+            //return File(bytes, System.Net.Mime.MediaTypeNames.Application.Octet, noticeData.NoticeDocumentName);
+            var fileName = string.Format("{0}_files.zip", DateTime.Today.Date.ToString("dd-MM-yyyy") + "_UserId_" + documentData.UserId);
+            var temppath = Server.MapPath("~/TempFiles/");
+            if (!Directory.Exists(temppath))
+            {
+                Directory.CreateDirectory(temppath);
+            }
+            var tempOutPutPath = Path.Combine(temppath, fileName);
+            using (ZipOutputStream s = new ZipOutputStream(System.IO.File.Create(tempOutPutPath)))
+            {
+                s.SetLevel(9); // 0-9, 9 being the highest compression  
+
+                if (documentData.ProjectReport != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.ProjectReportFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.ProjectReport, 0, documentData.ProjectReport.Length);
+                }
+
+                if (documentData.ProposedPlanLandUses != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.ProposedPlanLandUsesFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.ProposedPlanLandUses, 0, documentData.ProposedPlanLandUses.Length);
+                }
+
+                if (documentData.Memorendum != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.MemorendumFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.Memorendum, 0, documentData.Memorendum.Length);
+                }
+
+                if (documentData.ScanPAN != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.ScanPANFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.ScanPAN, 0, documentData.ScanPAN.Length);
+                }
+
+                if (documentData.ScanAddressProof != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.ScanAddressProofFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.ScanAddressProof, 0, documentData.ScanAddressProof.Length);
+                }
+
+                if (documentData.BalanceSheet != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.BalanceSheetFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.BalanceSheet, 0, documentData.BalanceSheet.Length);
+                }
+
+                if (documentData.ITReturn != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.ITReturnFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.ITReturn, 0, documentData.ITReturn.Length);
+                }
+
+                if (documentData.ExperienceProof != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.ExperienceProofFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.ExperienceProof, 0, documentData.ExperienceProof.Length);
+                }
+
+                if (documentData.ApplicantEduTechQualification != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.ApplicantEduTechQualificationFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.ApplicantEduTechQualification, 0, documentData.ApplicantEduTechQualification.Length);
+                }
+
+                if (documentData.PreEstablishedIndustriesDoc != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.PreEstablishedIndustriesDocFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.PreEstablishedIndustriesDoc, 0, documentData.PreEstablishedIndustriesDoc.Length);
+                }
+
+                if (documentData.FinDetailsEstablishedIndustries != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.FinDetailsEstablishedIndustriesFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.FinDetailsEstablishedIndustries, 0, documentData.FinDetailsEstablishedIndustries.Length);
+                }
+
+                if (documentData.OtherDocForProposedIndustry != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.OtherDocForProposedIndustryFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.OtherDocForProposedIndustry, 0, documentData.OtherDocForProposedIndustry.Length);
+                }
+
+                if (documentData.ScanCastCert != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.ScanCastCertFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.ScanCastCert, 0, documentData.ScanCastCert.Length);
+                }
+
+                if (documentData.ScanID != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.ScanIDFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.ScanID, 0, documentData.ScanID.Length);
+                }
+
+                if (documentData.BankVerifiedSignature != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.BankVerifiedSignatureFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.BankVerifiedSignature, 0, documentData.BankVerifiedSignature.Length);
+                }
+
+                if (documentData.DocProofForIndustrialEstablishedOutsideGida != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.DocProofForIndustrialEstablishedOutsideGidaFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.DocProofForIndustrialEstablishedOutsideGida, 0, documentData.DocProofForIndustrialEstablishedOutsideGida.Length);
+                }
+
+                if (documentData.ApplicantPhoto != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.ApplicantPhotoFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.ApplicantPhoto, 0, documentData.ApplicantPhoto.Length);
+                }
+
+                if (documentData.ApplicantSignature != null)
+                {
+                    ZipEntry entry = new ZipEntry(documentData.ApplicantSignatureFileName);
+                    entry.DateTime = DateTime.Now;
+                    entry.IsUnicodeText = true;
+                    s.PutNextEntry(entry);
+                    s.Write(documentData.ApplicantSignature, 0, documentData.ApplicantSignature.Length);
+                }
+
+                s.Finish();
+                s.Flush();
+                s.Close();
+            }
+            byte[] finalResult = System.IO.File.ReadAllBytes(tempOutPutPath);
+            if (System.IO.File.Exists(tempOutPutPath))
+                System.IO.File.Delete(tempOutPutPath);
+
+            if (finalResult == null || !finalResult.Any())
+                throw new Exception(String.Format("No Files found with Image"));
+            return File(finalResult, "application/zip", fileName);
         }
         public ActionResult Logout()
         {

@@ -868,8 +868,29 @@ namespace GidaGkpWeb.BAL
                 }
                 return null;
             }
+        }
 
-
+        public ApplicantUploadDoc GetApplicantUploadDocDetail(int applicationId)
+        {
+            try
+            {
+                _db = new GidaGkpEntities();
+                return (from doc in _db.ApplicantUploadDocs
+                        where doc.ApplicationId == applicationId
+                        select doc
+                        ).FirstOrDefault();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Elmah.ErrorLog.GetDefault(HttpContext.Current).Log(new Elmah.Error(e));
+                    }
+                }
+                return null;
+            }
         }
 
         public ApplicantDetailModel GetApplicantPersonalDetail(int applicationId)
