@@ -271,7 +271,7 @@ namespace GidaGkpWeb.BAL
                         join noticeTypeLookup in _db.Lookups on notice.NoticeTypeId equals noticeTypeLookup.LookupId
                         join departmentLookup1 in _db.Lookups on notice.Department equals departmentLookup1.LookupId into departmentLookup2
                         from departmentLookup in departmentLookup2.DefaultIfEmpty()
-                        where noticeTypeLookup.LookupName == NoticeType
+                        where noticeTypeLookup.LookupName == NoticeType && noticeTypeLookup.IsActive == true
                         select new AdminNoticeModel
                         {
                             NoticeTypeId = notice.NoticeTypeId,
