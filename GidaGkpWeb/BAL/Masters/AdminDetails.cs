@@ -285,8 +285,9 @@ namespace GidaGkpWeb.BAL
                             NoticeNewTag = notice.NoticeNewTag,
                             Notice_Date = notice.Notice_Date,
                             Notice_title = NoticeType == "Latest Notice" && notice.Notice_title.Length > 95 ? notice.Notice_title.Substring(0, 95) : notice.Notice_title,
-                            Notice_Type = noticeTypeLookup.LookupName
-                        }).ToList();
+                            Notice_Type = noticeTypeLookup.LookupName,
+                            CreationDate = notice.CreationDate
+                        }).OrderByDescending(x => x.CreationDate).ToList();
             }
             catch (DbEntityValidationException e)
             {
