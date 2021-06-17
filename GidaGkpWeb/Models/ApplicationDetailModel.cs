@@ -31,6 +31,8 @@ namespace GidaGkpWeb.Models
         public string UnitName { get; set; }
         public decimal? TotalInvestment { get; set; }
         public string Skilled { get; set; }
+        public string CAddress { get; set; }
+        public string PAddress { get; set; }
     }
 
     public class ApplicationDetailModel

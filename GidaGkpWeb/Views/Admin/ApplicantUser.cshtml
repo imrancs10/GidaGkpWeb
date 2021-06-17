@@ -46,6 +46,8 @@
                                         <th>Scheme Type</th>
                                         <th>Scheme Name</th>
                                         <th>Sector Type</th>
+                                        <th>Current Address</th>
+                                        <th>Permanent Address</th>
                                         <th>Is Active</th>
                                         @*<th>Action</th>*@
                                     </tr>
@@ -73,6 +75,8 @@
                                             <td>@data.SchemeType</td>
                                             <td>@data.SchemeName</td>
                                             <td>@data.SectorName</td>
+                                            <td>@data.CAddress</td>
+                                            <td>@data.PAddress</td>
                                             <td>@data.IsActive</td>
                                             @*<td row-header="Table heading">
                                                     <a class="previous action-button-previous pull-right" href="/Admin/ActivateDeActivateUser?userId=@data.Id">Activate/DeActivate User</a>

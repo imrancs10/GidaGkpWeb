@@ -19,6 +19,8 @@ namespace GidaGkpWeb.BAL
             {
                 _db = new GidaGkpEntities();
                 return (from user in _db.ApplicantUsers
+                        join applicant1 in _db.ApplicantDetails on user.Id equals applicant1.UserId into applicant2
+                        from applicant in applicant2.DefaultIfEmpty()
                         where user.UserType != "Test"
                         select new ApplicationUserModel
                         {
@@ -26,8 +28,10 @@ namespace GidaGkpWeb.BAL
                             ContactNo = user.ContactNo,
                             CreationDate = user.CreationDate,
                             Email = user.Email,
-                            FatherName = user.FatherName,
-                            FullName = user.FullName,
+                            FatherName = applicant != null ? applicant.FName : "",
+                            CAddress = applicant != null ? applicant.CAddress : "",
+                            PAddress = applicant != null ? applicant.PAddress : "",
+                            FullName = applicant != null ? applicant.FullApplicantName : "",
                             Id = user.Id,
                             SchemeName = user.SchemeName,
                             SchemeType = user.SchemeType,
@@ -56,6 +60,8 @@ namespace GidaGkpWeb.BAL
             {
                 _db = new GidaGkpEntities();
                 return (from user in _db.ApplicantUsers
+                        join applicant1 in _db.ApplicantDetails on user.Id equals applicant1.UserId into applicant2
+                        from applicant in applicant2.DefaultIfEmpty()
                         join application1 in _db.ApplicantApplicationDetails on user.Id equals application1.UserId into application2
                         from application in application2.DefaultIfEmpty()
                         join plotDetail1 in _db.ApplicantPlotDetails on user.Id equals plotDetail1.UserId into plotDetail2
@@ -80,8 +86,10 @@ namespace GidaGkpWeb.BAL
                             ContactNo = user.ContactNo,
                             CreationDate = user.CreationDate,
                             Email = user.Email,
-                            FatherName = user.FatherName,
-                            FullName = user.FullName,
+                            FatherName = applicant != null ? applicant.FName : "",
+                            CAddress = applicant != null ? applicant.CAddress : "",
+                            PAddress = applicant != null ? applicant.PAddress : "",
+                            FullName = applicant != null ? applicant.FullApplicantName : "",
                             Id = user.Id,
                             SchemeName = user.SchemeName,
                             SchemeType = user.SchemeType,
